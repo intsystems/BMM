@@ -3,6 +3,7 @@
 
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{hyperref}
 
 
 
@@ -49,7 +50,7 @@
         Let $\mathbf{A}\in \mathbb{R}^{q\times p}$ be a a constant matrix.
         Then
         \[
-            \mathbf{A}\mathbf{M}\mathbf{A}^\top \sim \mathbf{W}_q(\mathbf{A}\mathbf{\Sigma}\mathbf{A}^\top, n).
+            \mathbf{A}\mathbf{M}\mathbf{A}^\top \sim \mathcal{W}_q(\mathbf{A}\mathbf{\Sigma}\mathbf{A}^\top, n).
         \]
     \end{block}
     \begin{proof}
@@ -75,10 +76,10 @@
         Each row $\mathbf{x}_i \sim \mathcal{N}(\mathbf{x}_i|\mathbf{0}, \mathbf{\Sigma})$.
         Let $\mathrm{rank}\mathbf{\Sigma} = p$. Then
         \[
-            \mathbf{X}^\top\mathbf{P}\mathbf{X} \sim \mathcal{W}(.|\mathbf{\Sigma}, r).
+            \mathbf{X}^\top\mathbf{P}\mathbf{X} \sim \mathcal{W}_p(.|\mathbf{\Sigma}, r).
         \]
         \[
-            \mathbf{X}^\top(\mathbf{I} - \mathbf{P})\mathbf{X} \sim \mathcal{W}(.|\mathbf{\Sigma}, n-r).
+            \mathbf{X}^\top(\mathbf{I} - \mathbf{P})\mathbf{X} \sim \mathcal{W}_p(.|\mathbf{\Sigma}, n-r).
         \]
         Moreover, $\mathbf{X}^\top\mathbf{P}\mathbf{X}$ and $\mathbf{X}^\top(\mathbf{I} - \mathbf{P})\mathbf{X}$ are
         indepandent.
@@ -96,7 +97,7 @@
 
 
 \begin{frame}{Proof of property 2}
-    Let $\mathbf{P} = \mathbf{I} - \frac{1}{n}\mathbf{1}\mathbf{1}^\top \in \mathbb{R}^{n\times n}, \mathrm{rank}\mathbf{P} = 1$.
+    Let $\mathbf{P} = \mathbf{I} - \frac{1}{n}\mathbf{1}\mathbf{1}^\top \in \mathbb{R}^{n\times n}, \mathrm{rank}\mathbf{P} = n - 1$.
     Consider $\mathbf{P}^2 = \mathbf{I} + \frac{1}{n^2}\mathbf{1}\mathbf{1}^\top\mathbf{1}\mathbf{1}^\top
     - \frac{2}{n}\mathbf{1}\mathbf{1}^\top = \mathbf{P}$.
     
@@ -105,7 +106,7 @@
 
     Hence, using Cochran's theorem,
     \[
-        n\mathbf{S} \sim \mathcal{W}(.|\mathbf{\Sigma}, n - 1).
+        n\mathbf{S} \sim \mathcal{W}_p(.|\mathbf{\Sigma}, n - 1).
     \]
 \end{frame}
 
@@ -192,7 +193,7 @@
 
 \begin{frame}{Fast Sampling}
     \begin{block}{Odell and Feiveson, 1966}
-        Let $\{V_i\}_{i=1}^p$ be independent random variables: $V_i \sim \chi^2_{p - i + 1}$. Let $\{N_{ij}\}_{ij=1}^n$
+        Let $\{V_i\}_{i=1}^p$ be independent random variables: $V_i \sim \chi^2_{p - i + 1}$. Let $\{N_{ij}\}_{ij=1}^p$
         be indepentent standard normal random variables idendependent of $V_i$. Define $b_{ij} = b{ji}$ for $i, j \in \overline{1,p}$:
         \[
             b_{ii} = V_i + \sum_{r=1}^{i-1}N^2_{ri},
@@ -200,7 +201,7 @@
         \[
             b_{ij} = N_{ij}\sqrt{V_i} + \sum_{r=1}^{i-1}N_{ri}N_{rj}.
         \]
-    Then $\mathbf{B} = \{b_{ij}\} \sim \mathcal{W}_p(\mathbf{I}, n)$.
+        Then $\mathbf{B} = \{b_{ij}\}_{i, j=1}^d \sim \mathcal{W}_p(\mathbf{I}, n)$.
     \end{block}
     Note that here we have to sample $O(p^2)$ stardard normal random variables instead of $O(np)$
     is naive sampling.
@@ -209,8 +210,8 @@
 
 \begin{frame}{Literature}
     \begin{enumerate}
-        \item \textbf{Definition, properties and tests} https://rich-d-wilkinson.github.io/MATH3030/7-multinormal.html
-        \item \textbf{Fast sampling} https://www.math.wustl.edu/~sawyer/hmhandouts/Wishart.pdf
+        \item \textbf{Definition, properties and tests} \url{https://rich-d-wilkinson.github.io/MATH3030/7-multinormal.html}
+        \item \textbf{Fast sampling} \url{https://www.math.wustl.edu/~sawyer/hmhandouts/Wishart.pdf}
     \end{enumerate}
 \end{frame}
 
