@@ -12,8 +12,8 @@
 ## Plan
 |Date|Topic|Link to record|Lab task|
 | --- | --- | --- | --- |
-| 6.09 |  Intro | - | - |
-| 13.09 |  Distributions, expectation, likelihood | - | - |
+| 6.09 |  [Intro](slides/slides_0_intro.pdf) | - | - |
+| 13.09 |  [Distributions, expectation, likelihood](slides/slides_1_distributions.pdf) | [Link](https://www.youtube.com/watch?v=NzjzoJvSRLw) | - |
 | 20.09 |  Bayesian inference | - | - |
 | 27.09 |  MDL | - | Lab1 |
 | 4.10 |  Belief propagation, networks, and hierarchical models | - | - |
