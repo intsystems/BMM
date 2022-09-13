@@ -1,0 +1,219 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+
+
+\title{Wishart Distribution}
+\author{Konstantin Yakovlev}
+\institute{MIPT, 2022}
+
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+
+\begin{frame}
+    \tableofcontents
+\end{frame}
+
+
+\section{Definition}
+
+\begin{frame}{Definition}
+    \begin{block}{Definition}
+    Let $\{\mathbf{x}_i\}_{i=1}^n, \mathbf{x}_i \in \mathbb{R}^p$ be $\mathrm{i.i.d.}$ samples from
+    $\mathcal{N}(\mathbf{x}|\boldsymbol{0}, \mathbf{\Sigma})$. Then
+    \[
+        \mathbf{M} = \sum_{i=1}^n \mathbf{x}_i\mathbf{x}_i^\top \sim \mathcal{W}_p(\mathbf{\Sigma}, n),
+    \]
+    where $n$ is a number of degrees of freedom, $\mathbf{\Sigma}$ is a scale matrix.
+    \end{block}
+
+    Note that when $p = 1$, it is easy to see that $\mathbf{M} \sim \chi^2_{n}$, i.e.
+    $\mathcal{W}_1(1, n) =^d \chi^2_n$.
+
+\end{frame}
+
+
+\section{Properties}
+
+\begin{frame}{Properties}
+    \begin{block}{Property 1}
+        Let $\mathbf{M} \sim \mathcal{W}_p(\mathbf{M}|\mathbf{\Sigma}, n)$.
+        Let $\mathbf{A}\in \mathbb{R}^{q\times p}$ be a a constant matrix.
+        Then
+        \[
+            \mathbf{A}\mathbf{M}\mathbf{A}^\top \sim \mathbf{W}_q(\mathbf{A}\mathbf{\Sigma}\mathbf{A}^\top, n).
+        \]
+    \end{block}
+    \begin{proof}
+        Rewrite the definition of $\mathbf{A}\mathbf{M}\mathbf{A}^\top$:
+        \[
+            \mathbf{A}\mathbf{M}\mathbf{A}^\top = \sum_{i=1}^n\mathbf{A}\mathbf{x}_i\mathbf{x}_i^\top\mathbf{A}^\top.
+        \]
+        We know that $\mathbf{y} = \mathbf{A}\mathbf{x} \sim \mathcal{N}(\mathbf{y}|\mathbf{0}, \mathbf{A}\mathbf{\Sigma}\mathbf{A}^\top)$. Then
+        \[
+            \sum_{i=1}^n\mathbf{y}_i\mathbf{y}_i^\top \sim \mathcal{W}_q(.|\mathbf{A}\mathbf{\Sigma}\mathbf{A}^\top, n).
+        \]
+    \end{proof}
+
+\end{frame}
+
+
+\begin{frame}{Properties}
+    \begin{block}{Cochran’s theorem}
+        Let $\mathbf{P} \in \mathbb{R}^{n\times n}$ be a projection matrix
+        ($\mathbf{P} = \mathbf{P}^2$) of rank $r$.
+        Let $\mathbf{X} = [\mathbf{x}_1^\top, \ldots, \mathbf{x}_n^\top]^\top \in \mathbb{R}^{n\times p}$.
+        Rows are $\mathrm{i.i.d.}$.
+        Each row $\mathbf{x}_i \sim \mathcal{N}(\mathbf{x}_i|\mathbf{0}, \mathbf{\Sigma})$.
+        Let $\mathrm{rank}\mathbf{\Sigma} = p$. Then
+        \[
+            \mathbf{X}^\top\mathbf{P}\mathbf{X} \sim \mathcal{W}(.|\mathbf{\Sigma}, r).
+        \]
+        \[
+            \mathbf{X}^\top(\mathbf{I} - \mathbf{P})\mathbf{X} \sim \mathcal{W}(.|\mathbf{\Sigma}, n-r).
+        \]
+        Moreover, $\mathbf{X}^\top\mathbf{P}\mathbf{X}$ and $\mathbf{X}^\top(\mathbf{I} - \mathbf{P})\mathbf{X}$ are
+        indepandent.
+    \end{block}
+
+    \begin{block}{Property 2}
+    Let $\{\mathbf{x}_i\}_{i=1}^n$ be $\mathrm{i.i.d.}$ samples from
+    $\mathcal{N}(\mathbf{x}|\boldsymbol\mu, \mathbf{\Sigma})$. Then
+    \[
+        n\mathbf{S} = \sum_{i=1}^n(\mathbf{x}_i - \overline{\mathbf{x}})(\mathbf{x}_i - \overline{\mathbf{x}})^\top
+        \sim \mathcal{W}_p(.|\mathbf{\Sigma}, n - 1).
+    \]
+    \end{block}
+\end{frame}
+
+
+\begin{frame}{Proof of property 2}
+    Let $\mathbf{P} = \mathbf{I} - \frac{1}{n}\mathbf{1}\mathbf{1}^\top \in \mathbb{R}^{n\times n}, \mathrm{rank}\mathbf{P} = 1$.
+    Consider $\mathbf{P}^2 = \mathbf{I} + \frac{1}{n^2}\mathbf{1}\mathbf{1}^\top\mathbf{1}\mathbf{1}^\top
+    - \frac{2}{n}\mathbf{1}\mathbf{1}^\top = \mathbf{P}$.
+    
+    Now consider $\mathbf{X}^\top\mathbf{P}\mathbf{X} = \sum_{i=1}^n\mathbf{x}_i\mathbf{x}_i^\top -\frac{1}{n}\mathbf{X}^\top\mathbf{1}\mathbf{1}^\top\mathbf{X} = n\mathbf{S}$.
+    Here we used the fact that $\overline{\mathbf{x}} = \frac{1}{n}\mathbf{X}^\top\mathbf{1}$.
+
+    Hence, using Cochran's theorem,
+    \[
+        n\mathbf{S} \sim \mathcal{W}(.|\mathbf{\Sigma}, n - 1).
+    \]
+\end{frame}
+
+
+\begin{frame}{Hotelling's $T^2$ dustribution}
+    \begin{block}{Definition}
+        Let $\mathbf{x} \sim \mathcal{N}(x|\mathbf{0}, \mathbf{I}), \mathbf{x}\in \mathbb{R}^p$.
+        Let $\mathbf{M} \sim \mathcal{W}_p(\mathbf{M}|\mathbf{I}, n), \mathbf{M} \in \mathbb{R}^{p\times p}$.
+        $\mathbf{M}$ and $\mathbf{x}$ are independent. Then
+        \[
+            n\mathbf{x}^\top\mathbf{M}^{-1}\mathbf{x} \sim T^2(p, n).
+        \]
+    \end{block}
+
+    \begin{block}{Property 3}
+        Let $\mathbf{x} \sim \mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}, \mathbf{\Sigma})$,
+        $\mathbf{M} \sim \mathcal{W}_p(\mathbf{M}|\mathbf{\Sigma}, n)$ are independent.
+        Let also $\mathrm{det}\mathbf{\Sigma} \not=0$. Then
+        \[
+            n(\mathbf{x} - \boldsymbol\mu)^\top\mathbf{M}^{-1}(\mathbf{x} - \boldsymbol\mu) \sim T^2(p, n).
+        \]
+    \end{block}
+    \begin{proof}
+        Let $\mathbf{y} = \mathbf{\Sigma}^{-1/2}(\mathbf{x} - \mathbf{\mu})$ is a standard normal random vector.
+        Let $\mathbf{Z} = \mathbf{\Sigma}^{-1/2}\mathbf{M}\mathbf{\Sigma}^{-1/2} \sim \mathcal{W}_p(\mathbf{Z}|\mathbf{I}, n)$.
+        Then $n\mathbf{y}^\top\mathbf{Z}\mathbf{y} \sim T^2(p, n)$. 
+    \end{proof}
+\end{frame}
+
+
+\begin{frame}{Properties}
+    \begin{Theorem}
+        \[
+            \frac{n - p}{(n - 1)p}n\mathbf{x}^\top\mathbf{M}^{-1}\mathbf{x} \sim F_{p, n-p},
+        \]
+        where $F_{., .}$ is a Fisher distribution.
+    \end{Theorem}
+
+    \begin{Corollary}
+        From property 2, property 3 and Cochran's theorem follows that
+        \[
+            \frac{n - p}{p}(\overline{\mathbf{x}} - \boldsymbol\mu)\mathbf{S}^{-1}(\overline{\mathbf{x}} - \mathbf{\mu})
+            \sim F_{p, n - p}.
+        \]
+    \end{Corollary}
+\end{frame}
+
+
+\section{Statistical Tests}
+
+\begin{frame}{Statistical tests}
+
+    \begin{block}{Known $\mathbf{\Sigma}$}
+        Given $\{\mathbf{x}_i\}_{i=1}^n$ from $\mathcal{N}(\mathbf{x}|\boldsymbol\mu, \mathbf{\Sigma}),
+        \mathbf{x} \in \mathbb{R}^p$.
+
+        $H_0: \quad \boldsymbol\mu = \boldsymbol\mu_0$
+
+        $H_1: \quad \boldsymbol\mu <\not= > \boldsymbol\mu_0$
+
+        $T(\mathbf{X}) = n(\overline{\mathbf{x}} - \boldsymbol\mu_0)^\top\mathbf{\Sigma}^{-1}(\overline{\mathbf{x}} - \boldsymbol\mu_0)$
+
+        Null distribution: $\chi^2_p$.
+    \end{block}
+
+    \begin{block}{Unknown $\mathbf{\Sigma}$}
+        Given $\{\mathbf{x}_i\}_{i=1}^n$ from $\mathcal{N}(\mathbf{x}|\boldsymbol\mu, \mathbf{\Sigma}),
+        \mathbf{x} \in \mathbb{R}^p$.
+
+        $H_0: \quad \boldsymbol\mu = \boldsymbol\mu_0$
+
+        $H_1: \quad \boldsymbol\mu <\not= > \boldsymbol\mu_0$
+
+        $T(\mathbf{X}) = \frac{n-p}{p}(\overline{\mathbf{x}} - \boldsymbol\mu_0)^\top\mathbf{S}^{-1}(\overline{\mathbf{x}} - \boldsymbol\mu_0)$.
+
+        Null distribution: $F_{p, n-p}$
+
+    \end{block}
+
+\end{frame}
+
+
+\section{Fast Sampling}
+
+\begin{frame}{Fast Sampling}
+    \begin{block}{Odell and Feiveson, 1966}
+        Let $\{V_i\}_{i=1}^p$ be independent random variables: $V_i \sim \chi^2_{p - i + 1}$. Let $\{N_{ij}\}_{ij=1}^n$
+        be indepentent standard normal random variables idendependent of $V_i$. Define $b_{ij} = b{ji}$ for $i, j \in \overline{1,p}$:
+        \[
+            b_{ii} = V_i + \sum_{r=1}^{i-1}N^2_{ri},
+        \]
+        \[
+            b_{ij} = N_{ij}\sqrt{V_i} + \sum_{r=1}^{i-1}N_{ri}N_{rj}.
+        \]
+    Then $\mathbf{B} = \{b_{ij}\} \sim \mathcal{W}_p(\mathbf{I}, n)$.
+    \end{block}
+    Note that here we have to sample $O(p^2)$ stardard normal random variables instead of $O(np)$
+    is naive sampling.
+\end{frame}
+
+
+\begin{frame}{Literature}
+    \begin{enumerate}
+        \item \textbf{Definition, properties and tests} https://rich-d-wilkinson.github.io/MATH3030/7-multinormal.html
+        \item \textbf{Fast sampling} https://www.math.wustl.edu/~sawyer/hmhandouts/Wishart.pdf
+    \end{enumerate}
+\end{frame}
+
+
+
+\end{document}
