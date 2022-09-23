@@ -1,4 +1,6 @@
 # Bayesian multimodeling
+[Form. Deadline: September 20th, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSe_RmtEk3-w8GUwComx83lsRGjV8OMM_WBI_kKWNBiRisHg3Q/viewform?usp=sf_link)
+
 [Scores](eval.md)
 
 [Talk list](talks.md)
