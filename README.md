@@ -1,5 +1,5 @@
 # Bayesian multimodeling
-[Form. Deadline: September 20th, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSe_RmtEk3-w8GUwComx83lsRGjV8OMM_WBI_kKWNBiRisHg3Q/viewform?usp=sf_link)
+[Form. Deadline: September 30th, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSco0tS9Zs4PoaDi6_Is0inbMBR9XHFDRJFI8PIIbONzDD8ggA/viewform?usp=sf_link)
 
 [Scores](eval.md)
 
