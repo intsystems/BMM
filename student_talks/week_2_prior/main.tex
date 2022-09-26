@@ -1,0 +1,223 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+
+
+
+\title{The Counter-intuitive Non-informative Prior for the Bernoulli Family}
+\author{Skorik Sergey}
+\institute{MIPT, 2022}
+
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+
+\begin{frame}
+    \tableofcontents
+\end{frame}
+
+
+\section{Introduction}
+
+\begin{frame}{Introduction}
+    \begin{block}{Definition}
+    Let $\mathbf{X}$ be a set of samples from
+    $f(\mathbf{x}|\boldsymbol{\theta})$, $\boldsymbol{\theta} \in \mathbb{R}^k$. Then
+    \[
+        \mathcal{I}(\boldsymbol{\theta}) \equiv - \mathbb{E}\left[\left(\dfrac{\partial}{\partial \boldsymbol{\theta}}\log L(\mathbf{X}, \boldsymbol{\theta})\right)^2\right], \quad L(\mathbf{X}, \boldsymbol{\theta}) = \prod_{x \in \mathbf{X}}f(x|\boldsymbol{\theta})
+    \]
+    is the Fisher information (here L is the likelihood function)
+    \end{block}
+    
+    \begin{block}{Definition}
+    In Bayesian probability, the Jeffreys prior is a non-informative (objective) prior distribution for a parameter space whose probability density is proportional to
+    \[\pi(\boldsymbol{\theta}) \propto \sqrt{\det \mathcal{I}(\boldsymbol{\theta})}\]
+    \end{block}
+
+\end{frame}
+
+\begin{frame}{Introduction}
+    \begin{block}{Property}
+        Suppose $\pi_{\boldsymbol{\theta}}(\boldsymbol{\theta})$ is Jeffreys prior and $\boldsymbol{\phi} = h(\boldsymbol{\theta})$ is re-parameterization of the problem, then
+        \[\pi_{\boldsymbol{\phi}}(\boldsymbol{\phi}) = \pi_{\boldsymbol{\theta}}(h^{-1}(\boldsymbol{\phi}))\left|\dfrac{d\boldsymbol{\theta}}{d\boldsymbol{\phi}}\right|\]
+    \end{block}
+    \begin{proof} (One-parameter case)
+        \[\mathcal{I}(\mathbf{\phi}) = - \mathbb{E}\left[\dfrac{d^2}{d \mathbf{\phi}^2}\log L(\mathbf{X}, \mathbf{\phi})\right] = \mathbb{E}\left[\dfrac{d^2}{d \mathbf{\theta}^2}\log L(\mathbf{X}, \mathbf{\theta})\left(\dfrac{d\theta}{d\phi}\right)^2\right]\]
+        Therefore
+        \[\pi_{\phi}(\phi) \propto \mathcal{I}(\mathbf{\phi})^{\frac{1}{2}} = \mathcal{I}(\mathbf{\theta})^{\frac{1}{2}} \left|\dfrac{d\theta}{d\phi}\right| = \pi_{\theta}(\theta) \left|\dfrac{d\theta}{d\phi}\right|\]
+    \end{proof}
+
+\end{frame}
+
+
+\begin{frame}{Introduction}
+    \begin{block}{Problem statement}
+        Let $\{X_i\}_{i=1}^n$ be i.i.d observations and $X_i \sim Bernoulli(p)$, $\sum_{i=1}^n X_i = x$. Then
+        \begin{equation}\label{MLE}
+            f(X|p) = \begin{pmatrix}
+        n \\
+        x \\
+        \end{pmatrix}
+        p^x(1-p)^{n-x} \Rightarrow \dfrac{d^2}{dp^2}\log f(X|p) \propto -\dfrac{x}{p^2} - \dfrac{n - x}{(1 - p)^2}
+        \end{equation}
+        Thus
+        \[\pi(p) \propto \sqrt{\mathbb{E}\left[-\dfrac{x}{p^2} - \dfrac{n - x}{(1 - p)^2}\right]} = \sqrt{\dfrac{np}{p^2} + \dfrac{n - np}{(1 - p)^2}} \propto \dfrac{1}{\sqrt{p(1-p)}}\]
+    \end{block}
+    
+    \begin{block}{Problem statement}
+        In this simple case, it is most intuitive to use the uniform distribution on $[0,1]$ as a non-informative prior; it is non-informative because it says that all possible values of p are equally likely a \textit{priori}.
+    \end{block}
+
+\end{frame}
+
+
+\begin{frame}{Introduction}
+    \begin{block}{Problem statement}
+        \begin{equation}\label{Jeffrey's_prior}
+            \pi(p) \propto \dfrac{1}{\sqrt{p(1-p)}} \sim Beta\left(\frac{1}{2}, \frac{1}{2}\right)
+        \end{equation}
+        Jeffrey’s prior for this simple problem can be quite counter-intuitive. Under the prior (\ref{Jeffrey's_prior}), it appears that some values of p are more likely than others. Therefore intuitively, it appears that this prior is actually quite informative.
+    \end{block}
+    
+    \begin{block}{Heuristic}
+       Since the maximum likelihood estimator (MLE) is not affected by any prior opinion, we simply ask: is there a prior which would produce a Bayesian estimate (e.g., posterior mean) that coincides with the MLE? If so, that prior could be regarded as non-informative since the prior opinion exerts no influence on the final estimate whatsoever.
+   \end{block}
+\end{frame}
+
+\section{The Bayesian Estimator}
+\begin{frame}{The Bayesian Estimator}
+    \begin{block}{Maximum Likelihood Estimator}
+        from (\ref{MLE}) we can get
+        \begin{equation}
+            \dfrac{x}{p} - \dfrac{n-x}{1-p} = 0 \Rightarrow \hat{p}_{\text{MLE}} = \dfrac{x}{n}
+        \end{equation}
+    \end{block}
+    
+    \begin{block}{Conjugate Prior}
+        The posterior distribution of p is given by (Bayes’ Theorem):
+        \[\pi_1(p | x_1, \ldots x_n) = \dfrac{f(x_1, \ldots x_n | p)\pi_0(p)}{\int_{0}^1 f(x_1, \ldots x_n | p)\pi_0(p)}\]
+        \textbf{Definition:} if the posterior distribution $p(\theta | x)$ is in the same probability distribution family as the prior probability distribution $p(\theta)$, the prior and posterior are then called conjugate distributions, and the prior is called a conjugate prior for the likelihood function $p(x | \theta)$.
+    \end{block}
+\end{frame}
+
+\begin{frame}{The Bayesian Estimator}
+    \begin{block}{Statement}
+        the Beta distribution and the Bernoulli distribution form a conjugate pair
+    \end{block}
+    \begin{proof}
+        Consider the $Beta(\alpha, \beta)$ distribution as the prior for p, i.e.
+        \[\pi_0(p) = \dfrac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}p^{\alpha-1}(1 - p)^{\beta - 1}\]
+        So, 
+        \[\pi_1(p) \propto f(x_1, \ldots x_n | p)\pi_0(p) = p^x(1 - p)^{n - x}p^{\alpha-1}(1 - p)^{\beta - 1} = \]
+        \[ = p^{\alpha + x - 1}(1 - p)^{\beta + n - x - 1} \sim Beta(\alpha + x, \beta + n - x)\]
+    \end{proof}
+\end{frame}
+
+\begin{frame}{The Bayesian Estimator}
+    \begin{block}{Beta moments}
+        If $p \sim Beta(\alpha, \beta)$, then
+        \[\mathbb{E}(p) = \dfrac{\alpha}{\alpha + \beta}, \quad \mathbb{D}(p) = \dfrac{\alpha\beta}{(\alpha + \beta)^2(\alpha + \beta+1)}\]
+        So, we can now write down a general formula for obtaining the Bayesian posterior mean in our case
+        \begin{equation}\label{Bayesian_estimation}
+            \hat{p}_{\text{bayes}} = \dfrac{\alpha + x}{\alpha + \beta + n}
+        \end{equation}
+        Note, that Jeffreys and Uniformal prior are a members of Beta distributions family
+        \[J(p) \sim Beta\left(\frac{1}{2}, \frac{1}{2}\right), \quad U(p) \sim Beta(1, 1) \Rightarrow \hat{p}_{\text{uni-bayes}} = \dfrac{1 + x}{2 + n}\]
+    \end{block}
+\end{frame}
+
+\begin{frame}{The Bayesian Estimator}
+    \begin{block}{The Effects of Different Priors}
+        Focus on a particular sub-family of Beta distributions with $\alpha=\beta=c$, i.e. $\pi_0(p) \sim Beta(c, c)$. Note, that $J(p)$ and $U(p)$ are also a members of this subfamily. The central moments of this dstributions
+        \begin{equation}\label{beta_moments}
+            \mathbb{E}(p) = \dfrac{c}{c + c} = \dfrac{1}{2}, \quad \mathbb{D}(p) = \dfrac{c^2}{4c^2(2c + 1)} = \dfrac{1}{4(2c + 1)}
+        \end{equation}
+        It is clear from (\ref{Bayesian_estimation}) that the prior parameter $c$ influences the posterior mean as if an extra $2c$ observations, equally split between zeros and ones, were added to the sample. 
+    \end{block}
+\end{frame}
+
+\begin{frame}{The Bayesian Estimator}
+    \begin{block}{Case 1 $c \to \infty$}
+        It is easy to see from (\ref{Bayesian_estimation}) that as $c \to \infty$, we have $\hat{p}_{\text{bayes}} = \frac{1}{2}$. In other words, our prior
+opinion of p is so strong that it can not be changed by the observed outcomes.
+    \end{block}
+    
+    \begin{block}{Case 2 $c \to 0$}
+        Following the same logic, it is clear from (\ref{Bayesian_estimation}) that using such a prior, the posterior mean would have been the same as the MLE. \\ 
+        But the $Beta(0, 0)$  distribution is not defined. Consider the distribution $Beta(\varepsilon, \varepsilon)$ for arbitrarily small $\varepsilon > 0$. To understand the behavior of this
+        distribution, we can examine the limiting distribution as $c \to 0$
+        \[B_{0, 0} = \lim\limits_{c \to 0}Beta(c, c)\]
+    \end{block}
+\end{frame}
+
+\begin{frame}{The Bayesian Estimator}
+    \begin{block}{Theorem 1}
+        The limiting distribution $B_{0,0}$ consists of two equal point masses at $0$ and $1$
+    \end{block}
+    
+    \begin{proof}
+        Let $X \sim B_{0, 0}$; let $f(x)$ be its probability function. Clearly $f(x)$ is symmetric about $\frac{1}{2}$.  Now suppose $f(x)$ is not just two point masses at 0 and 1. Then there exist $0 < \varepsilon < \frac{1}{2}$ and $\delta > 0$ such that
+        \[g(\varepsilon) \equiv \int_{\varepsilon}^{1-\varepsilon}f(x) dx > \delta\]
+        Because $f(x)$ is symmetric about $\frac{1}{2}$ it follows that
+        \[\mathbb{D}(p) = \int_{0}^{1}\left(x - \frac{1}{2}\right)^2 f(x)dx\] 
+    \end{proof}
+\end{frame}
+
+\begin{frame}{The Bayesian Estimator}
+    \begin{proof}
+        \[\mathbb{D}(p) = 2\int_{0}^{\varepsilon}\left(x - \frac{1}{2}\right)^2 f(x)dx + \int_{\varepsilon}^{1-\varepsilon}\left(x - \frac{1}{2}\right)^2 f(x) dx \leqslant \]
+        \[\leqslant \dfrac{1}{2}\left(\dfrac{1 - g(\varepsilon)}{2}\right) + \left(\varepsilon^2 + \varepsilon + \dfrac{1}{4}\right)g(\varepsilon) = \dfrac{1}{4} - \varepsilon(1 - \varepsilon)g(\varepsilon) < \]
+        \[< \dfrac{1}{4} - \varepsilon(1 - \varepsilon)\delta\]
+    From (\ref{beta_moments}) for $c \to 0$ is clear that $\mathbb{D}(p) = \frac{1}{4}$. So, we can write
+    \[\dfrac{1}{4} - \varepsilon(1 - \varepsilon)\delta > \dfrac{1}{4} \Rightarrow \varepsilon(1 - \varepsilon)\delta < 0\]
+    Since $0 < \varepsilon < \frac{1}{2}$ and $\delta > 0 \Rightarrow \varepsilon(1 - \varepsilon)\delta > 0$, this is a contradiction.
+    \end{proof}
+\end{frame}
+
+\section{Remarks}
+\begin{frame}{Remarks}
+    \begin{block}{Remark 1}
+        Theorem 1 states that the limiting distribution $B_{0, 0}$ is a $Bernoulli(\frac{1}{2})$ distribution. Moreover, note that if $B_{0,0}$ is actually used as a prior, then the posterior distribution is not defined unless all the
+        observations $X1, X2, ..., Xn$ are identical.
+    \end{block}
+    
+    \begin{block}{Remark 2}
+        Another common prior that is used in the literature for this problem is an improper prior of the form 
+        \[\pi_0(p) = \propto \dfrac{1}{p(1-p)}\]
+        also called the Haldane prior. It is improper because $\int_{0}^1 \pi_0(p)dp = \infty$
+    \end{block}
+\end{frame}
+
+\begin{frame}{Remarks}
+    \begin{block}{Remark 3}
+        This heuristic in other situations as well to evaluate the non-informativeness of different priors. F.e. consider $X_1, \ldots X_n \sim \mathcal{N}(\mu, \sigma^2)$, where $\sigma^2$ is known. Let $\pi(\mu) \sim \mathcal{N}(\mu_0, \sigma_0^2)$ be a prior on $\mu$. Then it can be shown that posterior mean is
+        \[\theta_0 \left(\dfrac{1 / \sigma^2_0}{1 / \sigma^2_0 + n / \sigma^2}\right) + \overline{x} \left(\dfrac{n / \sigma^2}{1 / \sigma^2_0 + n / \sigma^2}\right)\]
+        It is then clear that the posterior mean agrees with the MLE $\overline{x}$ if and only if $\sigma_0 \to \infty$, i.e. if we put a prior on $\mu$ that is essentially flat. 
+    \end{block}
+\end{frame}
+
+\begin{frame}{Conclusion}
+    \begin{block}{Uninformative priors}
+        That the posterior mean coincides with the MLE is not necessarily the right criterion to judge whether a prior is non-informative, but it provides an extremely simple and effective demonstration of why sometimes flat priors are not necessarily non-informative, while non-informative priors are not always flat. So, the term "uninformative prior" is somewhat of a misnomer. \\
+        Some attempts have been made at finding a priori probabilities, i.e. probability distributions in some sense logically required by the nature of one's state of uncertainty; these are a subject of philosophical controversy, with Bayesians being roughly divided into two schools: "objective Bayesians", who believe such priors exist in many useful situations, and "subjective Bayesians" who believe that in practice priors usually represent subjective judgements of opinion that cannot be rigorously justified.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Conclusion}
+    \begin{block}{Objective Bayesianism}
+        Perhaps the strongest arguments for objective Bayesianism were given by Edwin T. Jaynes, based mainly on the consequences of symmetries and on the principle of maximum entropy.
+    \end{block}
+    \begin{block}{Jaynes Sample}
+        Let ball has been hidden under one of three cups, A, B, or C, but no other information is available about its location. In this case a prior $p \sim U[0, 1]$ seems intuitively like the only reasonable choice. \\
+        But more formally, we can see that the problem remains the same if we swap around the labels ("A", "B" and "C") of the cups. So, we have to choose a prior for which a permutation of the labels do not cause a change in our predictions. The uniform prior is the only one which preserves this invariance. 
+    \end{block}
+\end{frame}
+
+\end{document}
