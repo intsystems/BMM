@@ -19,7 +19,7 @@
 | 6.09 |  [Intro](slides/slides_0_intro.pdf) | - | - |
 | 13.09 |  [Distributions, expectation, likelihood](slides/slides_1_distributions.pdf) | [Link](https://www.youtube.com/watch?v=NzjzoJvSRLw) | - |
 | 20.09 |  [Bayesian inference](slides/slides_2_inference.pdf) | [Link](https://www.youtube.com/watch?v=CtpEwFfb9QI) | - |
-| 27.09 |  MDL | - | Lab1 |
+| 27.09 |  [MDL](slides/slides_3_mdl.pdf) | - | [Lab1](lab1) |
 | 4.10 |  Variational inference | - | - |
 | 11.10 |  Variational inference 2 | - | - |
 | 18.10 |  Belief propagation, networks, and hierarchical models | - | Lab 2 |
