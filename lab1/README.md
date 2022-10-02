@@ -24,7 +24,7 @@ Use normal distribution with diagonal covariance prior. For posterior distributi
 
 
 
-5. [Reporter: TODO] Visualize empricial distribution of model parameters with dependence on the $p$ in L^p regularization. Model: logistic regression or 1-layer neural network. Dataset: sklearn dataset.
+5. [Reporter: Skorik Sergey] Visualize empricial distribution of model parameters with dependence on the $p$ in L^p regularization. Model: logistic regression or 1-layer neural network. Dataset: sklearn dataset.
 * [datasets](https://scikit-learn.org/stable/datasets/toy_dataset.html)
 
 
