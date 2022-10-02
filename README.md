@@ -22,7 +22,7 @@
 | 27.09 |  MDL | - | Lab1 |
 | 4.10 |  Variational inference | - | - |
 | 11.10 |  Variational inference 2 | - | - |
-| 18.10 |  Belief propagation, networks, and hierarchical models | - | Lab 1 |
+| 18.10 |  Belief propagation, networks, and hierarchical models | - | Lab 2 |
 | 25.10 |  Lab 1 discussion | - | - |
 | 1.11 |  Probabilistic metric spaces | - | - |
 | 8.11 |  Model ensembles, Mixture of experts | - | - |
