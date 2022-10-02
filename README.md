@@ -20,13 +20,13 @@
 | 13.09 |  [Distributions, expectation, likelihood](slides/slides_1_distributions.pdf) | [Link](https://www.youtube.com/watch?v=NzjzoJvSRLw) | - |
 | 20.09 |  [Bayesian inference](slides/slides_2_inference.pdf) | [Link](https://www.youtube.com/watch?v=CtpEwFfb9QI) | - |
 | 27.09 |  MDL | - | Lab1 |
-| 4.10 |  Belief propagation, networks, and hierarchical models | - | - |
-| 11.10 |  Model ensembles, Mixture of experts | - | - |
-| 18.10 |  Bayesian agents, multi-agents and reinforcement | - | Lab 2 |
+| 4.10 |  Variational inference | - | - |
+| 11.10 |  Variational inference 2 | - | - |
+| 18.10 |  Belief propagation, networks, and hierarchical models | - | Lab 1 |
 | 25.10 |  Lab 1 discussion | - | - |
 | 1.11 |  Probabilistic metric spaces | - | - |
-| 8.11 |  Variational inference | - | - |
-| 15.11 |  Variational inference 2 | - | Lab 3 |
+| 8.11 |  Model ensembles, Mixture of experts | - | - |
+| 15.11 |  Bayesian agents, multi-agents and reinforcement | - | Lab 3 |
 | 22.11 |  Lab 2 discussion | - | - |
 | 29.11 |  Informative prior, Sampling, importance, Metropolis-Hastings  | - | - |
 | 6.12 | Random processes and genetics for model generation  | - | - |
