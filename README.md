@@ -1,7 +1,7 @@
 # Bayesian multimodeling
 [Form (MDL). Deadline: October 9th, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSd3Fw49YcEv-ZnA3qr3rGttLU-UHBZqNfdrmyWfFoO7_3xkKg/viewform?usp=sf_link)
 
-[Form (Var. inference 1)]. Deadline: October 15th, 23:59](https://docs.google.com/forms/d/e/1FAIpQLScVbivo4Zx95p6oJ3zbtbEgY9Ro7tlW25Xa1rAEv3mMvuEtdg/viewform?usp=sf_link)
+[Form (Var. inference 1). Deadline: October 15th, 23:59](https://docs.google.com/forms/d/e/1FAIpQLScVbivo4Zx95p6oJ3zbtbEgY9Ro7tlW25Xa1rAEv3mMvuEtdg/viewform?usp=sf_link)
 
 [Lab 1. Deadline: October 21st, 23:59](lab1)
 
