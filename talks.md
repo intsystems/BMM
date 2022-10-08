@@ -14,6 +14,6 @@
 * ~~Kolmogorov structure complexity [article](https://homepages.cwi.nl/~paulv/papers/structure.pdf)  (reporter: *enter your name*)~~
 
 # Variational inference 1
-* Bayesian probabilistic propagation [article](https://arxiv.org/abs/1502.05336) (reporter: *enter your name*)
+* Bayesian probabilistic propagation [article](https://arxiv.org/abs/1502.05336) (reporter: Barabanshchikova Polina)
 * Scalable marginal likelihood estimation for model selection in deep learning [article](http://proceedings.mlr.press/v139/immer21a/immer21a.pdf) (reporter: *enter your name*)
 * WBIC [article](https://www.jmlr.org/papers/volume14/watanabe13a/watanabe13a.pdf) (reporter: *enter your name*)
