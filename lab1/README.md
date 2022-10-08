@@ -24,7 +24,7 @@ Use normal distribution with diagonal covariance prior. For posterior distributi
 
 
 
-5. [Reporter: TODO] Visualize empricial distribution of model parameters with dependence on the $p$ in L^p regularization. Model: logistic regression or 1-layer neural network. Dataset: sklearn dataset.
+5. [Reporter: Skorik Sergey] Visualize empricial distribution of model parameters with dependence on the $p$ in L^p regularization. Model: logistic regression or 1-layer neural network. Dataset: sklearn dataset.
 * [datasets](https://scikit-learn.org/stable/datasets/toy_dataset.html)
 
 
@@ -45,5 +45,5 @@ Use normal distribution with diagonal covariance prior. For posterior distributi
 * [hyperparameter optimization](http://strijov.com/papers/HyperOptimizationEng.pdf)
 * Visualization: [help1](https://matplotlib.org/stable/users/interactive.html),[help2](https://stackoverflow.com/questions/44329068/jupyter-notebook-interactive-plot-with-widgets),[help3](https://towardsdatascience.com/matplotlib-animations-in-jupyter-notebook-4422e4f0e389)
 
-9. [Reporter: TODO] Visualize KDE with KNN depending on neighbour number using interactive plots.
+9. [Reporter: Polyakov Gregory] Visualize KDE with KNN depending on neighbour number using interactive plots.
 * Visualization: [help1](https://matplotlib.org/stable/users/interactive.html),[help2](https://stackoverflow.com/questions/44329068/jupyter-notebook-interactive-plot-with-widgets),[help3](https://towardsdatascience.com/matplotlib-animations-in-jupyter-notebook-4422e4f0e389)

@@ -1,0 +1,141 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+
+
+
+\title{Bayesian Information Criterion}
+\author{Konstantin Yakovlev}
+\institute{MIPT, 2022}
+
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+
+\begin{frame}
+    \tableofcontents
+\end{frame}
+
+
+\section{Definition}
+\begin{frame}{Definition}
+    \begin{block}{Definition of BIC}
+        Given a finite set of observed data $\mathbf{X} = \{X_i\}_{i=1}^n$. Given a model with its
+        parameters $\hat{\boldsymbol\theta}$ that maximizes $p(\mathbf{X}|\boldsymbol\theta)$ w.r.t.
+        $\boldsymbol\theta$.
+        Then BIC is defined as follows:
+        \[
+            \mathrm{BIC} = \mathrm{dim}\hat{\boldsymbol\theta}\log n -
+            2\log p(\mathbf{X}|\hat{\boldsymbol\theta}).
+        \]
+    \end{block}
+\end{frame}
+
+
+\section{Derivation}
+\begin{frame}{Derivation 1}
+    \begin{block}{Problem statement}
+        Given finite set of models $\{M_i\}_{i=1}^m$ with its parameters $\{\boldsymbol\theta_i\}_{i=1}^m$
+        and likelihoods $\{p(\mathbf{X}|\boldsymbol\theta_i, M_i)\}_{i=1}^m$.
+        The task is to perform model selection that maximizes posterior probability $p(M_i|\mathbf{X})$.
+    \end{block}
+
+    Write down the posterior probability of $M_i$:
+    \[
+        p(M_i|\mathbf{X}) = \frac{p(\mathbf{X}|M_i)p(M_i)}{p(\mathbf{X})}.
+    \]
+    Write down the likelihood:
+    \[
+        p(\mathbf{X}|M_i) = \int p(\mathbf{X}| \boldsymbol\theta_i, M_i)p(\boldsymbol\theta_i)
+        d\boldsymbol\theta_i =
+        \int \exp(\log(p(\mathbf{X}|\boldsymbol\theta_i, M_i)p(\boldsymbol\theta_i)))d\boldsymbol\theta_i.
+    \]
+\end{frame}
+
+\begin{frame}{Derivation 2}
+    Using taylor's formula, expand $\log(p(\mathbf{X}|\boldsymbol\theta_i, M_i)p(\boldsymbol\theta_i))$
+    around MAP estimate $\boldsymbol\theta_i^{MAP}$:
+    \[
+        \underbrace{\log(p(\mathbf{X}|\boldsymbol\theta_i, M_i)p(\boldsymbol\theta_i))}_{Q(\boldsymbol\theta_i)}
+        \approx \log(p(\mathbf{X}|\boldsymbol\theta_i^{MAP}, M_i)p(\boldsymbol\theta_i^{MAP})) +
+    \]
+    \[
+        \frac{1}{2}(\boldsymbol\theta_i - \boldsymbol\theta_i^{MAP})^\top \mathbf{H}_{\boldsymbol\theta_i}
+        (\boldsymbol\theta_i - \boldsymbol\theta_i^{MAP}),
+    \]
+    where $\mathbf{H}_{\boldsymbol\theta_i} = \frac{\partial^2 Q(\boldsymbol\theta_i^{MAP})}
+    {\partial \boldsymbol\theta_i\partial \boldsymbol\theta_i^\top}$. Let $p(M_i) = \frac{1}{m} \; 
+    \forall \; i = \overline{1, m}$. Then $\boldsymbol\theta_i^{MAP} = \hat{\boldsymbol\theta}_i$. Now
+    consider:
+    \[
+        -H_{kl} = -\frac{\partial^2\log(\prod_{j=1}^np(x_j|\hat{\boldsymbol\theta}_i))}
+        {\partial (\theta_i)_k \partial (\theta_i)_l} = -\frac{1}{n}\sum_{j=1}^n
+        \underbrace{\frac{\partial^2n\log p(x_j|\hat{\boldsymbol\theta}_i)}
+        {\partial (\theta_i)_k \partial (\theta_i)_l}}_{\xi_j}.
+    \]
+    Using the weak law of large numbers:
+    \[
+        \frac{1}{n}\sum_{j=1}^n\xi_j \xrightarrow[n \to \infty]{\mathbb{P}} \mathbb{E}\xi_1.
+    \]
+\end{frame}
+
+
+
+\begin{frame}{Derivation 3}
+    Then:
+    \[
+        -H_{kl} \xrightarrow[n\to \infty]{\mathbb{P}} -n\mathbb{E}_x \frac{\partial ^2\log p(x|\hat{\boldsymbol\theta}_i)}
+        {\partial(\theta_i)_k\partial(\theta_i)_l} = n I(\hat{\boldsymbol\theta}_i)_{kl}.
+    \]
+    Laplace approximation of $p(\mathbf{X}|M_i)$ for $n \gg \dim\boldsymbol\theta_i$ gives:
+    \[
+        \log p(\mathbf{X}|M_i) \approx \log p(\mathbf{X}|\hat{\boldsymbol\theta}_i) +
+        \log p(\hat{\boldsymbol\theta}_i) + \frac{\dim{\boldsymbol\theta}_i(\log 2\pi - \log n)
+        - \log |\mathbf{I}(\hat{\boldsymbol\theta}_i)|}{2}.
+    \]
+    For $n \gg \dim\boldsymbol\theta_i$ ignore terms that does not depend on $n$:
+    \[
+        \log p(\mathbf{X}|M_i) \approx \log p(\mathbf{X}|\hat{\boldsymbol\theta}_i) -
+        \frac{\dim\theta_i}{2}\log n = -\frac{1}{2}\mathrm{BIC}_i.
+    \]
+\end{frame}
+
+
+\section{Model selection}
+\begin{frame}{Model Selection}
+    \begin{block}{Model selection}
+        Let $n \gg \dim\boldsymbol\theta_i, ~i = \overline{1, m}$. Let also $p(M_i) = \frac{1}{m}$.
+        Then 
+        \[
+            \arg\max_i p(M_i|\mathbf{X}) = \arg\min_i \mathrm{BIC}_i.
+        \]
+    \end{block}
+
+    \textbf{Remark:} In the construction of BIC, the effect of priors are ignored
+    since we are working on the limiting regime but we still use the Bayesian evidence
+    as a model selection criterion. We are selecting the model with the highest evidence.
+    When the data is indeed generated from one of the model in the collection of models we are
+    choosing from, the posterior will concentrate on this correct model.
+    So BIC would eventually be able to select this model.
+\end{frame}
+
+
+\begin{frame}{Literature}
+    \begin{enumerate}
+        \item \textbf{Derivation} \href{https://faculty.ucmerced.edu/hbhat/BICderivation.pdf}
+        {On the derivation of the Bayesian Information Criterion}.
+        \item \textbf{Remark} \href{http://faculty.washington.edu/yenchic/19A_stat535/Lec7_model.pdf}
+        {Lecture 7: Model Selection and Prediction}.
+    \end{enumerate}
+\end{frame}
+
+
+
+\end{document}

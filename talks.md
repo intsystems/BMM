@@ -6,10 +6,14 @@
 
 
 # Bayesian inference
-* Linear model hyperparameter optimization: integrate vs. maximize [(link to the article)](https://bayes.wustl.edu/MacKay/alpha.pdf) (reporter: *enter your name*)
+* ~~Linear model hyperparameter optimization: integrate vs. maximize [(link to the article)](https://bayes.wustl.edu/MacKay/alpha.pdf) (reporter: *enter your name*)~~
 * The Counter-intuitive Non-informative Prior for the Bernoulli Family [(link to the article)](https://www.tandfonline.com/doi/pdf/10.1080/10691898.2004.11910734) (reporter: Skorik Sergey)
 
 # Minimum description length
-* BIC [article](https://projecteuclid.org/journals/annals-of-statistics/volume-6/issue-2/Estimating-the-Dimension-of-a-Model/10.1214/aos/1176344136.full) (reporter: *enter your name*) **NOTE:** this topic is classic, you can use more references to BIC, if you wish.
-* Kolmogorov structure complexity [article](https://homepages.cwi.nl/~paulv/papers/structure.pdf)  (reporter: *enter your name*)
+* BIC [article](https://projecteuclid.org/journals/annals-of-statistics/volume-6/issue-2/Estimating-the-Dimension-of-a-Model/10.1214/aos/1176344136.full) (reporter: Yakovlev Konstantin) **NOTE:** this topic is classic, you can use more references to BIC, if you wish.
+* ~~Kolmogorov structure complexity [article](https://homepages.cwi.nl/~paulv/papers/structure.pdf)  (reporter: *enter your name*)~~
 
+# Variational inference 1
+* Bayesian probabilistic propagation [article](https://arxiv.org/abs/1502.05336) (reporter: *enter your name*)
+* Scalable marginal likelihood estimation for model selection in deep learning [article](http://proceedings.mlr.press/v139/immer21a/immer21a.pdf) (reporter: *enter your name*)
+* WBIC [article](https://www.jmlr.org/papers/volume14/watanabe13a/watanabe13a.pdf) (reporter: *enter your name*)
