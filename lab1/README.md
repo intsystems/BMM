@@ -13,7 +13,7 @@ Use normal distribution with diagonal covariance prior. For posterior distributi
 * [Hyperparameter optimization, Laplace approximation](http://strijov.com/papers/HyperOptimizationEng.pdf)
 
 
-3. [Reporter: TODO]  Visualize empricial distribution of model parameters with dependence on the hidden layer neuron number (use different neuro number values, including underparameterized and overparameterized models). Model: 1-layer neural network. Dataset: MNIST or similar.
+3. [Reporter: Kovaleva Maria]  Visualize empricial distribution of model parameters with dependence on the hidden layer neuron number (use different neuro number values, including underparameterized and overparameterized models). Model: 1-layer neural network. Dataset: MNIST or similar.
 
 
 4. [Reporter: TODO] Visualize Evidence similar to slide 7 from the MDL lecture. The visualization must show the dependence between complexity and hidden layer number.  Model: 1-layer neural network. Dataset: sklearn dataset. Use normal distribution with scalar covariance prior. For posterior distribution use Laplace approximation.
