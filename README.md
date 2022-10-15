@@ -23,7 +23,7 @@
 | 20.09 |  [Bayesian inference](slides/slides_2_inference.pdf) | [Link](https://www.youtube.com/watch?v=CtpEwFfb9QI) | - |
 | 27.09 |  [MDL](slides/slides_3_mdl.pdf) | [Link](https://www.youtube.com/watch?v=nJLGfBJvZzg) | [Lab1](lab1) |
 | 4.10 | [Variational inference](slides/slides_4_var1.pdf) | [Link](https://www.youtube.com/watch?v=m0HM6y4zMac) | - |
-| 11.10 |  [Variational inference 2](slides/slides_5_var2.pdf) | - | - |
+| 11.10 |  [Variational inference 2](slides/slides_5_var2.pdf) | [Link](https://www.youtube.com/watch?v=BMDV1KkktzA) | - |
 | 18.10 |  Belief propagation, networks, and hierarchical models | - | Lab 2 |
 | 25.10 |  Lab 1 discussion | - | - |
 | 1.11 |  Probabilistic metric spaces | - | - |
