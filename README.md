@@ -1,5 +1,5 @@
 # Bayesian multimodeling
-[Form (MDL). Deadline: October 9th, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSd3Fw49YcEv-ZnA3qr3rGttLU-UHBZqNfdrmyWfFoO7_3xkKg/viewform?usp=sf_link)
+[Form (Var. inference 2). Deadline: October 22nd, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSd9VPkGAClQ9O5wF9dHB94aT4fjLN9kTwo5vx0_JtUiCMi6CQ/viewform?usp=sf_link)
 
 [Form (Var. inference 1). Deadline: October 15th, 23:59](https://docs.google.com/forms/d/e/1FAIpQLScVbivo4Zx95p6oJ3zbtbEgY9Ro7tlW25Xa1rAEv3mMvuEtdg/viewform?usp=sf_link)
 
@@ -23,7 +23,7 @@
 | 20.09 |  [Bayesian inference](slides/slides_2_inference.pdf) | [Link](https://www.youtube.com/watch?v=CtpEwFfb9QI) | - |
 | 27.09 |  [MDL](slides/slides_3_mdl.pdf) | [Link](https://www.youtube.com/watch?v=nJLGfBJvZzg) | [Lab1](lab1) |
 | 4.10 | [Variational inference](slides/slides_4_var1.pdf) | [Link](https://www.youtube.com/watch?v=m0HM6y4zMac) | - |
-| 11.10 |  Variational inference 2 | - | - |
+| 11.10 |  [Variational inference 2](slides/slides_5_var2.pdf) | - | - |
 | 18.10 |  Belief propagation, networks, and hierarchical models | - | Lab 2 |
 | 25.10 |  Lab 1 discussion | - | - |
 | 1.11 |  Probabilistic metric spaces | - | - |
