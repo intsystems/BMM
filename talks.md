@@ -19,6 +19,6 @@
 * ~~WBIC [article](https://www.jmlr.org/papers/volume14/watanabe13a/watanabe13a.pdf) (reporter: *enter your name*)~~
 
 # Variational inference 2
-* SGD as a variational distribution [article](https://www.jmlr.org/papers/volume18/17-214/17-214.pdf) (reporter: *enter your name*)
+* SGD as a variational distribution [article](https://www.jmlr.org/papers/volume18/17-214/17-214.pdf) (reporter: Skorik Sergey)
 * Scalable marginal likelihood estimation for model selection in deep learning [article](http://proceedings.mlr.press/v139/immer21a/immer21a.pdf) (reporter: *enter your name*)
 
