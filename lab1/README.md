@@ -28,7 +28,7 @@ Use normal distribution with diagonal covariance prior. For posterior distributi
 * [datasets](https://scikit-learn.org/stable/datasets/toy_dataset.html)
 
 
-6. [Reporter: TODO] Consider logistic regression on two features. Build a surface with 3 axes: w1, w2, sigma (optimized hyperparameter for the normal prior with scalar variance). Use color of the surface for the posterior value display.  Model: logistic regression. Dataset:  on your choice (synthetic dataset is allowed).  Optimization of sigma: on your choice (Laplace approximation or exhaustive search).
+6. [Reporter: Pyatkin Stanislav] Consider logistic regression on two features. Build a surface with 3 axes: w1, w2, sigma (optimized hyperparameter for the normal prior with scalar variance). Use color of the surface for the posterior value display.  Model: logistic regression. Dataset:  on your choice (synthetic dataset is allowed).  Optimization of sigma: on your choice (Laplace approximation or exhaustive search).
 * [datasets](https://scikit-learn.org/stable/datasets/toy_dataset.html)
 
 7. [Reporter: TODO]  Build an interactive surface (see references) of the posterior distribution on the model parameters number, sigma  (optimized hyperparameter for the normal prior with scalar variance) and empirical variance of the parameters. The color of the surface must be set according the Evidence value. Model: logistic regression on the polynomial values of one feature.  Dataset:  on your choice (synthetic dataset is allowed). 
