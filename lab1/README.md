@@ -8,7 +8,7 @@ Use normal distribution with diagonal covariance prior. For posterior distributi
 * [Hyperparameter optimization, Laplace approximation](http://strijov.com/papers/HyperOptimizationEng.pdf)
 
 
-2. [Reporter: Barabanshchikova Polina]Visualize posterior and optimizer prior covariance matrix for a classification model. Model: 1-layer neural network. Dataset: on your choice (synthetic dataset is allowed). 
+2. [Reporter: Barabanshchikova Polina]Visualize posterior and optimized prior covariance matrix for a classification model. Model: 1-layer neural network. Dataset: on your choice (synthetic dataset is allowed). 
 Use normal distribution with diagonal covariance prior. For posterior distribution use Laplace approximation.
 * [Hyperparameter optimization, Laplace approximation](http://strijov.com/papers/HyperOptimizationEng.pdf)
 
