@@ -27,7 +27,7 @@
 | 27.09 |  [MDL](slides/slides_3_mdl.pdf) | [Link](https://www.youtube.com/watch?v=nJLGfBJvZzg) | [Lab1](lab1) |
 | 4.10 | [Variational inference](slides/slides_4_var1.pdf) | [Link](https://www.youtube.com/watch?v=m0HM6y4zMac) | - |
 | 11.10 |  [Variational inference 2](slides/slides_5_var2.pdf) | [Link](https://www.youtube.com/watch?v=BMDV1KkktzA) | - |
-| 18.10 | Probabilistic graphical models | - | Lab 2 |
+| 18.10 | Probabilistic graphical models | - | [Lab 2](lab2) |
 | 25.10 | Generative and discriminative models | - | - |
 | 1.11 |  Lab 1 discussion   | - | - |
 | 8.11 | Data generation, VAE, GAN, diffusion  | - | - |
