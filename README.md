@@ -5,6 +5,9 @@
 
 [Lab 1. Deadline: October 21st, 23:59](lab1)
 
+[Lab 2. Deadline: November 12th, 23:59](lab2)
+
+
 [Scores](eval.md)
 
 [Talk list](talks.md)
