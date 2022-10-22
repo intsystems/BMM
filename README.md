@@ -24,10 +24,10 @@
 | 27.09 |  [MDL](slides/slides_3_mdl.pdf) | [Link](https://www.youtube.com/watch?v=nJLGfBJvZzg) | [Lab1](lab1) |
 | 4.10 | [Variational inference](slides/slides_4_var1.pdf) | [Link](https://www.youtube.com/watch?v=m0HM6y4zMac) | - |
 | 11.10 |  [Variational inference 2](slides/slides_5_var2.pdf) | [Link](https://www.youtube.com/watch?v=BMDV1KkktzA) | - |
-| 18.10 | Generative and discriminative models  | - | Lab 2 |
-| 25.10 | Data generation, VAE, GAN, diffusion| - | - |
+| 18.10 | Probabilistic graphical models | - | Lab 2 |
+| 25.10 | Generative and discriminative models | - | - |
 | 1.11 |  Lab 1 discussion   | - | - |
-| 8.11 |  Probabilistic graphical models | - | - |
+| 8.11 | Data generation, VAE, GAN, diffusion  | - | - |
 | 15.11 |Belief propagation, networks, and hierarchical models  | - | Lab 3 |
 | 22.11 |  Lab 2 discussion | - | - |
 | 29.11 | Model ensembles, Mixture of experts   | - | - |
