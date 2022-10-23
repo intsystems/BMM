@@ -36,7 +36,7 @@ Visualize (using interactive plots) convergence of invertible gaussian reparamet
 
 
 
-6. [Reporter: TODO]
+6. [Reporter: Barabanshchikova Polina]
 Implement VAE with variational distribution different from Normal using implicit reparametrization.  Compare the results with vanilla VAE.
 * [article](https://proceedings.neurips.cc/paper/2018/file/92c8c96e4c37100777c7190b76d28233-Paper.pdf)
 
