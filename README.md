@@ -4,6 +4,8 @@
 
 [Lab 1. Deadline: October 21st, 23:59](lab1)
 
+[Lab 1 Cross-evaluation (opens only from phystech mail)](https://disk.yandex.ru/i/0Qsrxbdil-j2Ew)
+
 [Lab 2. Deadline: November 12th, 23:59](lab2)
 
 
