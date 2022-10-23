@@ -1,7 +1,5 @@
 # Bayesian multimodeling
-[Form (Var. inference 2). Deadline: October 22nd, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSd9VPkGAClQ9O5wF9dHB94aT4fjLN9kTwo5vx0_JtUiCMi6CQ/viewform?usp=sf_link)
 
-[Form (Var. inference 1). Deadline: October 15th, 23:59](https://docs.google.com/forms/d/e/1FAIpQLScVbivo4Zx95p6oJ3zbtbEgY9Ro7tlW25Xa1rAEv3mMvuEtdg/viewform?usp=sf_link)
 
 [Lab 1. Deadline: October 21st, 23:59](lab1)
 
