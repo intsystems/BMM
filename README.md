@@ -2,7 +2,9 @@
 
 [Form. Deadline: October 30th, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSdh72uEUkNH7Y6bNdBUj0cHnHmsA-7H10UjIAdzvw0U7SC5lg/viewform?usp=sf_link)
 
-[Lab 1 Cross-evaluation (opens only from phystech mail)](https://disk.yandex.ru/i/0Qsrxbdil-j2Ew)
+[Lab 1 Cross-evaluation](https://disk.yandex.ru/i/0Qsrxbdil-j2Ew)
+
+[Lab 1 evaluation form](https://docs.google.com/forms/d/e/1FAIpQLSdhjPKT7gt3GqjwJI_gnwrVD5UJ-Ut19LTuOi1qqU58F5-WCQ/viewform?usp=sf_link)
 
 [Lab 2. Deadline: November 12th, 23:59](lab2)
 
