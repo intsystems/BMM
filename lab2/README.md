@@ -29,7 +29,7 @@ Reimplement experiment from the article "Variational Inference with Gradient Flo
 * [article](http://approximateinference.org/accepted/AltieriDuvenaud2015.pdf)
 
 
-5. [Reporter: TODO]
+5. [Reporter: Kovaleva Maria]
 Visualize (using interactive plots) convergence of invertible gaussian reparametrization (IGR). Optimize KL(q|p) -> min, where q and p are IGR, the parameters of IGR are sampled randomly each run. Plot: simplex (triangle) with PDF changes during optimization.
 * [IGR](https://arxiv.org/pdf/1912.09588.pdf)
 * [Simplex visualization example](http://blog.bogatron.net/blog/2014/02/02/visualizing-dirichlet-distributions/)
