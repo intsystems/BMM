@@ -28,4 +28,4 @@
 
 # Generative vs Discriminative
 * Generative vs. Discriminative:  [article](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/05/Bishop-CVPR-05.pdf) (reporter: *enter your name*)
-* Your classifier is secretly an energy based model and you should treat it like one [article](https://arxiv.org/pdf/1912.03263.pdf) (reporter: *enter your name*)
+* Your classifier is secretly an energy based model and you should treat it like one [article](https://arxiv.org/pdf/1912.03263.pdf) (reporter: Kovaleva Maria)
