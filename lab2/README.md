@@ -19,7 +19,7 @@ Use normal distribution with diagonal covariance prior. For posterior distributi
 * [hyperparameter optimization](http://strijov.com/papers/HyperOptimizationEng.pdf)
 * Visualization: [help1](https://matplotlib.org/stable/users/interactive.html),[help2](https://stackoverflow.com/questions/44329068/jupyter-notebook-interactive-plot-with-widgets),[help3](https://towardsdatascience.com/matplotlib-animations-in-jupyter-notebook-4422e4f0e389)
 
-3. [Reporter: TODO] 
+3. [Reporter: Yakovlev Konstantin] 
 Reimplement experiment from the article "Early stopping as nonparametric variational inference". Compare the results with the results from article.
 * [article](https://arxiv.org/abs/1504.01344)
 
