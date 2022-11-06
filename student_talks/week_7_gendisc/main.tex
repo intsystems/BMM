@@ -1,0 +1,133 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{biblatex}
+\addbibresource{biblio.bib}
+
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand\normx[1]{\left\Vert#1\right\Vert}
+
+
+\title{Your Classifier is Secretly an Energy Based Model and You Should Treat It Like One}
+\author{Maria Kovaleva}
+\institute{MIPT, 2022}
+
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+
+\begin{frame}
+    \tableofcontents
+\end{frame}
+
+
+\section{Basic Concept}
+
+\begin{frame}{Basic Concept of EBM}
+    \textbf{Energy-Based Models} (EBMs) capture dependencies by associating a scalar energy to each conﬁguration of the variables
+    
+    \textbf{Learning:} ﬁnding an energy function that associates low energies to correct values, and higher energies to incorrect values
+    
+    \textbf{Inference:} finding зфкфьуеукы that minimize the energy
+    
+    \textbf{Pros:} no requirement for proper normalization, in comparison with probabilistic models
+    
+     \begin{block}{Probability density}
+    $p(\mathbf{x})$ for $\mathbf{x}\in \mathbb{R}^{D}$:
+    $ p_{\theta}(\mathbf{x}) = \frac{\exp{(-E_{\theta}(\mathbf{x}))}}{Z(\theta)}$, where $E_{\theta}(\mathbf{x})$ is energy function and $Z(\theta) = \int_{\mathbf{x}} \exp{(-E_{\theta}(\mathbf{x}))} d \mathbf{x}$ is normalizing constant or partition function
+    \end{block}
+    
+   
+\end{frame}
+
+\begin{frame}{Learning of EBM}
+    \begin{block}{}
+        Estimate $Z(\theta)$ can be challenging for most energy functions.
+        Derivative of the log-likelihood for a single example x with respect to $\theta$: $\frac{\partial \log p_{\theta}(\mathbf{x})}{\partial \theta} = \mathop{\mathbb{E}}_{p_{\theta}(\mathbf{x'})} \left[\frac{\partial E_{\theta}(x')}{\partial \theta}\right] - \frac{\partial E_{\theta}(x)}{\partial \theta}$
+    \end{block}
+    
+    \begin{block}{Learning} 
+         Approximate the expectation in derivative of the log-likelihood using a sampler based on Stochastic Gradient Langevin Dynamics (SGLD):
+        
+        $\mathbf{x}_0 \sim p_0(\mathbf{x})$, $\mathbf{x}_{i+1} = \mathbf{x}_{i} - \frac{\alpha}{2} \frac{\partial E_{\theta}(\mathbf{x}_i)}{\partial \mathbf{x}_i} + \epsilon$, $\epsilon \sim \mathcal{N}(0,\alpha)$, 
+        
+        where $p_0(\mathbf{x})$ is typically a Uniform distribution,  $\alpha$ - step-size (should be decayed following a polynomial schedule). 
+        
+        Practically $\alpha$ and $\epsilon$ is often chosen separately leading to a biased sampler which allows for faster training
+    \end{block}
+\end{frame}
+
+\section{What Your Classifier Is Hiding}
+\begin{frame}{In classifiers}
+    \textbf{Classification:} D parameters, K classes, parametric function, $f_{\theta} : \mathbb{R}^{D} \rightarrow \mathbb{R}^{K}$ return logits
+   
+    \textbf{Categorical distribution} parameterized by   $f_{\theta}$ via Softmax transfer function: $p_{\theta}(y|\mathbf{x}) = \frac{\exp{(f_{\theta}(\mathbf{x})[y])}}{\sum_{y'}{\exp{(f_{\theta}(\mathbf{x})[y'])}}}$
+
+\end{frame}
+
+
+\begin{frame}{ Reinterpretation of the logits}
+    Let's define an energy based model with $E_{\theta}(\mathbf{x},y) = - f_{\theta}(\mathbf{x})[y]$ and unknown normalizing constant $Z_{\theta}$ :
+    $$p_{\theta}(\mathbf{x}, y) = \frac{\exp{(f_{\theta}(\mathbf{x})[y])}}{Z(\theta)}$$
+    Then 
+    $$p_{\theta}(\mathbf{x}) = \sum_{y}p_{\theta}(\mathbf{x}, y) = \frac{\sum_{y}{\exp{(f_{\theta}(\mathbf{x})[y])}}}{Z(\theta)}$$
+    \begin{block}{Conclusion}
+        The LogSumExp(·) of the logits of any classifier can be re-used to define the energy function as $E_{\theta}(\mathbf{x}) = −LogSumExp(f_{\theta}(\mathbf{x})[y]) = -\log \sum_{y}{\exp{f_{\theta}(\mathbf{x})[y] }}$ 
+        
+        A generative model hidden within every standard discriminative model! 
+    \end{block}
+\end{frame}
+
+\begin{frame}{Optimization}
+    \begin{block}
+        $\log p_{\theta}(\mathbf{x}, y) = \log p_{\theta}(\mathbf{x}) + \log p_{\theta}(y|\mathbf{x})$
+       
+        Where:
+        
+        \textbf{1.}  $p(y|\mathbf{x})$ optimized using standard cross-entropy
+        
+        \textbf{2.}  $\log p(\mathbf{x})$ optimized with SGLD where gradients are taken with respect to $LogSumExp(f_{\theta}(\mathbf{x})[y])$ as it described for EBMs
+    \end{block}
+    \begin{block}{Remarks}
+            \textbf{1.}  We don't know $Z_{\theta}$, because of it we use SLGD sampler
+            
+            \textbf{2.}  The estimator of $\log p(\mathbf{x})$ will be biased when using a MCMC sampler with a finite number of steps
+    \end{block}
+\end{frame}
+
+\section{Results}
+\begin{frame}{Experiment}
+    CIFAR10, CIFAR100, SVHN datasets were used
+    
+    All architectures used are based on Wide Residual Networks where we have removed batch-normalization to ensure that our models’ outputs are deterministic functions of the input
+    
+    Comparison with Resudal Flow\footnote{Ricky TQ Chen, Jens Behrmann, David Duvenaud, and Jorn-Henrik Jacobsen. Residual flows for invertible generative modeling}, Glow\footnote{Durk P Kingma and Prafulla Dhariwal. Glow: Generative flow with invertible 1x1 convolutions}, IGEBM\footnote{Yilun Du and Igor Mordatch. Implicit generation and generalization in energy-based models}, SNGAN\footnote{Takeru Miyato, Toshiki Kataoka, Masanori Koyama, and Yuichi Yoshida. Spectral normalization for generative adversarial networks}, NCSN\footnote{Yang Song and Stefano Ermon. Generative modeling by estimating gradients of the data distribution} and other models
+    
+    
+\end{frame}
+
+\begin{frame}{Results}
+    \begin{enumerate}
+        \item Performance rivaling the state of the art in both discriminative and generative modeling achieved
+        \item Increase in inception scores (IS) and Frechet Inception Distance (FID) for generative modeling
+        \item Increase in accuracy for discriminative problem
+        \item Decrease in Expected Calibration Error (ECE) for calibration \footnote{A classifier is considered calibrated if its predictive confidence, $\max_y p(y|\mathbf{x})$, aligns with its misclassification rate. Thus, when a calibrated classifier predicts label y with confidence $0.9$ it should have a $90\%$ chance of being correct.}
+        \item Better out-of-distribution (OOD) detection \footnote{Out-of-distribution (OOD) detection is a binary classification problem. $s_{\theta} \in \mathbb{R}$ We desire that the scores for in-distribution examples are higher than that out-of-distribution examples} results for $s_{\theta}(x) = \max_y p_{\theta}(y|\mathbf{x})$ and for $s_{\theta} = - \norm{\frac{\partial \log p_{\theta}(\mathbf{x})}{\partial \mathbf{x}}}_2$
+        \item Better robustness
+    \end{enumerate}
+    
+\end{frame}
+
+\begin{frame}{Literature}
+\nocite{*}
+\printbibliography
+\end{frame}
+
+\end{document}
