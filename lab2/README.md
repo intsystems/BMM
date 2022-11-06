@@ -5,7 +5,7 @@ Deadline: November 12, 23.59.
 Save notebooks into lab1/SurnameTask2.ipynb
 
 
-1. [Reporter: TODO] Visualize posterior covariance matrix for each extremum of mult-extremal classification model. Model: 1-layer neural network. Dataset: on your choice (synthetic dataset is allowed). 
+1. [Reporter: Ksenofontov Grigorii] Visualize posterior covariance matrix for each extremum of mult-extremal classification model. Model: 1-layer neural network. Dataset: on your choice (synthetic dataset is allowed). 
 Use normal distribution with diagonal covariance prior. For posterior distribution use Laplace approximation.
 * [Hyperparameter optimization, Laplace approximation](http://strijov.com/papers/HyperOptimizationEng.pdf)
 
