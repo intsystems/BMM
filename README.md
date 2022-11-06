@@ -24,7 +24,7 @@
 | 11.10 |  [Variational inference 2](slides/slides_5_var2.pdf) | [Link](https://www.youtube.com/watch?v=BMDV1KkktzA) | - |
 | 18.10 | [Probabilistic graphical models](slides/slides_6_graph.pdf) | [Link](https://www.youtube.com/watch?v=cna0ovGvmC0) | [Lab 2](lab2) |
 | 25.10 | [Generative and discriminative models](slides/slides_7_gendisc.pdf) | [Link](https://www.youtube.com/watch?v=C86NsPJu5Hw) | - |
-| 1.11 |  Lab 1 discussion   | - | - |
+| 1.11 |  [Lab 1 discussion](https://www.youtube.com/watch?v=kgnpV1epXwU)   | - | - |
 | 8.11 | Data generation, VAE, GAN, diffusion  | - | - |
 | 15.11 |Belief propagation, networks, and hierarchical models  | - | Lab 3 |
 | 22.11 |  Lab 2 discussion | - | - |
