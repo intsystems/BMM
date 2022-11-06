@@ -37,4 +37,4 @@
 * Scalable marginal likelihood estimation for model selection in deep learning [article](http://proceedings.mlr.press/v139/immer21a/immer21a.pdf) (reporter: *enter your name*)
 * WBIC [article](https://www.jmlr.org/papers/volume14/watanabe13a/watanabe13a.pdf) (reporter: *enter your name*)
 * S-VAE [aritlce](http://datta.hms.harvard.edu/wp-content/uploads/2018/01/pub_24.pdf), [slides](http://web.cs.ucla.edu/~yzsun/classes/2020Winter_CS249/Papers/Group7_SVAE.pdf) (reporter: *enter your name*)
-* Generative vs. Discriminative:  [article](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/05/Bishop-CVPR-05.pdf) (reporter: *enter your name*)
+i* Generative vs. Discriminative:  [article](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/05/Bishop-CVPR-05.pdf) (reporter: Gregory Polyakov)
