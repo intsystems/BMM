@@ -31,7 +31,7 @@
 * Your classifier is secretly an energy based model and you should treat it like one [article](https://arxiv.org/pdf/1912.03263.pdf) (reporter: Kovaleva Maria)
 
 # Lab 1 discussion
-* Gumbel distribution (not Gumbel-softmax): characteristics, properties, application in machine learning and data analysis (reporter: *enter your name*)
+* Gumbel distribution (not Gumbel-softmax): characteristics, properties, application in machine learning and data analysis (reporter: Skorik Sergey)
 * Linear model hyperparameter optimization: integrate vs. maximize [(link to the article)](https://bayes.wustl.edu/MacKay/alpha.pdf) (reporter: *enter your name*)
 * Kolmogorov structure complexity [article](https://homepages.cwi.nl/~paulv/papers/structure.pdf)  (reporter: *enter your name*)
 * Scalable marginal likelihood estimation for model selection in deep learning [article](http://proceedings.mlr.press/v139/immer21a/immer21a.pdf) (reporter: *enter your name*)
