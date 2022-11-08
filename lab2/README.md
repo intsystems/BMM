@@ -24,7 +24,7 @@ Reimplement experiment from the article "Early stopping as nonparametric variati
 * [article](https://arxiv.org/abs/1504.01344)
 
 
-4. [Reporter: TODO]
+4. [Reporter: Gregory Polyakov]
 Reimplement experiment from the article "Variational Inference with Gradient Flows". Compare the results with the results from article and vanilla VAE.
 * [article](http://approximateinference.org/accepted/AltieriDuvenaud2015.pdf)
 
