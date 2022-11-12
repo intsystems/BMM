@@ -46,7 +46,7 @@ Implement ELBO for regression problem with known posterior. Visualize KL(q|poste
 * [basic ELBO (article)](https://www.cs.toronto.edu/~graves/nips_2011.pdf)
 
 
-8. [Reporter: TODO]
+8. [Reporter: Pyatkin Stanislav]
 Implement ELBO for regression problem with known posterior. Optimize hyperparameters naively, using maximum likelihood method (see article). 
 Visuzlie difference between optimized hyperparameters and tru hyperparameters.
 * [basic ELBO (article)](https://www.cs.toronto.edu/~graves/nips_2011.pdf)
