@@ -41,7 +41,7 @@ Implement VAE with variational distribution different from Normal using implicit
 * [article](https://proceedings.neurips.cc/paper/2018/file/92c8c96e4c37100777c7190b76d28233-Paper.pdf)
 
 
-7. [Reporter: TODO]
+7. [Reporter: Skorik Sergey]
 Implement ELBO for regression problem with known posterior. Visualize KL(q|posterior), KL(q|prior), KL(posterior|q), KL(prior|q), JS(q,prior), JS(q, posterior)
 * [basic ELBO (article)](https://www.cs.toronto.edu/~graves/nips_2011.pdf)
 
