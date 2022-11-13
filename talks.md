@@ -40,5 +40,5 @@
 * Generative vs. Discriminative:  [article](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/05/Bishop-CVPR-05.pdf) (reporter: *enter your name*)
 
 # Data generation
-* Out-of-distribution detection via probability model entropy  [article](https://arxiv.org/pdf/1703.04977.pdf), [workshop](https://www.youtube.com/watch?v=N-p_qSLzoAI)(reporter: *enter your name*)
+* Out-of-distribution detection via probability model entropy  [article](https://arxiv.org/pdf/1703.04977.pdf), [workshop](https://www.youtube.com/watch?v=N-p_qSLzoAI) (reporter: *enter your name*)
 * Diffusion models [article](https://arxiv.org/pdf/2208.11970.pdf) (reporter: *enter your name*)
