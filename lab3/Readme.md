@@ -18,7 +18,7 @@ Save notebooks into lab3/SurnameTask3.ipynb
 2.  [Reporter: TODO] Repeat experiment from Bishop's article (fig. 4) with naive implementation of generative-discriminative model (eq. 12 from article). Visualize discriminative surface as an interactive plot dependent on the number of labeled objects and coefficients for each term.
 * [Article](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/05/Bishop-Valencia-07.pdf)
 
-3. [Reporter: TODO] Visualize dependency of classification error on different versions of Dataset Shift. Visualization (multiple plots) must show:
+3. [Reporter: Barabanshchikova Polina] Visualize dependency of classification error on different versions of Dataset Shift. Visualization (multiple plots) must show:
 * how the dataset changes from the value of shift
 * how the classification error changes from the value of shift
 
