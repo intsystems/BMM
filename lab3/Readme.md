@@ -53,5 +53,5 @@ Show how samples are changed for k iterations.
 
 
 
-9. [Repoert: TODO] Plot vector field for autoencoder. Plot heatmap of dataset likelihood from VAE. Compare results. Datasets: multiple synthetic, similar to datasets used in the article.
+9. [Repoert: Ksenofontov Grigorii] Plot vector field for autoencoder. Plot heatmap of dataset likelihood from VAE. Compare results. Datasets: multiple synthetic, similar to datasets used in the article.
 * [article](https://jmlr.csail.mit.edu/papers/volume15/alain14a/alain14a.pdf)
