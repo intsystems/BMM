@@ -30,7 +30,7 @@
 | 25.10 | [Generative and discriminative models](slides/slides_7_gendisc.pdf) | [Link](https://www.youtube.com/watch?v=C86NsPJu5Hw) | - |
 | 1.11 |  [Lab 1 discussion](lab1)  | [Link](https://www.youtube.com/watch?v=kgnpV1epXwU) | - |
 | 8.11 | [Data generation](slides/slides_8_generative.pdf)  | - | - |
-| 15.11 |Belief propagation, networks, and hierarchical models  | - | Lab 3 |
+| 15.11 |[Hierarchical models](slides/slides_9_hier.pdf)  | - | Lab 3 |
 | 22.11 |  Lab 2 discussion | - | - |
 | 29.11 | Model ensembles, Mixture of experts   | - | - |
 | 6.12 |  Bayesian agents, multi-agents and reinforcement | - | - |
