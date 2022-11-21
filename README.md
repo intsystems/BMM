@@ -1,10 +1,7 @@
 # Bayesian multimodeling
 
-[Form. Deadline: November 20th, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSfPAjD1Bc5-rjmyOBEfoWiyEClXwlDqz-eDJhBHfaB2sz8RrQ/viewform?usp=sf_link)
 
 [Form. Deadline: November 27th, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSfRsDLs-qafUG1Ve5FjvlJVKKYQY7-7vGc_-wd_X6Jc2oq4Ug/viewform?usp=sf_link) 
-
-[Lab 2. Deadline: November 20th, 23:59](lab2)
 
 [Lab 3. Deadline: December 11th, 23:59](lab3)
 
