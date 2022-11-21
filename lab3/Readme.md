@@ -15,7 +15,7 @@ Save notebooks into lab3/SurnameTask3.ipynb
 * Visualization: [help1](https://matplotlib.org/stable/users/interactive.html),[help2](https://stackoverflow.com/questions/44329068/jupyter-notebook-interactive-plot-with-widgets),[help3](https://towardsdatascience.com/matplotlib-animations-in-jupyter-notebook-4422e4f0e389)
 
 
-2.  [Reporter: TODO] Repeat experiment from Bishop's article (fig. 4) with naive implementation of generative-discriminative model (eq. 12 from article). Visualize discriminative surface as an interactive plot dependent on the number of labeled objects and coefficients for each term.
+2.  [Reporter: Kovaleva Maria] Repeat experiment from Bishop's article (fig. 4) with naive implementation of generative-discriminative model (eq. 12 from article). Visualize discriminative surface as an interactive plot dependent on the number of labeled objects and coefficients for each term.
 * [Article](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/05/Bishop-Valencia-07.pdf)
 
 3. [Reporter: Barabanshchikova Polina] Visualize dependency of classification error on different versions of Dataset Shift. Visualization (multiple plots) must show:
