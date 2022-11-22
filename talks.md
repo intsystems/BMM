@@ -45,4 +45,4 @@
 
 # Hierarchical models
 * Ladder VAE [article](https://proceedings.neurips.cc/paper/2016/file/6ae07dcb33ec3b7c814df797cbda0f87-Paper.pdf) (reporter: Maria Kovaleva)
-* On the information bottleneck theory of deep learning [article](https://openreview.net/pdf?id=ry_WPG-A-) (reporter: *enter your name*)
+* On the information bottleneck theory of deep learning [article](https://openreview.net/pdf?id=ry_WPG-A-) (reporter: Polina Barabanshchikova)
