@@ -48,4 +48,8 @@
 * On the information bottleneck theory of deep learning [article](https://openreview.net/pdf?id=ry_WPG-A-) (reporter: Polina Barabanshchikova)
 
 # Lab 2 discussion
-* Out-of-distribution detection via probability model entropy  [article](https://arxiv.org/pdf/1703.04977.pdf), [workshop](https://www.youtube.com/watch?v=N-p_qSLzoAI) (reporter: *enter your name*)
+~~* Out-of-distribution detection via probability model entropy  [article](https://arxiv.org/pdf/1703.04977.pdf), [workshop](https://www.youtube.com/watch?v=N-p_qSLzoAI) (reporter: *enter your name*)~~
+
+## Model ensembles, Mixture of experts
+* Neural-Tangent-Kernel-ensembles [article](https://arxiv.org/pdf/2202.12297.pdf) (reporter: *enter your name*)
+* Prior Networks [article](https://arxiv.org/abs/1802.10501)  (reporter: *enter your name*)
