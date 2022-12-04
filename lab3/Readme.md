@@ -29,7 +29,7 @@ Datasets: multiple synthetic 2d datasets.
 4. [Reporter: TODO] repeat the experiment with RBM pretraining and without pretraining  (figure 3 from the article).
 * [Article](http://proceedings.mlr.press/v9/erhan10a/erhan10a.pdf)
 
-5. [Reporter: TODO]  repeat the experiment with denoising autoencoder pretraining and without pretraining  (figure 3 from the article). 
+5. [Reporter: Skorik Sergey]  repeat the experiment with denoising autoencoder pretraining and without pretraining  (figure 3 from the article). 
 * [Article](http://proceedings.mlr.press/v9/erhan10a/erhan10a.pdf)
 
 6. [Reporter: TODO] Visualize sampling from RMB  for MNIST dataset (Gibbs sampling):
