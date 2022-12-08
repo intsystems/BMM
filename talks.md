@@ -52,4 +52,4 @@
 
 ## Model ensembles, Mixture of experts
 * Neural-Tangent-Kernel-ensembles [article](https://arxiv.org/pdf/2202.12297.pdf) (reporter: *enter your name*)
-* Prior Networks [article](https://arxiv.org/abs/1802.10501)  (reporter: *enter your name*)
+* Prior Networks [article](https://arxiv.org/abs/1802.10501)  (reporter: Ksenofontov Gregory)
