@@ -3,6 +3,8 @@
 
 [Form. Deadline: December 11th, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSckKHcnBA0umcsg9XKVsxzEcV3xHXN2f8uyKFtHgW_hQ0wsUw/viewform?usp=sf_link) 
 
+[Form. Deadline: December 17th, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSfix9qCPQNpNwTXwtFbIt_7cgjSVhIpbnr4Y_YHMKQo2xk1Cg/viewform?usp=sf_link)
+
 [Lab 3. Deadline: December 11th, 23:59](lab3)
 
 
@@ -32,7 +34,7 @@
 | 15.11 |[Hierarchical models](slides/slides_9_hier.pdf)  | [Link](https://www.youtube.com/watch?v=JGOO4_QQTbM&t=1s) | [Lab 3](lab3) |
 | 22.11 |  [Lab 2 discussion](lab2) | [Link](https://www.youtube.com/watch?v=KGWn02jcWu4&t=24s) | - |
 | 29.11 | [Model ensembles, Mixture of experts](slides/slides10_ens.pdf)   | [Link](https://www.youtube.com/watch?v=u-6tOnU5ttg) | - |
-| 6.12 |  Bayesian agents, multi-agents and reinforcement | - | - |
+| 6.12 |  [Structure priors](slides/slides_11_structure.pdf) | - | - |
 | 13.12 | Lab 3 discussion + formal exam/test | - | - |
 
 ## Next term topics
