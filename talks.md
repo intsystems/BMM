@@ -51,5 +51,9 @@
 ~~* Out-of-distribution detection via probability model entropy  [article](https://arxiv.org/pdf/1703.04977.pdf), [workshop](https://www.youtube.com/watch?v=N-p_qSLzoAI) (reporter: *enter your name*)~~
 
 ## Model ensembles, Mixture of experts
-* Neural-Tangent-Kernel-ensembles [article](https://arxiv.org/pdf/2202.12297.pdf) (reporter: *enter your name*)
+* ~~Neural-Tangent-Kernel-ensembles [article](https://arxiv.org/pdf/2202.12297.pdf) (reporter: *enter your name*)~~
 * Prior Networks [article](https://arxiv.org/abs/1802.10501)  (reporter: Ksenofontov Gregory)
+
+## Structure
+*  Neural Architecture Search without Training [article](https://arxiv.org/abs/2006.04647)  (reporter:  *enter your name*)
+*  Deep neural decision trees [article](https://arxiv.org/pdf/1806.06988.pdf)  (reporter:  *enter your name*)
