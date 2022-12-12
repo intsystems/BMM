@@ -56,4 +56,4 @@
 
 ## Structure
 *  Neural Architecture Search without Training [article](https://arxiv.org/abs/2006.04647)  (reporter:  *enter your name*)
-*  Deep neural decision trees [article](https://arxiv.org/pdf/1806.06988.pdf)  (reporter:  *enter your name*)
+*  Deep neural decision trees [article](https://arxiv.org/pdf/1806.06988.pdf)  (reporter:  Pyatkin Stanislav)
