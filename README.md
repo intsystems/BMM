@@ -29,7 +29,7 @@
 | 22.11 |  [Lab 2 discussion](lab2) | [Link](https://www.youtube.com/watch?v=KGWn02jcWu4&t=24s) | - |
 | 29.11 | [Model ensembles, Mixture of experts](slides/slides10_ens.pdf)   | [Link](https://www.youtube.com/watch?v=u-6tOnU5ttg) | - |
 | 6.12 |  [Structure priors](slides/slides_11_structure.pdf) | - | [Link](https://www.youtube.com/watch?v=JDs5PM-NnY0) |
-| 13.12 | Lab 3 discussion + formal exam/test | - | [Link](https://www.youtube.com/watch?v=AhbwLe5TscI&list=PLk4h7dmY2eYGkLXj0K8BNKs-WuqWS46xL&index=13) |
+| 13.12 | [Lab 3 discussion + formal exam/test](lab3) | - | [Link](https://www.youtube.com/watch?v=AhbwLe5TscI&list=PLk4h7dmY2eYGkLXj0K8BNKs-WuqWS46xL&index=13) |
 
 ## Next term topics
 * Informative prior, Sampling, importance, Metropolis-Hastings
