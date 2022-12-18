@@ -1,6 +1,6 @@
 # Bayesian multimodeling
 
-[Form. Deadline: December 17th, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSfix9qCPQNpNwTXwtFbIt_7cgjSVhIpbnr4Y_YHMKQo2xk1Cg/viewform?usp=sf_link)
+[Feedback form](https://docs.google.com/forms/d/e/1FAIpQLSfAp4KxNd-HsWJPHgntJsPc8OfeSwSRxW6zlEsSosXnbuNwQg/viewform?usp=sf_link)
 
 [Scores](eval.md)
 
