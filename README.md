@@ -12,6 +12,7 @@
 
 **Contacts**: bakhteev@phystech.edu
 ## Plan 
+|Date|Topic|Link to record|Lab task|
 | --- | --- | --- | --- |
 | 8.02 | Random processes and genetics for model generation | - | Lab 4 |
 | 15.02 | Hyperparameter optimization | - | - |
