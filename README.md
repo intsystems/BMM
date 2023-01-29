@@ -1,6 +1,6 @@
 # Bayesian multimodeling
 
-[Feedback form](https://docs.google.com/forms/d/e/1FAIpQLSfAp4KxNd-HsWJPHgntJsPc8OfeSwSRxW6zlEsSosXnbuNwQg/viewform?usp=sf_link)
+**The classes will start on 8th of February**
 
 [Scores](eval.md)
 
