@@ -11,8 +11,24 @@
 [TG Link](https://t.me/+DLmfDBvgk9NiNTFi)
 
 **Contacts**: bakhteev@phystech.edu
+## Plan 
+| --- | --- | --- | --- |
+| 8.02 | Random processes and genetics for model generation | - | Lab 4 |
+| 15.02 | Hyperparameter optimization | - | - |
+| 22.02 |  Gaussian processes| - | - |
+| 1.03 | Meta-optimization  | - | Lab 5 |
+| 15.03 | Lab 4 discussion | - | - |
+| 22.03 | Informative prior, Sampling, importance, Metropolis-Hastings  | - | - |
+| 29.03 |   Projection to latent space| - | - |
+| 5.04 |Probabilistic metric spaces  | - | Lab 6 |
+| 12.04 | Lab 5 discussion | - | - |
+| 19.04 | Transfer learning, Domain adaptation | - | - |
+| 26.04 |Multitask learning  | - | Lab 7 |
+| 3.05 | Interpretable models | - | - |
+| 10.05 | Bayesian agents, multi-agents and reinforcement| - | - |
+| 17.05 | Lab 7 discussion + formal exam/test | - | - |
 
-## Plan
+## Plan (Fall 2022)
 |Date|Topic|Link to record|Lab task|
 | --- | --- | --- | --- |
 | 6.09 |  [Intro](slides/slides_0_intro.pdf) | - | - |
@@ -31,15 +47,4 @@
 | 6.12 |  [Structure priors](slides/slides_11_structure.pdf) | - | [Link](https://www.youtube.com/watch?v=JDs5PM-NnY0) |
 | 13.12 | [Lab 3 discussion + formal exam/test](lab3) | - | [Link](https://www.youtube.com/watch?v=AhbwLe5TscI&list=PLk4h7dmY2eYGkLXj0K8BNKs-WuqWS46xL&index=13) |
 
-## Next term topics
-* Informative prior, Sampling, importance, Metropolis-Hastings
-* Random processes and genetics for model generation
-* Probabilistic metric spaces 
-* Hyperparameter optimization
-* Gaussian processes
-* Meta-optimization
-* Transfer learning, Domain adaptation
-*  Multitask learning
-* Projection to latent space
-*  Bayesian agents, multi-agents and reinforcement
 
