@@ -14,8 +14,8 @@ Save notebooks into lab4/SurnameTask4.ipynb
 * [OBD paper](https://proceedings.neurips.cc/paper/1989/file/6c9882bbac1c7093bd25041881277658-Paper.pdf)
 
 4. Build multiple (not less than 10) 1-layer neural networks for a dataset using bagging. Make a weighted ensemble of the models. Train ensemble weights in different regimes:
-    a. Using Softmax
-    b. Using softmax with lowering temperature
+    - Using Softmax
+    - Using softmax with lowering temperature
     
 Visualize the performance of the ensembler from the optimization iteration. Visualize the weights of the ensemble. 
 
