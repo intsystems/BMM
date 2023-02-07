@@ -1,4 +1,4 @@
-Deadline: Febraury 21, 23.59.
+Deadline: Febraury 22, 23.59.
 
 **All the experiments should be implemented with JAX or sklearn. Not pytorch!**
 
