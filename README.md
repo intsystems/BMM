@@ -14,7 +14,7 @@
 ## Plan 
 |Date|Topic|Link to record|Lab task|
 | --- | --- | --- | --- |
-| 8.02 | Random processes and genetics for model generation | - | Lab 4 |
+| 8.02 | Random processes and genetics for model generation | - | [Lab 4](lab4) |
 | 15.02 | Hyperparameter optimization | - | - |
 | 22.02 |  Gaussian processes| - | - |
 | 1.03 | Meta-optimization  | - | Lab 5 |
