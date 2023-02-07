@@ -15,19 +15,18 @@
 |Date|Topic|Link to record|Lab task|
 | --- | --- | --- | --- |
 | 8.02 | Random processes and genetics for model generation | - | [Lab 4](lab4) |
-| 15.02 | Hyperparameter optimization | - | - |
-| 22.02 |  Gaussian processes| - | - |
-| 1.03 | Meta-optimization  | - | Lab 5 |
-| 15.03 | Lab 4 discussion | - | - |
-| 22.03 | Informative prior, Sampling, importance, Metropolis-Hastings  | - | - |
-| 29.03 |   Projection to latent space| - | - |
-| 5.04 |Probabilistic metric spaces  | - | Lab 6 |
-| 12.04 | Lab 5 discussion | - | - |
-| 19.04 | Transfer learning, Domain adaptation | - | - |
-| 26.04 |Multitask learning  | - | Lab 7 |
-| 3.05 | Interpretable models | - | - |
-| 10.05 | Bayesian agents, multi-agents and reinforcement| - | - |
-| 17.05 | Lab 7 discussion + formal exam/test | - | - |
+| 14.02 | Hyperparameter optimization | - | - |
+| 21.02 |  Gaussian processes| - | - |
+| 28.03 | Meta-optimization  | - | Lab 5 |
+| 14.03 | Lab 4 discussion | - | - |
+| 21.03 | Informative prior, Sampling, importance, Metropolis-Hastings  | - | - |
+| 28.03 |   Projection to latent space| - | - |
+| 4.04 |Probabilistic metric spaces  | - | Lab 6 |
+| 11.04 | Lab 5 discussion | - | - |
+| 18.04 | Transfer learning, Domain adaptation | - | - |
+| 25.04 |Multitask learning  | - | Lab 7 |
+| 2.05 | Interpretable models OR Bayesian agents, multi-agents and reinforcement | - | - |
+| 16.05 | Lab 7 discussion + formal exam/test | - | - |
 
 ## Plan (Fall 2022)
 |Date|Topic|Link to record|Lab task|
