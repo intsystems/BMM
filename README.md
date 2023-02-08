@@ -1,6 +1,8 @@
 # Bayesian multimodeling
 
-**The classes will start on 8th of February**
+[Form. Deadline: 15th of Febraury, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSeiebLC3ofxJyAiR1TTG3nSyJf4Hgxssz_BdKyq0QzVZA-LRw/viewform?usp=sf_link)
+
+[Lab. Deadline: 22nd of Febraury, 23.59](lab4)
 
 [Scores](eval.md)
 
