@@ -15,9 +15,9 @@ Save notebooks into lab4/SurnameTask4.ipynb
 
 4. Build multiple (not less than 10) 1-layer neural networks for a dataset using bagging. Make a weighted ensemble of the models. Train ensemble weights in different regimes:
     - Using Softmax
-    - Using softmax with lowering temperature
+    - Using Gumbel-softmax with lowering temperature
     
-Visualize the performance of the ensembler from the optimization iteration. Visualize the weights of the ensemble. 
+Visualize the performance of the ensembler from the optimization iteration. Visualize the weights of the ensemble with dependence on the optimization iteration. 
 
 
 5. [Kovaleva Maria] Demonstrate the lottery ticket hypothesis. Train a 3-layer network on a CIFAR-10. For p=[10, 20, ... 90] select multiple subnetworks with p% of parameters. And retrain them. For each percentage select the network with best performance. Visualize performance depndency on p. 
