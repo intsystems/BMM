@@ -20,7 +20,7 @@ Save notebooks into lab4/SurnameTask4.ipynb
 Visualize the performance of the ensembler from the optimization iteration. Visualize the weights of the ensemble. 
 
 
-5. Demonstrate the lottery ticket hypothesis. Train a 3-layer network on a CIFAR-10. For p=[10, 20, ... 90] select multiple subnetworks with p% of parameters. And retrain them. For each percentage select the network with best performance. Visualize performance depndency on p. Kovaleva Maria
+5. [Kovaleva Maria] Demonstrate the lottery ticket hypothesis. Train a 3-layer network on a CIFAR-10. For p=[10, 20, ... 90] select multiple subnetworks with p% of parameters. And retrain them. For each percentage select the network with best performance. Visualize performance depndency on p. 
 
 
 6. Implement 1-st order DARTS for CIFAR-10 dataset. Model: 3-layer network. Structure: binary mask for each parameter. Plots: model peformance, mask.
