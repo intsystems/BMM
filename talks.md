@@ -57,3 +57,7 @@
 ## Structure
 *  Neural Architecture Search without Training [article](https://arxiv.org/abs/2006.04647)  (reporter:  *enter your name*)
 *  Deep neural decision trees [article](https://arxiv.org/pdf/1806.06988.pdf)  (reporter:  Pyatkin Stanislav)
+
+# Random processes and genetics for model generation
+* [AutoML-Zero: Evolving Machine Learning Algorithms From Scratch](http://proceedings.mlr.press/v119/real20a/real20a.pdf) (reporter:  *enter your name*)
+* [Proving the Lottery Ticket Hypothesis: Pruning is All You Need](http://proceedings.mlr.press/v119/malach20a/malach20a.pdf) (reporter:  *enter your name*)
