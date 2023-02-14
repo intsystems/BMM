@@ -2,6 +2,8 @@
 
 [Form. Deadline: 15th of Febraury, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSeiebLC3ofxJyAiR1TTG3nSyJf4Hgxssz_BdKyq0QzVZA-LRw/viewform?usp=sf_link)
 
+[Form. Deadline: Febraury 20, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSfSPhAT9vOGd2w_gu63UbmyPQjejmHLobCE7SugwU8MqgElIA/viewform?usp=sf_link)
+
 [Lab. Deadline: 22nd of Febraury, 23.59](lab4)
 
 [Scores](eval.md)
