@@ -17,8 +17,8 @@
 |Date|Topic|Link to record|Lab task|
 | --- | --- | --- | --- |
 | 8.02 | [Random processes and genetics for model generation](slides/slides_12_evolution.pdf) | [Link](https://www.youtube.com/watch?v=VjKWeiGq0NM) | [Lab 4](lab4) |
-| 14.02 | Hyperparameter optimization | - | - |
-| 21.02 |  Gaussian processes| - | - |
+| 14.02 | [Hyperparameter optimization](slides/slides_13_hyper.pdf) | - | - |
+| 21.02 | SMBO | - | - |
 | 28.03 | Meta-optimization  | - | Lab 5 |
 | 14.03 | Lab 4 discussion | - | - |
 | 21.03 | Informative prior, Sampling, importance, Metropolis-Hastings  | - | - |
