@@ -59,5 +59,9 @@
 *  Deep neural decision trees [article](https://arxiv.org/pdf/1806.06988.pdf)  (reporter:  Pyatkin Stanislav)
 
 # Random processes and genetics for model generation
-* [AutoML-Zero: Evolving Machine Learning Algorithms From Scratch](http://proceedings.mlr.press/v119/real20a/real20a.pdf) (reporter:  *enter your name*)
-* [Proving the Lottery Ticket Hypothesis: Pruning is All You Need](http://proceedings.mlr.press/v119/malach20a/malach20a.pdf) (reporter:  *enter your name*)
+* ~~[AutoML-Zero: Evolving Machine Learning Algorithms From Scratch](http://proceedings.mlr.press/v119/real20a/real20a.pdf) (reporter:  *enter your name*)~~
+* ~~[Proving the Lottery Ticket Hypothesis: Pruning is All You Need](http://proceedings.mlr.press/v119/malach20a/malach20a.pdf) (reporter:  *enter your name*)~~
+
+# Hyperparameter optimization
+* [Hypernetwork-based gradient optimization](https://arxiv.org/abs/1802.09419) (reporter:  *enter your name*)
+* [Dual form of SGD via Attention](https://proceedings.mlr.press/v162/irie22a.html) (reporter:  *enter your name*)
