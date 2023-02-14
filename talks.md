@@ -64,4 +64,4 @@
 
 # Hyperparameter optimization
 * [Hypernetwork-based gradient optimization](https://arxiv.org/abs/1802.09419) (reporter:  *enter your name*)
-* [Dual form of SGD via Attention](https://proceedings.mlr.press/v162/irie22a.html) (reporter:  *enter your name*)
+* [Dual form of SGD via Attention](https://proceedings.mlr.press/v162/irie22a.html) (reporter:  Skorik Sergey)
