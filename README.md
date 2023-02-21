@@ -20,7 +20,7 @@
 | --- | --- | --- | --- |
 | 8.02 | [Random processes and genetics for model generation](slides/slides_12_evolution.pdf) | [Link](https://www.youtube.com/watch?v=VjKWeiGq0NM) | [Lab 4](lab4) |
 | 14.02 | [Hyperparameter optimization](slides/slides_13_hyper.pdf) | [Link](https://www.youtube.com/watch?v=xHjfkgOdbco) | - |
-| 21.02 | SMBO | - | - |
+| 21.02 | [SMBO](slides/slides_14_smbo.pdf) | [Link](https://www.youtube.com/watch?v=njplxS_iRz8) | - |
 | 28.02 | Meta-optimization  | - | Lab 5 |
 | 7.03 | Lab 4 discussion | - | - |
 | 14.03 | Informative prior, Sampling, importance, Metropolis-Hastings  | - | - |
