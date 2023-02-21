@@ -63,5 +63,9 @@
 * ~~[Proving the Lottery Ticket Hypothesis: Pruning is All You Need](http://proceedings.mlr.press/v119/malach20a/malach20a.pdf) (reporter:  *enter your name*)~~
 
 # Hyperparameter optimization
-* [Hypernetwork-based gradient optimization](https://arxiv.org/abs/1802.09419) (reporter:  *enter your name*)
+~~* [Hypernetwork-based gradient optimization](https://arxiv.org/abs/1802.09419) (reporter:  *enter your name*)~~
 * [Dual form of SGD via Attention](https://proceedings.mlr.press/v162/irie22a.html) (reporter:  Skorik Sergey)
+
+# SMBO
+* [Learning Pareto front with hypernetworks](https://arxiv.org/pdf/2010.04104.pdf) (reporter:  *enter your name*)
+* [Efficient hyperparameter optimization for deep learning algorithms using deterministic rbf surrogates](https://ojs.aaai.org/index.php/AAAI/article/view/10647/10506)  (reporter:  *enter your name*)
