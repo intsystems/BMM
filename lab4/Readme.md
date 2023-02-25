@@ -7,7 +7,7 @@ Save notebooks into lab4/SurnameTask4.ipynb
 1. [Barabanshchikova Polina] Visualize uncertainity estimation using multiple neural networks. Data: simple regression model: Y = WX + eps. Model: a one-layer neural netwok. Plot: uncertainity with different number of neural networks (see [slide 21](https://raw.githubusercontent.com/intsystems/BMM/main-22/slides/slides10_ens.pdf)).
 
 
-2. Visualize ECE using multiple neural networks. Data: a toy-dataset from sklearn. Model: a one-layer neural netwok. Plot: ECE with different number of neural networks.
+2. [Skorik Sergey] Visualize ECE using multiple neural networks. Data: a toy-dataset from sklearn. Model: a one-layer neural netwok. Plot: ECE with different number of neural networks.
 (see [slides about ECE](https://raw.githubusercontent.com/intsystems/BMM/main-22/slides/slides10_ens.pdf)).
 
 3. Compare optimal brain damage procdure using diagonal hessian and full-rank hessian. Model: linear regression model. Data: simple dataset (not more than 50 variables). Plot: dependence of the model performance on the number of removed features. 
