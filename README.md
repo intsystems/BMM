@@ -1,9 +1,9 @@
 # Bayesian multimodeling
 
 
-[Form. Deadline: Febraury 27, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSf6GfbDv976bgHOf2T1YhfuSQUaDqWictrjjP5TbX3qmL3tVA/viewform?usp=sf_link)
+[Form. Deadline: March 7, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSf6GfbDv976bgHOf2T1YhfuSQUaDqWictrjjP5TbX3qmL3tVA/viewform?usp=sf_link)
 
-[Lab. Deadline: 28th of Febraury, 23.59](lab4)
+[Lab. Deadline: March 7, 23.59](lab4)
 
 [Scores](eval.md)
 
@@ -20,16 +20,15 @@
 | 8.02 | [Random processes and genetics for model generation](slides/slides_12_evolution.pdf) | [Link](https://www.youtube.com/watch?v=VjKWeiGq0NM) | [Lab 4](lab4) |
 | 14.02 | [Hyperparameter optimization](slides/slides_13_hyper.pdf) | [Link](https://www.youtube.com/watch?v=xHjfkgOdbco) | - |
 | 21.02 | [SMBO](slides/slides_14_smbo.pdf) | [Link](https://www.youtube.com/watch?v=njplxS_iRz8) | - |
-| 28.02 | Meta-optimization  | - | Lab 5 |
-| 7.03 | Lab 4 discussion | - | - |
-| 14.03 | Informative prior, Sampling, importance, Metropolis-Hastings  | - | - |
-| 21.03 |   Projection to latent space| - | - |
-| 28.04 |Probabilistic metric spaces  | - | Lab 6 |
-| 4.04 | Lab 5 discussion | - | - |
-| 11.04 | Transfer learning, Domain adaptation | - | - |
-| 18.04 |Multitask learning  | - | Lab 7 |
-| 25.04 | Interpretable models | - | - |
-| 2.05  | Bayesian agents, multi-agents and reinforcement | - | - |
+| 7.03 | Meta-optimization, Bayesian agents  | - | Lab 5 |
+| 14.03 | Lab 4 discussion | - | - |
+| 21.03 | Informative prior, Sampling, importance, Metropolis-Hastings  | - | - |
+| 28.03 |   Projection to latent space| - | - |
+| 4.04 |Probabilistic metric spaces  | - | Lab 6 |
+| 11.04 | Lab 5 discussion | - | - |
+| 18.04 | Transfer learning, Domain adaptation | - | - |
+| 25.04 | Multitask learning  | - | Lab 7 |
+| 2.05 | Interpretable models | - | - |
 | 16.05 | Lab 7 discussion + formal exam/test | - | - |
 
 ## Plan (Fall 2022)
