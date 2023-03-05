@@ -68,4 +68,4 @@
 
 # SMBO
 * [Learning Pareto front with hypernetworks](https://arxiv.org/pdf/2010.04104.pdf) (reporter:  *enter your name*)
-* [Efficient hyperparameter optimization for deep learning algorithms using deterministic rbf surrogates](https://ojs.aaai.org/index.php/AAAI/article/view/10647/10506)  (reporter:  *enter your name*)
+* [Efficient hyperparameter optimization for deep learning algorithms using deterministic rbf surrogates](https://ojs.aaai.org/index.php/AAAI/article/view/10647/10506)  (reporter:  *Yakovlev Konstantin*)
