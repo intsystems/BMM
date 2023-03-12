@@ -20,15 +20,14 @@
 | 8.02 | [Random processes and genetics for model generation](slides/slides_12_evolution.pdf) | [Link](https://www.youtube.com/watch?v=VjKWeiGq0NM) | [Lab 4](lab4) |
 | 14.02 | [Hyperparameter optimization](slides/slides_13_hyper.pdf) | [Link](https://www.youtube.com/watch?v=xHjfkgOdbco) | - |
 | 21.02 | [SMBO](slides/slides_14_smbo.pdf) | [Link](https://www.youtube.com/watch?v=njplxS_iRz8) | - |
-| 7.03 | Meta-optimization, Bayesian agents  | - | Lab 5 |
-| 14.03 | Lab 4 discussion | - | - |
-| 21.03 | Informative prior, Sampling, importance, Metropolis-Hastings  | - | - |
-| 28.03 |   Projection to latent space| - | - |
-| 4.04 |Probabilistic metric spaces  | - | Lab 6 |
-| 11.04 | Lab 5 discussion | - | - |
+| 14.03 | Meta-optimization | - | Lab 5 |
+| 21.03 | Lab 4 discussion | - | - |
+| 28.03 |   Informative prior, Sampling, interpetable models| - | - |
+| 4.04 |Probabilistic metric spaces, Projection to latent space  | - | Lab 6 |
+| 11.04 | Lab 6 discussion | - | - |
 | 18.04 | Transfer learning, Domain adaptation | - | - |
 | 25.04 | Multitask learning  | - | Lab 7 |
-| 2.05 | Interpretable models | - | - |
+| 2.05 | Bayesian agents | - | - |
 | 16.05 | Lab 7 discussion + formal exam/test | - | - |
 
 ## Plan (Fall 2022)
