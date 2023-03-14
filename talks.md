@@ -69,3 +69,8 @@
 # SMBO
 * [Learning Pareto front with hypernetworks](https://arxiv.org/pdf/2010.04104.pdf) (reporter:  Barabanshchikova Polina)
 * [Efficient hyperparameter optimization for deep learning algorithms using deterministic rbf surrogates](https://ojs.aaai.org/index.php/AAAI/article/view/10647/10506)  (reporter:  *Yakovlev Konstantin*)
+
+
+# Meta-optimization
+* [Generalized Inner Loop Meta-Learning](https://arxiv.org/pdf/1910.01727.pdf) (reporter:  *enter your name*)
+* [HOW TO TRAIN YOUR MAML](https://arxiv.org/pdf/1810.09502.pdf)  (reporter:  *enter your name*)
