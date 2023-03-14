@@ -17,6 +17,7 @@ Deadline: April 3, 23.59.
    Visualize optimization trajectories in two surface plots: (h, w, L_train), (h, w, L_val)
    - [1-order optimization](http://proceedings.mlr.press/v48/luketina16.pdf)
    - [0-order and 1-order optimization](https://arxiv.org/pdf/1806.09055.pdf)
+   
    **Note:** for such a simple setting no need to use sophisticated calculation tricks that described in DARTS, for example.
    
 3. Consider the following bi-level optimization problem:
