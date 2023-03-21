@@ -72,5 +72,12 @@
 
 
 # Meta-optimization
+* ~~[Generalized Inner Loop Meta-Learning](https://arxiv.org/pdf/1910.01727.pdf) (reporter:  *enter your name*)~~
+* ~~[HOW TO TRAIN YOUR MAML](https://arxiv.org/pdf/1810.09502.pdf)  (reporter:  *enter your name*)~~
+
+# Lab 4 discussion
+* [AutoML-Zero: Evolving Machine Learning Algorithms From Scratch](http://proceedings.mlr.press/v119/real20a/real20a.pdf) (reporter:  *enter your name*)
+* [Proving the Lottery Ticket Hypothesis: Pruning is All You Need](http://proceedings.mlr.press/v119/malach20a/malach20a.pdf) (reporter:  *enter your name*)
+* [Hypernetwork-based gradient optimization](https://arxiv.org/abs/1802.09419) (reporter:  *enter your name*)
 * [Generalized Inner Loop Meta-Learning](https://arxiv.org/pdf/1910.01727.pdf) (reporter:  *enter your name*)
 * [HOW TO TRAIN YOUR MAML](https://arxiv.org/pdf/1810.09502.pdf)  (reporter:  *enter your name*)
