@@ -16,7 +16,7 @@
 | 14.02 | [Hyperparameter optimization](slides/slides_13_hyper.pdf) | [Link](https://www.youtube.com/watch?v=xHjfkgOdbco) | - |
 | 21.02 | [SMBO](slides/slides_14_smbo.pdf) | [Link](https://www.youtube.com/watch?v=njplxS_iRz8) | - |
 | 14.03 | [Meta-optimization](slides/slides_15_meta.pdf) | [Link](https://www.youtube.com/watch?v=ZCaxQaIsBzw) | [Lab 5](lab5) |
-| 21.03 | [Lab 4 discussion](lab4) | - | - |
+| 21.03 | [Lab 4 discussion](lab4) | [Link](https://www.youtube.com/watch?v=WlGqXnydAH0) | - |
 | 28.03 |   Informative prior, Sampling, interpetable models| - | - |
 | 4.04 |Probabilistic metric spaces, Projection to latent space  | - | Lab 6 |
 | 11.04 | Lab 5 discussion | - | - |
