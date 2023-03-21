@@ -1,10 +1,5 @@
 # Bayesian multimodeling
 
-
-[Form. Deadline: March 20, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSeC9uW3qPfZiHuaVRwl8oBCrlN94JQ_vXtv763OfleArEkchg/viewform?usp=sf_link)
-
-[Lab. Deadline: April 3, 23.59](lab5)
-
 [Scores](eval.md)
 
 [Talk list](talks.md)
@@ -21,13 +16,13 @@
 | 14.02 | [Hyperparameter optimization](slides/slides_13_hyper.pdf) | [Link](https://www.youtube.com/watch?v=xHjfkgOdbco) | - |
 | 21.02 | [SMBO](slides/slides_14_smbo.pdf) | [Link](https://www.youtube.com/watch?v=njplxS_iRz8) | - |
 | 14.03 | [Meta-optimization](slides/slides_15_meta.pdf) | [Link](https://www.youtube.com/watch?v=ZCaxQaIsBzw) | [Lab 5](lab5) |
-| 21.03 | Lab 4 discussion | - | - |
+| 21.03 | [Lab 4 discussion](lab4) | - | - |
 | 28.03 |   Informative prior, Sampling, interpetable models| - | - |
 | 4.04 |Probabilistic metric spaces, Projection to latent space  | - | Lab 6 |
-| 11.04 | Lab 6 discussion | - | - |
+| 11.04 | Lab 5 discussion | - | - |
 | 18.04 | Transfer learning, Domain adaptation | - | - |
-| 25.04 | Multitask learning  | - | Lab 7 |
-| 2.05 | Bayesian agents | - | - |
+| 25.04 | Multitask learning, Bayesian agents   | - | Lab 7 |
+| 2.05 | Lab 6 discussion | - | - |
 | 16.05 | Lab 7 discussion + formal exam/test | - | - |
 
 ## Plan (Fall 2022)
