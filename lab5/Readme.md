@@ -10,7 +10,7 @@ Deadline: April 3, 23.59.
     
 
     
-2. Consider the following bi-level optimization problem:
+2. Consider the following bi-level optimization problem[Kovaleva]:
     - L_train = |h + w|^2
     - L_val = |w|^2
    Run n-order hyperparameter optimization for such a problem (n=0..5).
