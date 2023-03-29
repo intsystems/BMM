@@ -76,8 +76,12 @@
 * ~~[HOW TO TRAIN YOUR MAML](https://arxiv.org/pdf/1810.09502.pdf)  (reporter:  *enter your name*)~~
 
 # Lab 4 discussion
-* [AutoML-Zero: Evolving Machine Learning Algorithms From Scratch](http://proceedings.mlr.press/v119/real20a/real20a.pdf) (reporter:  *enter your name*)
-* [Proving the Lottery Ticket Hypothesis: Pruning is All You Need](http://proceedings.mlr.press/v119/malach20a/malach20a.pdf) (reporter:  *enter your name*)
-* [Hypernetwork-based gradient optimization](https://arxiv.org/abs/1802.09419) (reporter:  *enter your name*)
-* [Generalized Inner Loop Meta-Learning](https://arxiv.org/pdf/1910.01727.pdf) (reporter:  *enter your name*)
-* [HOW TO TRAIN YOUR MAML](https://arxiv.org/pdf/1810.09502.pdf)  (reporter:  *enter your name*)
+* ~~[AutoML-Zero: Evolving Machine Learning Algorithms From Scratch](http://proceedings.mlr.press/v119/real20a/real20a.pdf) (reporter:  *enter your name*)~~
+* ~~[Proving the Lottery Ticket Hypothesis: Pruning is All You Need](http://proceedings.mlr.press/v119/malach20a/malach20a.pdf) (reporter:  *enter your name*)~~
+* ~~[Hypernetwork-based gradient optimization](https://arxiv.org/abs/1802.09419) (reporter:  *enter your name*)~~
+* ~~[Generalized Inner Loop Meta-Learning](https://arxiv.org/pdf/1910.01727.pdf) (reporter:  *enter your name*)~~
+* ~~[HOW TO TRAIN YOUR MAML](https://arxiv.org/pdf/1810.09502.pdf)  (reporter:  *enter your name*)~~
+
+# Sampling and prior selection
+* [SWAG: A simple baseline for bayesian uncertainty in deep learning](https://proceedings.neurips.cc/paper/2019/file/118921efba23fc329e6560b27861f0c2-Paper.pdf)  (reporter:  *enter your name*)
+* [Neural Architecture Search Using Deep Neural Networks and Monte Carlo Tree Search](https://ojs.aaai.org/index.php/AAAI/article/view/6554) (reporter:  *enter your name*)
