@@ -27,7 +27,7 @@ Deadline: April 3, 23.59.
    Visualize optimization trajectories in two surface plots: (h, w, L_train), (h, w, L_val).
    - [DrMAD](https://arxiv.org/pdf/1601.00917.pdf)
 
-4. Consider the following bi-level optimization problem:
+4. [Yakovlev Konstantin] Consider the following bi-level optimization problem:
     - L_train = |h + w|^2
     - L_val = |w|^2
    Optimize hyperparameters using hypernetworks (h is sampled).
