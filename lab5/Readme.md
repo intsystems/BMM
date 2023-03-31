@@ -35,7 +35,7 @@ Deadline: April 3, 23.59.
    - [Hypernetworks](http://www.ipiran.ru/journal/issues/2021_15_01/Vol15_Issue1.pdf)
 
    
-5. Repeat "learning to learn" experiment on MNIST. Visualize norm of the gradient and norm of the parameter of gradients for optimization steps for different optimzers: SGD, Adam, LSTM.
+5. [Pyatkin Stanislav] Repeat "learning to learn" experiment on MNIST. Visualize norm of the gradient and norm of the parameter of gradients for optimization steps for different optimzers: SGD, Adam, LSTM.
     - [Learning to learn](https://arxiv.org/pdf/1606.04474.pdf)
     
 
