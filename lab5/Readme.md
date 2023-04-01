@@ -20,7 +20,7 @@ Deadline: April 3, 23.59.
    
    **Note:** for such a simple setting no need to use sophisticated calculation tricks that described in DARTS, for example.
    
-3. Consider the following bi-level optimization problem:
+3. [Skorik Sergey] Consider the following bi-level optimization problem:
     - L_train = |h + w|^2
     - L_val = |w|^2
    Run DrMAD (hyperparameter optimization with trajectory linearization) and piecewise trajectory linearization modification.
