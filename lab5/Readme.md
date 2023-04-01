@@ -1,7 +1,7 @@
 Deadline: April 3, 23.59.
 
 **All the experiments should be implemented with JAX or sklearn. Not pytorch!**
-1. Consider neural network model selection problem (structure is set by layer number and neuron numbers). Compare multiple approaches for model selection:
+1. [Barabanshchikova Polina] Consider neural network model selection problem (structure is set by layer number and neuron numbers). Compare multiple approaches for model selection:
     - Using GP
     - Using TPE
     - Using GP wrt. inference runtime [see paper](https://arxiv.org/pdf/1206.2944.pdf)
