@@ -17,3 +17,5 @@ Deadline: April 24, 23.59.
 
 5. Train an MLP model on a toy dataset (at least 3 layers). Make a random pruning of the models. Visualize the binary matrix projection onto 2d-space with color corresponding to accuracy.
    
+6. Train deep weight prior on MNIST dataset ane evluate its performance on SVHN dataset (make SVHN gray-colored).
+
