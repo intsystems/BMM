@@ -21,7 +21,7 @@
 | 14.03 | [Meta-optimization](slides/slides_15_meta.pdf) | [Link](https://www.youtube.com/watch?v=ZCaxQaIsBzw) | [Lab 5](lab5) |
 | 21.03 | [Lab 4 discussion](lab4) | [Link](https://www.youtube.com/watch?v=WlGqXnydAH0) | - |
 | 28.03 |   [Informative prior, Sampling](slides/slides_16_sampling.pdf) ~~interpetable models~~ | - | - |
-| 4.04 |Probabilistic metric spaces, Projection to latent space  | - | Lab 6 |
+| 4.04 |[Probabilistic metric spaces, Projection to latent space](slides/slides_17_prob.pdf)  | [Link](https://www.youtube.com/watch?v=ecrEq3BpIhw) | [Lab 6](lab 6) |
 | 11.04 | Lab 5 discussion | - | - |
 | 18.04 | Transfer learning, Domain adaptation | - | - |
 | 25.04 | Multitask learning, Bayesian agents   | - | Lab 7 |
