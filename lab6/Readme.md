@@ -10,7 +10,7 @@ Deadline: April 24, 23.59.
      
 2. Repeat sampling procedure from [paper](https://arxiv.org/abs/1211.4246). Compare sampling with SGLD procedure.
 
-3. Train at least 100 MLP models on a toy dataset. Visualize their parameter projection onto 2d-space with color corresponding to accuracy.
+3. [Skorik Sergey] Train at least 100 MLP models on a toy dataset. Visualize their parameter projection onto 2d-space with color corresponding to accuracy.
 
 4. Train multiple MLP models on a toy dataset. Make a random pruning of the models. Visualize their parameter projection onto 2d-space with color corresponding to accuracy.
     
