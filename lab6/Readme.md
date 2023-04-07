@@ -12,7 +12,7 @@ Deadline: April 24, 23.59.
 
 3. [Skorik Sergey] Train at least 100 MLP models on a toy dataset. Visualize their parameter projection onto 2d-space with color corresponding to accuracy.
 
-4. Train multiple MLP models on a toy dataset. Make a random pruning of the models. Visualize their parameter projection onto 2d-space with color corresponding to accuracy.
+4. [Kovaleva Maria] Train multiple MLP models on a toy dataset. Make a random pruning of the models. Visualize their parameter projection onto 2d-space with color corresponding to accuracy.
     
 
 5. Train an MLP model on a toy dataset (at least 3 layers). Make a random pruning of the models. Visualize the binary matrix projection onto 2d-space with color corresponding to accuracy.
