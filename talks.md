@@ -87,5 +87,5 @@
 ~~* [Neural Architecture Search Using Deep Neural Networks and Monte Carlo Tree Search](https://ojs.aaai.org/index.php/AAAI/article/view/6554) (reporter:  *enter your name*)~~
 
 # Probabilistic metric spaces
-* [f -Divergence Variational Inference](https://proceedings.neurips.cc/paper/2020/file/c928d86ff00aeb89a39bd4a80e652a38-Paper.pdf)   (reporter:  *enter your name*)
+* [f -Divergence Variational Inference](https://proceedings.neurips.cc/paper/2020/file/c928d86ff00aeb89a39bd4a80e652a38-Paper.pdf)   (reporter:  Skorik Sergey)
 * [Task-Adaptive Neural Network Search with Meta-Contrastive Learning](https://arxiv.org/pdf/2103.01495.pdf)  (reporter:  *enter your name*)
