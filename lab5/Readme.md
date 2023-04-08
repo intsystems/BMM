@@ -38,7 +38,7 @@ Deadline: April 3, 23.59.
 5. [Pyatkin Stanislav] Repeat "learning to learn" experiment on MNIST. Visualize norm of the gradient and norm of the parameter of gradients for optimization steps for different optimzers: SGD, Adam, LSTM.
     - [Learning to learn](https://arxiv.org/pdf/1606.04474.pdf)
     
-6. Consider hyperparameter random search problem for linear regression with 10 features. The covariance matrix is a hyperparameter.
+6. [Ksenofontov Gregory] Consider hyperparameter random search problem for linear regression with 10 features. The covariance matrix is a hyperparameter.
 Consider problem with different rank of covariance matrix: from 1 to 10. Visualize convergence rate of random search for different ranks and distance from true matrix to 
 the best found.
     - [Hyperparameter optimization for linear regression](http://strijov.com/papers/HyperOptimizationEng.pdf)
