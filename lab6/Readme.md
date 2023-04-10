@@ -15,7 +15,7 @@ Deadline: April 24, 23.59.
 4. [Kovaleva Maria] Train multiple MLP models on a toy dataset. Make a random pruning of the models. Visualize their parameter projection onto 2d-space with color corresponding to accuracy.
     
 
-5. Train an MLP model on a toy dataset (at least 3 layers). Make a random pruning of the models. Visualize the binary matrix projection onto 2d-space with color corresponding to accuracy.
+5. [Barabanshchikova Polina] Train an MLP model on a toy dataset (at least 3 layers). Make a random pruning of the models. Visualize the binary matrix projection onto 2d-space with color corresponding to accuracy.
    
 6. Train deep weight prior on MNIST dataset ane evluate its performance on SVHN dataset (make SVHN gray-colored).
 
