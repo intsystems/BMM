@@ -22,7 +22,7 @@
 | 21.03 | [Lab 4 discussion](lab4) | [Link](https://www.youtube.com/watch?v=WlGqXnydAH0) | - |
 | 28.03 |   [Informative prior, Sampling](slides/slides_16_sampling.pdf) ~~interpetable models~~ | - | - |
 | 4.04 |[Probabilistic metric spaces, Projection to latent space](slides/slides_17_prob.pdf)  | [Link](https://www.youtube.com/watch?v=ecrEq3BpIhw) | [Lab 6](lab6) |
-| 11.04 | Lab 5 discussion | - | - |
+| 11.04 | [Lab 5 discussion](lab5) | [Link](https://www.youtube.com/watch?v=FycosThTi0U&list=PLk4h7dmY2eYGkLXj0K8BNKs-WuqWS46xL) | - |
 | 18.04 | Transfer learning, Domain adaptation | - | - |
 | 25.04 | Multitask learning, Bayesian agents   | - | Lab 7 |
 | 2.05 | Lab 6 discussion | - | - |
