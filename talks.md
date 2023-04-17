@@ -91,6 +91,10 @@
 * [Task-Adaptive Neural Network Search with Meta-Contrastive Learning](https://arxiv.org/pdf/2103.01495.pdf)  (reporter:  *enter your name*)
 
 # Lab 5 discussion
-* [SWAG: A simple baseline for bayesian uncertainty in deep learning](https://proceedings.neurips.cc/paper/2019/file/118921efba23fc329e6560b27861f0c2-Paper.pdf)  (reporter:  *enter your name*)
-* [Neural Architecture Search Using Deep Neural Networks and Monte Carlo Tree Search](https://ojs.aaai.org/index.php/AAAI/article/view/6554) (reporter:  *enter your name*)
-* [Task-Adaptive Neural Network Search with Meta-Contrastive Learning](https://arxiv.org/pdf/2103.01495.pdf)  (reporter:  *enter your name*)
+* ~~[SWAG: A simple baseline for bayesian uncertainty in deep learning](https://proceedings.neurips.cc/paper/2019/file/118921efba23fc329e6560b27861f0c2-Paper.pdf)  (reporter:  *enter your name*)~~
+* ~~[Neural Architecture Search Using Deep Neural Networks and Monte Carlo Tree Search](https://ojs.aaai.org/index.php/AAAI/article/view/6554) (reporter:  *enter your name*)~~
+* ~~[Task-Adaptive Neural Network Search with Meta-Contrastive Learning](https://arxiv.org/pdf/2103.01495.pdf)  (reporter:  *enter your name*)~~
+
+# Transfer learning
+* [Learning to select data for transfer learning with bayesian optimization](https://arxiv.org/pdf/0907.1815.pdf) (reporter:  *enter your name*)
+* [Knowledge transfer via dense cross-layer mutual-distillation](https://arxiv.org/pdf/2008.07816)  (reporter:  *enter your name*)
