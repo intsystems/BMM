@@ -1,5 +1,5 @@
 # Bayesian multimodeling
-[Form. Deadline: 17th of April, 23.59](https://docs.google.com/forms/d/e/1FAIpQLScH8X7GBnFiesMvtMiMuVWcUIAGMSCnf_UtepcvZ7avhoUaIQ/viewform?usp=sf_link)
+[Form. Deadline: 24th of April, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSdG0eU_anHwOjVSfjNZMvvFKUIVl3MnDPlVPGctkRktOE0RRQ/viewform?usp=sf_link)
 
 [Lab. Deadline: 24th of April, 23.59](lab6)
 
