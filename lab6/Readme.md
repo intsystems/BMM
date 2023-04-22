@@ -1,7 +1,7 @@
 Deadline: April 24, 23.59.
 
 **All the experiments should be implemented with JAX or sklearn. Not pytorch!**
-1. Visualize samples from posterior distribution for linear model with 2 parameters using:
+1. [Ksenofontov Gregory] Visualize samples from posterior distribution for linear model with 2 parameters using:
     - MC
     - variational optimization
     - SGLD
