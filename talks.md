@@ -101,4 +101,4 @@
 
 # Multitask learning
 * [Lottery ticket for multitask learning](https://arxiv.org/abs/2006.14769) (reporter:  *enter your name*)
-* [Posterior meta-replay for continual learning](https://proceedings.neurips.cc/paper/2021/file/761b42cfff120aac30045f7a110d0256-Paper.pdf) (reporter:  *enter your name*)
+* [Posterior meta-replay for continual learning](https://proceedings.neurips.cc/paper/2021/file/761b42cfff120aac30045f7a110d0256-Paper.pdf) (reporter: Barabanshchikova Polina)
