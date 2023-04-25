@@ -98,3 +98,7 @@
 # Transfer learning
 * [Learning to select data for transfer learning with bayesian optimization](https://arxiv.org/pdf/0907.1815.pdf) (reporter:  *enter your name*)
 * [Knowledge transfer via dense cross-layer mutual-distillation](https://arxiv.org/pdf/2008.07816)  (reporter:  *enter your name*)
+
+# Multitask learning
+* [Lottery ticket for multitask learning](https://arxiv.org/abs/2006.14769) (reporter:  *enter your name*)
+* [Posterior meta-replay for continual learning](https://proceedings.neurips.cc/paper/2021/file/761b42cfff120aac30045f7a110d0256-Paper.pdf) (reporter:  *enter your name*)
