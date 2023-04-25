@@ -24,7 +24,7 @@
 | 4.04 |[Probabilistic metric spaces, Projection to latent space](slides/slides_17_prob.pdf)  | [Link](https://www.youtube.com/watch?v=ecrEq3BpIhw) | [Lab 6](lab6) |
 | 11.04 | [Lab 5 discussion](lab5) | [Link](https://www.youtube.com/watch?v=FycosThTi0U&list=PLk4h7dmY2eYGkLXj0K8BNKs-WuqWS46xL) | - |
 | 17.04 | [Transfer learning, Domain adaptation](slides/slides_18_transfer.pdf) | [Link](https://www.youtube.com/watch?v=LhNRPfLR7VE) | - |
-| 25.04 | Multitask learning, Bayesian agents   | - | Lab 7 |
+| 25.04 | [Multitask learning](slides/slides_19_mtask.pdf), ~~Bayesian agents~~   | [Link](https://www.youtube.com/watch?v=Racs_f1rUuk&t=3s) | [Lab 7](lab7) |
 | 2.05 | Lab 6 discussion | - | - |
 | 16.05 | Lab 7 discussion + formal exam/test | - | - |
 
