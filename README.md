@@ -1,5 +1,4 @@
 # Bayesian multimodeling
-[Form. Deadline: 1st of May, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSdgQeHe3ysgVjtyPQ7NOJKgAC8cP1nSf-d8zZddNxKmnTR5lQ/viewform?usp=sf_link)
 
 [Lab. Deadline: 8th of May, 23.59](lab7)
 
@@ -25,7 +24,7 @@
 | 11.04 | [Lab 5 discussion](lab5) | [Link](https://www.youtube.com/watch?v=FycosThTi0U&list=PLk4h7dmY2eYGkLXj0K8BNKs-WuqWS46xL) | - |
 | 17.04 | [Transfer learning, Domain adaptation](slides/slides_18_transfer.pdf) | [Link](https://www.youtube.com/watch?v=LhNRPfLR7VE) | - |
 | 25.04 | [Multitask learning](slides/slides_19_mtask.pdf), ~~Bayesian agents~~   | [Link](https://www.youtube.com/watch?v=Racs_f1rUuk&t=3s) | [Lab 7](lab7) |
-| 2.05 | Lab 6 discussion | - | - |
+| 2.05 | [Lab 6 discussion](lab6) | [Link](https://youtu.be/FYvhdE-TjQI) | - |
 | 16.05 | Lab 7 discussion + formal exam/test | - | - |
 
 ## Plan (Fall 2022)
