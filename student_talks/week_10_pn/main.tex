@@ -19,28 +19,40 @@
     \titlepage
 \end{frame}
 
+\begin{frame}{Predictive uncertainty}
+     \begin{enumerate}
+        \item \textbf{Model uncertainty}, or \textbf{epistemic uncertainty}, measures how well the model (parameters) is matched to the data
+        \item \textbf{Data uncertainty}, or \textbf{aleatoric uncertainty}, arises from the natural complexity of the data, such as class overlap, label noise. The model understands the data and can confidently state whether a given input is difficult to classify. 
+        \item \textbf{Distributional uncertainty}, \textbf{dataset shift}, arises due to mismatch between the training and test distributions. The model is unfamiliar with the test data and thus cannot confidently make predictions. 
+    \end{enumerate}
+\end{frame}
+
 \begin{frame}{Previous approaches}
 \textbf{Bayesian class:} 
     \begin{enumerate}
+        \item more complicated conceptually
         \item performance depends on the form of approximation and the nature of the prior distribution of parameters
         \item implicitly model distributional uncertainty through model uncertainty
     \end{enumerate}
     \textbf{Non-Bayesian class:}
     \begin{enumerate}
-        \item minimizing its KL-divergence to both a in-domain posterior and a out-of-domain posterior
+        \item more straight forward
+        \item explicitly lowers uncertainty on training data and heighten uncertainty on generated artificial data
         \item conflate distributional uncertainty with data uncertainty
     \end{enumerate}
 \end{frame}
+
 \begin{frame}{Bayesian class}
-     Consider a distribution $p(\mathbf{x}, y)$ over input features $x$, labels $y$ and classification model $P(y = \omega_c | \mathbf{x}^*, \mathbf{\theta})$, trained on $D = \{\mathbf{x}_j, y_j\}_{j=1}^N \sim p(\mathbf{x}, y)$. So, in Bayesian framework the uncertainty is:
+     Consider a distribution $p(\mathbf{x}, y)$ over input features $\mathbf{x}$, labels $y$ and classification model $P(y = \omega_c | \mathbf{x}^*, \mathbf{\theta})$, trained on $D = \{\mathbf{x}_j, y_j\}_{j=1}^N \sim p(\mathbf{x}, y)$. So, in Bayesian framework the uncertainty is:
      $$P(\omega_c | \mathbf{x}^*, D) = \int P(\omega_c | \mathbf{x}^*, \mathbf{\theta})p(\mathbf{\theta}|D) d\mathbf{\theta}$$
-     where $P(\omega_c | \mathbf{x}^*, D)$ - data uncertainty,
+     where $P(\omega_c | \mathbf{x}^*, \mathbf{\theta})$ - data uncertainty,
      $p(\mathbf{\theta}|D)$ - model uncertainty
      $$P(\omega_c | \mathbf{x}^*, D) \approx \frac{1}{M}\sum_{i=1}^MP(\omega_c | \mathbf{x}^*, \mathbf{\theta}^{(i)}), \mathbf{\theta}^{(i)} \sim q(\mathbf{\theta})$$
      \begin{figure}[h]
         \includegraphics[scale=0.25]{ensamble.jpg}
      \end{figure}
 \end{frame}
+
 
 \begin{frame}{Prior Networks}
     $$P(\omega_c | \mathbf{x}^*, D) = \int \int p(\omega_c | \mathbf{\mu}) p(\mu | \mathbf{x}^*, \mathbf{\theta})p(\mathbf{\theta}|D) d\mathbf{\mu}d\mathbf{\theta}$$
@@ -53,17 +65,7 @@
 \begin{frame}{Dirichlet Prior Networks}
     Considering marginalization of $\theta$ in last equation:
     $$\int p(\omega_c | \mathbf{\mu}) \int \left[ p(\mu | \mathbf{x}^*, \mathbf{\theta})p(\mathbf{\theta}|D) d\mathbf{\theta} \right] d\mathbf{\mu} = \int p(\omega_c | \mathbf{\mu}) p(\mu | \mathbf{x}^*, D)$$
-    However, marginalization is  generally intractable, so:
-    $$p(\mathbf{\theta}| D) = \delta(\mathbf{\theta} - \hat{\mathbf{\theta})} \rightarrow p(\mu | \mathbf{x}^*, D) \approx p(\mu | \mathbf{x}^*, \hat{\mathbf{\theta}}))$$
-\end{frame}
-\begin{frame}{Dirichlet Prior Networks}
-    $$p(\mu | \mathbf{x}^*, \hat{\mathbf{\theta}}) = Dir(\mathbf{\mu} | \mathbf{\alpha}), \mathbf{\alpha} = \mathbf{f}(\mathbf{x}^*; \hat{\mathbf{\theta}})$$
-    So, posterior over class labels will be given by the mean of the Dirichlet:
-    $$P(\omega_c | \mathbf{x}^*, \hat{\mathbf{\theta}}) = \int p(\omega_c | \mathbf{\mu}) p(\mu | \mathbf{x}^*, \hat{\mathbf{\theta}}) = \frac{\alpha_c}{\alpha_0}$$
-    where $\alpha_c > 0, \alpha_0 = \sum_{c=1}^K\alpha_c$.\newline
-    If an exponential output function is used ($\alpha_c = e^{z_c}$), the the probability of label is the output of softmax:
-    $$P(\omega_c | \mathbf{x}^*, \hat{\mathbf{\theta}}) = \frac{e^{z_c(\mathbf{x}^*)}}{\sum_{k=1}^Ke^{z_k(\mathbf{x}^*)}}$$
-    Now let's consider loss function:
+    So, the loss function:
     $$L(\mathbf{\theta}) = \mathbb{E}_{p_{in}(x)}[KL[Dir(\mathbf{\mu} | \mathbf{\hat{\alpha}}) || p(\mu | \mathbf{x}, \mathbf{\theta})]] + \mathbb{E}_{p_{out}(x)}[KL[Dir(\mathbf{\mu} | \mathbf{\tilde{\alpha}}) || p(\mu | \mathbf{x}, \mathbf{\theta})]]$$
     where $\mathbf{\hat{\alpha}}$ - in-distribution targets,
     $\mathbf{\tilde{\alpha}}$ - out-of-distribution targets.
@@ -86,15 +88,23 @@
 \end{frame}
 \begin{frame}{Synthetic experiments}
     \begin{figure}[h]
-        \includegraphics[scale=0.25]{results.jpg}
+        \includegraphics[scale=0.3]{results.jpg}
      \end{figure}
 \end{frame}
+
 \begin{frame}{MNIST and CIFAR-10 experiments}
     \begin{figure}[h]
-        \includegraphics[scale=0.5]{images/table1.jpg}
-     \end{figure}
-     \begin{figure}[h]
-        \includegraphics[scale=0.5]{images/table2.jpg}
+        \includegraphics[scale=0.6]{images/table1.jpg}
      \end{figure}
 \end{frame}
+
+\begin{frame}{MNIST and CIFAR-10 experiments}
+    \begin{figure}[h]
+        \includegraphics[scale=0.5]{images/table2.jpg}
+     \end{figure}
+    \begin{figure}[h]
+        \includegraphics[scale=0.35]{images/table3.png}
+     \end{figure}
+\end{frame}
+
 \end{document}
