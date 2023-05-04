@@ -2,7 +2,7 @@ Deadline: May 9, 23.59.
 
 **All the experiments should be implemented with JAX or sklearn. Not pytorch!**
 
-1. Consider [Hinton](https://arxiv.org/abs/1503.02531) distillation, but without dataset labels (only teacher output for distillation).
+1. [Skorik Sergey] Consider [Hinton](https://arxiv.org/abs/1503.02531) distillation, but without dataset labels (only teacher output for distillation).
 
 Dataset: MNIST. Consider case, when we have two teacher trained only on class subsets (0,..,4) and (5,..,9): Loss = lambda * Dist_1 + (1-lambda) * Dist_2
 
