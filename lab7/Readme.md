@@ -14,7 +14,7 @@ Visualize accuracy of the model with 3 axes:
 
 2. [Barabanshchikova Polina][Visualize 3 types of dataset shift](https://rtg.cis.upenn.edu/cis700-2019/papers/dataset-shift/dataset-shift-terminology.pdf) for linear regression task with 1d or 2d dataset. For each type of dataset shift plot the RMSE dependency on the dataset shift.
 
-3. Repeat [knowledge distillation without dataset](https://arxiv.org/pdf/1710.07535.pdf) for MNIST dataset using top layer and all-layer statistics.
+3. [Ksenofontov Gregory] Repeat [knowledge distillation without dataset](https://arxiv.org/pdf/1710.07535.pdf) for MNIST dataset using top layer and all-layer statistics.
 
 4. Visualize repeat-copy task using LSTM with schedules: from large length to small length and vice versa.
 Number of repeats is constant, set to 1.
