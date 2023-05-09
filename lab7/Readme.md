@@ -16,10 +16,8 @@ Visualize accuracy of the model with 3 axes:
 
 3. [Ksenofontov Gregory] Repeat [knowledge distillation without dataset](https://arxiv.org/pdf/1710.07535.pdf) for MNIST dataset using top layer and all-layer statistics.
 
-4. Visualize repeat-copy task using LSTM with schedules: from large length to small length and vice versa.
-Number of repeats is constant, set to 1.
-
-Visualize model performance wrt optimization iterations.
+4. [Yakovlev Konstantin] Visualize repeat-copy task using LSTM with schedules: from large length to small length and vice versa.
+Number of repeats is constant, set to 1. Visualize model performance w.r.t. optimization iterations.
 
 5. Visualize repeat-copy task using LSTM with schedule: from small number of repeats to large number of repeats. Compare with no-schedule baseline (number of repeats is random).
 Length is constant, set to 30.
