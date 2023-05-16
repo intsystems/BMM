@@ -25,7 +25,7 @@
 | 17.04 | [Transfer learning, Domain adaptation](slides/slides_18_transfer.pdf) | [Link](https://www.youtube.com/watch?v=LhNRPfLR7VE) | - |
 | 25.04 | [Multitask learning](slides/slides_19_mtask.pdf), ~~Bayesian agents~~   | [Link](https://www.youtube.com/watch?v=Racs_f1rUuk&t=3s) | [Lab 7](lab7) |
 | 2.05 | [Lab 6 discussion](lab6) | [Link](https://youtu.be/FYvhdE-TjQI) | - |
-| 16.05 | Lab 7 discussion + formal exam/test | - | - |
+| 16.05 | [Lab 7 discussion](lab7) | [Link](https://www.youtube.com/watch?v=0CymLlIQAio) | - |
 
 ## Plan (Fall 2022)
 |Date|Topic|Link to record|Lab task|
