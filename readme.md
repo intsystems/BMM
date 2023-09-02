@@ -14,21 +14,21 @@
 | 5.09 |  Intro | - | - |
 | 12.09 | Distributions, expectation, likelihood | - | - |
 | 19.09 |  Bayesian inference  | - | - |
-| 26.09 | MDL  | - | Task 1 |
+| 26.09 | MDL  | - | - |
 | 3.10 |  Variational inference  | - | - | 
-| 10.10 |  Variational inference 2  | - | Task 2 |
-| 17.10 | Task 1 discussion  | - | - |
-| 24.10 |   Probabilistic graphical models  | - | - |
-| 31.10 |  Task 2 discussion | - | - |
-| 7.11 | Generative and discriminative models | - | - |
-| 14.11 | Data generation  | - | Task 3 |
-| 21.11 |  Hyperparameter optimization | - | - |
-| 28.11 | Meta-optimization | - | - |
-| 5.12 | Task 3 discussion | - | - |
-| 12.12 | Random processes and genetics for model selection | - | - |
+| 10.10 |  Variational inference 2  | - | Task 1 |
+| 17.10 |   Probabilistic graphical models  | - | - |
+| 24.10 |  Task 1 discussion | - | - |
+| 31.10 | Generative and discriminative models | - | - |
+| 7.11 | Data generation  | - | Task 2 |
+| 14.11 |  Hyperparameter optimization | - | - |
+| 21.11 | SMBO | - | - |
+| 28.11 | Task 2 discussion | - | - |
+| 5.12 | Random processes and genetics for model selection  | - | -|
+| 12.12 | Meta-optimization | - | - |
 
 ## Next term plan (tentative):
-* SMBO
+* 
 * Hierarchical models
 * Model ensembles, Mixture of experts
 * Structure priors
