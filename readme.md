@@ -25,7 +25,7 @@
 | 21.11 | SMBO | - | - |
 | 28.11 | Task 2 discussion | - | - |
 | 5.12 | Random processes and genetics for model selection  | - | -|
-| 12.12 | Meta-optimization | - | - |
+| 12.12 | Meta-optimization | - | Task 3 (next term) |
 
 ## Next term plan (tentative):
 * 
