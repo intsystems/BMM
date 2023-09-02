@@ -6,9 +6,9 @@
 
 [Zoom link](https://m1p.org/go_zoom2)
 
-[TG Link]([https://t.me/+DLmfDBvgk9NiNTFi](https://t.me/+YBDnIqjIZVNjMDQy))
+[TG Link](https://t.me/+YBDnIqjIZVNjMDQy)
 
-## Plan (Fall 2022)
+## Plan (Fall 2023)
 |Date|Topic|Link to record|Tasks|
 | --- | --- | --- | --- |
 | 5.09 |  Intro | - | - |
@@ -27,7 +27,7 @@
 | 5.12 | Task 3 discussion | - | - |
 | 12.12 | Random processes and genetics for model selection | - | - |
 
-Next term plan (tentative):
+## Next term plan (tentative):
 * SMBO
 * Hierarchical models
 * Model ensembles, Mixture of experts
