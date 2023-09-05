@@ -11,7 +11,7 @@
 ## Plan (Fall 2023)
 |Date|Topic|Link to record|Tasks|
 | --- | --- | --- | --- |
-| 5.09 |  Intro | - | - |
+| 5.09 |  [Intro](slides/slides_0_intro.pdf) | - | - |
 | 12.09 | Distributions, expectation, likelihood | - | - |
 | 19.09 |  Bayesian inference  | - | - |
 | 26.09 | MDL  | - | - |
