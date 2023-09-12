@@ -13,8 +13,8 @@
 ## Plan (Fall 2023)
 |Date|Topic|Link to record|Tasks|
 | --- | --- | --- | --- |
-| 5.09 |  [Intro](slides/slides_0_intro.pdf) | [https://www.youtube.com/watch?v=DJ4QJih3baQ&list=PLk4h7dmY2eYHBhMFKmuAwtkI2xMKGwTrU&index=1](Link) | - |
-| 12.09 | [Distributions, expectation, likelihood](slides/slides_1_distributions.pdf) | [https://www.youtube.com/watch?v=JjY9M-Oy2-o&list=PLk4h7dmY2eYHBhMFKmuAwtkI2xMKGwTrU&index=2](Link) | - |
+| 5.09 |  [Intro](slides/slides_0_intro.pdf) | [Link](https://www.youtube.com/watch?v=DJ4QJih3baQ&list=PLk4h7dmY2eYHBhMFKmuAwtkI2xMKGwTrU&index=1) | - |
+| 12.09 | [Distributions, expectation, likelihood](slides/slides_1_distributions.pdf) | [Link](https://www.youtube.com/watch?v=JjY9M-Oy2-o&list=PLk4h7dmY2eYHBhMFKmuAwtkI2xMKGwTrU&index=2) | - |
 | 19.09 |  Bayesian inference  | - | - |
 | 26.09 | MDL  | - | - |
 | 3.10 |  Variational inference  | - | - | 
