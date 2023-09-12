@@ -14,7 +14,7 @@
 |Date|Topic|Link to record|Tasks|
 | --- | --- | --- | --- |
 | 5.09 |  [Intro](slides/slides_0_intro.pdf) | - | - |
-| 12.09 | Distributions, expectation, likelihood | - | - |
+| 12.09 | [Distributions, expectation, likelihood](slides/slides_1_distributions.pdf) | - | - |
 | 19.09 |  Bayesian inference  | - | - |
 | 26.09 | MDL  | - | - |
 | 3.10 |  Variational inference  | - | - | 
