@@ -2,6 +2,8 @@
 
 [Form. Deadline: 19.09, 23:59](https://docs.google.com/forms/d/e/1FAIpQLScJcalGwTEVUkDQEdSsfgzoo1_qPLVDTN-cuOMlqvHhPKr0UQ/viewform?usp=sf_link)
 
+[Form. Deadline: 26.09, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSfEo6ObyW8XZ9Ok3KLXR4Iss3hpDU8j7vdh16aHWQj193Kfqg/viewform?usp=sf_link)
+
 [Scores](eval.md)
 
 [Talk list](talks.md)
