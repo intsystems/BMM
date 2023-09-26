@@ -4,4 +4,4 @@
 
 # Bayesian inference
 * [Hyperparameters: optimize, or integrate out?](http://www.inference.org.uk/mackay/abstracts/alpha.html) [reporter: "your name"]
-* [Learning Approximately Objective Priors](https://arxiv.org/pdf/1704.01168.pdf) [reporter: "your name"]
+* [Learning Approximately Objective Priors](https://arxiv.org/pdf/1704.01168.pdf) [reporter: "Galina Boeva"]
