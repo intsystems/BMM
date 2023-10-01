@@ -1,6 +1,6 @@
 # Score system
 
-Scores: [https://disk.yandex.ru/i/xhSLRpH2UDgZHg](Link)
+Scores: [Link](https://disk.yandex.ru/i/xhSLRpH2UDgZHg)
 
 * All forms: 1 score
 * Reports: maximum 4 scores
