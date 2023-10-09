@@ -9,3 +9,7 @@
 # Model complexity
 * [A widely applicable Bayesian information criterion](https://www.jmlr.org/papers/volume14/watanabe13a/watanabe13a.pdf) [reporter: "your name"]
 * [The Description Length of Deep Learning Models](https://proceedings.neurips.cc/paper/2018/file/3b712de48137572f3849aabd5666a4e3-Paper.pdf)  [reporter: "your name"]
+
+# Variational inference 1
+* Scalable marginal likelihood estimation for model selection in deep learning [article](http://proceedings.mlr.press/v139/immer21a/immer21a.pdf) [reporter: "your name"]
+* [Rényi divergence](https://proceedings.neurips.cc/paper_files/paper/2016/file/7750ca3559e5b8e1f44210283368fc16-Paper.pdf) [reporter: "your name"]
