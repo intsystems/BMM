@@ -19,7 +19,7 @@
 | 12.09 | [Distributions, expectation, likelihood](slides/slides_1_distributions.pdf) | [Link](https://www.youtube.com/watch?v=JjY9M-Oy2-o&list=PLk4h7dmY2eYHBhMFKmuAwtkI2xMKGwTrU&index=2) | - |
 | 26.09 |  [Bayesian inference](slides/slides_2_inference.pdf)  | [Link](https://www.youtube.com/watch?v=ExJlBwRwUfk&list=PLk4h7dmY2eYHBhMFKmuAwtkI2xMKGwTrU&index=3) | - |
 | 3.10 | [MDL](slides/slides_3_mdl.pdf)  | [Link](https://www.youtube.com/watch?v=OCbuMRgvr0E&t=3s) | - |
-| 10.10 | Variational inference  | - | - | 
+| 10.10 | [Variational inference](slides/slides_4_var1.pdf)  | - | - | 
 | 17.10 |  Variational inference 2  | - | Task 1 |
 | 24.10 |   Probabilistic graphical models  | - | - |
 | 31.10 |  Task 1 discussion | - | - |
