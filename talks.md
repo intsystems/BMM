@@ -11,5 +11,9 @@
 * [The Description Length of Deep Learning Models](https://proceedings.neurips.cc/paper/2018/file/3b712de48137572f3849aabd5666a4e3-Paper.pdf)  [reporter: "your name"]
 
 # Variational inference 1
-* Scalable marginal likelihood estimation for model selection in deep learning [article](http://proceedings.mlr.press/v139/immer21a/immer21a.pdf) [reporter: "your name"]
+~~* Scalable marginal likelihood estimation for model selection in deep learning [article](http://proceedings.mlr.press/v139/immer21a/immer21a.pdf) [reporter: "your name"]~~
 * [Rényi divergence](https://proceedings.neurips.cc/paper_files/paper/2016/file/7750ca3559e5b8e1f44210283368fc16-Paper.pdf) [reporter: Kseniia Petrushina]
+
+# Variationl inference 2
+* [Variational dropout](https://proceedings.neurips.cc/paper/2015/file/bc7316929fe1545bf0b98d114ee3ecb8-Paper.pdf) [reporter: "your name"]
+* [Alpha-divergence](http://proceedings.mlr.press/v48/hernandez-lobatob16.pdf)  [reporter: "your name"]
