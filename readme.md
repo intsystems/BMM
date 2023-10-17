@@ -1,8 +1,11 @@
 # Bayesian multimodeling
 
+[Task 1. Deadline: 31.10, 23.59](task1)
+
 [Form. Deadline: 17.10, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSelEOldIXYRx8QP74M0UNMql8z-hvRTeoHH8-dyXN9luaPPPQ/viewform?usp=sf_link)
 
 [Form. Deadline: 24.10, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSeRv7KswtFxOicu2j2vae8CWNqf7QpfxHzr2JVtXwrNOKhU6A/viewform?usp=sf_link)
+
 
 
 [Scores](eval.md)
