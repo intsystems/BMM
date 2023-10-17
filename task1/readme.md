@@ -19,7 +19,7 @@ Estimate quality of approximation, speed of approximation, and KL divergence bet
 * [ELBO](https://www.cs.toronto.edu/~graves/nips_2011.pdf)
   
 
-4.  [Reporter: TODO]  Run ELBO with different parameter sampling strategy for a neural network (at least 3 layers MLP). Dataset: MNIST (or more complex dataset). Parameter sampling strategies:
+4.  [Reporter: Boeva Galina]  Run ELBO with different parameter sampling strategy for a neural network (at least 3 layers MLP). Dataset: MNIST (or more complex dataset). Parameter sampling strategies:
     - One sample per batch (see Graves, 2011)
     - One sample per batch element (naively)
     -  One sample per batch element using local reparametrization
