@@ -31,7 +31,7 @@ Estimate quality of approximation, speed of approximation, and KL divergence bet
   * [SGLD](https://www.stats.ox.ac.uk/~teh/research/compstats/WelTeh2011a.pdf)
   * [SGD as ELBO](https://arxiv.org/abs/1504.01344)  
 
-6.  [Reporter: TODO]  Compute and compare ELBO for a model with parameters distributed using Gaussian mixture. The ELBO must be computed using a simple ELBO (Graves) and using implicit reparametrization trick.
+6.  [Reporter: Marat Khusainov]  Compute and compare ELBO for a model with parameters distributed using Gaussian mixture. The ELBO must be computed using a simple ELBO (Graves) and using implicit reparametrization trick.
        * [ELBO](https://www.cs.toronto.edu/~graves/nips_2011.pdf)
        * [Implicit reparametrization](https://proceedings.neurips.cc/paper_files/paper/2018/file/92c8c96e4c37100777c7190b76d28233-Paper.pdf)
 
