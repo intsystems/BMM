@@ -15,7 +15,7 @@ Estimate quality of approximation, speed of approximation, and KL divergence bet
   * [hyperparameter optimization, Laplace method](http://strijov.com/papers/HyperOptimizationEng.pdf)
   * [ELBO](https://www.cs.toronto.edu/~graves/nips_2011.pdf)
 
-3.  [Reporter: TODO]  Analyze a naive method of hyperparameter optimization from Graves 2011. Adapt it to a full and diagonal covariance matrix. Estimate covariance estimation quality for datasets generated with different covariance matrix types.
+3.  [Reporter: Vladimirov Eduard]  Analyze a naive method of hyperparameter optimization from Graves 2011. Adapt it to a full and diagonal covariance matrix. Estimate covariance estimation quality for datasets generated with different covariance matrix types.
 * [ELBO](https://www.cs.toronto.edu/~graves/nips_2011.pdf)
   
 
