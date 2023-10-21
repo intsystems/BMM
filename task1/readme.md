@@ -26,7 +26,7 @@ Estimate quality of approximation, speed of approximation, and KL divergence bet
   * [ELBO](https://www.cs.toronto.edu/~graves/nips_2011.pdf)
   * [Local reparametrization](https://arxiv.org/abs/1506.02557)
 
-5.  [Reporter: TODO]  Compare approximation for a Gaussian distribution and a Gaussian mixture using SGD, SGLD and Stein gradient descent. For each method optimize hyperparameters and show dependence of the quality from the iteration number.
+5.  [Reporter: Dmitry Protasov]  Compare approximation for a Gaussian distribution and a Gaussian mixture using SGD, SGLD and Stein gradient descent. For each method optimize hyperparameters and show dependence of the quality from the iteration number.
   * [Stein operator](https://proceedings.neurips.cc/paper_files/paper/2016/file/b3ba8f1bee1238a2f37603d90b58898d-Paper.pdf)
   * [SGLD](https://www.stats.ox.ac.uk/~teh/research/compstats/WelTeh2011a.pdf)
   * [SGD as ELBO](https://arxiv.org/abs/1504.01344)  
