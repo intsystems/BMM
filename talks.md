@@ -17,3 +17,7 @@
 # Variationl inference 2
 * [Variational dropout](https://proceedings.neurips.cc/paper/2015/file/bc7316929fe1545bf0b98d114ee3ecb8-Paper.pdf) [reporter: Eduard Vladimirov]
 * [Alpha-divergence](http://proceedings.mlr.press/v48/hernandez-lobatob16.pdf)  [reporter: "your name"]
+
+# Graphical models
+* [Learning to Discover Sparse Graphical Models](http://proceedings.mlr.press/v70/belilovsky17a/belilovsky17a.pdf) [reporter: "your name"]
+* [Probabilistic circuits](http://starai.cs.ucla.edu/papers/ProbCirc20.pdf) [reporter: "your name"]
