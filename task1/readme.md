@@ -36,7 +36,7 @@ Estimate quality of approximation, speed of approximation, and KL divergence bet
        * [Implicit reparametrization](https://proceedings.neurips.cc/paper_files/paper/2018/file/92c8c96e4c37100777c7190b76d28233-Paper.pdf)
 
    
-7. [Reporter: TODO] Repeat plot 28.6 from MacKay book. Dataset: sklearn dataset. 
+7. [Reporter: Gavrilyuk Alexander] Repeat plot 28.6 from MacKay book. Dataset: sklearn dataset. 
     Prior: normal distribution with scalar covariance. Models: multiple linear regression models:
     1. with optimal hyperparameters
     2. with lowered variance for the prior 
