@@ -47,3 +47,4 @@
 * Multitask learning
 * SSM
 * Agents
+* Diffusion, Score matching models
