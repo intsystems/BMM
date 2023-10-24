@@ -19,5 +19,5 @@
 * [Alpha-divergence](http://proceedings.mlr.press/v48/hernandez-lobatob16.pdf)  [reporter: "your name"]
 
 # Graphical models
-* [Learning to Discover Sparse Graphical Models](http://proceedings.mlr.press/v70/belilovsky17a/belilovsky17a.pdf) [reporter: "your name"]
+* [Learning to Discover Sparse Graphical Models](http://proceedings.mlr.press/v70/belilovsky17a/belilovsky17a.pdf) [reporter: "Marat Khusainov"]
 * [Probabilistic circuits](http://starai.cs.ucla.edu/papers/ProbCirc20.pdf) [reporter: "your name"]
