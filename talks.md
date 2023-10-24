@@ -20,4 +20,4 @@
 
 # Graphical models
 * [Learning to Discover Sparse Graphical Models](http://proceedings.mlr.press/v70/belilovsky17a/belilovsky17a.pdf) [reporter: "Marat Khusainov"]
-* [Probabilistic circuits](http://starai.cs.ucla.edu/papers/ProbCirc20.pdf) [reporter: "your name"]
+* [Probabilistic circuits](http://starai.cs.ucla.edu/papers/ProbCirc20.pdf) [reporter: Boeva Galina]
