@@ -46,3 +46,5 @@ Estimate quality of approximation, speed of approximation, and KL divergence bet
 * [hyperparameter optimization](http://strijov.com/papers/HyperOptimizationEng.pdf)
 * Visualization: [help1](https://matplotlib.org/stable/users/interactive.html),[help2](https://stackoverflow.com/questions/44329068/jupyter-notebook-interactive-plot-with-widgets),[help3](https://towardsdatascience.com/matplotlib-animations-in-jupyter-notebook-4422e4f0e389)
 
+8. [Reporter: enter your name] Compare approximation for a Gaussian mixture with Laplace approximation and, variation inference and Expectation propagation.
+ * [Bishop: describes all the methods](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf) 
