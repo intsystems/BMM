@@ -21,3 +21,7 @@
 # Graphical models
 * [Learning to Discover Sparse Graphical Models](http://proceedings.mlr.press/v70/belilovsky17a/belilovsky17a.pdf) [reporter: "Marat Khusainov"]
 * [Probabilistic circuits](http://starai.cs.ucla.edu/papers/ProbCirc20.pdf) [reporter: "Parviz Karimov"]
+
+# Generative vs. Discriminative
+* [Hypertransformer: Model generation for supervised and semi-supervised few-shot learning](https://proceedings.mlr.press/v162/zhmoginov22a/zhmoginov22a.pdf)
+* [OUTRAGEOUSLY LARGE NEURAL NETWORKS: THE SPARSELY-GATED MIXTURE-OF-EXPERTS LAYER](https://proceedings.neurips.cc/paper/2019/file/0ae775a8cb3b499ad1fca944e6f5c836-Paper.pdf)
