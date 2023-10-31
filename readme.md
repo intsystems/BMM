@@ -1,10 +1,10 @@
 # Bayesian multimodeling
 
-[Task 1. Deadline: 31.10, 23.59](task1)
+[Task 1. Deadline: 3.11, 23.59](task1)
+
+[Form. Deadline: 7.11, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSdP0oz90vqf267Jldn__6CCdGHWqnFgyml6q7GQycgbLDwwEA/viewform?usp=sf_link)
 
 [Form. Deadline: 31.10, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSemBfyXcTYLsFd0lOWVG2G_gyu997DOcdXBEq0uhDuPaLfUdA/viewform?usp=sf_link)
-
-[Form. Deadline: 24.10, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSeRv7KswtFxOicu2j2vae8CWNqf7QpfxHzr2JVtXwrNOKhU6A/viewform?usp=sf_link)
 
 
 
@@ -26,7 +26,7 @@
 | 10.10 | [Variational inference](slides/slides_4_var1.pdf)  | [Link](https://www.youtube.com/watch?v=AB3UVtGrJvE&list=PLk4h7dmY2eYHBhMFKmuAwtkI2xMKGwTrU&index=5) | - | 
 | 17.10 |  [Variational inference 2](slides/slides_5_var2.pdf)  | [Link](https://www.youtube.com/watch?v=uZ8Ci_QJLs0) | [Task 1](task1) |
 | 24.10 |   [Probabilistic graphical models](slides/slides_6_graph.pdf)  | [Link](https://www.youtube.com/watch?v=FPJpJLQSCks) | - |
-| 31.10 | Generative and discriminative models | - | - |
+| 31.10 | [Generative and discriminative models](slides/slides_7_gendisc.pdf) | [Link](https://www.youtube.com/watch?v=AB3UVtGrJvE&list=PLk4h7dmY2eYHBhMFKmuAwtkI2xMKGwTrU&index=7) | - |
 | 7.11 |  Task 1 discussion | - | - |
 | 14.11 | Data generation  | - | Task 2 |
 | 21.11 |  Hyperparameter optimization | - | - |
