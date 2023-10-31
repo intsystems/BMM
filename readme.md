@@ -26,7 +26,7 @@
 | 10.10 | [Variational inference](slides/slides_4_var1.pdf)  | [Link](https://www.youtube.com/watch?v=AB3UVtGrJvE&list=PLk4h7dmY2eYHBhMFKmuAwtkI2xMKGwTrU&index=5) | - | 
 | 17.10 |  [Variational inference 2](slides/slides_5_var2.pdf)  | [Link](https://www.youtube.com/watch?v=uZ8Ci_QJLs0) | [Task 1](task1) |
 | 24.10 |   [Probabilistic graphical models](slides/slides_6_graph.pdf)  | [Link](https://www.youtube.com/watch?v=FPJpJLQSCks) | - |
-| 31.10 | [Generative and discriminative models](slides/slides_7_gendisc.pdf) | [Link](https://www.youtube.com/watch?v=AB3UVtGrJvE&list=PLk4h7dmY2eYHBhMFKmuAwtkI2xMKGwTrU&index=7) | - |
+| 31.10 | [Generative and discriminative models](slides/slides_7_gendisc.pdf) | [Link](https://youtu.be/pztiCWHS6Jw?si=tX8nOaFMePDY2LVP) | - |
 | 7.11 |  Task 1 discussion | - | - |
 | 14.11 | Data generation  | - | Task 2 |
 | 21.11 |  Hyperparameter optimization | - | - |
