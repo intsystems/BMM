@@ -1,0 +1,117 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+
+\usepackage{amsmath}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\title{HyperTransformer}
+\author{Timofey Chernikov}
+\institute{MIPT, 2023}
+
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+
+% \begin{frame}
+%     \tableofcontents
+% \end{frame}
+
+
+\section{Motivation \& Background}
+\begin{frame}{Motivation}
+    \begin{block}{Problem statement}
+        Given a broad set of tasks, develop a single model that will be able to quickly specialize for a particular task with little data.
+    \end{block} 
+\end{frame}
+
+
+\begin{frame}{Existing approaches}
+ \begin{block}{Metric-Based Learning}
+    One family of approaches involves mapping input samples into an embedding space and
+    then using some nearest neighbor algorithm to label query
+    samples based on the distances from their embeddings to
+    embeddings of labeled support samples. The metric used to
+    compute the distances can either be the same for all tasks, or
+    can be task-dependent
+    \end{block}
+\end{frame}
+
+\section{Theory}
+\begin{frame}{Formal definition}
+    \begin{block}{}
+        A set of tasks $\{t| \in \mathcal{T}\}$
+        
+        Loss $\mathcal{L}(f,t)$ that quantifies the correctness of any
+        model $f$ attempting to solve $t$.
+
+        A task description $\tau(t)$ that is sufficient for communicating this task and finding
+        the optimal model that solves it,
+        includes any available information like labeled and
+        unlabeled samples, image metadata, textual descriptions, etc.
+
+        The weight generation algorithm can then be viewed as a
+        method of using a set of training tasks $\mathcal{T}_{train}$ for discovering
+        a particular solver aφ that given $\tau(t)$ for a task $t$ similar to
+        those present in the training set, produces an optimal model
+        $f* = a_\phi(\tau) \in \mathcal{F}$ minimizing $\mathcal{L}(f*, t)$
+
+        $$ \underset{\arg \min}{\phi in \Phi} \mathbb{E}_{t \sim p(t)} \mathcal{L}(a_\phi(\tau(t)), t) $$
+
+    \end{block}
+\end{frame}
+
+
+\section{Model}
+\begin{frame}{Model scheme}
+    \begin{block}{}
+        \includegraphics[scale=0.25]{model_scheme.png}
+    \end{block}
+\end{frame}
+
+
+\section{Model}
+\begin{frame}{Model description}
+    \begin{block}{}
+        A solver $a_\phi$ is the core of a few-shot learning algorithm -
+        it encodes the knowledge of the training task distribution within its weights $\phi$. 
+        It's a Transformer-based model that takes a task description $\tau$ and produces weights for some or all
+        layers $\{\theta_l | l \in [1, L]\}$ of the generated CNN model. Layer
+        weights that are not generated are instead learned end-to-end together 
+        with HT weights as ordinary task-agnostic variables. 
+        In other words, these learned layers are modified
+        during the training phase and remain static during the evaluation phase. 
+        In our experiments generated CNN models contain a set of convolutional 
+        layers and a final fully-connected logits layer. The
+        weights are generated layer-by-layer starting from the first
+        layer: $\theta_1(\tau ) \rightarrow \theta_2 (\theta_1; \tau ) \rightarrow ... \rightarrow \theta_L(\theta_1,...,\theta_{L-1}; \tau)$.
+    \end{block}
+\end{frame}
+
+\section{Model}
+\begin{frame}{Results}
+    \includegraphics[scale=0.19]{results.png}
+\end{frame}
+
+
+
+
+\begin{frame}{Literature}
+    \begin{enumerate}
+        \item \textbf{Main article} \href{https://proceedings.mlr.press/v162/zhmoginov22a/zhmoginov22a.pdf}
+        {HyperTransformer: Model Generation for Supervised and Semi-Supervised
+        Few-Shot Learning}.
+    \end{enumerate}
+\end{frame}
+
+
+
+\end{document}

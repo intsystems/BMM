@@ -1,0 +1,50 @@
+HyperTransformer: Model Generation for Supervised and Semi-Supervised
+Few-Shot Learning
+
+HyperTransformer,
+a Transformer-based model for supervised and
+semi-supervised few-shot learning that generates
+weights of a convolutional neural network (CNN)
+directly from support samples
+
+In few-shot learning, a conventional machine learning
+paradigm of fitting a parametric model to training data is
+taken to a limit of extreme data scarcity where entire categories are introduced with just one or few examples. A
+generic approach to solving this problem uses training data
+to identify parameters φ of a solver aφ that given a small
+batch of examples for a particular task (called a support set)
+can solve this task on unseen data (called a query set).
+One broad family of few-shot image classification methods
+frequently referred to as metric-based learning, relies on
+pretraining an embedding eφ(·) and then using some distance in the embedding space to label query samples based
+on their closeness to known labeled support samples
+
+In this paper we propose a new few-shot learning approach
+that allows us to decouple the complexity of the task space
+from the complexity of individual tasks. The main idea is
+to use the Transformer model (Vaswani et al., 2017) that
+given a few-shot task episode, generates an entire inference
+model by producing all model weights in a single pass. This
+allows us to encode the intricacies of the available training
+data inside the Transformer model, while producing specialized tiny models for a given individual task. Reducing the
+size of the generated model and moving the computational
+overhead to the Transformer-based weight generator, we
+can lower the cost of the inference on new images. This can
+reduce the overall computation cost in cases where the tasks
+change infrequently and hence the weight generator is only
+used sporadically.
+
+Using a Transformer to generate the
+logits layer on top of a conventionally end-to-end learned
+embedding, we achieve competitive results on several common few-shot learning benchmarks
+
+We additionally can extend our method to support unlabeled
+samples by appending a special input token that encodes unknown classes to all unlabeled examples.
+
+In essence, by training the weight generator
+to produce CNN models with best possible performance on
+a query set, we teach the Transformer to utilize unlabeled
+samples without having to manually introduce additional
+optimization objectives.
+
+
