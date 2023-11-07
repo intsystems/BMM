@@ -1,10 +1,8 @@
 # Bayesian multimodeling
 
-[Task 1. Deadline: 3.11, 23.59](task1)
 
 [Form. Deadline: 7.11, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSdP0oz90vqf267Jldn__6CCdGHWqnFgyml6q7GQycgbLDwwEA/viewform?usp=sf_link)
 
-[Form. Deadline: 31.10, 23:59](https://docs.google.com/forms/d/e/1FAIpQLSemBfyXcTYLsFd0lOWVG2G_gyu997DOcdXBEq0uhDuPaLfUdA/viewform?usp=sf_link)
 
 
 
