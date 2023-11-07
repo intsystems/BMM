@@ -25,3 +25,9 @@
 # Generative vs. Discriminative
 * [Hypertransformer: Model generation for supervised and semi-supervised few-shot learning](https://proceedings.mlr.press/v162/zhmoginov22a/zhmoginov22a.pdf) [reporter: "Timofey Chernikov"]
 * [OUTRAGEOUSLY LARGE NEURAL NETWORKS: THE SPARSELY-GATED MIXTURE-OF-EXPERTS LAYER](https://proceedings.neurips.cc/paper/2019/file/0ae775a8cb3b499ad1fca944e6f5c836-Paper.pdf) [reporter: Kseniia Petrushina]
+
+# Task 1 discussion (optional talk)
+* [Approximate Fisher Information Matrix to Characterise the Training of Deep Neural Networks](https://arxiv.org/pdf/1810.06767.pdf) [reporter: "your name"]
+* [Hyperparameters: optimize, or integrate out?](http://www.inference.org.uk/mackay/abstracts/alpha.html) [reporter: "your name"]
+* [A widely applicable Bayesian information criterion](https://www.jmlr.org/papers/volume14/watanabe13a/watanabe13a.pdf) [reporter: "your name"]
+* Scalable marginal likelihood estimation for model selection in deep learning [article](http://proceedings.mlr.press/v139/immer21a/immer21a.pdf) [reporter: "your name"]
