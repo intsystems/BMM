@@ -34,5 +34,5 @@ Save notebooks into task2/SurnameTask2.ipynb
 9. [Reporter: Galina Boeva] Repeat two methods of optimization of GAN: using eq 1 and alternative method for better gradients (see paper). Compare the convergence of both models, their losses as well as their generator and discriminator losses.
 * [Paper](https://arxiv.org/pdf/1406.2661.pdf)
 
-10. [Reporter: TODO] Train vanilla autoencoder. Approximate latent variable distribution using uniform and normal distribution. Try to sample. Analyze sampling performance.
+10. [Reporter: Parviz Karimov] Train vanilla autoencoder. Approximate latent variable distribution using uniform and normal distribution. Try to sample. Analyze sampling performance.
 
