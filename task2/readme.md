@@ -23,12 +23,13 @@ Save notebooks into task2/SurnameTask2.ipynb
 
 6. [Reporter: TODO] Train VAE. Train vanilla AE to repeat VAE performance using GAN. Sample from AE, analyze sampling performance. Dataset: MNIST or similar dataset.
 
-7. [Reporter: TODO] Repeat sampling procedure from contractive AE. Analyze model performance. Dataset: MNIST or similar dataset.
+7. [Reporter: TODO] Plot vectorfield from contractive AE. Plot heatmap for norm of it. Plot VAE density. Compare results. Analyze dependency of density estimation quality of AE from sigma. Dataset: MNIST or similar dataset.
 * [Paper](https://www.jmlr.org/papers/volume15/alain14a/alain14a.pdf)
 
 
-8. [Reporter: TODO] Repeat denoysing procedure from contrastive AE. Analyze model performance. Dataset: MNIST or similar dataset.
+8. [Reporter: TODO] Plot vectorfield from denoysing AE. Plot heatmap for norm of it. Plot VAE density. Compare results. Analyze dependency of density estimation quality of AE from sigma. Dataset: MNIST or similar dataset.
 * [Paper](https://www.jmlr.org/papers/volume15/alain14a/alain14a.pdf)
+
 
 9. [Reporter: TODO] Repeat two methods of optimization of GAN: using eq 1 and alternative method for better gradients (see paper). Compare the convergence of both models, their losses as well as their generator and discriminator losses.
 * [Paper](https://arxiv.org/pdf/1406.2661.pdf)
