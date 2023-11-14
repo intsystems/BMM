@@ -19,7 +19,7 @@
 * [Alpha-divergence](http://proceedings.mlr.press/v48/hernandez-lobatob16.pdf)  [reporter: Boeva Galina]
 
 # Graphical models
-* [Learning to Discover Sparse Graphical Models](http://proceedings.mlr.press/v70/belilovsky17a/belilovsky17a.pdf) [reporter: "Marat Khusainov"]
+* [Learning to Discover Sparse Graphical Models](http://proceedings.mlr.press/v70/belilovsky17a/belilovsky17a.pdf) [reporter: "your name"]
 * [Probabilistic circuits](http://starai.cs.ucla.edu/papers/ProbCirc20.pdf) [reporter: "Parviz Karimov"]
 
 # Generative vs. Discriminative
