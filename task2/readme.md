@@ -5,7 +5,7 @@ Save notebooks into task2/SurnameTask2.ipynb
 **IMPORTANT:** the code must not be written in Torch/Tensorflow. For deep learning use Jax.
 
 
-1. [Reporter: TODO] Visualize message passing for factor-graph with algorithm Sum-Product. The directions of messages should be visualized in the resulting plots.  Graph and model parameters must be sampled randomly during each run of notebook. Visualization format - plots step by step via interactive plots or animation. 
+1. [Reporter: Vladimirov] Visualize message passing for factor-graph with algorithm Sum-Product. The directions of messages should be visualized in the resulting plots.  Graph and model parameters must be sampled randomly during each run of notebook. Visualization format - plots step by step via interactive plots or animation. 
 * [Bishop, Sum product](http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf)
 * [Animation example](https://jckantor.github.io/CBE30338/A.03-Animation-in-Jupyter-Notebooks.html)
 * [Large book about probabilistic models](http://mcb111.org/w06/KollerFriedman.pdf)
