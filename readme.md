@@ -1,7 +1,7 @@
 # Bayesian multimodeling
 
 
-[Task 2. Deadline: 30.11, 23.59](task2)
+[Task 2. Deadline: 1.12, 23.59](task2)
 
 
 
