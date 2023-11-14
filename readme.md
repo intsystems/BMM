@@ -25,7 +25,7 @@
 | 24.10 |   [Probabilistic graphical models](slides/slides_6_graph.pdf)  | [Link](https://www.youtube.com/watch?v=FPJpJLQSCks) | - |
 | 31.10 | [Generative and discriminative models](slides/slides_7_gendisc.pdf) | [Link](https://youtu.be/pztiCWHS6Jw?si=tX8nOaFMePDY2LVP) | - |
 | 7.11 |  Task 1 discussion | - | - |
-| 14.11 | Data generation  | - | Task 2 |
+| 14.11 | [Data generation](slides/slides_8_generative.pdf)  | - | [Task 2](task2) |
 | 21.11 |  Hyperparameter optimization | - | - |
 | 28.11 | SMBO | - | - |
 | 5.12 | Task 2 discussion | - | - |
