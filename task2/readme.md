@@ -1,4 +1,4 @@
-Deadline: November 30, 23.59.
+Deadline: December 1, 23.59.
 
 Save notebooks into task2/SurnameTask2.ipynb
 
