@@ -14,7 +14,7 @@ Save notebooks into task2/SurnameTask2.ipynb
 * [Bishop, Bayesian networks and Markov random fields](http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf)
 * [Large book about probabilistic models](http://mcb111.org/w06/KollerFriedman.pdf)
 
-3.[Reporter: TODO] Visualize KL-divergence (for 3 variants: KL(p1,p2), KL(p2,p1) and 0.5 KL(p1,p2) + 0.5 KL(p2,p1)) and JS distance between true data distribution and GAN distribution. Visulizae dependence of these KL-divergences on the numer of optimization iterations. Dataset: synthetic. 
+3.[Reporter: Marat Khusainov] Visualize KL-divergence (for 3 variants: KL(p1,p2), KL(p2,p1) and 0.5 KL(p1,p2) + 0.5 KL(p2,p1)) and JS distance between true data distribution and GAN distribution. Visulizae dependence of these KL-divergences on the numer of optimization iterations. Dataset: synthetic. 
 
 4. [Reporter: TODO] Repeat M1 and M2 models from Kingma for a dataset with noisy labels. Plots the performance of both models from the percentage of wrong (noisy) labels. Dataset: MNIST or similar dataset.
 * [Paper](https://proceedings.neurips.cc/paper/2014/file/d523773c6b194f37b938d340d5d02232-Paper.pdf)
