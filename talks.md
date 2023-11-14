@@ -31,3 +31,7 @@
 * [Hyperparameters: optimize, or integrate out?](http://www.inference.org.uk/mackay/abstracts/alpha.html) [reporter: "your name"]
 * [A widely applicable Bayesian information criterion](https://www.jmlr.org/papers/volume14/watanabe13a/watanabe13a.pdf) [reporter: "your name"]
 * Scalable marginal likelihood estimation for model selection in deep learning [article](http://proceedings.mlr.press/v139/immer21a/immer21a.pdf) [reporter: "your name"]
+
+# Generative models
+* [Dangers of Bayesian Model Averaging under Covariate Shift](https://arxiv.org/pdf/2106.11905.pdf) [reporter: "your name"]
+* [Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift](https://proceedings.neurips.cc/paper_files/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf) [reporter: "your name"]
