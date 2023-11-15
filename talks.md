@@ -30,7 +30,7 @@
 * [Approximate Fisher Information Matrix to Characterise the Training of Deep Neural Networks](https://arxiv.org/pdf/1810.06767.pdf) [reporter: "your name"]
 * [Hyperparameters: optimize, or integrate out?](http://www.inference.org.uk/mackay/abstracts/alpha.html) [reporter: "your name"]
 * [A widely applicable Bayesian information criterion](https://www.jmlr.org/papers/volume14/watanabe13a/watanabe13a.pdf) [reporter: "your name"]
-* Scalable marginal likelihood estimation for model selection in deep learning [article](http://proceedings.mlr.press/v139/immer21a/immer21a.pdf) [reporter: "your name"]
+* Scalable marginal likelihood estimation for model selection in deep learning [article](http://proceedings.mlr.press/v139/immer21a/immer21a.pdf) [reporter: Maksim Tyurikov]
 
 # Generative models
 * [Dangers of Bayesian Model Averaging under Covariate Shift](https://arxiv.org/pdf/2106.11905.pdf) [reporter: "Timofey Chernikov"]
