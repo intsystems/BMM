@@ -21,7 +21,7 @@ Save notebooks into task2/SurnameTask2.ipynb
 
 5. [Reporter: TODO] Compare model performance, where models are implemented using Maximum likelihood optimization, MAP + Laplace approximation, ELBO for different dataset shifts: covariate shift, prior probability shift, concept shift. Plot dependency from the dataset shift significance. Model: any model starting from Logistic regression. 
 
-6. [Reporter: TODO] Train VAE. Train vanilla AE to repeat VAE performance using GAN. Sample from AE, analyze sampling performance. Dataset: MNIST or similar dataset.
+6. [Reporter: Dmitry Protasov] Train VAE. Train vanilla AE to repeat VAE performance using GAN. Sample from AE, analyze sampling performance. Dataset: MNIST or similar dataset.
 
 7. [Reporter: TODO] Plot vector field from contractive AE. Plot heatmap for norm of it. Plot VAE density. Compare results. Analyze dependency of density estimation quality of AE from sigma. taset: multiple sintenic datasets from the paper.
 * [Paper](https://www.jmlr.org/papers/volume15/alain14a/alain14a.pdf)
