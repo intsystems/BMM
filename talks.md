@@ -34,4 +34,4 @@
 
 # Generative models
 * [Dangers of Bayesian Model Averaging under Covariate Shift](https://arxiv.org/pdf/2106.11905.pdf) [reporter: "Timofey Chernikov"]
-* [Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift](https://proceedings.neurips.cc/paper_files/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf) [reporter: "your name"]
+* [Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift](https://proceedings.neurips.cc/paper_files/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf) [reporter: "Parviz Karimov"]
