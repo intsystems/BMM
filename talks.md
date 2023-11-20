@@ -35,3 +35,7 @@
 # Generative models
 * [Dangers of Bayesian Model Averaging under Covariate Shift](https://arxiv.org/pdf/2106.11905.pdf) [reporter: "Timofey Chernikov"]
 * [Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift](https://proceedings.neurips.cc/paper_files/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf) [reporter: "Dmitry Protasov"]
+
+# Hyperparameter optimization
+* [Weighted Random Search for Hyperparameter Optimization](https://arxiv.org/pdf/2004.01628.pdf) [reporter: "your name"]
+* [c-TPE: Tree-Structured Parzen Estimator with Inequality Constraints for Expensive Hyperparameter Optimization](https://arxiv.org/pdf/2211.14411.pdf) [reporter: "your name"]
