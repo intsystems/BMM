@@ -5,8 +5,6 @@
 
 [Form. Deadline: 21.11, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSefUczTtIpmJmlpxGuDjyCKxDDsKL8NARSZBX59x1_H61EQjA/viewform?usp=sf_link)
 
-[Form. Deadline: 28.11, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSfdM49fLxd4En_CwUEaJ4xJLnRZmLp54z88JJ3vr9m2_iKCGA/viewform?usp=sf_link)
-
 [Scores](eval.md)
 
 [Talk list](talks.md)
