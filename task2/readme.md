@@ -27,7 +27,7 @@ Save notebooks into task2/SurnameTask2.ipynb
 * [Paper](https://www.jmlr.org/papers/volume15/alain14a/alain14a.pdf)
 
 
-8. [Reporter: TODO] Plot vector field from denoysing AE. Plot heatmap for norm of it. Plot VAE density. Compare results. Analyze dependency of density estimation quality of AE from sigma. Dataset: multiple sintenic datasets from the paper.
+8. [Reporter: Kseniia Petrushina] Plot vector field from denoysing AE. Plot heatmap for norm of it. Plot VAE density. Compare results. Analyze dependency of density estimation quality of AE from sigma. Dataset: multiple sintenic datasets from the paper.
 * [Paper](https://www.jmlr.org/papers/volume15/alain14a/alain14a.pdf)
 
 
