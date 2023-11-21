@@ -26,8 +26,8 @@
 | 31.10 | [Generative and discriminative models](slides/slides_7_gendisc.pdf) | [Link](https://youtu.be/pztiCWHS6Jw?si=tX8nOaFMePDY2LVP) | - |
 | 7.11 |  Task 1 discussion | - | - |
 | 14.11 | [Data generation](slides/slides_8_generative.pdf)  | - | [Task 2](task2) |
-| 21.11 |  Hyperparameter optimization | - | - |
-| 28.11 | SMBO | - | - |
+| 21.11 |  [Hyperparameter optimization: SMBO](slides/slides_9_smbo.pdf) | - | - |
+| 28.11 |  Hyperparameter optimization: gradient-based | - | - |
 | 5.12 | Task 2 discussion | - | - |
 | 12.12 | Random processes and genetics for model selection  | - |  - |
 
