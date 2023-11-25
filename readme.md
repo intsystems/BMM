@@ -26,9 +26,9 @@
 | 17.10 |  [Variational inference 2](slides/slides_5_var2.pdf)  | [Link](https://www.youtube.com/watch?v=uZ8Ci_QJLs0) | [Task 1](task1) |
 | 24.10 |   [Probabilistic graphical models](slides/slides_6_graph.pdf)  | [Link](https://www.youtube.com/watch?v=FPJpJLQSCks) | - |
 | 31.10 | [Generative and discriminative models](slides/slides_7_gendisc.pdf) | [Link](https://youtu.be/pztiCWHS6Jw?si=tX8nOaFMePDY2LVP) | - |
-| 7.11 |  Task 1 discussion | - | - |
+| 7.11 |  Task 1 discussion | [Link](https://youtu.be/MDoI3_85mCw?si=JuBW63uznxZmAUu6) | - |
 | 14.11 | [Data generation](slides/slides_8_generative.pdf)  | - | [Task 2](task2) |
-| 21.11 |  [Hyperparameter optimization: SMBO](slides/slides_9_smbo.pdf) | - | - |
+| 21.11 |  [Hyperparameter optimization: SMBO](slides/slides_9_smbo.pdf) | [Link](https://youtu.be/dhbUD02b9v0?si=JwFRTR1_zXrmITj6) | - |
 | 28.11 |  Hyperparameter optimization: gradient-based | - | - |
 | 5.12 | Task 2 discussion | - | - |
 | 12.12 | Random processes and genetics for model selection  | - |  - |
