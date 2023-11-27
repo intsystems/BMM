@@ -10,7 +10,7 @@ Save notebooks into task2/SurnameTask2.ipynb
 * [Animation example](https://jckantor.github.io/CBE30338/A.03-Animation-in-Jupyter-Notebooks.html)
 * [Large book about probabilistic models](http://mcb111.org/w06/KollerFriedman.pdf)
 
-2. [Reporter: TODO] Generate Bayesian network randomly. Generate dataset using Bayesian network. Estimate likelihood and compare it with likelihood for random data ("out-of-distribution" data). Convert network to Markov Random Field. Estimate the likelihood of previously generated data and random data. Repeat experiment multiple times.
+2. [Reporter: Chernikov] Generate Bayesian network randomly. Generate dataset using Bayesian network. Estimate likelihood and compare it with likelihood for random data ("out-of-distribution" data). Convert network to Markov Random Field. Estimate the likelihood of previously generated data and random data. Repeat experiment multiple times.
 * [Bishop, Bayesian networks and Markov random fields](http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf)
 * [Large book about probabilistic models](http://mcb111.org/w06/KollerFriedman.pdf)
 
