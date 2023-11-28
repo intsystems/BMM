@@ -5,8 +5,6 @@
 
 [Form. Deadline: 5.12, 23.50](https://docs.google.com/forms/d/e/1FAIpQLSdtHO1GMCXNirzhwB9lpJcXs7ErJEzKia05jPSU93rzgenmrw/viewform?usp=sf_link)
 
-[Form. Deadline: 21.11, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSefUczTtIpmJmlpxGuDjyCKxDDsKL8NARSZBX59x1_H61EQjA/viewform?usp=sf_link)
-
 [Form. Deadline: 28.11, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSfdM49fLxd4En_CwUEaJ4xJLnRZmLp54z88JJ3vr9m2_iKCGA/viewform?usp=sf_link)
 
 [Scores](eval.md)
@@ -31,7 +29,7 @@
 | 7.11 |  Task 1 discussion | [Link](https://youtu.be/MDoI3_85mCw?si=JuBW63uznxZmAUu6) | - |
 | 14.11 | [Data generation](slides/slides_8_generative.pdf)  | - | [Task 2](task2) |
 | 21.11 |  [Hyperparameter optimization: SMBO](slides/slides_9_smbo.pdf) | [Link](https://youtu.be/dhbUD02b9v0?si=JwFRTR1_zXrmITj6) | - |
-| 28.11 |  Hyperparameter optimization: gradient-based | - | - |
+| 28.11 |  [Hyperparameter optimization: gradient-based](slides/slides_10_grad_hyper.pdf) | - | - |
 | 5.12 | Task 2 discussion | - | - |
 | 12.12 | Random processes and genetics for model selection  | - |  - |
 
