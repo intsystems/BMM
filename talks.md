@@ -42,4 +42,4 @@
 
 # Gradient-based hyperparameter optimization
 * [Bayesian Optimization with Gradients](https://proceedings.neurips.cc/paper/2017/file/64a08e5f1e6c39faeb90108c430eb120-Paper.pdf)  [reporter: "your name"]
-* [Forward and Reverse Gradient-Based Hyperparameter Optimization](https://arxiv.org/pdf/1703.01785.pdf)   [reporter: "your name"]
+* [Forward and Reverse Gradient-Based Hyperparameter Optimization](https://arxiv.org/pdf/1703.01785.pdf)   [reporter: Maksim Tyurikov]
