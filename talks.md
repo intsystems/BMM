@@ -43,3 +43,10 @@
 # Gradient-based hyperparameter optimization
 * [Bayesian Optimization with Gradients](https://proceedings.neurips.cc/paper/2017/file/64a08e5f1e6c39faeb90108c430eb120-Paper.pdf)  [reporter: "your name"]
 * [Forward and Reverse Gradient-Based Hyperparameter Optimization](https://arxiv.org/pdf/1703.01785.pdf)   [reporter: Maksim Tyurikov]
+
+# Task 2 discussion (optional talk)
+* [Approximate Fisher Information Matrix to Characterise the Training of Deep Neural Networks](https://arxiv.org/pdf/1810.06767.pdf) [reporter: "your name"]
+* [Hyperparameters: optimize, or integrate out?](http://www.inference.org.uk/mackay/abstracts/alpha.html) [reporter: "your name"]
+* [A widely applicable Bayesian information criterion](https://www.jmlr.org/papers/volume14/watanabe13a/watanabe13a.pdf) [reporter: "your name"]
+* [c-TPE: Tree-Structured Parzen Estimator with Inequality Constraints for Expensive Hyperparameter Optimization](https://arxiv.org/pdf/2211.14411.pdf) [reporter: "your name"]
+* [Bayesian Optimization with Gradients](https://proceedings.neurips.cc/paper/2017/file/64a08e5f1e6c39faeb90108c430eb120-Paper.pdf)  [reporter: "your name"]
