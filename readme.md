@@ -29,7 +29,7 @@
 | 14.11 | [Data generation](slides/slides_8_generative.pdf)  | - | [Task 2](task2) |
 | 21.11 |  [Hyperparameter optimization: SMBO](slides/slides_9_smbo.pdf) | [Link](https://youtu.be/dhbUD02b9v0?si=JwFRTR1_zXrmITj6) | - |
 | 28.11 |  [Hyperparameter optimization: gradient-based](slides/slides_10_grad_hyper.pdf) | - | - |
-| 5.12 | Task 2 discussion | - | - |
+| 5.12 | Task 2 discussion | [Link](https://youtu.be/k6uzx4Cs2Ig?si=wH0w44ETcnkEunZX) | - |
 | 12.12 | Random processes and genetics for model selection  | - |  - |
 
 ## Next term plan (tentative):
