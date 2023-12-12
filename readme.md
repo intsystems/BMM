@@ -30,7 +30,7 @@
 | 21.11 |  [Hyperparameter optimization: SMBO](slides/slides_9_smbo.pdf) | [Link](https://youtu.be/dhbUD02b9v0?si=JwFRTR1_zXrmITj6) | - |
 | 28.11 |  [Hyperparameter optimization: gradient-based](slides/slides_10_grad_hyper.pdf) | - | - |
 | 5.12 | Task 2 discussion | [Link](https://youtu.be/k6uzx4Cs2Ig?si=wH0w44ETcnkEunZX) | - |
-| 12.12 | Random processes and genetics for model selection  | - |  - |
+| 12.12 | [Structure selection](slides/slides_11_structure.pdf)  | - |  - |
 
 ## Next term plan (tentative):
 * Metaoptimization
