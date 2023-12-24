@@ -1,10 +1,5 @@
 # Bayesian multimodeling
-
-
-[Task 2. Deadline: 1.12, 23.59](task2)
-
-[Form. Deadline: 5.12, 23.50](https://docs.google.com/forms/d/e/1FAIpQLSdtHO1GMCXNirzhwB9lpJcXs7ErJEzKia05jPSU93rzgenmrw/viewform?usp=sf_link)
-
+[Feedback form](https://docs.google.com/forms/d/e/1FAIpQLSeCfM9C9iIISGYIUp-_gr0jlkO-937TYx0heK1my_t3aYEeUw/viewform?usp=sf_link)
 
 [Scores](eval.md)
 
@@ -30,7 +25,7 @@
 | 21.11 |  [Hyperparameter optimization: SMBO](slides/slides_9_smbo.pdf) | [Link](https://youtu.be/dhbUD02b9v0?si=JwFRTR1_zXrmITj6) | - |
 | 28.11 |  [Hyperparameter optimization: gradient-based](slides/slides_10_grad_hyper.pdf) | - | - |
 | 5.12 | Task 2 discussion | [Link](https://youtu.be/k6uzx4Cs2Ig?si=wH0w44ETcnkEunZX) | - |
-| 12.12 | [Structure selection](slides/slides_11_structure.pdf)  | - |  - |
+| 12.12 | [Structure selection](slides/slides_11_structure.pdf)  | [Link](https://youtu.be/fwAm2UVCO_c?si=RAfPRA8xEq0Wneo8) |  - |
 
 ## Next term plan (tentative):
 * Metaoptimization
