@@ -50,3 +50,8 @@
 * [A widely applicable Bayesian information criterion](https://www.jmlr.org/papers/volume14/watanabe13a/watanabe13a.pdf) [reporter: "your name"]
 * [c-TPE: Tree-Structured Parzen Estimator with Inequality Constraints for Expensive Hyperparameter Optimization](https://arxiv.org/pdf/2211.14411.pdf) [reporter: "your name"]
 * [Bayesian Optimization with Gradients](https://proceedings.neurips.cc/paper/2017/file/64a08e5f1e6c39faeb90108c430eb120-Paper.pdf)  [reporter: "your name"]
+
+# Structure selection
+*  Neural Architecture Search without Training [article](https://arxiv.org/abs/2006.04647) [reporter: "your name"]
+*  Bayesnas: A bayesian approach for neural architecture search  [article](http://proceedings.mlr.press/v97/zhou19e/zhou19e.pdf) [reporter: "your name"]
+*  Bananas: Bayesian optimization with neural architectures for neural architecture search [article](https://ojs.aaai.org/index.php/AAAI/article/download/17233/17040) [reporter: "your name"]
