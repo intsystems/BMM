@@ -13,21 +13,24 @@
 ## Plan (Spring 2024)
 |Date|Topic|Link to record|Tasks|
 | --- | --- | --- | --- |
-| 6.02 | Genetics | - | Task 3 |
-| 13.02 | SSM | - | - |
-| 20.02 |  Hierarchical models  | - | - |
-| 27.12 | Model ensembles, Mixture of experts | - | Task 4 |
-| 5.03 | Task 3 discussion | - | - | 
-| 12.03 |  Sampling  | - | - |
-| 19.03 |  Probabilistic metric spaces  | - | - |
-| 26.03 | Informative prior | - | Task 5 |
-| 02.04 | Task 4 discussion | - | - |
-| 09.04 | Knowledge transfer and distillation  | - | - |
-| 16.04 |  Meta-optimization  | - | - |
-| 23.04 | Multitask learning | - | Task 6 |
-| 7.05 | Task 5 discussion | - | - |
-| 14.05 | ??? (agents, Score matching?) | - |  - |
-| 21.05 | Task 6 discussion, Scores | - |  - |
+| 13.02 | Genetics | - | Task 3 |
+| 20.02 | Meta-optimization | - | - |
+| 27.02 |  Multitask learning  | - | - |
+| 5.02 |  Task 3 discussion | - | - |
+| 12.03 |Knowledge transfer and distillation | - | Task 4 | 
+| 19.03 |  Sampling, informative prior  | - | - |
+| 26.03 |  Probabilistic metric spaces  | - | - |
+| 02.03 | Latent space projection | - | - |
+| 09.04 | Task 4 discussion | - | - |
+| 16.04 | Model ensembles, Mixture of experts  | - | - |
+| 23.04 |  SSM  | - | Task 5 |
+| 7.05 | TBA  | - | - |
+| 14.05 | TBA | - | - |
+| 21.05 | Task 5 discussion, Scores | - |  - |
+
+### TBA topics
+* agents
+* score matching
 
 
 ## Plan (Fall 2023)
