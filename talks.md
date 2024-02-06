@@ -54,4 +54,4 @@
 # Structure selection
 *  Neural Architecture Search without Training [article](https://arxiv.org/abs/2006.04647) [reporter: "your name"]
 *  Bayesnas: A bayesian approach for neural architecture search  [article](http://proceedings.mlr.press/v97/zhou19e/zhou19e.pdf) [reporter: "your name"]
-*  Bananas: Bayesian optimization with neural architectures for neural architecture search [article](https://ojs.aaai.org/index.php/AAAI/article/download/17233/17040) [reporter: "your name"]
+*  Bananas: Bayesian optimization with neural architectures for neural architecture search [article](https://ojs.aaai.org/index.php/AAAI/article/download/17233/17040) [reporter: Boeva Galina]
