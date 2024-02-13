@@ -12,7 +12,7 @@ Save notebooks into task3/SurnameTask3.ipynb
 
 3. [reporter: TODO] Implement naive-RMAD (without information loss restoring) for 2d problem (the loss surface must be nontrivial). Plot the forward trajectory and restored trajectory for different number of epoch and different momentum (mu = 0, 0.5, 0.9, 0.99).
     * [RMAD](https://proceedings.mlr.press/v37/maclaurin15.pdf)
-    * [Talk slides](https://www.robots.ox.ac.uk/seminars/Extra/2015 07 23 David Duvenaud.pdf)
+    * [Talk slides](https://www.robots.ox.ac.uk/seminars/Extra/2015_07_23_DavidDuvenaud.pdf)
     
 4. [reporter: TODO] Consider Bayesian linear regression. Restore covariance matrix using Bayesian optimization methods. The covariance matrix must be full-ranked. Plot the dependence of the restoration performance from number of iterations for different data dimmensions.
     * [Bishop](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf)
