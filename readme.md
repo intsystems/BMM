@@ -16,7 +16,7 @@
 ## Plan (Spring 2024)
 |Date|Topic|Link to record|Tasks|
 | --- | --- | --- | --- |
-| 13.02 | [Genetics](slides/slides_12_evolution.pdf) | - | [Task 3](task3) |
+| 13.02 | [Genetics](slides/slides_12_evolution.pdf) | [Link](https://youtu.be/uX7KHkDjDL0?si=VkrnxwQ_v5tGopOb) | [Task 3](task3) |
 | 20.02 | Meta-optimization | - | - |
 | 27.02 |  Multitask learning  | - | - |
 | 5.02 |  Task 3 discussion | - | - |
