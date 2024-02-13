@@ -1,6 +1,6 @@
 # Bayesian multimodeling
 
-[Lab 3. Deadline: 1st of Match, 23.59](lab3)
+[Task 3. Deadline: 1st of Match, 23.59](task3)
 
 [Scores](eval.md)
 
@@ -14,7 +14,7 @@
 ## Plan (Spring 2024)
 |Date|Topic|Link to record|Tasks|
 | --- | --- | --- | --- |
-| 13.02 | Genetics | - | Task 3 |
+| 13.02 | Genetics | - | [Task 3](task3) |
 | 20.02 | Meta-optimization | - | - |
 | 27.02 |  Multitask learning  | - | - |
 | 5.02 |  Task 3 discussion | - | - |
