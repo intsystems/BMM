@@ -7,7 +7,7 @@ Save notebooks into task3/SurnameTask3.ipynb
 1. [reporter: TODO] Implement 1-st order DARTS for CIFAR-10 dataset. Compare with random structure selection. Model: 3-layer network. Structure: binary mask for each parameter. Plots: model peformance, mask. **NOTE:** binary mask won't work with unconstrained parameter optimization, think how to overcome this limitation.
     * [DARTS paper](https://arxiv.org/abs/1806.09055)
     
-2. [reporter: TODO] Implement ENAS for CIFAR-10 dataset. Compare with random structure selection. Model: 3-layer network. Structure: binary mask for each parameter. Plots: model peformance, mask.
+2. [reporter: Dmitry Protasov] Implement ENAS for CIFAR-10 dataset. Compare with random structure selection. Model: 3-layer network. Structure: binary mask for each parameter. Plots: model peformance, mask.
     * [ENAS paper](https://arxiv.org/abs/1802.03268)
 
 3. [reporter: TODO] Implement naive-RMAD (without information loss restoring) for 2d problem (the loss surface must be nontrivial). Plot the forward trajectory and restored trajectory for different number of epoch and different momentum (mu = 0, 0.5, 0.9, 0.99).
