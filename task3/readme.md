@@ -34,7 +34,7 @@ Save notebooks into task3/SurnameTask3.ipynb
     
 7. [reporter: Boeva Galina] Implement a genetic algorithm for model structure selection for CIFAR-10 dataset. Compare with random structure selection. Model: 3-layer network. Structure: binary mask for each parameter. Plots: model peformance, mask. 
 
-8. [reporter: TODO] Implement a ENAS-based symbolic regression.
+8. [reporter: Parviz Karimov] Implement a ENAS-based symbolic regression.
     * [ENAS paper](https://arxiv.org/abs/1802.03268)
     * [symbolic regression idea](http://www.machinelearning.ru/wiki/images/5/53/Varfolomeeva2015MsPresentation.pdf)
    
