@@ -38,7 +38,7 @@ Save notebooks into task3/SurnameTask3.ipynb
     * [ENAS paper](https://arxiv.org/abs/1802.03268)
     * [symbolic regression idea](http://www.machinelearning.ru/wiki/images/5/53/Varfolomeeva2015MsPresentation.pdf)
    
-9. [reporter: TODO] Consider Bayesian linear regression. Restore covariance matrix using Bayesian optimization methods. The covariance rank matrix must vary from 1 to full-rank. Plot the dependence of the restoration performance from number of iterations for different ranks.
+9. [reporter: Kseniia Petrushina] Consider Bayesian linear regression. Restore covariance matrix using Bayesian optimization methods. The covariance rank matrix must vary from 1 to full-rank. Plot the dependence of the restoration performance from number of iterations for different ranks.
     * [Bishop](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf)
     * [Optuna, recommended for BO](https://optuna.org/)
     
