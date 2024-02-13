@@ -55,3 +55,7 @@
 *  Neural Architecture Search without Training [article](https://arxiv.org/abs/2006.04647) [reporter: Dmitry Protasov]
 *  Bayesnas: A bayesian approach for neural architecture search  [article](http://proceedings.mlr.press/v97/zhou19e/zhou19e.pdf) [reporter: "your name"]
 *  Bananas: Bayesian optimization with neural architectures for neural architecture search [article](https://ojs.aaai.org/index.php/AAAI/article/download/17233/17040) [reporter: Boeva Galina]
+
+# Random processes and genetics for model generation
+* [AutoML-Zero: Evolving Machine Learning Algorithms From Scratch](http://proceedings.mlr.press/v119/real20a/real20a.pdf) [reporter: "your name"]
+* [Proving the Lottery Ticket Hypothesis: Pruning is All You Need](http://proceedings.mlr.press/v119/malach20a/malach20a.pdf) [reporter: "your name"]
