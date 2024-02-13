@@ -1,5 +1,6 @@
 # Bayesian multimodeling
-[Feedback form](https://docs.google.com/forms/d/e/1FAIpQLSeCfM9C9iIISGYIUp-_gr0jlkO-937TYx0heK1my_t3aYEeUw/viewform?usp=sf_link)
+
+[Lab 3. Deadline: 1st of Match, 23.59](lab3)
 
 [Scores](eval.md)
 
