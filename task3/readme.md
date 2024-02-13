@@ -32,7 +32,7 @@ Save notebooks into task3/SurnameTask3.ipynb
     * [Greedy optimization](https://arxiv.org/abs/1511.06727)
     * [DARTS paper, uses the same hyperparameter optimization method](https://arxiv.org/abs/1806.09055)
     
-7. [reporter: TODO] Implement a genetic algorithm for model structure selection for CIFAR-10 dataset. Compare with random structure selection. Model: 3-layer network. Structure: binary mask for each parameter. Plots: model peformance, mask. 
+7. [reporter: Boeva Galina] Implement a genetic algorithm for model structure selection for CIFAR-10 dataset. Compare with random structure selection. Model: 3-layer network. Structure: binary mask for each parameter. Plots: model peformance, mask. 
 
 8. [reporter: TODO] Implement a ENAS-based symbolic regression.
     * [ENAS paper](https://arxiv.org/abs/1802.03268)
