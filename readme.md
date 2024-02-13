@@ -1,6 +1,8 @@
 # Bayesian multimodeling
 
-[Task 3. Deadline: 1st of Match, 23.59](task3)
+[Task 3. Deadline: 1st of March, 23.59](task3)
+
+[Form. Deadline: 20th of Febraury, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSdrjnVWsClwWj4Axn4uuEF4tmbdX1tnVrs1iVOH3xun-Pw9Lg/viewform?usp=sf_link)
 
 [Scores](eval.md)
 
