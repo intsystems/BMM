@@ -4,7 +4,7 @@ Save notebooks into task3/SurnameTask3.ipynb
 
 **IMPORTANT:** the code must not be written in Torch/Tensorflow. For deep learning use Jax.
 
-1. [reporter: TODO] Implement 1-st order DARTS for CIFAR-10 dataset. Compare with random structure selection. Model: 3-layer network. Structure: binary mask for each parameter. Plots: model peformance, mask. **NOTE:** binary mask won't work with unconstrained parameter optimization, think how to overcome this limitation.
+1. [reporter: Timofey Chernikov] Implement 1-st order DARTS for CIFAR-10 dataset. Compare with random structure selection. Model: 3-layer network. Structure: binary mask for each parameter. Plots: model peformance, mask. **NOTE:** binary mask won't work with unconstrained parameter optimization, think how to overcome this limitation.
     * [DARTS paper](https://arxiv.org/abs/1806.09055)
     
 2. [reporter: Dmitry Protasov] Implement ENAS for CIFAR-10 dataset. Compare with random structure selection. Model: 3-layer network. Structure: binary mask for each parameter. Plots: model peformance, mask.
