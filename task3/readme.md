@@ -14,7 +14,7 @@ Save notebooks into task3/SurnameTask3.ipynb
     * [RMAD](https://proceedings.mlr.press/v37/maclaurin15.pdf)
     * [Talk slides](https://www.robots.ox.ac.uk/seminars/Extra/2015_07_23_DavidDuvenaud.pdf)
     
-4. [reporter: TODO] Consider Bayesian linear regression. Restore covariance matrix using Bayesian optimization methods. The covariance matrix must be full-ranked. Plot the dependence of the restoration performance from number of iterations for different data dimmensions.
+4. [reporter: Parviz Karimov] Consider Bayesian linear regression. Restore covariance matrix using Bayesian optimization methods. The covariance matrix must be full-ranked. Plot the dependence of the restoration performance from number of iterations for different data dimmensions.
     * [Bishop](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf)
     * [Optuna, recommended for BO](https://optuna.org/)
     
@@ -34,7 +34,7 @@ Save notebooks into task3/SurnameTask3.ipynb
     
 7. [reporter: Boeva Galina] Implement a genetic algorithm for model structure selection for CIFAR-10 dataset. Compare with random structure selection. Model: 3-layer network. Structure: binary mask for each parameter. Plots: model peformance, mask. 
 
-8. [reporter: Parviz Karimov] Implement a ENAS-based symbolic regression.
+8. [reporter: TODO] Implement a ENAS-based symbolic regression.
     * [ENAS paper](https://arxiv.org/abs/1802.03268)
     * [symbolic regression idea](http://www.machinelearning.ru/wiki/images/5/53/Varfolomeeva2015MsPresentation.pdf)
    
