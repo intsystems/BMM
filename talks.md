@@ -59,3 +59,8 @@
 # Random processes and genetics for model generation
 * [AutoML-Zero: Evolving Machine Learning Algorithms From Scratch](http://proceedings.mlr.press/v119/real20a/real20a.pdf) [reporter: Kseniia Petrushina]
 * [Proving the Lottery Ticket Hypothesis: Pruning is All You Need](http://proceedings.mlr.press/v119/malach20a/malach20a.pdf) [reporter: "your name"]
+
+
+# Meta-optimization
+* [Generalized Inner Loop Meta-Learning](https://arxiv.org/pdf/1910.01727.pdf) [reporter: "your name"]
+* [HOW TO TRAIN YOUR MAML](https://arxiv.org/pdf/1810.09502.pdf)  [reporter: "your name"]
