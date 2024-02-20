@@ -4,6 +4,8 @@
 
 [Form. Deadline: 20th of Febraury, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSdrjnVWsClwWj4Axn4uuEF4tmbdX1tnVrs1iVOH3xun-Pw9Lg/viewform?usp=sf_link)
 
+[Form. Deadline: 27th of Febraury, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSfonBFBlz7UN0dE12nM5JGqEEOMlhptyoqBdzoUGRnrBX9rCA/viewform?usp=sf_link)
+
 [Scores](eval.md)
 
 [Talk list](talks.md)
