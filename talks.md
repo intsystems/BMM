@@ -63,4 +63,4 @@
 
 # Meta-optimization
 * [Generalized Inner Loop Meta-Learning](https://arxiv.org/pdf/1910.01727.pdf) [reporter: "your name"]
-* [HOW TO TRAIN YOUR MAML](https://arxiv.org/pdf/1810.09502.pdf)  [reporter: "your name"]
+* [HOW TO TRAIN YOUR MAML](https://arxiv.org/pdf/1810.09502.pdf)  [reporter: Dmitry Protasov]
