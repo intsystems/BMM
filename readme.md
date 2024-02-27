@@ -20,7 +20,7 @@
 | --- | --- | --- | --- |
 | 13.02 | [Genetics](slides/slides_12_evolution.pdf) | [Link](https://youtu.be/uX7KHkDjDL0?si=VkrnxwQ_v5tGopOb) | [Task 3](task3) |
 | 20.02 | [Meta-optimization](slides/slides_13_meta.pdf) | - | - |
-| 27.02 |  Multitask learning  | - | - |
+| 27.02 |  [Multitask learning](slides/slides_14_mtask.pdf)  | - | - |
 | 5.02 |  Task 3 discussion | - | - |
 | 12.03 |Knowledge transfer and distillation | - | Task 4 | 
 | 19.03 |  Sampling, informative prior  | - | - |
