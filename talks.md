@@ -64,3 +64,7 @@
 # Meta-optimization
 * [Generalized Inner Loop Meta-Learning](https://arxiv.org/pdf/1910.01727.pdf) [reporter: "your name"]
 * [HOW TO TRAIN YOUR MAML](https://arxiv.org/pdf/1810.09502.pdf)  [reporter: Dmitry Protasov]
+
+# Multi-task learning
+* [Discovering Inductive Bias with Gibbs Priors: A Diagnostic Tool for Approximate Bayesian Inference](https://proceedings.mlr.press/v151/rendsburg22a/rendsburg22a.pdf) [reporter: "your name"]
+* [Variational multi-task learning with gumbel-softmax priors](https://proceedings.neurips.cc/paper_files/paper/2021/file/afd4836712c5e77550897e25711e1d96-Paper.pdf) [reporter: "your name"]
