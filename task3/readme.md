@@ -10,7 +10,7 @@ Save notebooks into task3/SurnameTask3.ipynb
 2. [reporter: Dmitry Protasov] Implement ENAS for CIFAR-10 dataset. Compare with random structure selection. Model: 3-layer network. Structure: binary mask for each parameter. Plots: model peformance, mask.
     * [ENAS paper](https://arxiv.org/abs/1802.03268)
 
-3. [reporter: Marat Khusainov] Implement naive-RMAD (without information loss restoring) for 2d problem (the loss surface must be nontrivial). Plot the forward trajectory and restored trajectory for different number of epoch and different momentum (mu = 0, 0.5, 0.9, 0.99).
+3. [reporter: TODO] Implement naive-RMAD (without information loss restoring) for 2d problem (the loss surface must be nontrivial). Plot the forward trajectory and restored trajectory for different number of epoch and different momentum (mu = 0, 0.5, 0.9, 0.99).
     * [RMAD](https://proceedings.mlr.press/v37/maclaurin15.pdf)
     * [Talk slides](https://www.robots.ox.ac.uk/seminars/Extra/2015_07_23_DavidDuvenaud.pdf)
     
@@ -18,7 +18,7 @@ Save notebooks into task3/SurnameTask3.ipynb
     * [Bishop](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf)
     * [Optuna, recommended for BO](https://optuna.org/)
     
-5. [reporter: TODO] Consider Bayesian linear regression. Restore covariance matrix using HOAG method. Consider full-ranked and 1-ranked covariance matrix. Plot the dependence of the restoration performance from number of iterations for different data dimmensions.
+5. [reporter: Marat Khusainov] Consider Bayesian linear regression. Restore covariance matrix using HOAG method. Consider full-ranked and 1-ranked covariance matrix. Plot the dependence of the restoration performance from number of iterations for different data dimmensions.
     * [Bishop](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf)
     * [HOAG](https://arxiv.org/abs/1602.02355)
    
