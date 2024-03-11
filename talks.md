@@ -65,6 +65,12 @@
 * [Generalized Inner Loop Meta-Learning](https://arxiv.org/pdf/1910.01727.pdf) [reporter: "your name"]
 * [HOW TO TRAIN YOUR MAML](https://arxiv.org/pdf/1810.09502.pdf)  [reporter: Dmitry Protasov]
 
+
 # Multi-task learning
 * [Discovering Inductive Bias with Gibbs Priors: A Diagnostic Tool for Approximate Bayesian Inference](https://proceedings.mlr.press/v151/rendsburg22a/rendsburg22a.pdf) [reporter: "your name"]
 * [Variational multi-task learning with gumbel-softmax priors](https://proceedings.neurips.cc/paper_files/paper/2021/file/afd4836712c5e77550897e25711e1d96-Paper.pdf) [reporter: "your name"]
+
+# Knowledge transfer
+* [Dreaming to Distill: Data-free Knowledge Transfer via DeepInversion](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yin_Dreaming_to_Distill_Data-Free_Knowledge_Transfer_via_DeepInversion_CVPR_2020_paper.pdf)  [reporter: "your name"]
+* [Learning to select data for transfer learning with bayesian optimization](https://arxiv.org/pdf/0907.1815.pdf)  [reporter: "your name"]
+* [Knowledge transfer via dense cross-layer mutual-distillation](https://arxiv.org/pdf/2008.07816)   [reporter: "your name"]
