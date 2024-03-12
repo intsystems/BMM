@@ -7,7 +7,7 @@ Save notebooks into task4/SurnameTask4.ipynb
 1. [reporter: TODO] Train deep weight prior on MNIST dataset ane evluate its performance on SVHN dataset (make SVHN gray-colored).
 * [Paper](https://arxiv.org/abs/1810.06943)
 
-2. [reporter: TODO] Repeat [knowledge distillation without dataset](https://arxiv.org/pdf/1710.07535.pdf) for MNIST dataset using top layer and all-layer statistics. 
+2. [reporter: Kseniia Petrushina] Repeat [knowledge distillation without dataset](https://arxiv.org/pdf/1710.07535.pdf) for MNIST dataset using top layer and all-layer statistics. 
 
 
 3.  [reporter: TODO] Visualize repeat-copy task using LSTM with schedule: from small number of repeats to large number of repeats. Compare with no-schedule baseline (number of repeats is random).
