@@ -1,6 +1,6 @@
 # Bayesian multimodeling
 
-[Task 3. Deadline: 1st of March, 23.59](task3)
+[Task 4. Deadline: 5th of April, 23.59](task4)
 
 [Form. Deadline: 27th of Febraury, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSfonBFBlz7UN0dE12nM5JGqEEOMlhptyoqBdzoUGRnrBX9rCA/viewform?usp=sf_link)
 
@@ -22,7 +22,7 @@
 | 20.02 | [Meta-optimization](slides/slides_13_meta.pdf) | - | - |
 | 27.02 |  [Multitask learning](slides/slides_14_mtask.pdf)  | - | - |
 | 5.02 |  Task 3 discussion | - | - |
-| 12.03 |Knowledge transfer and distillation | - | Task 4 | 
+| 12.03 |Knowledge transfer and distillation | - | [Task 4](task4) | 
 | 19.03 |  Sampling, informative prior  | - | - |
 | 26.03 |  Probabilistic metric spaces  | - | - |
 | 02.03 | Latent space projection | - | - |
