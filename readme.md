@@ -22,7 +22,7 @@
 | 20.02 | [Meta-optimization](slides/slides_13_meta.pdf) | - | - |
 | 27.02 |  [Multitask learning](slides/slides_14_mtask.pdf)  | - | - |
 | 5.02 |  Task 3 discussion | - | - |
-| 12.03 |Knowledge transfer and distillation | - | [Task 4](task4) | 
+| 12.03 |[Knowledge transfer and distillation](slides/slides_15_transfer.pdf) | - | [Task 4](task4) | 
 | 19.03 |  Sampling, informative prior  | - | - |
 | 26.03 |  Probabilistic metric spaces  | - | - |
 | 02.03 | Latent space projection | - | - |
