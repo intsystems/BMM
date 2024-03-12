@@ -19,7 +19,7 @@ Length is constant, set to 30. Visualize model performance wrt optimization iter
 5.  [reporter: TODO] Analyze stability of Learning2Learn method under different dataset shifts. Basic dataset: MNIST. Consider all dataset shift types and different dataset augmentations: inverting colors, adding noise into dataset, training LSTM only on classes subset.
 * [Paper](https://proceedings.neurips.cc/paper_files/paper/2016/file/fb87582825f9d28a8d42c5e5e5e8b23d-Paper.pdf)
 
-6. [reporter: TODO] Reimplement sinusoidal toy example from MAML. Compare MAML with its modification: instead of second-order optimization use  first-order optimization. Visualize obtained initial parameter values and training progress (see Fig 1 from MAML+ for reference).
+6. [reporter: Boeva Galina] Reimplement sinusoidal toy example from MAML. Compare MAML with its modification: instead of second-order optimization use  first-order optimization. Visualize obtained initial parameter values and training progress (see Fig 1 from MAML+ for reference).
 * [MAML+](https://arxiv.org/pdf/1810.09502.pdf)
 * [Talk by Dmitry Protasov](https://github.com/intsystems/BMM/blob/main-23/student_talks/week3_sem2_maml/MAML__.pdf)
 
