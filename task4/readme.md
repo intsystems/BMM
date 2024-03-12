@@ -11,9 +11,7 @@ Save notebooks into task4/SurnameTask4.ipynb
 
 
 3.  [reporter: TODO] Visualize repeat-copy task using LSTM with schedule: from small number of repeats to large number of repeats. Compare with no-schedule baseline (number of repeats is random).
-Length is constant, set to 30.
-
-Visualize model performance wrt optimization iterations.
+Length is constant, set to 30. Visualize model performance wrt optimization iterations.
 
 
 4. [reporter: TODO]  Demonstrate Task-IL, Domain-IL and Class-IL continual learning problems for MNIST. Compare results with scheme results from [paper](https://arxiv.org/pdf/1803.10123.pdf). 
