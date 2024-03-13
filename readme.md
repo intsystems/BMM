@@ -2,9 +2,7 @@
 
 [Task 4. Deadline: 5th of April, 23.59](task4)
 
-[Form. Deadline: 27th of Febraury, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSfonBFBlz7UN0dE12nM5JGqEEOMlhptyoqBdzoUGRnrBX9rCA/viewform?usp=sf_link)
-
-[Form. Deadline: 12th of March, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSf45z0TT8MrN1f47YmONV9O6CRY9TsYjUkqW8fMLs2GaGjELQ/viewform?usp=sf_link)
+[Form. Deadline: 19th of March, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSe4rtpavh1P45Dj6Fd6dllDecDrbUGfOfzipGeFiOcywlcLxw/viewform?usp=sf_link)
 
 [Scores](eval.md)
 
