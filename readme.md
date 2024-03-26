@@ -21,7 +21,7 @@
 | 27.02 |  [Multitask learning](slides/slides_14_mtask.pdf)  | - | - |
 | 5.02 |  Task 3 discussion | - | - |
 | 12.03 |[Knowledge transfer and distillation](slides/slides_15_transfer.pdf) | - | [Task 4](task4) | 
-| 26.03 |  Sampling, informative prior  | - | - |
+| 26.03 |  [Sampling](slides/slides_16_sampling.pdf)  | - | - |
 | 02.04 |  Probabilistic metric spaces  | - | - |
 | 09.04 | Latent space projection | - | - |
 | 16.04 | Model ensembles, Mixture of experts  | - |  Task 5 |
