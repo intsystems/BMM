@@ -74,3 +74,7 @@
 * [Dreaming to Distill: Data-free Knowledge Transfer via DeepInversion](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yin_Dreaming_to_Distill_Data-Free_Knowledge_Transfer_via_DeepInversion_CVPR_2020_paper.pdf)  [reporter: Boeva Galina]
 * [Learning to select data for transfer learning with bayesian optimization](https://arxiv.org/pdf/0907.1815.pdf)  [reporter: "your name"]
 * [Knowledge transfer via dense cross-layer mutual-distillation](https://arxiv.org/pdf/2008.07816)   [reporter: "your name"]
+
+# Sampling
+* [Data augmentation in Bayesian neural networks and the cold posterior effect](https://proceedings.mlr.press/v180/nabarro22a/nabarro22a.pdf) [reporter: "your name"]
+* [Evolutionary MCMC](https://cdn.aaai.org/ICML/2003/ICML03-096.pdf) [reporter: "your name"]
