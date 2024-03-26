@@ -1,6 +1,6 @@
 # Bayesian multimodeling
 
-[Task 4. Deadline: 5th of April, 23.59](task4)
+[Task 4. Deadline: 12th of April, 23.59](task4)
 
 [Form. Deadline: 19th of March, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSe4rtpavh1P45Dj6Fd6dllDecDrbUGfOfzipGeFiOcywlcLxw/viewform?usp=sf_link)
 
