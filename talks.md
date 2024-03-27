@@ -77,4 +77,4 @@
 
 # Sampling
 * [Data augmentation in Bayesian neural networks and the cold posterior effect](https://proceedings.mlr.press/v180/nabarro22a/nabarro22a.pdf) [reporter: "your name"]
-* [Evolutionary MCMC](https://cdn.aaai.org/ICML/2003/ICML03-096.pdf) [reporter: "your name"]
+* [Evolutionary MCMC](https://cdn.aaai.org/ICML/2003/ICML03-096.pdf) [reporter: "Marat Khusainov"]
