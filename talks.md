@@ -76,5 +76,5 @@
 * [Knowledge transfer via dense cross-layer mutual-distillation](https://arxiv.org/pdf/2008.07816)   [reporter: "your name"]
 
 # Sampling
-* [Data augmentation in Bayesian neural networks and the cold posterior effect](https://proceedings.mlr.press/v180/nabarro22a/nabarro22a.pdf) [reporter: "your name"]
-* [Evolutionary MCMC](https://cdn.aaai.org/ICML/2003/ICML03-096.pdf) [reporter: "Marat Khusainov"]
+* [Data augmentation in Bayesian neural networks and the cold posterior effect](https://proceedings.mlr.press/v180/nabarro22a/nabarro22a.pdf) [reporter: "Marat Khusainov"]
+* [Evolutionary MCMC](https://cdn.aaai.org/ICML/2003/ICML03-096.pdf) [reporter: "your name"]
