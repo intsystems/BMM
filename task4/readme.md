@@ -28,7 +28,7 @@ Length is constant, set to 30. Visualize model performance wrt optimization iter
 
 8. [reporter: TODO] Repeat approach from [https://arxiv.org/abs/1904.05835](KT with MI). Use second-order hyperparameter optimization from [Luketina](https://arxiv.org/abs/1511.06727) to optimize lambda hyperparameters (or from DARTS).  Teacher and student models can be found [here](https://github.com/passalis/probabilistic_kt/tree/master/exp_cifar).
 
-9. [reporter: TODO] Implement [Hierarchical Bayesian Domain Adaptation](https://aclanthology.org/N09-1068.pdf) for synthetic dataset. Model: linear regression.  Compare the approach with baselines: one model per one domain, one model per all domains. Goal: is to make a very simple illustrative example, so try to focus on the illustrations.
+9. [reporter: Vladimirov Eduard] Implement [Hierarchical Bayesian Domain Adaptation](https://aclanthology.org/N09-1068.pdf) for synthetic dataset. Model: linear regression.  Compare the approach with baselines: one model per one domain, one model per all domains. Goal: is to make a very simple illustrative example, so try to focus on the illustrations.
 
 10. [reporter: TODO]  Repeat approach from [https://arxiv.org/abs/1904.05835](KT with MI) sequentially complicating variational distribution. Teacher and student models can be found [here](https://github.com/passalis/probabilistic_kt/tree/master/exp_cifar). 
     
