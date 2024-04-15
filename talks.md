@@ -83,3 +83,7 @@
 # Probabilistic metric spaces
 * [AN INDUCTIVE BIAS FOR DISTANCES: NEURAL NETS THAT RESPECT THE TRIANGLE INEQUALITY](https://arxiv.org/pdf/2002.05825.pdf)  [reporter: "your name"]
 * [MsC: Siamese networks + prob. metric learning](https://tspace.library.utoronto.ca/bitstream/1807/43097/3/Liu_Chen_201311_MASc_thesis.pdf)   [reporter: "your name"]
+
+# Projection into latent space
+* [Neural operator search](https://www.sciencedirect.com/science/article/pii/S003132032200694X) [reporter: "your name"]
+* [Super resolution neural operator](https://openaccess.thecvf.com/content/CVPR2023/papers/Wei_Super-Resolution_Neural_Operator_CVPR_2023_paper.pdf) [reporter: "your name"]
