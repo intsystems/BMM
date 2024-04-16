@@ -23,7 +23,7 @@
 | 12.03 |[Knowledge transfer and distillation](slides/slides_15_transfer.pdf) | - | [Task 4](task4) | 
 | 26.03 |  [Sampling](slides/slides_16_sampling.pdf)  | - | - |
 | 02.04 |  [Probabilistic metric spaces](slides/slides_17_prob.pdf)  | - | - |
-| 09.04 | Latent space projection | - | - |
+| 09.04 | [Latent space projection](slides/slides_18_latent.pdf) | - | - |
 | 16.04 | Model ensembles, Mixture of experts  | - |  Task 5 |
 | 23.04 | Task 4 discussion | - | - |
 | 7.05 |  SSM  | - | - |
