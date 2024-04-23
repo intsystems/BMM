@@ -1,7 +1,7 @@
 # Bayesian multimodeling
 
 
-[Form. Deadline: 23th of April, 23.59](https://docs.google.com/forms/d/e/1FAIpQLSdGU_lwqvPohEDwBPNXEUME2klgMpXVlQZP5bRULTjfH-WxPg/viewform?usp=sf_link)
+[Form. Deadline: 7th of May, 23.59](https://docs.google.com/forms/d/e/1FAIpQLScQqmNh8JVj3QRDUGXODbnbFUYPRstOhr06Dk4v0uusPOEe1A/viewform?usp=sf_link)
 
 [Scores](eval.md)
 
@@ -23,7 +23,7 @@
 | 26.03 |  [Sampling](slides/slides_16_sampling.pdf)  | - | - |
 | 02.04 |  [Probabilistic metric spaces](slides/slides_17_prob.pdf)  | - | - |
 | 16.04 | Task 4 discussion, [Latent space projection](slides/slides_18_latent.pdf) | - | - |
-| 23.04 | Model ensembles, Mixture of experts  | - |  Task 5 |
+| 23.04 | [Model ensembles, Mixture of experts](slides/slides_19_ens.pdf)  | - |  [Task 5](task5) |
 | 7.05 | SSM | - | - |
 | 14.05 |TBA    | - | - |
 | 21.05 | Task 5 discussion, Scores | - |  - |
