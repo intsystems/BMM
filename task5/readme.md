@@ -15,7 +15,7 @@ Save notebooks into task5/SurnameTask5.ipynb
 
 3. Train multiple (many!) MLP models on a toy dataset. Make a random pruning of the models. Visualize their parameter projection onto 2d-space with color corresponding to accuracy using autoencoder.
 
-4. Train models for different 1d synthetic datasets (the generating functions must be non-trivial).  Implement F-PCA, visualize projections using U-MAP or similar methods.
+4.[reporter: Parviz Karimov] Train models for different 1d synthetic datasets (the generating functions must be non-trivial).  Implement F-PCA, visualize projections using U-MAP or similar methods.
 * [https://fda.readthedocs.io/en/latest/auto_examples/plot_fpca.html](F-PCA)
 
 5. Evaluate and visualize the model uncertainity for OOD detection using different methods:
