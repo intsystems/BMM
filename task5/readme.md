@@ -4,7 +4,7 @@ Save notebooks into task5/SurnameTask5.ipynb
 
 **IMPORTANT:** the code must not be written in Torch/Tensorflow. For deep learning use Jax.
 
-1. Evaluate cold posterior effect using Variational inference on MNIST (or similar dataset). Plot the model performance from the temperature.
+1. [reporter: Marat Khusainov]  Evaluate cold posterior effect using Variational inference on MNIST (or similar dataset). Plot the model performance from the temperature.
 * [Reference](https://arxiv.org/pdf/2002.02405.pdf)
 * [Var. inf. for NN](https://papers.nips.cc/paper/4329-practical-variational-inference-for-neural-networks)
 
