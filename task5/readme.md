@@ -24,6 +24,7 @@ Save notebooks into task5/SurnameTask5.ipynb
 * [Dropout MC](https://arxiv.org/pdf/1506.02142.pdf)
 
 
-6. Compare MCMC and Laplace approximation for hyperparameter optimization. Model: Logistic regression. Hyperparameters: covariance matrix (consider 3 variants: with scalar, diagonal and full matrix).
+6. Compare MCMC and Laplace approximation for hyperparameter optimization. Model: Logistic regression. Hyperparameters: covariance matrix (consider 3 variants: with scalar, diagonal and full matrix). Visalize hyperparameter convergence to the true value as a function from Laplace/MCMC iterations.
+
 * [Reference paper](https://informatica.vu.lt/journal/INFORMATICA/article/817/file/pdf)
 
