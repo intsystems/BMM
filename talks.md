@@ -90,4 +90,4 @@
 
 # Model ensembles
 * [Functional MOE](https://link.springer.com/article/10.1007/s11222-023-10379-0) [reporter: "your name"]
-* [Neural ensemble search via Bayesian sampling](https://proceedings.mlr.press/v180/shu22a/shu22a.pdf) [reporter: "Kseniia Petrushina"]
+* [Neural ensemble search via Bayesian sampling](https://proceedings.mlr.press/v180/shu22a/shu22a.pdf) [reporter: Kseniia Petrushina]
