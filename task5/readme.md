@@ -8,7 +8,7 @@ Save notebooks into task5/SurnameTask5.ipynb
 * [Reference](https://arxiv.org/pdf/2002.02405.pdf)
 * [Var. inf. for NN](https://papers.nips.cc/paper/4329-practical-variational-inference-for-neural-networks)
 
-2. Repeat "Rényi Divergence Variational Inference" experiment for multiple standard datasets. In addition, evaluate model performance when we add Gaussian noise to it and adversarial attacks. Plot the model performance from noise variance (for Gaussian noise) and eps (for Adv. attacks).
+2. [reporter: Eduard Vladimirov] Repeat "Rényi Divergence Variational Inference" experiment for multiple standard datasets. In addition, evaluate model performance when we add Gaussian noise to it and adversarial attacks. Plot the model performance from noise variance (for Gaussian noise) and eps (for Adv. attacks).
 * [Paper](https://proceedings.neurips.cc/paper_files/paper/2016/file/7750ca3559e5b8e1f44210283368fc16-Paper.pdf)
 * [Talk](https://github.com/intsystems/BMM/tree/main-23/student_talks/week_4_renyi_divergence)
 * [Tutorial on FGSM attacks](https://pytorch.org/tutorials/beginner/fgsm_tutorial.html)
