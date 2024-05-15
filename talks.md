@@ -91,3 +91,7 @@
 # Model ensembles
 * [Functional MOE](https://link.springer.com/article/10.1007/s11222-023-10379-0) [reporter: "your name"]
 * [Neural ensemble search via Bayesian sampling](https://proceedings.mlr.press/v180/shu22a/shu22a.pdf) [reporter: Kseniia Petrushina]
+
+# Gaussian processes
+* [The Variational Gaussian Process](https://arxiv.org/abs/1511.06499) [reporter: "your name"]
+* [State Space Expectation Propagation: Efficient Inference Schemes for Temporal Gaussian Processes](https://arxiv.org/abs/2007.05994) [reporter: "your name"]
