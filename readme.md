@@ -24,7 +24,7 @@
 | 02.04 |  [Probabilistic metric spaces](slides/slides_17_prob.pdf)  | - | - |
 | 16.04 | Task 4 discussion, [Latent space projection](slides/slides_18_latent.pdf) | - | - |
 | 23.04 | [Model ensembles, Mixture of experts](slides/slides_19_ens.pdf)  | - |  [Task 5](task5) |
-| 14.05 | GP | [Gaussian processes](slides/slides_19_gp.pdf)  | - |
+| 14.05 | [Gaussian processes](slides/slides_19_gp.pdf) | -  | - |
 | 21.05 | Task 5 discussion, Scores | - |  - |
 
 ### TBA topics
