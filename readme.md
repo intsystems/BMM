@@ -13,7 +13,7 @@
 |Date|Topic|Link to record|Tasks|
 | --- | --- | --- | --- |
 | 10.09 | Intro | - | - |
-| 17.09 | Distributions, expectation, likelihood, Bayesian inference | - | - |
+| 17.09 | Distributions, expectation, likelihood | - | - |
 | 24.09 | Bayesian inference, sampling | - | - |
 | 1.10 | Technical meeting  | - | - |
 | 8.10 | MDL  | - | - |
