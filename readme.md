@@ -13,19 +13,19 @@
 |Date|Topic|Link to record|Tasks|
 | --- | --- | --- | --- |
 | 10.09 | Intro | - | - |
-| 17.09 | Distributions, expectation, likelihood | - | - |
-| 24.09 | MDL  | - | - |
+| 17.09 | Distributions, expectation, likelihood, Bayesian inference | - | - |
+| 24.09 | Bayesian inference, sampling | - | - |
 | 1.10 | Technical meeting  | - | - |
-| 18.10 | Var inference  | - | - |
-| 15.10 | Var inference 2   | - | - |
-| 22.10 | Diffusion models, score matching   | - | - |
-| 29.10 | Technical meeting  | - | - |
-| 5.11 | Generative and discriminative models  | - | - |
-| 11.11 | Data generation  | - | - |
-| 19.11 |Informative prior  | - | - |
-| 26.11 | Sampling  | - | - |
+| 8.10 | MDL  | - | - |
+| 15.10 | Var inference  | - | - |
+| 22.10 | Var inference 2   | - | - |
+| 29.10 | Technical meeting 2 | - | - |
+| 5.11 | Diffusion models, score matching   | - | - |
+| 12.11 | Generative and discriminative models  | - | - |
+| 19.11 | Data generation  | - | - |
+| 26.11 | Probabilistic metric spaces | - | - |
 | 3.12 | Technical meeting 3   | - | - |
-| 10.12 | Probabilistic metric spaces | - | - |
+| 10.12 | TBD | - | - | 
 | 17.12 | Final scores  | - | - |
 
 
@@ -57,7 +57,7 @@
 * Model ensembles, Mixture of experts
 * Structure priors
 * Hyperparameter optimization: SMBO, GD
-* Structure selection 
+* NAS
 * Transfer learning
 * Domain adaptation
 * Multitask learning
