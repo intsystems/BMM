@@ -23,8 +23,8 @@
 | 5.11 | Diffusion models, score matching   | - | - |
 | 12.11 | Generative and discriminative models  | - | - |
 | 19.11 | Data generation  | - | - |
-| 26.11 | Probabilistic metric spaces | - | - |
-| 3.12 | Technical meeting 3   | - | - |
+| 26.11 | Technical meeting 3   | - | - |
+| 3.12 | Probabilistic metric spaces | - | - |
 | 10.12 | TBD | - | - | 
 | 17.12 | Final scores  | - | - |
 
