@@ -25,7 +25,7 @@
 | 19.11 | Data generation  | - | - |
 | 26.11 | Technical meeting 3   | - | - |
 | 3.12 | Probabilistic metric spaces | - | - |
-| 10.12 | TBD | - | - | 
+| 10.12 | Technical meeting 4 | - | - | 
 | 17.12 | Final scores  | - | - |
 
 
