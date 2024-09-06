@@ -6,7 +6,7 @@
 
 [Zoom link](https://m1p.org/go_zoom2)
 
-[TG Link](TODO)
+[TG Link](https://t.me/+XwE8i4hw5DY2MTUy)
 
 
 ## Plan (Fall 2024)
