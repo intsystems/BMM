@@ -1,4 +1,5 @@
 # Bayesian multimodeling
+[Form](https://docs.google.com/forms/d/e/1FAIpQLSdNwjPYdECfB7ehhOF2dpF59Kug8pyo61FNAsIXqqPwOAU5Ww/viewform?usp=sf_link)
 
 [Scores](eval.md)
 
