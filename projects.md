@@ -13,7 +13,7 @@ Each team must assign roles for all teammates. Each activity is evaluated indepe
 * Basic code writing: depending on the task, this code must either:
 	* Present the idea of the proposed method, but with simplier tools
 	* Present a benchmark with comparison to the basic algorithms
-	* **Evaluation criterion:** presentation presentation at Tech. meeting 1
+	* **Evaluation criterion:** presentation  at Tech. meeting 2
 * Algorithm implementation (1 activity per teammate)
 	*  **Evaluation criterion:** presentation at Tech. meeting 1, cross-review, presentation, tests correctly run the algorithm,  presentation at Tech. meeting 3
 * Project wrapping:
