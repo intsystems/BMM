@@ -1,6 +1,8 @@
 # Bayesian multimodeling
 [Form 1](https://docs.google.com/forms/d/e/1FAIpQLSc0i1msB7is-k28QzjQMDLFGkZubKgpMF0IlduIf9uzrjB_kg/viewform?usp=sf_link)
 
+[Projects](projects.md) and [project schedule](project_schedule.md)
+
 [Scores](eval.md)
 
 [Talk list](talks.md)
