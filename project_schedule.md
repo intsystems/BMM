@@ -23,8 +23,6 @@ THIS VERSION IS PRELIMINARY
 ### 12.11
 -
 ### 19.11
--
-### 26.11
 * Technical meeting 3
 * The libraries are discussed in general
 * The demos are discussed
@@ -32,6 +30,10 @@ THIS VERSION IS PRELIMINARY
 * The algorithms are discussed
 * The documentation is discussed
 * The blogpost is discussed
+
+### 26.11 
+-
+
 ### 3.12
 * The cross-review is finished
 * The external review of blogposts (tentatively) is finished
