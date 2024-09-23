@@ -5,4 +5,4 @@
 
 # Bayesian inference
 * [Hyperparameters: optimize, or integrate out?](https://bayes.wustl.edu/MacKay/alpha.pdf) [reporter: "your name"]
-* [Bayesian Inference under Small Sample Sizes Using General Noninformative Priors ](https://www.mdpi.com/2227-7390/9/21/2810) [reporter: "your name"]
+* [Bayesian Inference under Small Sample Sizes Using General Noninformative Priors ](https://www.mdpi.com/2227-7390/9/21/2810) [reporter: "Dorin Daniil"]
