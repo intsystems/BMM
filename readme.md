@@ -18,7 +18,7 @@
 | --- | --- |
 | 10.09 | [Intro](slides/slides_0_intro.pdf) | 
 | 17.09 | [Distributions, expectation, likelihood](slides/slides_1_distributions.pdf) | 
-| 24.09 | Bayesian inference, sampling | 
+| 24.09 | [Bayesian inference, sampling](slides/slides_2_inference.pdf) | 
 | 1.10 | Technical meeting  | 
 | 8.10 | MDL  | 
 | 15.10 | Var inference  | 
