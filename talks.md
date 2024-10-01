@@ -9,4 +9,4 @@
 
 # Technical meeting
   * [Bayesian Deep Learning via Subnetwork Inference](http://proceedings.mlr.press/v139/daxberger21a/daxberger21a.pdf) [reporter: "your name"]
-  * [On the Dirichlet prior and Bayesian regularization](https://proceedings.neurips.cc/paper_files/paper/2002/file/1819932ff5cf474f4f19e7c7024640c2-Paper.pdf) [reporter: "your name"]
+  * [On the Dirichlet prior and Bayesian regularization](https://proceedings.neurips.cc/paper_files/paper/2002/file/1819932ff5cf474f4f19e7c7024640c2-Paper.pdf) [reporter: "Babkin Petr"]
