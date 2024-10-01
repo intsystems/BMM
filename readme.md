@@ -3,7 +3,7 @@
 
 [Projects](projects.md) and [project schedule](project_schedule.md)
 
-[Scores](eval.md)
+[Score system](eval.md), [Score file](https://disk.yandex.ru/i/TjMaAUKU85TqRQ)
 
 [Talk list](talks.md)
 
