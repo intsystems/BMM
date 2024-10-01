@@ -1,0 +1,189 @@
+\documentclass[10pt]{beamer}
+
+\usetheme{Frankfurt}
+\useoutertheme{default}
+\setbeamertemplate{footline}[page number]
+\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
+\input{MainPreambula}
+
+\newcommand{\delayV}[1]{\overset{\leftarrow}{\textbf{x}}_{#1}}
+\newcommand{\delayM}[1]{\overset{\leftarrow}{\mathbf{X}}_{#1}}
+
+\theoremstyle{definition}
+\newtheorem*{Def}{Определение}
+
+\title{HYPERPARAMETERS: OPTIMIZE, OR INTEGRATE OUT?}
+\author{Semkin Kirill}
+
+\date[2024]{BBM \\ 2024}
+
+\begin{document}
+	
+	\begin{frame}[c]
+		\titlepage
+	\end{frame}
+
+	\begin{frame}{Problem statement}
+		
+		Fully bayessian framework:
+		
+		\begin{equation}\label{eq:model_prob}
+			P(D, \mathbf{w}, \alpha, \beta | \mathcal{H}) = P(D | \mathbf{w}, \beta, \mathcal{H}) P(\mathbf{w} | \alpha, \mathcal{H}) P(\alpha, \beta | \mathcal{H})
+		\end{equation}
+		
+		Applied to a linear model:
+		
+		\begin{gather*}
+			P(D | \mathbf{w}, \beta, \mathcal{H}) = \frac{1}{Z_D(\beta)} \exp (- \frac{1}{2} \beta E_D(\mathbf{w})) \\
+			P(\mathbf{w} | \alpha, \mathcal{H}) = \frac{1}{Z_W(\alpha)} \exp (- \frac{1}{2} \alpha \mathbf{w}^{\text{T}} \mathbf{w}))
+		\end{gather*}
+		
+		Problems to consider:
+		
+		\begin{enumerate}
+			\item Infer the parameters: $ P(\mathbf{w} | D, \mathcal{H}) $ or marginal $ P(w_i | D, \mathcal{H}) $
+			\item Infer evidence $ P(D | \mathcal{H}) $
+			\item Prediction for new data $ P(D_2 | D, \mathcal{H}) $
+		\end{enumerate}
+		
+	\end{frame}	
+	
+	\begin{frame}{Ideal approach}
+		
+		Find closed forms of  $ P(\mathbf{w} | D, \mathcal{H}) $, $ P(D | \mathcal{H}) $, $ P(D_2 | D, \mathcal{H}) $ by integrating out unnecessary" variables from the model's probability (\ref{eq:model_prob}).
+		
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.8\textwidth, keepaspectratio]{img/Screenshot from 2024-10-01 15-06-59}
+			\caption{Byassian inference for new data}
+		\end{figure}
+		
+	\end{frame}
+	
+	\begin{frame}{Evidence Framework}
+		
+		\begin{itemize}
+			\item Having posterior for each $ \alpha $:
+			
+			\begin{equation*}
+				P(\mathbf{w} | D, \alpha, \mathcal{H}) = \frac{P(D | \mathbf{w}, \alpha, \mathcal{H}) P(\mathbf{w} | \alpha, \mathcal{H})}{P(D | \alpha, \mathcal{H})}
+			\end{equation*}
+			
+			Approximate it as gaussian (2nd-order approximation). Then evidence $ P(D | \alpha, \mathcal{H}) $ is evaluated from determinant of this distribution.
+			
+			\item Maximize evidence and estimate $ \alpha_{\text{MP}} $ with its deviation $ \sigma_{\alpha | D} $
+			
+			\item Put $ \alpha_{\text{MP}} $ into posterior and obtain approximate solution for Problem 1. The result is gaussian on $ \mathbf{w} $ with mean $ \mathbf{w}_{\text{MAP} | \alpha_{\text{MP}}} $
+			
+			\item Estimate evidence (Problem 2):
+			
+			\begin{equation*}
+				P(D | \mathcal{H}) = P(D | \alpha_{\text{MP}}, \mathcal{H}) P(\alpha_{\text{MP}} | \mathcal{H}) / \sqrt{2 \pi} \sigma_{\alpha | D}
+			\end{equation*}
+			
+			\item Estimate probability of new data using MAP-posterior:
+			
+			\begin{equation*}
+				P(D_2 | D, \mathcal{H}) = \int P(D_2 | \mathbf{w}, \mathcal{H}) P(\mathbf{w} | D, \alpha_{\text{MP}}, \mathcal{H}) d\mathbf{w}
+			\end{equation*}
+			
+		\end{itemize}
+		
+	\end{frame}
+	
+	\begin{frame}{Implicit estimation of $ \alpha_{\text{MP}} $}
+	
+		We can determine $ \alpha_{\text{MP}} $ using intuitive implicit equation
+		
+		\begin{equation}\label{eq:implied Ev}
+			\frac{1}{\alpha_{\text{MP}}} = \frac{\sum\limits_{i = 1}^k w_i^2}{\gamma}
+		\end{equation}
+		
+		Where $ \gamma $ is the number of \textit{well-determined parameters}. It is charactersitcs of the input data
+		
+		\begin{equation*}
+			\gamma = k - \alpha \text{tr}(\Sigma) = \sum\limits_{i = 1}^k \frac{\lambda_i}{\lambda_i + \alpha}
+		\end{equation*}
+		
+		Therefore we estimate $ \alpha $ only from well-determined parameters.
+		
+	\end{frame}
+	
+	\begin{frame}{Why does $ P(\alpha | D, \mathcal{H}) $ vanish?}
+		
+		Our approach relies on yet another approximation:
+		
+		\begin{equation*}
+			P(D_2 | D, \mathcal{H}) = \int P(D_2 | D, \alpha, \mathcal{H}) P(\alpha | D, \mathcal{H}) d\alpha \approx P(D_2 | D,  \alpha_{\text{MP}}, \mathcal{H})
+		\end{equation*}
+		
+		This is true if $ P(\alpha | D, \mathcal{H}) $ incentive to changes in $ \alpha $ on scale $ \sigma_{\alpha | D} $. Such fact is true, for instance, in thermodynamics assembles  with high freedom degrees. Having two different distributions 
+		
+		\begin{align*}
+			P(r) &= \frac{\beta E_r}{Z} \\
+			P(r) &= \begin{cases*}
+				\frac{1}{\Omega}, \ E_r \in U_{\epsilon}(\bar{E}_r) \\
+				0, \ \text{else}
+			\end{cases*}
+		\end{align*}
+		
+		They are indistinguishable in terms of probability mass and marginals
+		
+	\end{frame}
+	
+	\begin{frame}{MAP Method}
+		
+		Find "true" prior first 
+		
+		\begin{equation*}
+			P(\mathbf{w} | \mathcal{H}) = \int P(\mathbf{w} | \alpha, \mathcal{H}) P(\alpha | \mathcal{H}) d\alpha
+		\end{equation*}
+		
+		Then write "true" posterior and maximize it
+		
+		\begin{equation*}
+			P(\mathbf{w} | D, \mathcal{H}) \propto P(D | \mathbf{w}, \mathcal{H}) P(\mathbf{w} | \mathcal{H})
+		\end{equation*}
+		
+		To solve stated problems:
+		
+		\begin{itemize}
+			\item Approximate $ P(\mathbf{w} | D, \mathcal{H}) $ with a gaussian near $ \mathbf{w}_{\text{MP}} $ (Problem 1)
+			\item Estimate evidence $ P(\mathcal{H} | D) $ using determinant of the approximation (Problem 2)
+			\item Estimate probability of new data with $ P(D | \mathbf{w}_{\text{MP}}, \mathcal{H}) $ (Problem 3)
+		\end{itemize}
+		
+	\end{frame}
+	
+	\begin{frame}{Similarity between Evidence and MAP}
+		
+		Take improper prior $ p(\log \alpha) = const $, then 
+		
+		\begin{equation*}
+			p(\mathbf{w} | \mathcal{H}) = \int\limits_{0}^{+\infty} \dfrac{ \sum\limits_{i = 1}^k w_i^2 e^{-\alpha}}{Z_W(\alpha)} d\log \alpha \propto \frac{1}{(\sum\limits_{i = 1}^k w_i^2)^{k / 2}}
+		\end{equation*}
+		
+		We can define $ \alpha_{\text{eff}}(w) $ as such $ \alpha $ that the maximum of $ p(\mathbf{w} | \mathcal{H}) $ and $ p(\mathbf{w} | \mathcal{H}, \alpha) $ are the same. Then
+		
+		\begin{equation}\label{eq:implied MAP}
+			\frac{1}{\alpha_{\text{eff}}(w)} = \frac{\sum\limits_{i = 1}^k w_i^2}{k}
+		\end{equation}
+		
+	\end{frame}
+	
+	\begin{frame}{Choosing the framework}
+		
+		MAP method has several advances over Evidence:
+		
+		\begin{enumerate}
+			\item It uses only one approximation in true posterior whilst Evidence approximates the whole integral over $ \alpha $	
+			\item MAP method is easily transferred across different data as it requires only one computation of true prior. Evidence needs recalculation with every new dataset.
+		\end{enumerate}
+		
+		Nonetheless if the data $ D $ contains ill-determined parameters, the MAP estimator will become greatly biased while the Evidence estimator will not change. It can be seen from the (\ref{eq:implied MAP}) and (\ref{eq:implied Ev}). High level reason is that the MAP estimation is not viable if the posterior distribution differs from $ \delta(\mathbf{w} - \mathbf{w}_{\text{MP}}) $. The situation worsens in high dimensional hyperparameter spaces.
+		
+	\end{frame}
+	
+\end{document}
