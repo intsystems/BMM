@@ -12,5 +12,5 @@
   * [On the Dirichlet prior and Bayesian regularization](https://proceedings.neurips.cc/paper_files/paper/2002/file/1819932ff5cf474f4f19e7c7024640c2-Paper.pdf) [reporter: "Babkin Petr"]
 
 # Model complexity
-* [A Widely Applicable Bayesian Information Criterion](https://www.jmlr.org/papers/volume14/watanabe13a/watanabe13a.pdf) [reporter: "your name"]
+* [A Widely Applicable Bayesian Information Criterion](https://www.jmlr.org/papers/volume14/watanabe13a/watanabe13a.pdf) [reporter: Ernest Nasyrov]
 * [Rissanen data analysis: Examining dataset characteristics via description length](http://proceedings.mlr.press/v139/perez21a/perez21a.pdf) [reporter: "Anastasia Voznyuk"]
