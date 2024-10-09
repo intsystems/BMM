@@ -13,4 +13,4 @@
 
 # Model complexity
 * [A Widely Applicable Bayesian Information Criterion](https://www.jmlr.org/papers/volume14/watanabe13a/watanabe13a.pdf) [reporter: "your name"]
-* [Rissanen data analysis: Examining dataset characteristics via description length](http://proceedings.mlr.press/v139/perez21a/perez21a.pdf) [reporter: "your name"]
+* [Rissanen data analysis: Examining dataset characteristics via description length](http://proceedings.mlr.press/v139/perez21a/perez21a.pdf) [reporter: "Anastasia Voznyuk"]
