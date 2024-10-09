@@ -10,3 +10,7 @@
 # Technical meeting
   * [Bayesian Deep Learning via Subnetwork Inference](http://proceedings.mlr.press/v139/daxberger21a/daxberger21a.pdf) [reporter: "Nikitina Maria"]
   * [On the Dirichlet prior and Bayesian regularization](https://proceedings.neurips.cc/paper_files/paper/2002/file/1819932ff5cf474f4f19e7c7024640c2-Paper.pdf) [reporter: "Babkin Petr"]
+
+# Model complexity
+* [A Widely Applicable Bayesian Information Criterion](https://www.jmlr.org/papers/volume14/watanabe13a/watanabe13a.pdf) [reporter: "your name"]
+* [Rissanen data analysis: Examining dataset characteristics via description length](http://proceedings.mlr.press/v139/perez21a/perez21a.pdf) [reporter: "your name"]
