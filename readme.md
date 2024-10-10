@@ -1,5 +1,5 @@
 # Bayesian multimodeling
-[Form 3](https://docs.google.com/forms/d/e/1FAIpQLSek7Oov0Q0L2ghQglb_TvjJfCDeJJcW8FDBuU99w_mAHwXRqQ/viewform?usp=sf_link)
+[Form 4](https://docs.google.com/forms/d/e/1FAIpQLSdguN7Cswnh-5XJCVheneNTG-XZFjcH3ZM5bXDPC_ImiN0HRw/viewform?usp=sf_link)
 
 [Projects](projects.md) and [project schedule](project_schedule.md)
 
@@ -20,7 +20,7 @@
 | 17.09 | [Distributions, expectation, likelihood](slides/slides_1_distributions.pdf) | 
 | 24.09 | [Bayesian inference, sampling](slides/slides_2_inference.pdf) | 
 | 1.10 | [Technical meeting](slides/tm1.pdf)  | 
-| 8.10 | MDL  | 
+| 8.10 | [Complexity](slides/slides_3_complexity.pdf)  | 
 | 15.10 | Var inference  | 
 | 22.10 | Var inference 2   | 
 | 29.10 | Technical meeting 2 | 
