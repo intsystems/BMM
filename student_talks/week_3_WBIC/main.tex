@@ -1,1 +1,210 @@
+\documentclass{beamer}
+\usepackage[english,russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[usenames]{color}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{subfigure}
+\usepackage{tikz}
+\newcommand\normx[1]{\left\Vert#1\right\Vert}
 
+% Стиль презентации
+\usetheme{Warsaw}
+\useoutertheme{infolines}
+
+\newcommand\myfootnote[1]{%
+  \tikz[remember picture,overlay]
+  \draw (current page.south west) +(1in + \oddsidemargin,0.5em)
+  node[anchor=south west,inner sep=7pt]{\parbox{\textwidth}{%
+      \rlap{\rule{10em}{0.4pt}}\raggedright\scriptsize \textit{#1}}};}
+    
+\begin{document}
+\title{A Widely Applicable Bayesian Information Criterion}  
+\author{Ernest Nasyrov}
+\institute{MIPT}
+\date{October 14, 2024} 
+% Создание заглавной страницы
+\frame{\titlepage} 
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}
+    \tableofcontents
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+\section{Problem}
+\begin{frame}
+\begin{block}{Problem}
+\begin{itemize}
+    \item Many statistical models are not regular, but singular. Such as ANNs, normal mixtures, Bayesian networks, HMMs. 
+    \item If a model is singular, then the likelihood function cannot be approximated by any normal distribution.
+    \item So, neither AIC, BIC, nor MDL can be used in statistical model evaluation.
+\end{itemize}
+\end{block}
+
+\begin{block}{The proposal of the paper}
+WBIC has the same asymptotic behavior as the BIC. WBIC is an extension of BIC on singular models. WBIC can be calculated without any information about true distribution.
+\end{block}
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+\section{BIC}
+\begin{frame}{BIC}
+
+Let us define $p(x|w)$ --- pdf of $x \in \mathbb{R}^N$, for a given parameter $w \in W \subset \mathbb{R}^d$. 
+
+Prior density function --- $\phi(w)$ on $W$. $\mathbf{X}_1, \dots, \mathbf{X}_n \sim \text{iid  } q(x)$ --- \textit{true distribution}.
+
+Log loss function:
+$$
+L_n(w) = -\frac{1}{n}\sum\limits_{i=1}^n
+\log p(\mathbf{X}_i|w)
+$$
+
+
+Bayes free energy $\mathcal{F}$ can be unbserstood as \textit{the minus logarithm of marginal likelihood of a model and a prior}:
+$$
+\mathcal{F} \approx -\log \int \prod\limits_{i=1}^np(\mathbf{X}_i|w)\phi(w)dw
+$$
+\end{frame}
+
+
+\begin{frame}{BIC}
+If a statistical model is \textit{regular}, then the posterior distribution can be asymptotically approximated by a \textit{normal distribution}, resulting that
+
+$$
+\mathcal{F} = nL_n(\hat{w}) + \frac{d}{2}\log n + O(1) = BIC
+$$
+
+In \textit{singular} models the Bayes free energy cannot be approximated by BIC in general. But it was proved, that
+
+$$
+\mathcal{F} = nL_n(w_0) + \lambda \log n + O(\log \log n)
+$$
+
+Where $w_0$ --- is a parameter, minimizing the $KL(q(x)||p(x|w))$ and $\lambda > 0$ called \textbf{real log canonical treshhold (RLCT)}.
+\newline
+
+\textcolor{red}{There's a dog buried here.}
+\end{frame}
+
+\begin{frame}{WBIC}
+Authors propose to estimate $\mathcal{F}$ \textbf{without any information about a true distribution}. So, the WBIC is defined as
+$$
+WBIC = \mathbb{E}_{w}^{\beta}\left[nL_n(w) \right], \ \ \beta = \frac{1}{\log n}
+$$
+
+Where $\mathbb{E}_w^{\beta}[]$ is the expectation over the \textit{posteriori} distribution on $W$:
+$$
+\mathbb{E}_w^{\beta}\left[f(w) \right] = \frac{\int f(w)\prod\limits_{i=1}^np(\mathbf{X}_i|w)^{\beta}\phi(w)dw}{\int \prod\limits_{i=1}^np(\mathbf{X}_i|w)^{\beta}\phi(w)dw}
+$$
+
+Parameter $\beta > 0$ is called \textit{inverse temperature}.
+
+\begin{block}{The main result of the paper}
+    $$
+        \mathcal{F} = WBIC + O(\sqrt{\log n})
+    $$
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Proof. Theorem 3}
+\begin{block}{Theorem 3 (Unique Existence of the Optimal Parameter)}
+
+    \begin{enumerate}
+        \item The value $\mathbb{E}_w^{\beta}\left[nL_n(w) \right]$ is a \textit{decreasing} function of $\beta$.
+        \item There exists a unique $\beta^* \in (0, 1)$ which satisfies
+        $$
+            \mathcal{F} = \mathbb{E}_w^{\beta}\left[nL_n(w) \right]
+        $$
+    \end{enumerate}
+    
+    And that $\beta^*$ is a random variable, which satisfies convergence in probability: $\beta^* \log n \to_{n \to \infty} 1$
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}{Proof. Theorem 4}
+\begin{block}{Theorem 4 (Main Theorem)}
+    Assume, that
+    $$
+        \beta = \frac{\beta_0}{\log n}
+    $$
+    Then there exists a random variable $U_n$:
+
+    $$
+        \mathbb{E}_w^{\beta}\left[nL_n(w) \right] = nL_n(w_0) + \frac{\lambda \log n}{\beta_0} + U_n\sqrt{\frac{\lambda \log n}{2\beta_0}} + O(1)
+    $$
+
+    
+    So, WBIC has the same asymptotic behaviour as the Bayes free energy (substituting $\beta_0=1$):
+    $$
+        WBIC = nL_n(w_0) + \lambda \log n + O(\sqrt{\log n})
+    $$
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Proof. Theorem 5}
+\begin{block}{Theorem 5}
+    If a statistical model is regular, then
+    $$
+        WBIC = nL_n(\hat{w}) + \frac{d}{2}\log n + O(1)
+    $$
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Example}
+\begin{block}{Example}
+    Reduced rank regression model is studied:
+    $$
+        p(x, y|w) = \frac{r(x)}{(2\pi\sigma^2)^{N/2}}exp\left(-\frac{1}{2\sigma^2}||y-BAx||^2\right)
+    $$
+
+    $x \in \mathbb{R}^M, y \in \mathbb{R}^N, w = (A, B), A: H \times M, B: N \times H$.
+\end{block}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{WBIC and BIC.png}
+    \caption{}
+    \label{fig:enter-label}
+\end{figure}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Literature}
+\begin{frame}
+\begin{thebibliography}{99} 
+    \footnotesize
+    
+    \bibitem[Watanabe, 2013]{p1}
+        Watanabe, Sumio (2013)
+        \newblock A widely applicable Bayesian information criterion. The Journal of Machine Learning Research, 14(1), 867-897.
+\end{thebibliography}
+\end{frame}
+%----------------------------------------------------------------------------------------------------------
+\end{document} 
