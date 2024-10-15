@@ -17,4 +17,5 @@
 
 # Variational inference
 * [Variational Learning and Bits-Back Coding: An Information-Theoretic View to Bayesian Learning](https://www.cs.helsinki.fi/u/ahonkela/papers/infview.pdf)  [reporter: your name]
-* [Importance weighted AE](https://arxiv.org/pdf/1509.00519) [reporter: your name]
+* [Importance weighted AE](https://arxiv.org/pdf/1509.00519) [reporter: Ernest Nasyrov]
+
