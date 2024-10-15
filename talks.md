@@ -14,3 +14,7 @@
 # Model complexity
 * [A Widely Applicable Bayesian Information Criterion](https://www.jmlr.org/papers/volume14/watanabe13a/watanabe13a.pdf) [reporter: Ernest Nasyrov]
 * [Rissanen data analysis: Examining dataset characteristics via description length](http://proceedings.mlr.press/v139/perez21a/perez21a.pdf) [reporter: "Anastasia Voznyuk"]
+
+# Variational inference
+* [Variational Learning and Bits-Back Coding: An Information-Theoretic View to Bayesian Learning](https://www.cs.helsinki.fi/u/ahonkela/papers/infview.pdf)  [reporter: your name]
+* [Importance weighted AE](https://arxiv.org/pdf/1509.00519) [reporter: your name]
