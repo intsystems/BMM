@@ -20,5 +20,5 @@
 * ~~[Importance weighted AE](https://arxiv.org/pdf/1509.00519) [reporter: your name]~~
 
 # Variational inference 2
-* [SVGD geometry](https://www.jmlr.org/papers/volume24/20-602/20-602.pdf) [reporter: your name]
+* [The equivalence between Stein variational gradient descent and black-box variational inference](https://arxiv.org/pdf/2004.01822) [reporter: your name]
 * [Pathwise Derivatives Beyond the Reparameterization Trick](http://proceedings.mlr.press/v80/jankowiak18a/jankowiak18a.pdf) [reporter: your name]
