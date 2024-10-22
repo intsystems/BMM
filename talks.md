@@ -21,4 +21,5 @@
 
 # Variational inference 2
 * [The equivalence between Stein variational gradient descent and black-box variational inference](https://arxiv.org/pdf/2004.01822) [reporter: your name]
-* [Pathwise Derivatives Beyond the Reparameterization Trick](http://proceedings.mlr.press/v80/jankowiak18a/jankowiak18a.pdf) [reporter: your name]
+* [Pathwise Derivatives Beyond the Reparameterization Trick](http://proceedings.mlr.press/v80/jankowiak18a/jankowiak18a.pdf) [reporter: Ilgam Latypov]
+*
