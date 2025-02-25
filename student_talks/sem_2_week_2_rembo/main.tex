@@ -1,0 +1,261 @@
+\documentclass[aspectratio=169]{beamer}
+\input{preamble}
+\input{newcommands}
+\graphicspath{{figs}}
+
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{xcolor}
+
+
+%%%
+\title{\href{https://arxiv.org/abs/1301.1942}{Bayesian Optimization in a Billion Dimensions\\via Random Embeddings}}
+\subtitle{Ziyu Wang, Frank Hutter, Masrour Zoghi,\\David Matheson, Nando de Freitas}
+\author{Nikita Kiselev}
+\date{February 25, 2025}
+\institute[Intelligent Systems]{Intelligent Systems, MIPT}
+%%%
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Contents}
+    \tableofcontents
+\end{frame}
+
+\section{Motivation}
+\begin{frame}{Preliminaries}
+    \begin{block}{What is Bayesian Optimization?}
+        Bayesian Optimization (BO) is a \alert{sequential} global optimization strategy for expensive \alert{black-box} functions $f: \mathcal{X} \to \mathbb{R}$, where $\mathcal{X} \subset \mathbb{R}^{D}$, and:
+        \begin{itemize}
+            \item $f$ has 1) no closed form, 2) noisy evaluations, or 3) costly gradients.
+            \item Goal: Find $\mathbf{x}^* = \argmax\limits_{\mathbf{x} \in \mathcal{X}} f(\mathbf{x})$ with few function evalutions.
+        \end{itemize}            
+    \end{block}
+\end{frame}
+
+\begin{frame}{Key Steps of Bayesian Optimization}
+    \begin{columns}
+        \begin{column}{0.48\textwidth}
+            \begin{enumerate}
+                \item Use the prior to decide at which input $\mathbf{x} \in \mathcal{X}$ to query $f$ next (use a so-called \alert{acquisition function});
+                \item Evaluate $f(\mathbf{x})$;
+                \item \alert{Update the prior} based on the new data $\mathbf{x}$ and $f(\mathbf{x})$.
+            \end{enumerate}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \vspace{0.4cm}
+            \includegraphics[width=\textwidth]{toyGPtext3.pdf}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{The prior and the acquisition function}
+    There are several ways to specify the prior and the acquisition function. In this work, authors adopt \alert{Gaussian Process} (GP) priors, and the \alert{expected improvement} acquisition function.
+    \begin{itemize}
+        \item GP is a distribution over function specified by its mean function $m(\cdot)$ and covariance $\mathrm{cov}(\cdot, \cdot)$. Given a set of points $\mathbf{x}_{1:t}$, with $\mathbf{x}_i \in \mathbb{R}^{D}$, we have
+        \[
+            \mathbf{f}(\mathbf{x}_{1:t}) \sim \mathcal{N}(\mathbf{m}(\mathbf{x}_{1:t}), \mathbf{K}(\mathbf{x}_{1:t}, \mathbf{x}_{1:t})), \quad \mathbf{K}(\mathbf{x}_{1:t}, \mathbf{x}_{1:t})_{i, j} = \mathrm{cov}(\mathbf{x}_i, \mathbf{x}_j).
+        \]
+        Analytical tractability of the posterior predictive distribution at new point $\mathbf{x}$.
+        \item Expected improvement acquisition function (exploration vs.\ exploitation):
+        \[
+            u(\mathbf{x}|\mathcal{D}_t) = \mathbb{E}\left[\max\{0, f_{t+1}(\mathbf{x}) - f(\mathbf{x}^{+})\} | \mathcal{D}_t\right],
+        \]
+        where $\mathbf{x}^{+} = \argmax_{\mathbf{x} \in \{\mathbf{x}_{1:t}\}} f(\mathbf{x})$, so the next query is:
+        \[
+            \mathbf{x}_{t+1} = \argmax_{\mathbf{x} \in \mathcal{X}} u(\mathbf{x} | \mathcal{D}_t).
+        \]
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Motivation}
+    \begin{block}{Problem}
+        Traditional BO fails in high dimensions due to the curse of dimensionality:
+        \begin{itemize}
+            \item Exponential growth in evaluations required to cover $\mathcal{X} \subset \mathbb{R}^{D}$.
+            \item Most real-world problems (e.g., hyperparameter tuning, algorithm configuration) have low \alert{effective dimensionality} $d_e \ll D$.
+        \end{itemize}
+    \end{block}
+    \begin{block}{Key Insight}
+        If $f(\mathbf{x})$ varies only in a $d_e$-dimensional subspace, we can optimize in $\mathbb{R}^{d}$ ($d \geq d_e$) via \alert{random embeddings}.
+    \end{block}
+\end{frame}
+
+\section{Theory}
+\begin{frame}{Effective Dimensionality}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\textwidth]{2to1embedding.pdf}
+    \end{figure}
+    A function \( f: \mathbb{R}^D \rightarrow \mathbb{R} \) has \alert{effective dimensionality} \( d_e \) if:
+    \begin{itemize}
+        \item there exists a linear subspace \( \mathcal{T} \subset \mathbb{R}^D \) of dimension $d_e$ such that \( f(\mathbf{x}_\top + \mathbf{x}_\perp) = f(\mathbf{x}_\top) \), where \( \mathbf{x}_\top \in \mathcal{T} \), \( \mathbf{x}_\perp \in \mathcal{T}^\perp \).
+        \item $d_e$ is the smallest integer with this property.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Key Theoretical Result}
+    \begin{block}{Theorem (Embedding Preservation)}
+        Assume we are given a function $f: \mathbb{R}^{D} \to \mathbb{R}$ with effective dimensionality $d_e$ and a random matrix $\mathbf{A} \in \mathbb{R}^{D\times d}$ with independent entries sampled according to $\mathcal{N}(0, 1)$ and $d\geq d_e$. Then, with probability 1, for any $\mathbf{x} \in \mathbb{R}^D$, there exists a $ \mathbf{y} \in \mathbb{R}^d$ such that $f(\mathbf{x}) = f(\mathbf{A}\mathbf{y})$.
+    \end{block}
+    This gives rise to Random EMbedding Bayesian Optimization (REMBO) algorithm, where we optimize the function $g(\mathbf{y}) = f(\mathbf{A} \mathbf{y})$ in the lower dimensional space.
+    
+    In practice, if $\mathcal{X}$ is a compact subset (typically a box), algorithm can select a point $\mathbf{y}$ such that $\mathbf{A} \mathbf{y}$ is outside the box $\mathcal{X}$. Therefore, we can project it via $p_{\mathcal{X}}: \mathbb{R}^{D} \to \mathbb{R}^{D}$:
+    \[
+        p_{\mathcal{X}}(\mathbf{y}) = \argmin_{\mathbf{z} \in \mathcal{X}} \| \mathbf{z} - \mathbf{y} \|_2.
+    \]
+\end{frame}
+
+\begin{frame}{Mapping Visualization}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\textwidth]{projection.pdf}
+    \end{figure}
+    Embedding from $d=1$ into $D=2$. The box illustrates the 2D constrained space ${\cal X}$, while the thicker red line illustrates the 1D constrained space $\mathcal{Y}$. Note that if $\mathbf{A}\mathbf{y}$ is outside $\mathcal{X}$, it is projected onto $\mathcal{X}$. The set $\mathcal{Y}$ must be chosen large enough so that the projection of its image, $\mathbf{A} \mathcal{Y}$, onto the effective subspace (vertical axis in this diagram) covers the vertical side of the box.
+\end{frame}
+
+\section{Method}
+\begin{frame}{Bayesian Optimization vs REMBO}
+    \begin{columns}
+        % Left Column: Standard Bayesian Optimization
+        \begin{column}{0.48\textwidth}
+            \begin{algorithm}[H]
+                \caption{Bayesian Optimization}
+                \SetAlgoLined % Add lines between steps
+                \STATE Initialize $\mathcal{D}_{0}$ as $\emptyset$. \\
+                \For{$t=1,2,\dots$}{
+                    \STATE Find $\mathbf{x}_{t+1} \in \mathbb{R}^D$ by optimizing the acquisition function $u$: $\mathbf{x}_{t+1} = \argmax_{\mathbf{x} \in \mathcal{X}} u(\mathbf{x}|\mathcal{D}_t).$ \\
+                    \STATE Augment the data $\mathcal{D}_{t+1} = \mathcal{D}_{t} \cup \{(\mathbf{x}_{t+1}, f(\mathbf{x}_{t+1}))\}$. \\
+                    \STATE Update the kernel hyper-parameters.
+                }
+            \end{algorithm}
+        \end{column}
+
+        % Right Column: REMBO Algorithm
+        \begin{column}{0.48\textwidth}
+            \begin{algorithm}[H]
+                \caption{REMBO}
+                \SetAlgoLined % Add lines between steps
+                \textcolor{blue}{Generate a random matrix $\mathbf{A} \in \mathbb{R}^{D\times d}$} \\
+                \textcolor{blue}{Choose the bounded region set $\mathcal{Y} \subset \mathbb{R}^{d}$} \\
+                \STATE Initialize $\mathcal{D}_{0}$ as $\emptyset$. \\
+                \For{$t=1,2,\dots$}{
+                    \STATE Find \textcolor{blue}{$\mathbf{y}_{t+1} \in \mathbb{R}^d$} by optimizing the acquisition function $u$: \textcolor{blue}{$\mathbf{y}_{t+1} = \argmax_{\mathbf{y}\in \mathcal{Y}} u(\mathbf{y}|\mathcal{D}_t).$} \\
+                    \STATE Augment the data $\mathcal{D}_{t+1} = \mathcal{D}_{t} \cup \{ \textcolor{blue}{(\mathbf{y}_{t+1}, f(\mathbf{A}\mathbf{y}_{t+1}))} \}$. \\
+                    \STATE Update the kernel hyper-parameters.
+                }
+            \end{algorithm}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Kernel Choices}
+    Let $K_{SE}(\mathbf{y}) = \exp(-\|\mathbf{y}\|^2/2)$.
+Given a length scale $\ell > 0$, we define the corresponding {squared exponential} kernel (\textbf{low-dimensional}) as 
+    \[
+        k_{\ell}^d(\mathbf{y}^{(1)},\mathbf{y}^{(2)}) = K_{SE}\left(\frac{\mathbf{y}^{(1)}-\mathbf{y}^{(2)}}{\ell}\right)
+    \]
+    \vspace{-0.5cm}
+    \begin{block}{High-Dimensional Kernel} 
+        \[
+        k_{\ell}^D(\mathbf{y}^{(1)}, \mathbf{y}^{(2)}) = K_{SE}\left( \frac{p_{\mathcal{X}}(\mathbf{A}\mathbf{y}^{(1)}) - p_{\mathcal{X}}(\mathbf{A}\mathbf{y}^{(2)})}{\ell} \right)
+        \]
+    \end{block}
+    \vspace{-0.5cm}
+    \begin{block}{Categorical Kernel (discrete spaces)}
+        \[
+        k^D_{\lambda}(\mathbf{y}^{(1)}, \mathbf{y}^{(2)}) = \exp\left(-\frac{\lambda}{2} h(s(\mathbf{A}\mathbf{y}^{(1)}), s(\mathbf{A}\mathbf{y}^{(2)}))^2 \right)
+        \]  
+        where \( h \) is Hamming distance, \( s \) maps to discrete space.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Hyperparameter Tuning}
+    Balance exploration-exploitation by dynamically tuning the GP kernel length scale $\ell$.
+    \begin{block}{Key Mechanism}
+        \begin{enumerate}
+            \item Initialization:
+            \begin{itemize}
+                \item Bounds: $\ell \in [L, U] = [0.01, 50]$.
+                \item Threshold: $t_\sigma = 0.002$ (standard  deviation threshold).
+            \end{itemize}
+            \item Exploitation Detection:
+            \begin{itemize}
+                \item If $\sigma(\mathbf{x}_{t+1}) < t_\sigma$ for 5 consecutive iterations, the algorithm is over-exploiting.
+                \item Response: Decrease $U \leftarrow \alpha U$ (multiplicative decay, e.g., $\alpha = 0.8$).
+            \end{itemize}
+            \item Re-optimization:
+            \begin{itemize}
+                \item Re-optimize $\ell$ every 20 iteration (regardless of exploitation).
+                \item Use DIRECT (local search) + CMA-ES (global search), then select the best result.
+            \end{itemize}
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\section{Experiments}
+\begin{frame}{Experimental Setup}
+    \begin{itemize}
+        \item Use function with $D=10^9$ dimensions, but only $d_e=2$ effective, $f(\mathbf{x}_{1:D}) = g(x_i, x_j)$, where $g$ is the Branin function:
+        \[
+            g(x_1, x_2) = \left( x_2 - \frac{5.1}{4\pi^2} x_1^2 + \frac{5}{\pi}x_1 - 6 \right)^2 + 10 \left( 1 - \frac{1}{8\pi} \right) \cos(x_1) + 10.
+        \]
+        \item Measure the performance with the \textit{optimality gap}.
+        \item Fixed budget of $500$ function evaluations.
+        \item Allow to use multiple interleaved runs, for example, when using $k = 4$ interleaved REMBO runs, each of them was only allowed $125$ function evaluations.
+        \item Study the choices of $k$ and $d$ by considering several combinations of these values.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Comparison with other algorithms}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.45\linewidth]{image.png}
+    \end{figure}
+    Comparison of random search (RANDOM), Bayesian optimization (BO), method by Chen et al. (2012) (HD BO), and REMBO. Left: $D = 25$ extrinsic dimensions; Right: $D = 25$, with a rotated objective function; Bottom: $D = 109$ extrinsic dimensions. We plot means and $1/4$ standard deviation confidence intervals of the optimality gap across $50$ trials.
+\end{frame}
+
+\begin{frame}{Choosing $k$ and $d$}
+    \begin{table}[h]
+    \small
+    \begin{center}
+    \begin{tabular}{ l |  c  c  c}
+    \hline
+    $k$ & $d=2$ & $d=4$ & $d=6$ \\
+    \hline
+      10& 0.0022 $\pm$ 0.0035 & 0.1553 $\pm$ 0.1601 & 0.4865 $\pm$  0.4769 \\
+      5 & 0.0004 $\pm$ 0.0011 & 0.0908 $\pm$ 0.1252 & 0.2586 $\pm$ 0.3702 \\
+      4 & 0.0001 $\pm$ 0.0003 & 0.0654 $\pm$ 0.0877 & 0.3379 $\pm$ 0.3170 \\
+      2 & 0.1514 $\pm$ 0.9154 & 0.0309 $\pm$ 0.0687 & 0.1643 $\pm$ 0.1877 \\
+      1 & 0.7406 $\pm$ 1.8996 & 0.0143 $\pm$ 0.0406 & 0.1137 $\pm$ 0.1202 \\
+    \end{tabular}
+    \end{center}
+    \end{table}
+    Optimality gap for $d_e=2$-dimensional Branin function embedded in $D=25$ dimensions, for
+    REMBO variants using a total of $500$ function evaluations. The variants differed in the internal dimensionality $d$ and in the number of interleaved runs $k$ (each such run was only allowed $500/k$ function evaluations).
+    We show mean and standard deviations of the optimality gap achieved after 500 function evaluations.
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}{Conclusion}
+    REMBO enables scalable Bayesian Optimization by:
+    \begin{enumerate}
+        \item Leveraging \textbf{random embeddings} and low intrinsic dimensionality.
+        \item Providing \textbf{invariance to rotations}/irrelevant dimensions.
+        \item Adaptively \textbf{tuning hyperparameters} for robust performance.
+        \item \textbf{Applications}: Hyperparameter tuning, algorithm configuration, and beyond!
+    \end{enumerate}
+\end{frame}
+
+\section{Literature}
+\begin{frame}{Literature}
+    \begin{enumerate}
+        \item \textbf{Main article:} \href{https://arxiv.org/abs/1301.1942}
+        {Wang et al. 2013. Bayesian Optimization in a Billion Dimensions via Random Embeddings}
+    \end{enumerate}
+\end{frame}
+
+\end{document}
