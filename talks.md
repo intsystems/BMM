@@ -53,5 +53,5 @@
 * [Multiobjective tree-structured Parzen estimator](https://www.jair.org/index.php/jair/article/download/13188/26784/) [reporter: your name]
 
 # Technical meeting 1
-* TODO
+* [High-Dimensional Bayesian Optimization with Sparse Axis-Aligned Subspaces](https://proceedings.mlr.press/v161/eriksson21a/eriksson21a.pdf) [reporter: your name]
 * [Mirror descent method for stochastic multi-objective optimization](https://arxiv.org/html/2410.06632v1) [reporter: Ilgam?]
