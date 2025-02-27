@@ -55,3 +55,6 @@
 # Technical meeting 1
 * [High-Dimensional Bayesian Optimization with Sparse Axis-Aligned Subspaces](https://proceedings.mlr.press/v161/eriksson21a/eriksson21a.pdf) [reporter: your name]
 * [Mirror descent method for stochastic multi-objective optimization](https://arxiv.org/html/2410.06632v1) [reporter: Ilgam?]
+
+# Technical meeting 2
+* [Optimization Algorithm Design via Electric Circuits](https://arxiv.org/abs/2411.02573) [reporter: Andrey?]
