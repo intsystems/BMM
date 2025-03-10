@@ -58,6 +58,6 @@
 
 # Gradient-based HO
 * [ONLINE HYPERPARAMETER META-LEARNING WITH HYPERGRADIENT DISTILLATION](https://arxiv.org/pdf/2110.02508)  [reporter: Ignashin Igor]
-* [https://proceedings.neurips.cc/paper/2017/file/64a08e5f1e6c39faeb90108c430eb120-Paper.pdf](https://proceedings.neurips.cc/paper/2017/file/64a08e5f1e6c39faeb90108c430eb120-Paper.pdf) [reporter: your name]
+* [https://proceedings.neurips.cc/paper/2017/file/64a08e5f1e6c39faeb90108c430eb120-Paper.pdf](https://proceedings.neurips.cc/paper/2017/file/64a08e5f1e6c39faeb90108c430eb120-Paper.pdf) [reporter: Dorin Daniil (18.03.25)]
 # Technical meeting 2
 * [Optimization Algorithm Design via Electric Circuits](https://arxiv.org/abs/2411.02573) [reporter: Andrey?]
