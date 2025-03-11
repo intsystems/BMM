@@ -60,7 +60,7 @@
 * [ONLINE HYPERPARAMETER META-LEARNING WITH HYPERGRADIENT DISTILLATION](https://arxiv.org/pdf/2110.02508)  [reporter: Ignashin Igor]
 
 # Structure
-* [BayesNas](http://proceedings.mlr.press/v97/zhou19e/zhou19e.pdf)  [reporter: your name]
+* [BayesNas](http://proceedings.mlr.press/v97/zhou19e/zhou19e.pdf)  [reporter: Babkin Petr]
 * [Few-shot NAS](http://proceedings.mlr.press/v139/zhao21d/zhao21d.pdf) [reporter: your name]
   
 # Technical meeting 2
