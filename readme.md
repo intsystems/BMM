@@ -22,7 +22,7 @@
 | 18.02 | [Hyperparameter optimization: SMBO](slides/slides_10_smbo.pdf) |
 | 25.02 | Technincal meeting 1: project discussion |
 | 4.03 | [Hyperparameter optimization: gradient-based](slides/slides_11_grad_hyper.pdf)  |
-| 11.03 | Structure selection |
+| 11.03 | [Structure selection](slides/slides_12_struct.pdf) |
 | 18.03 | Technincal meeting 2: proof of concept discussion |
 | 25.03 | Meta-optimization + Genetics  |
 | 1.04 |  Knowledge transfer and distillation   |
