@@ -1,0 +1,195 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{cancel}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{amsmath}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{ragged2e}
+\justifying
+\title[Bayesian Optimization]{Bayesian Optimization with Gradients}
+\author{Daniil Dorin}
+\institute{MIPT, 2025}
+
+
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+
+\begin{frame}
+    \tableofcontents
+\end{frame}
+
+
+\section{Definitions}
+\begin{frame}{Definitions}
+    \begin{block}{What is Bayesian Optimization?}
+        Bayesian Optimization (BO) is a \alert{sequential} global optimization strategy for expensive \alert{black-box} functions $f: \mathbb{A} \to \mathbb{R}$, where $\mathbb{A} \subset \mathbb{R}^{d}$, and:
+        \begin{itemize}
+            \item $f$ has 1) no closed form, 2) noisy evaluations, or 3) costly gradients.
+            \item Goal: Find $\mathbf{x}^* = \argmin\limits_{\mathbf{x} \in \mathbb{A}} f(\mathbf{x})$ with few function evalutions.
+        \end{itemize}            
+    \end{block}
+    \begin{block}{Key Steps of Bayesian Optimization}
+            \begin{enumerate}
+                \item Use the a special function to decide at which input $\mathbf{x} \in \mathbb{A}$ to query $f$ next (use a so-called \alert{acquisition function});
+                \item Evaluate $f(\mathbf{x})$;
+                \item \alert{Update the posterior} based on the new data $\mathbf{x}$ and $f(\mathbf{x})$.
+            \end{enumerate}
+\end{block}
+
+% - Черный ящик: Это функция, внутренняя структура которой неизвестна или слишком сложна для анализа.
+% - Функция приобретения: Это вспомогательная функция, которая помогает определить, какие точки пространства поиска следует исследовать далее. Она балансирует между исследованием (exploration) и эксплуатацией (exploitation).
+% - Априорное распределение: Это начальное предположение о поведении функции, которое обновляется по мере получения новых данных.
+\end{frame}
+
+\section{Motivation}
+\begin{frame}{Motivation}
+    \begin{itemize}
+        \item Bayesian optimization excels in globally optimizing expensive-to-evaluate multimodal objective functions. However most methods \textcolor{red}{does not rely on derivative information}.
+        \item \textcolor{blue}{The main idea} is to propose a method using derivative information to reduce the calculation of the function.
+        \item This paper introduces a novel Bayesian optimization algorithm,  \textcolor{red}{the derivative-enabled knowledge gradient (d-KG)}, which is one-step Bayes-optimal, asymptotically consistent, and provides greater one-step value of information than in the derivative-free setting.
+    \end{itemize}
+
+% Derivative-enabled knowledge gradient (d-KG): Градиент знаний с использованием производных.
+
+% Градиент знаний: Это мера, используемая для оценки, насколько полезной будет следующая точка для оценки функции.
+% С использованием производных: В отличие от традиционных методов байесовской оптимизации, которые не используют информацию о производных, этот метод учитывает производные функции.
+% One-step Bayes-optimal: Одношаговая байесовская оптимальность.
+
+% Это означает, что алгоритм выбирает следующую точку для оценки таким образом, чтобы максимизировать ожидаемую полезность информации на следующем шаге.
+% Asymptotically consistent: Асимптотическая согласованность.
+
+% Это свойство означает, что по мере увеличения количества итераций алгоритм будет сходиться к истинному значению оптимума функции.
+% Greater one-step value of information: Большая одношаговая ценность информации.
+
+% Это указывает на то, что использование производных позволяет алгоритму получать больше полезной информации на каждом шаге по сравнению с методами, не использующими производные.
+\end{frame}
+
+\section{Method}
+\begin{frame}{Proposed Method}
+    \begin{block}{Assumption}
+        \begin{itemize}
+            \item To model the unknown function $f$, a Gaussian Process (GP) prior is used. A GP is specified by its mean function $\mu: \mathbb{A} \to \mathbb{R}$ and covariance function $K: \mathbb{A} \times \mathbb{A} \to \mathbb{R}$. $\mathbb{A} \subset \mathbb{R}^d$ is the domain.
+            \item Observations include noisy function values $y(\mathbf{x})$ and gradients $\nabla y(\mathbf{x})$.
+        \end{itemize}
+    \end{block}
+    \begin{alertblock}{Idea}
+        Since the gradient is a linear operator, the gradient of a GP is also a GP. To leverage derivative information, the joint distribution of $f(\mathbf{x})$ and its gradient $\nabla f(\mathbf{x})$ is modeled as a multi-output GP.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Proposed Method}
+\begin{block}{Gaussian Process with Derivatives}
+        The joint distribution of $f(\mathbf{x})$ and its gradient $\nabla f(\mathbf{x})$ is modeled as a multi-output GP:
+        \[
+        \tilde{\mu}(\mathbf{x}) = (\mu(\mathbf{x}), \nabla \mu(\mathbf{x}))^T
+        \]
+        \[
+        \tilde{K}(\mathbf{x}, \mathbf{x}') = \begin{pmatrix}
+        K(\mathbf{x}, \mathbf{x}') & J(\mathbf{x}, \mathbf{x}') \\
+        J(\mathbf{x}', \mathbf{x})^T & H(\mathbf{x}, \mathbf{x}')
+        \end{pmatrix}
+        \]
+        where $J(\mathbf{x}, \mathbf{x}')$ is the Jacobian and $H(\mathbf{x}, \mathbf{x}')$ is the Hessian of $K(\mathbf{x}, \mathbf{x}')$.
+\end{block}
+\begin{block}{Distribution of Observations}
+The joint distribution of observations can be written as:
+\[
+(y(\mathbf{x}), \nabla y(\mathbf{x}))^T \mid f(\mathbf{x}), \nabla f(\mathbf{x}) \sim \mathcal{N} \left( (f(\mathbf{x}), \nabla f(\mathbf{\mathbf{x}}))^T, \text{diag}(\sigma^2(\mathbf{x})) \right)
+\]
+where \( \sigma^2(\mathbf{x}) \) is the variance of the observation noise.
+\end{block}
+\end{frame}
+
+\begin{frame}{Proposed Method}
+\begin{block}{Posterior Distribution in GP}
+The posterior distribution in Gaussian Processes (GP) is described by an updated mean function \(\tilde{\mu}^{(n)}(\mathbf{x})\) and covariance function \(\tilde{K}^{(n)}(\mathbf{x}, \mathbf{x}')\). These functions are computed based on observations \((y, \nabla y)^{(1:n)}\) at points \(\mathbf{X}\).
+\begin{align*}
+    \tilde{\mu}^{(n)}(\mathbf{x}) = \tilde{\mu}(\mathbf{x}) &+ \tilde{K} (\mathbf{x}, \mathbf{X}) \cdot \\
+    &\cdot \left( \tilde{K}(\mathbf{X}, \mathbf{X}) + \text{diag} \left\{ \sigma^2(\mathbf{x}^{(i)}) \right\} \right)^{-1}
+  \left( (y, \nabla y)^{(1:n)} - \tilde{\mu}(\mathbf{X}) \right) \nonumber
+\end{align*}
+\[
+\tilde{K}^{(n)}(\mathbf{x}, \mathbf{x}') = \tilde{K}(\mathbf{x}, \mathbf{x}') - \tilde{K}(\mathbf{x}, \mathbf{X}) \left( \tilde{K}(\mathbf{X}, \mathbf{X}) + \text{diag} \left\{ \sigma^2(\mathbf{x}^{(i)}) \right\} \right)^{-1} \tilde{K}(\mathbf{X}, \mathbf{x}')
+\]
+\end{block}
+% это апостериорное распределение на функцию f при условии наблюдений (y)
+\end{frame}
+
+\begin{frame}{Proposed Method}
+    \begin{block}{Acquisition Function}
+        The d-KG acquisition function is defined as:
+        \[
+        d\text{-}KG\left(\mathbf{z}^{(1: q)}\right) = \min_{\mathbf{x} \in \mathbb{A}} \tilde{\mu}_{1}^{(n)}(\mathbf{x}) - \mathbb{E}_{n}\left[\min_{\mathbf{x} \in \mathbb{A}} \tilde{\mu}_{1}^{(n+q)}(\mathbf{x}) \mid \mathbf{x}^{(n+1):(n+q)} = \mathbf{z}^{(1: q)}\right]
+        \]
+        where $\tilde{\mu}_{1}^{(n)}(\mathbf{x})$ is the expected value of $f(\mathbf{x})$ under the posterior distribution after $n$ evaluations.
+    \end{block}
+        \begin{block}{Efficient Computation}
+        The algorithm uses a novel discretization-free method to compute the acquisition function, enhancing speed and accuracy. It supports batch evaluations and handles noisy, incomplete derivative information. An unbiased gradient estimator of d-KG is used within stochastic gradient ascent to maximize d-KG.
+    \end{block}
+    % Мы ищем такой новый батч, чтобы значение d-KG стало как можно больше, значит ожидаемое значение функции f(x) по апостериорному рапределению стало меньше при добавлении нового батча, те среди нового батча видимо есть точки минимизирующие функцию.
+\end{frame}
+
+\begin{frame}
+    \frametitle{d-KG Acquisition Function and Algorithm}
+
+    We define the \(d\text{-}KG\) acquisition function for observing only the function value and the derivative with direction \(\theta\) at \(\mathbf{z}^{(1:q)}\) as:
+    \[
+    d\text{-}KG(\mathbf{z}^{(1:q)}, \theta) = \min_{\mathbf{x} \in \mathbb{A}} \tilde{\mu}_1^{(n)}(\mathbf{x}) - \mathbb{E}_n \left[ \min_{\mathbf{x} \in \mathbb{A}} \tilde{\mu}_1^{(n+q)}(\mathbf{x}) \mid \mathbf{x}^{(n+1):(n+q)} = \mathbf{z}^{(1:q)}; \theta \right]
+    \]
+    where conditioning on \(\theta\) is here understood to mean that \(\tilde{\mu}_1^{(n+q)}(\mathbf{x})\) is the conditional mean of \(f(\mathbf{x})\) given \(y(\mathbf{z}^{(1:q)})\) and \(\theta^T \nabla y(\mathbf{z}^{(1:q)})\).
+    \begin{algorithm}[H]
+        \caption{\(d\text{-}KG\) with Relevant Directional Derivative Detection}
+        \begin{algorithmic}[1]
+            \For{\(t = 1\) to \(N\)}
+                \State \((\mathbf{z}^{(1:q)*}, \theta^*) = \arg\max_{\mathbf{z}^{(1:q)}, \theta} d\text{-}KG(\mathbf{z}^{(1:q)}, \theta)\)
+                \State Augment data with \(y(\mathbf{z}^{(1:q)*})\) and \(\theta^{*T} \nabla y(\mathbf{z}^{(1:q)*})\). 
+                \State Update our posterior on \((f(\mathbf{x}), \nabla f(\mathbf{x}))\).
+            \EndFor
+            \State \Return \(\mathbf{x}^* = \arg\min_{\mathbf{x} \in \mathbb{A}} \tilde{\mu}_1^{Nq}(\mathbf{x})\)
+        \end{algorithmic}
+    \end{algorithm}
+\vspace{-3mm}
+Including all $d$ partial derivatives can be computationally prohibitive since GP inference scales as
+$\mathcal{O}(n^3(d + 1)^3)$
+
+\end{frame}
+
+\section{Experiments}
+\begin{frame}{Experiments: Synthetic Test Functions}
+        The algorithm was tested on various synthetic benchmarks, including Branin, Rosenbrock, Ackley, Hartmann, Levy, and Cosine mixture functions.
+        \begin{center}
+            \includegraphics[width=0.92\textwidth]{figs/exp1.png}
+        \end{center}
+\end{frame}
+
+\begin{frame}{Experiments: Real-World Applications}
+
+    The method was applied to real-world problems such as hyperparameter tuning for weighted k-nearest neighbors, logistic regression, deep learning (tune logistic regression and a feedforward neural
+network with 2 hidden layers on the MNIST dataset), and kernel learning. 
+        \begin{center}
+            \includegraphics[width=1.\textwidth]{figs/exp2.png}
+        \end{center}
+\end{frame}
+
+\section{Literature}
+\begin{frame}{Literature}
+    \begin{enumerate}
+        \item \textbf{Main article:} \href{https://proceedings.neurips.cc/paper/2017/file/64a08e5f1e6c39faeb90108c430eb120-Paper.pdf}
+        {Wu J. et al. Bayesian Optimization with Gradients // NIPS 2017.}
+    \end{enumerate}
+\end{frame}
+
+\end{document}
