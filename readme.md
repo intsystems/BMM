@@ -25,7 +25,7 @@
 | 11.03 | [Structure selection](slides/slides_12_struct.pdf) |
 | 18.03 | Technincal meeting 2: proof of concept discussion |
 | 25.03 | Meta-optimization + Genetics  |
-| 1.04 |  Knowledge transfer and distillation   |
+| 1.04 |  [Knowledge transfer and distillation](slides/slides_13_transfer.pdf)   |
 | 8.04 | Multi-task learning | 
 | 15.04 | Gaussian processes, SSM  |
 | 22.04 |  Model ensembles |
