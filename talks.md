@@ -72,4 +72,4 @@
 
 # Knowledge transfer
 * [One-for-All: Bridge the Gap Between Heterogeneous Architectures in Knowledge Distillation](https://proceedings.neurips.cc/paper_files/paper/2023/file/fb8e5f198c7a5dcd48860354e38c0edc-Paper-Conference.pdf) [reporter: your name]
-* [Undistillable: Making a nasty teacher that cannot teach students](https://arxiv.org/pdf/2105.07381)  [reporter: your name]
+* [Undistillable: Making a nasty teacher that cannot teach students](https://arxiv.org/pdf/2105.07381)  [reporter: Solodkin Vladimir]
