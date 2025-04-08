@@ -26,7 +26,7 @@
 | 18.03 | Technincal meeting 2: proof of concept discussion |
 | 25.03 | Meta-optimization + Genetics  |
 | 1.04 |  [Knowledge transfer and distillation](slides/slides_13_transfer.pdf)   |
-| 8.04 | Multi-task learning | 
+| 8.04 | [Multi-task learning](slides/slides_14_mtask.pdf) | 
 | 15.04 | Gaussian processes, SSM  |
 | 22.04 |  Model ensembles |
 | 29.04 | Hierarchical models |
