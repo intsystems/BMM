@@ -73,3 +73,8 @@
 # Knowledge transfer
 * [One-for-All: Bridge the Gap Between Heterogeneous Architectures in Knowledge Distillation](https://proceedings.neurips.cc/paper_files/paper/2023/file/fb8e5f198c7a5dcd48860354e38c0edc-Paper-Conference.pdf) [reporter: your name]
 * [Undistillable: Making a nasty teacher that cannot teach students](https://arxiv.org/pdf/2105.07381)  [reporter: Solodkin Vladimir]
+
+
+# Multitask learning
+* [Variational Multi-Task Learning with Gumbel-Softmax Priors](https://proceedings.neurips.cc/paper_files/paper/2021/file/afd4836712c5e77550897e25711e1d96-Paper.pdf) [reporter: your name]
+* [BEYOND SHARED HIERARCHIES: DEEP MULTITASK LEARNING THROUGH SOFT LAYER ORDERING](https://arxiv.org/pdf/1711.00108) [reporter: your name]
