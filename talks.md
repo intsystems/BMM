@@ -76,5 +76,5 @@
 
 
 # Multitask learning
-* [Variational Multi-Task Learning with Gumbel-Softmax Priors](https://proceedings.neurips.cc/paper_files/paper/2021/file/afd4836712c5e77550897e25711e1d96-Paper.pdf) [reporter: your name]
+* [Variational Multi-Task Learning with Gumbel-Softmax Priors](https://proceedings.neurips.cc/paper_files/paper/2021/file/afd4836712c5e77550897e25711e1d96-Paper.pdf) [reporter: Anastasiia Vozniuk]
 * [BEYOND SHARED HIERARCHIES: DEEP MULTITASK LEARNING THROUGH SOFT LAYER ORDERING](https://arxiv.org/pdf/1711.00108) [reporter: your name]
