@@ -1,5 +1,5 @@
 # Bayesian multimodeling
-[Form. Deadline: April 15, 17.50](https://docs.google.com/forms/d/e/1FAIpQLSfSQYnDLcx9L0Kig1tIsEWnDawP23L6TYh93nuRc8TUXM5WAQ/viewform?usp=header)
+[Form. Deadline: April 22, 17.50](https://docs.google.com/forms/d/e/1FAIpQLSfcR-ahmvKepvmduiYp1T1WeIih7FlA2Ncu2dREzxGz5mIrOw/viewform?usp=header)
 
 [Projects](projects.md) and [project schedule](project_schedule.md)
 
@@ -27,7 +27,7 @@
 | 25.03 | Meta-optimization + Genetics  |
 | 1.04 |  [Knowledge transfer and distillation](slides/slides_13_transfer.pdf)   |
 | 8.04 | [Multi-task learning](slides/slides_14_multitask.pdf) | 
-| 15.04 | Gaussian processes, SSM  |
+| 15.04 | [Gaussian processes, SSM](slides/slides_15_gp_ssm.pdf)  |
 | 22.04 |  Model ensembles |
 | 29.04 | Hierarchical models |
 | 6.05 | Technical meeting 3: pre-final discussion  |
