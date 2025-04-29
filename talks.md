@@ -75,7 +75,7 @@
 * [Undistillable: Making a nasty teacher that cannot teach students](https://arxiv.org/pdf/2105.07381)  [reporter: Solodkin Vladimir]
 
 # GP and SSM
-* [Hyena Hierarchy: Towards Larger Convolutional Language Models]  [reporter: your name]
+* [Hyena Hierarchy: Towards Larger Convolutional Language Models]  [reporter: Kreinin Matvei]
 * [State Space Expectation Propagation: Efficient Inference Schemes for Temporal Gaussian Processes](https://arxiv.org/abs/2007.05994) [reporter: "your name"]
 
 
