@@ -28,8 +28,8 @@
 | 1.04 |  [Knowledge transfer and distillation](slides/slides_13_transfer.pdf)   |
 | 8.04 | [Multi-task learning](slides/slides_14_multitask.pdf) | 
 | 15.04 | [Gaussian processes, SSM](slides/slides_15_gp_ssm.pdf)  |
-| 22.04 |  Model ensembles |
-| 29.04 | Hierarchical models |
+| 22.04 | - |
+| 29.04 | [Model ensembles](slides/slides_16_ens.pdf) |
 | 6.05 | Technical meeting 3: pre-final discussion  |
 | 13.05 | Latent space projection |
 | 20.05 | Project finalizing, Final scores |
