@@ -68,7 +68,7 @@
 * [https://proceedings.neurips.cc/paper/2017/file/64a08e5f1e6c39faeb90108c430eb120-Paper.pdf](https://proceedings.neurips.cc/paper/2017/file/64a08e5f1e6c39faeb90108c430eb120-Paper.pdf) [reporter: Dorin Daniil (?)]
 
 # Evolutionary algorithms
-* [DIFFUSION MODELS ARE EVOLUTIONARY ALGORITHMS](https://arxiv.org/pdf/2410.02543) [reporter: your name]
+* [DIFFUSION MODELS ARE EVOLUTIONARY ALGORITHMS](https://arxiv.org/pdf/2410.02543) [reporter: Ernest?]
 
 # Knowledge transfer
 * [One-for-All: Bridge the Gap Between Heterogeneous Architectures in Knowledge Distillation](https://proceedings.neurips.cc/paper_files/paper/2023/file/fb8e5f198c7a5dcd48860354e38c0edc-Paper-Conference.pdf) [reporter: your name]
