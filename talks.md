@@ -86,4 +86,4 @@
 * [State Space Expectation Propagation: Efficient Inference Schemes for Temporal Gaussian Processes](https://arxiv.org/abs/2007.05994) [reporter: "your name"]
 
 # Ensembles
-* [Mixture of A Million Experts](https://proceedings.neurips.cc/paper_files/paper/2022/file/2f00ecd787b432c1d36f3de9800728eb-Paper-Conference.pdf)  [reporter: "your name"]
+* [Mixture of A Million Experts](https://proceedings.neurips.cc/paper_files/paper/2022/file/2f00ecd787b432c1d36f3de9800728eb-Paper-Conference.pdf)  [reporter: Ilgam Latypov]
