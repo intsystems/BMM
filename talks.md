@@ -87,3 +87,6 @@
 
 # Ensembles
 * [Mixture of A Million Experts](https://proceedings.neurips.cc/paper_files/paper/2022/file/2f00ecd787b432c1d36f3de9800728eb-Paper-Conference.pdf)  [reporter: Ilgam Latypov]
+
+# Tech. meeting 3
+* [Bridging Discrete and Backpropagation: Straight-Through and Beyond](https://arxiv.org/abs/2304.08612) [reporter: "your name"]
