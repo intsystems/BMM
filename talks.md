@@ -90,3 +90,8 @@
 
 # Tech. meeting 3
 * [Bridging Discrete and Backpropagation: Straight-Through and Beyond](https://arxiv.org/abs/2304.08612) [reporter: "your name"]
+
+# Projection into latent space
+* [Neural operator search](https://www.sciencedirect.com/science/article/pii/S003132032200694X) [reporter: "your name"]
+* [MsC: Siamese networks + prob. metric learning](https://tspace.library.utoronto.ca/bitstream/1807/43097/3/Liu_Chen_201311_MASc_thesis.pdf)   [reporter: "your name"]
+
