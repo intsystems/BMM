@@ -31,7 +31,7 @@
 | 22.04 | - |
 | 29.04 | [Model ensembles](slides/slides_16_ens.pdf) |
 | 6.05 | Technical meeting 3: pre-final discussion  |
-| 13.05 | Latent space projection |
+| 13.05 | [Latent space projection](slides/slides_17_latent.pdf) |
 | 20.05 | Project finalizing, Final scores |
 
 
