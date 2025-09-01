@@ -17,6 +17,28 @@
 **Problem details:** the team must decide the structure of the project: are the modules they propose are just layer classes (like dropout layers) or they propose some "solvers"? What's more preferable for reproducibility and furhter usage? 
 
 
+### Bayesian ensembling
+**Number of people in team:**  2-4
+
+**Motivation**:  the project proposes to develop the library that unifies different approaches for Bayesian model selection. The focus here more on the model ensembling: each algorithm proposes different strategies to sample models from posterior distribution. As a bonus for the 4th member of the team we propose to adapt Renyi divergence optimization for the model selection.
+
+**Algorithms to implement (from simplets to hardest):**
+* [A baseline ELBO: proposed by Graves in 2011](https://papers.nips.cc/paper/4329-practical-variational-inference-for-neural-networks). Must be implemented with [local reparameterization trick](https://arxiv.org/abs/1506.02557) , hyperparameter optimization and pruning.
+* [Alternative method: scalable Laplace approximation](https://discovery.ucl.ac.uk/id/eprint/10080902/1/kflaplace.pdf) 
+* [Renyi divergence: a generalization of the ELBO which can potentially plugged into the algorithms 1 and 2 and make models more extendable](https://arxiv.org/abs/1602.02311) 
+* [Bayes backprop](https://arxiv.org/abs/1502.05336]
+
+**Links**:
+* [Most parts of the algorithms are implemented here](https://github.com/JavierAntoran/Bayesian-Neural-Networks) 
+* [Renyi](https://docs.pyro.ai/en/1.9.1/_modules/pyro/infer/renyi_elbo.html) 
+* [Torch uncertainty](https://torch-uncertainty.github.io/)
+
+**Problem details:** At least two additional algorithms must be implemented as baseline (maybe just using pyro): HMC and [McDropout](https://arxiv.org/abs/1506.02142). HMC is a very long running algorithm for posterio sampling/model selection, but with limits to short chains it can evaluate our Evidence and can be considered as a ground truth. See [some papers that evaluate model Evidence with HMC](https://arxiv.org/pdf/2002.02405) and [this one, but it uses a very heavy HMC, we don't need it](http://proceedings.mlr.press/v139/izmailov21a/izmailov21a.pdf).
+
+Since the algorithms implementation can be already found, the main problem of this project is to wrap everthing into one simple interface. Think what methods/functionality can be useful for the user.
+
+
+## Robusntess + Uncertainty
 
 ## TODO: EBM
 Your GAN is 
@@ -47,4 +69,4 @@ Rejection sampling variational inference
 
 ## Graph models
 
-## Robusntess + Uncertainty
+
