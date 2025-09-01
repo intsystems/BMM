@@ -15,3 +15,36 @@
 * [Stochasting gating library](https://runopti.github.io/stg/)
 
 **Problem details:** the team must decide the structure of the project: are the modules they propose are just layer classes (like dropout layers) or they propose some "solvers"? What's more preferable for reproducibility and furhter usage? 
+
+
+
+## TODO: EBM
+Your GAN is 
+Your classifier is
+https://openaccess.thecvf.com/content/CVPR2023/papers/Yang_Towards_Bridging_the_Performance_Gaps_of_Joint_Energy-Based_Models_CVPR_2023_paper.pdf?utm_source=chatgpt.com
+https://arxiv.org/abs/2109.09032?utm_source=chatgpt.com
+https://arxiv.org/abs/2505.19459?utm_source=chatgpt.com
+Score-based?
+
+## TODO: MDL
+https://proceedings.mlr.press/v139/perez21a/perez21a.pdf
+https://openreview.net/pdf?id=C45YqeBDUM
+https://openreview.net/pdf/a054f8be18a5c80dcc3042fafa4b6be3feb62984.pdf
+Grokking
+https://www.sciencedirect.com/science/article/pii/S0167278925003367
+https://arxiv.org/html/2409.01247v1
+https://arxiv.org/pdf/2405.05189
+
+
+
+## TODO: IRT
+IRT
+Reinforce/NVIL
+Rejection sampling variational inference
+
+
+## TODO: DWP
+
+## Graph models
+
+## Robusntess + Uncertainty
