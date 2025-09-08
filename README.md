@@ -1,10 +1,7 @@
 # Bayesian multimodeling
+[Registration form. deadline: 12.09](https://docs.google.com/forms/d/e/1FAIpQLSf_rdcbnH4LY9ib-3fURqaB4ybsU-Z7NJwyS99ux1VFMr2Krg/viewform?usp=sharing&ouid=117552982715186035328)
 
-[Projects](projects.md) and [project schedule](project_schedule.md)
-
-[Score system](eval.md)
-
-[Talk list](talks.md)
+[project schedule](project_schedule.md)
 
 [Zoom link](https://m1p.org/go_zoom2)
 
