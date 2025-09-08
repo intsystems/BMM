@@ -1,5 +1,5 @@
 # Bayesian multimodeling
-[Registration form. deadline: 12.09](https://docs.google.com/forms/d/e/1FAIpQLSf_rdcbnH4LY9ib-3fURqaB4ybsU-Z7NJwyS99ux1VFMr2Krg/viewform?usp=sharing&ouid=117552982715186035328)
+[Registration form. Deadline: 12.09](https://docs.google.com/forms/d/e/1FAIpQLSf_rdcbnH4LY9ib-3fURqaB4ybsU-Z7NJwyS99ux1VFMr2Krg/viewform?usp=sharing&ouid=117552982715186035328)
 
 [project schedule](project_schedule.md)
 
