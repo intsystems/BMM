@@ -25,7 +25,7 @@
 | 11.11 | Diffusion models, score matching | 
 | 18.11 | Generative and discriminative models + Checkpoint | 
 | 25.11 | Graphical models  | 
-| 2.12 | Hyperparameter optimization: SMBO  | 
+| 2.12 |  TODO: sampling  | 
 | 9.12 | Project review | 
 | 16.12 | Technical meeting 3: final meeting, final scores | 
 
