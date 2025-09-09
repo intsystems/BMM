@@ -11,7 +11,7 @@
 ## Plan (Fall 2025, tentative)
 |Date|Topic|
 | --- | --- |
-| 9.09 | Intro| 
+| 9.09 | [Intro](slides/slides_0_intro.pdf)| 
 | 16.09 | Distributions, expectation, likelihood | 
 | 23.09 | Bayesian inference, sampling | 
 | 30.09 | Technincal meeting 1: project discussion  | 
