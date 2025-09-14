@@ -1,6 +1,9 @@
 # Projects
 
 ## Project list (fall 2025, tentative)
+
+### Stochastic gating
+
 **Number of people in team:** 2-4
 
  **Motivation**: One of the methods of proper feature/variable/parameter selection is called [Stochastic gating](http://proceedings.mlr.press/v119/yamada20a/yamada20a.pdf).The principle is the following: multiply each parameter of the model (or the feature if we are working with linear models) with some discrete variable and optimize both the parameter and the distribution of the discrete variable. Due to the continuity of the optimization, the discrete variable must be replaced with some kind of relaxation. 
@@ -18,6 +21,7 @@
 
 
 ### Bayesian ensembling
+
 **Number of people in team:**  2-4
 
 **Motivation**:  the project proposes to develop the library that unifies different approaches for Bayesian model selection. The focus here more on the model ensembling: each algorithm proposes different strategies to sample models from posterior distribution. As a bonus for the 4th member of the team we propose to adapt Renyi divergence optimization for the model selection.
@@ -36,6 +40,25 @@
 **Problem details:** At least two additional algorithms must be implemented as baseline (maybe just using pyro): HMC and [McDropout](https://arxiv.org/abs/1506.02142). HMC is a very long running algorithm for posterio sampling/model selection, but with limits to short chains it can evaluate our Evidence and can be considered as a ground truth. See [some papers that evaluate model Evidence with HMC](https://arxiv.org/pdf/2002.02405) and [this one, but it uses a very heavy HMC, we don't need it](http://proceedings.mlr.press/v139/izmailov21a/izmailov21a.pdf).
 
 Since the algorithms implementation can be already found, the main problem of this project is to wrap everthing into one simple interface. Think what methods/functionality can be useful for the user.
+
+
+
+### Secret energy-based models
+
+**Number of people in team:**  2-4
+
+**Motivation**:  the project proposes to consider multiple nearly-standard architectures and reveal their sampling properties: generalized (non-variational) autoencoders, classification neural networks and GAN's discriminator are proven to be energy-based models (EBM) that can be potentially used for generative tasks (sampling, out-of-domain detection, density estimation).
+
+**Algorithms to implement (from simplets to hardest):**
+* [Denoising and contrastive autoencoders as EBM](https://arxiv.org/abs/1211.4246)
+* [JEM: Your Classifier is Secretly an Energy Based Model and You Should Treat it Like One](https://arxiv.org/abs/1912.03263)
+* [Discriminator as EBM](https://arxiv.org/pdf/2003.06060)
+* [JEM++](https://arxiv.org/pdf/2109.09032) and [SADA-JEM](https://arxiv.org/pdf/2209.07959): engeneering tricks for training JEM
+
+
+**Project specifics:** JEM++ and SADA-JEM are strongly dependent on JEM and can be considered as helpers/utils for trianing JEM. These tasks are very co-related.
+
+**Problem details:**  Think about how to combine the modules and make them reusable. Also, what should provide EBM models?
 
 
 ## Robusntess + Uncertainty
