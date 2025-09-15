@@ -61,6 +61,21 @@ Since the algorithms implementation can be already found, the main problem of th
 **Problem details:**  Think about how to combine the modules and make them reusable. Also, what should provide EBM models?
 
 
+### Neural compression
+
+**Number of people in team:**  2-4
+
+**Motivation**:  information theory and Bayesian models are deeply tied. Here we propose to implement multiple variational and neural compression methods for losesless (and nearly-loseless) compression.
+
+**Algorithms to implement:**
+* [Var. inference-based](https://arxiv.org/pdf/1901.04866)
+* [Gradient flows-based](https://arxiv.org/pdf/1905.07376)
+* [Transformer-based](https://openreview.net/forum?id=Hygi7xStvS)
+* [Lossy compression](https://proceedings.neurips.cc/paper/2021/file/7535bbb91c8fde347ad861f293126633-Paper.pdf)
+
+
+
+
 ## Robusntess + Uncertainty
 
 ## TODO: EBM
