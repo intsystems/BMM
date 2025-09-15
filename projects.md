@@ -76,35 +76,28 @@ Since the algorithms implementation can be already found, the main problem of th
 
 **Note:** good start is to look at [this](https://github.com/facebookresearch/NeuralCompression) and [this repo](https://github.com/fahaihi/NNLCB?tab=readme-ov-file)
 
-## Robusntess + Uncertainty
+### Low-variance gradient estimation for arbitary solutions
 
-## TODO: EBM
-Your GAN is 
-Your classifier is
-https://openaccess.thecvf.com/content/CVPR2023/papers/Yang_Towards_Bridging_the_Performance_Gaps_of_Joint_Energy-Based_Models_CVPR_2023_paper.pdf?utm_source=chatgpt.com
-https://arxiv.org/abs/2109.09032?utm_source=chatgpt.com
-https://arxiv.org/abs/2505.19459?utm_source=chatgpt.com
-Score-based?
+**Number of people in team:** 2-4
 
-## TODO: MDL
-https://proceedings.mlr.press/v139/perez21a/perez21a.pdf
-https://openreview.net/pdf?id=C45YqeBDUM
-https://openreview.net/pdf/a054f8be18a5c80dcc3042fafa4b6be3feb62984.pdf
-Grokking
-https://www.sciencedirect.com/science/article/pii/S0167278925003367
-https://arxiv.org/html/2409.01247v1
-https://arxiv.org/pdf/2405.05189
+**Motivation**: The vanilla ELBO estimation in generative models like VAE uses reparametrization trick: a method of sampling random variables with low variance of the gradient of parameter distribution. The problem with this method is that it's available only for the limited number of distributions. The goal of this project is to wrap multiple methods describing a solution for this issue into a library performing for (nearly-)arbitary distributions.
+ 
+**Algorithms to implement (from simplets to hardest):**
+* [Rejection-sampling variational inference](https://proceedings.mlr.press/v54/naesseth17a.html)
+* [Implicit reparametrization trick: cases for Gaussian distribution, Student distribtuion and a mixture](https://arxiv.org/abs/1805.08498)
+* [Implicit reparametrization trick: case for factorized distribution]((https://arxiv.org/abs/1805.08498)
+* [Transort equation-based reparametrization trick](https://proceedings.mlr.press/v80/jankowiak18a/jankowiak18a.pdf)
 
 
+**Recommended stack**: one can use pytorch/pyro (both have interfaces for distributions) or distrax for JAX. Other stack can also be used.
 
-## TODO: IRT
-IRT
-Reinforce/NVIL
-Rejection sampling variational inference
+**Note:** for the comparison it's recommended to implement REINFORCE-based methods, as well as some numerical low-dimmesnional methods.
 
+**Other links:**
+* [Previous project attemp](https://github.com/intsystems/implicit-reparameterization-trick)
+* [Discussion of IRP in the TF probability thread](https://github.com/tensorflow/probability/issues/51?ref=https://githubhelp.com)
+* [Some more discussions in the pytorch thread](https://discuss.pytorch.org/t/pytorch-reparametrization-method-for-gamma-dirichlet-von-mises-distribution/109472)
+* [Mixutre distribution implementation](https://github.com/vsimkus/torch-reparametrised-mixture-distribution) 
+* [Lab on the implementation of IRT](https://github.com/intsystems/BMM/blob/main-22/lab2/BarabanshchikovaTask2.ipynb)
 
-## TODO: DWP
-
-## Graph models
-
-
+  
