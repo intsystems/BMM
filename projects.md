@@ -74,7 +74,7 @@ Since the algorithms implementation can be already found, the main problem of th
 * [Lossy compression](https://proceedings.neurips.cc/paper/2021/file/7535bbb91c8fde347ad861f293126633-Paper.pdf)
 
 
-
+**Note:** good start is to look at [this repo](https://github.com/fahaihi/NNLCB?tab=readme-ov-file)
 
 ## Robusntess + Uncertainty
 
