@@ -124,7 +124,7 @@ Since the algorithms implementation can be already found, the main problem of th
 
 **Note:** good start is to look at [this](https://github.com/facebookresearch/NeuralCompression) and [this repo](https://github.com/fahaihi/NNLCB?tab=readme-ov-file)
 
-### Low-variance gradient estimation for arbitary solutions
+### Low-variance gradient estimation for arbitary distributions
 
 **Number of people in team:** 2-4
 
