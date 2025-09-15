@@ -12,13 +12,11 @@ Each team must assign roles for all teammates. Each activity is evaluated indepe
 	* **Evaluation criterion:** presentation at Tech. meeting 1
   
 * Benchmark. This code must implement baseline algorithms on a (maybe simplified) to dataset. Further this benchmark must be used as a basis of the library demo.
- * This benchmark must also implement (**maybe in a very simplified version**) one of the proposed algorithms.
- * The goal of this activity is an early check that the plan is possible to implement, and all the proposed algorithms can be further reported.
- * **Evaluation criterion:** presentation  at Tech. meeting 2
+	 * This benchmark must also implement (**maybe in a very simplified version**) one of the proposed algorithms.
+	 * The goal of this activity is an early check that the plan is possible to implement, and all the proposed algorithms can be further reported.
+	 * **Evaluation criterion:** presentation  at Tech. meeting 2
 
 
-* Algorithm implementation (1 activity per teammate)
-	*  **Evaluation criterion:** presentation at Tech. meeting 1, cross-review, presentation, tests correctly run the algorithm,  presentation at Tech. meeting 3
 * Project wrapping:
 	* Making the code uniform acros all the teammates
 	* Controling the code quality/consistency
@@ -35,19 +33,19 @@ Each team must assign roles for all teammates. Each activity is evaluated indepe
 	* **Evaluation criterion:** cross-review,  presentation
   
 * Blog post and tech. report
-* Blog post must be published at some platform (habr, medium, etc)
-* Short message: up to 10 minutes
-* **Evaluation criterion:** ,  presentation at Tech. meeting 2 (intermediate version), ,presentation at Tech. meeting 3, possibely external review
+	* Blog post must be published at some platform (habr, medium, etc)
+	* Short message: up to 10 minutes
+	* **Evaluation criterion:** ,  presentation at Tech. meeting 2 (intermediate version), ,presentation at Tech. meeting 3, possibely external review
 
  
 * Tech. report: must contain a short version of technical paper: abstract, introduction, methods, experiments. The length: 3-5 pages.
-* **Evaluation criterion:** ,  presentation at Tech. meeting 2 (intermediate version), ,presentation at Tech. meeting 3, possibely external review
+	* **Evaluation criterion:** ,  presentation at Tech. meeting 2 (intermediate version), ,presentation at Tech. meeting 3, possibely external review
 
 
-For the team of 2 people it means that each teammate must have 5 acitvities
-For the team of 4 people each teammate must have 3 or 4 activities
+* Algorithm implementation (1 activity per teammate)
+	*  **Evaluation criterion:** presentation at Tech. meeting 1, cross-review, presentation, tests correctly run the algorithm,  presentation at Tech. meeting 3
 
-
+For a small team (<4) some activites can be reduced.
 
 
 ## Project list, fall 2025
