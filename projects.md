@@ -1,6 +1,56 @@
 # Projects
 
-## Project list (fall 2025, tentative)
+## Project activities
+Each team must assign roles for all teammates. Each activity is evaluated independently, thus number of activites per each teammate must be ~equal.
+
+* Project planning: the student must describe (or gather with the team) a document with the following information:
+	* Project name
+	* Project scope (what algorithms will be implemented)
+	* Project stack (what libraries will be used,  how the project will be integrated with other libraries)
+	* A scheme of the project (no certain requirements for the format, but you can use IDEF or UML for better clarity if you want)
+	* Present this plan
+	* **Evaluation criterion:** presentation at Tech. meeting 1
+  
+* Benchmark. This code must implement baseline algorithms on a (maybe simplified) to dataset. Further this benchmark must be used as a basis of the library demo.
+ * This benchmark must also implement (**maybe in a very simplified version**) one of the proposed algorithms.
+ * The goal of this activity is an early check that the plan is possible to implement, and all the proposed algorithms can be further reported.
+ * **Evaluation criterion:** presentation  at Tech. meeting 2
+
+
+* Algorithm implementation (1 activity per teammate)
+	*  **Evaluation criterion:** presentation at Tech. meeting 1, cross-review, presentation, tests correctly run the algorithm,  presentation at Tech. meeting 3
+* Project wrapping:
+	* Making the code uniform acros all the teammates
+	* Controling the code quality/consistency
+	* Wrapping the code into library, repository creation and support
+	* **Evaluation criterion:** cross-review,  presentation, the links are correct, the code can be installed without problems, all the workflows are setup, short presentation at Checkpoint, full presentation at tech. meeting 3
+
+  
+* Tests writing
+	* **Evaluation criterion:** test coverage > 90%,  presentation at Tech. meeting 3
+* Documentation writing
+	* **Evaluation criterion:** cross-review,   presentation at Tech. meeting 2 (intermediate version), presentation at Tech. meeting 3
+* Cross-review (1 activity per teammate)
+* Making a final demo based on the basic code
+	* **Evaluation criterion:** cross-review,  presentation
+  
+* Blog post and tech. report
+* Blog post must be published at some platform (habr, medium, etc)
+* Short message: up to 10 minutes
+* **Evaluation criterion:** ,  presentation at Tech. meeting 2 (intermediate version), ,presentation at Tech. meeting 3, possibely external review
+
+ 
+* Tech. report: must contain a short version of technical paper: abstract, introduction, methods, experiments. The length: 3-5 pages.
+* **Evaluation criterion:** ,  presentation at Tech. meeting 2 (intermediate version), ,presentation at Tech. meeting 3, possibely external review
+
+
+For the team of 2 people it means that each teammate must have 5 acitvities
+For the team of 4 people each teammate must have 3 or 4 activities
+
+
+
+
+## Project list, fall 2025
 
 ### Stochastic gating
 
