@@ -27,7 +27,7 @@ Checkpoint:
 
 ### 9.12
 * The cross-review is finished
-* The external review of blogposts (tentatively) is finished
+* The external review of blogposts and tech. report is finished
 ### 16.12
 * The cross-reviews and fixes are discussed
 * Grades, finalizing work
