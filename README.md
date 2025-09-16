@@ -12,7 +12,7 @@
 |Date|Topic|
 | --- | --- |
 | 9.09 | [Intro](slides/slides_0_intro.pdf)| 
-| 16.09 | Distributions, expectation, likelihood | 
+| 16.09 | [Distributions, expectation, likelihood](slides/slides_1_disttibutions.pdf) | 
 | 23.09 | Bayesian inference, sampling | 
 | 30.09 | Technincal meeting 1: project discussion  | 
 | 7.10 | Complexity | 
