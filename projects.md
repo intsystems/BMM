@@ -149,19 +149,19 @@ Since the algorithms implementation can be already found, the main problem of th
 * [Lab on the implementation of IRT](https://github.com/intsystems/BMM/blob/main-22/lab2/BarabanshchikovaTask2.ipynb)
 
 
-### Relaxit 1.5
+~~### Relaxit 1.5~~
 
-**Number of people in team:** 2-4
+~~**Number of people in team:** 2-4~~
 
- **Motivation**: For lots of mathematical problems we need an ability to sample discrete random variables. The problem is that due to continuos nature of deep learning optimization, the usage of truely discrete random variables is infeasible. Thus we use different relaxation method. One of them, [Concrete distribution](https://arxiv.org/abs/1611.01144) or [Gumbel-softmax](https://arxiv.org/abs/1611.00712)  (this is one distribution proposed in parallel by two research groups) is implemented in different DL packages. 
- The previous year our studnet group made a [relaxit](github.com/intsystems/relaxit) library that considers multiple alternatives to this distribtuion.  The goal of this project is to update the library with more algorithms.
+ ~~**Motivation**: For lots of mathematical problems we need an ability to sample discrete random variables. The problem is that due to continuos nature of deep learning optimization, the usage of truely discrete random variables is infeasible. Thus we use different relaxation method. One of them, [Concrete distribution](https://arxiv.org/abs/1611.01144) or [Gumbel-softmax](https://arxiv.org/abs/1611.00712)  (this is one distribution proposed in parallel by two research groups) is implemented in different DL packages.~~
+ ~~The previous year our studnet group made a [relaxit](github.com/intsystems/relaxit) library that considers multiple alternatives to this distribtuion.  The goal of this project is to update the library with more algorithms.~~
 
-**Algorithms to implement:**
-* [Generalized GS](https://arxiv.org/abs/2003.01847)
-* [Surrogate-based](https://arxiv.org/pdf/1711.00123)
-* [REBAR](https://arxiv.org/pdf/1703.07370)
-* [ST-GS](https://arxiv.org/abs/2410.13331)
+~~**Algorithms to implement:**~~
+~~* [Generalized GS](https://arxiv.org/abs/2003.01847)~~
+~~* [Surrogate-based](https://arxiv.org/pdf/1711.00123)~~
+~~* [REBAR](https://arxiv.org/pdf/1703.07370)~~
+~~* [ST-GS](https://arxiv.org/abs/2410.13331)~~
 
-**Note:** since this is a continuation of the old project, the main focus here is to make a good demo/baselines. This is essnetial here.
-Strongly recommended to compare the methods with [ReinMax](https://github.com/microsoft/ReinMax)  or integrate it into the library.
+~~**Note:** since this is a continuation of the old project, the main focus here is to make a good demo/baselines. This is essnetial here.~~
+~~Strongly recommended to compare the methods with [ReinMax](https://github.com/microsoft/ReinMax)  or integrate it into the library.~~
   
