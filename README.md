@@ -13,7 +13,7 @@
 | --- | --- |
 | 9.09 | [Intro](slides/slides_0_intro.pdf)| 
 | 16.09 | [Distributions, expectation, likelihood](slides/slides_1_distributions.pdf) | 
-| 23.09 | Bayesian inference | 
+| 23.09 | [Bayesian inference](slides/slides_2_inference.pdf) | 
 | 30.09 | Technincal meeting 1: project discussion  | 
 | 7.10 | Complexity | 
 | 14.10 | Var. inference  | 
