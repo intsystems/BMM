@@ -1,0 +1,149 @@
+\documentclass{beamer}
+\beamertemplatenavigationsymbolsempty
+\usecolortheme{beaver}
+\setbeamertemplate{blocks}[rounded=true, shadow=true]
+\setbeamertemplate{footline}[page number]
+\usefonttheme{professionalfonts}
+
+\title{An Exploration of Softmax Alternatives Belonging to the Spherical Loss Family}
+\author{Alexandre de Brebisson, Pascal Vincent}
+\institute{Talk by: Fedor Sobolevsky}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Motivation}
+\begin{itemize}
+    \item Softmax is standard for multi-class classification, but this choice is somewhat arbitrary as its superiority is not theoretically justified.
+    \item The spherical loss family allows efficient gradient updates in $O(d^2)$ instead of $O(d \times D)$.
+    \item In their paper, Alexandre de Brebisson and Pascal Vincent explore spherical losses as alternatives to log-softmax for classification tasks.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Baseline: Log-Softmax}
+\[
+L(\boldsymbol{o}, c) = -\log\frac{e^{o_c}}{\sum_{k=1}^D e^{o_k}} = -o_c + \log \sum_{k=1}^D e^{o_k}
+\]
+\begin{itemize}
+    \item Standard in classification, but computationally expensive for large $D$: gradient updates require $O(D\times d)$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Spherical Loss Family: Definition}
+A loss belongs to the spherical family if it depends only on:
+\[
+s = \sum_i o_i,\quad q = \|\boldsymbol{o}\|^2,\quad o_c \text{ and } y_c \text{ for target class } c:
+\]
+\[
+\mathcal{L} = \mathcal{L}(s, q, o_c, y_c)
+\]
+\begin{itemize}
+    \item Enables efficient gradient computation\footnote{\textit{Vincent, Pascal, de Brebisson, Alexandre, and Bouthillier, Xavier}. Efficient exact gradient update for training deep networks with very large sparse targets. NIPS, 2015.} in $O(d^2)$.
+    \item A classic example is MSE. 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Spherical Upper Bounds of Log-Softmax}
+\begin{itemize}
+    \item Derived from Bouchard (2007)\footnote{Bouchard, Guillaume. Efficient bounds for the softmax function and applications to approximate inference in hybrid models (2007).} upper bound of log-sum-exp.
+    \item Form:
+    \[
+L \leq \left(-\frac{(D-2)^2}{16D}\frac{1}{\lambda(\xi)}-\frac{D}{2}\xi-D\lambda(\xi)\xi^2+\right.\] \[
+\left.+D\log(1+e^{\xi})+
+\frac{1}{D}s+\left(q-\frac{s^2}{D}\right)\lambda(\xi)-o_c\right),
+\]
+\[
+\lambda(\xi)=\frac{1}{2\xi}\left(\frac{1}{1+e^{-\xi}}-\frac{1}{2}\right).
+\]
+    \item Disadvantages:
+    \begin{itemize}
+        \item Bound minimization did not improve performance.
+        \item Hyperparameter $\xi$ sensitive and hard to tune.
+        \item Failed to outperform even initial model in language tasks.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Spherical Softmax Loss}
+\[
+f_{\text{sph\_soft}}(\boldsymbol{o})_k = \frac{o_k^2 + \varepsilon}{\sum_i (o_i^2 + \varepsilon)}
+\]
+\[
+L_{\text{log\_sph\_soft}} = -\log f_{\text{sph\_soft}}(\boldsymbol{o})_c
+\]
+\begin{itemize}
+    \item Invariant to scaling of $\boldsymbol{o}$.
+    \item Requires careful tuning of $\varepsilon$ for numerical stability.
+    \item Even function (ignores sign of $o_k$).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Taylor Softmax Loss}
+Based on Taylor expansion of $\exp(x) \approx 1 + x + \frac{1}{2}x^2$:
+\[
+f_{\text{tay\_soft}}(\boldsymbol{o})_k = \frac{1 + o_k + \frac{1}{2}o_k^2}{\sum_i (1 + o_i + \frac{1}{2}o_i^2)}
+\]
+\[
+L_{\text{log\_tay\_soft}} = -\log f_{\text{tay\_soft}}(\boldsymbol{o})_c
+\]
+\begin{itemize}
+    \item No extra hyperparameter needed.
+    \item Slightly asymmetric around zero.
+    \item Numerically stable.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Results: MNIST and CIFAR-10}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Loss} & \textbf{MNIST Error} & \textbf{CIFAR-10 Error} \\
+\hline
+Log-Softmax & 0.812\% & 8.52\% \\
+Log-Taylor Softmax & \textbf{0.785\%} & \textbf{8.07\%} \\
+Log-Spherical Softmax & 0.828\% & 8.37\% \\
+\hline
+\end{tabular}
+\end{table}
+\begin{itemize}
+    \item Taylor softmax outperforms log-softmax on low-dimensional outputs.
+    \item Spherical losses train faster and achieve lower error.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Results: CIFAR-100 and Language Modeling}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Loss} & \textbf{CIFAR-100 Error} & \textbf{PennTree Perplexity} \\
+\hline
+Log-Softmax & \textbf{32.4\%} & \textbf{126.7} \\
+Log-Taylor Softmax & 33.1\% & 147.2 \\
+Log-Spherical Softmax & 33.1\% & 149.2 \\
+\hline
+\end{tabular}
+\end{table}
+\begin{itemize}
+    \item Log-softmax performs better as output dimension increases.
+    \item Exponential in softmax may better handle high-dimensional competition.
+    \item Spherical losses struggle in language tasks with large vocabularies.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+\begin{itemize}
+    \item Spherical losses (especially Taylor softmax) can outperform log-softmax on small-output tasks (e.g., MNIST, CIFAR-10).
+    \item For high-dimensional outputs (CIFAR-100, language modeling), log-softmax remains superior.
+    \item Spherical losses enable efficient training but may lack the discriminative power of softmax in complex scenarios.
+    \item Spherical alternatives are worth considering for specific applications with low output dimension or where efficiency is key.
+\end{itemize}
+\end{frame}
+
+\end{document}
