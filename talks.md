@@ -5,4 +5,5 @@
 
 # Bayesian inference
 * [Bayesian Neural Network Priors Revisited](https://iclr.cc/virtual/2022/poster/6955) [reporter: your name]
-* [Linearised Laplace](https://arxiv.org/pdf/1906.11537) [reporter: your name]
+* [Linearised Laplace](https://arxiv.org/pdf/1906.11537) [reporter: Vladislav Minashkin]
+
