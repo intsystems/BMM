@@ -8,3 +8,6 @@
 * [Linearised Laplace](https://arxiv.org/pdf/1906.11537) [reporter: Vladislav Minashkin]
 
 
+# Technical meeting
+* [Accelerated Linearized Laplace Approximation for Bayesian Deep Learning](https://proceedings.neurips.cc/paper_files/paper/2022/file/12143893d9d37c3569dda800b95cabd9-Paper-Conference.pdf) [reporter: Your name]
+* [Deep Reference Priors: What is the best way to pretrain a model?](https://proceedings.mlr.press/v162/gao22d/gao22d.pdf) [reporter: Your name]
