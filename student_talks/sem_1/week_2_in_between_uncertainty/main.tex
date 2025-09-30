@@ -1,0 +1,316 @@
+\documentclass[aspectratio=169, 12pt]{beamer}
+\usepackage{bbm}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amscd,amssymb}
+\usepackage{amsfonts,amsmath,array}
+\usepackage{sidecap}
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{pdfpages}
+\usepackage{multicol}
+
+% For algorithms
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+% Colors
+\usepackage{color}
+\usepackage{colortbl}
+
+\newtheorem{assumption}{Assumption}
+
+\usetheme{boxes}
+
+\title[\hbox to 56mm{In-Between Uncertainty}]{‘In-Between’ Uncertainty in Bayesian Neural Networks}
+\author[Vladislav Minashkin]{Vladislav Minashkin}
+\institute{Moscow Institute of Physics and Technology}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Table of contents}
+\tableofcontents
+\end{frame}
+
+% Task/Model Motivation
+\section{Task/Model Motivation}
+\begin{frame}
+\frametitle{Task/Model Motivation}
+\begin{itemize}
+\item Bayesian Neural networks underestimate uncertainty
+\item Reliable uncertainty estimates are critical for:
+\begin{itemize}
+\item Out-of-distribution robustness
+\item Critical decision-making tasks
+\end{itemize}
+\item Networks should predict with high uncertainty:
+\begin{itemize}
+\item Far from training data
+\item \textit{Between separated clusters of observations}
+\end{itemize}
+\item Mean-Field Variational Inference (MFVI) is widely used but has limitations
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The In-Between Uncertainty Problem}
+\textbf{What does “in-between uncertainty” mean?}
+\vspace{0.3cm}
+\begin{itemize}
+\item Consider two separated clusters of observed data
+\item A well-calibrated model should:
+\begin{itemize}
+\item Have \textcolor{blue}{high confidence} near data clusters
+\item Have \textcolor{red}{low confidence (high uncertainty)} in the gap between clusters
+\end{itemize}
+\item Standard UCI benchmarks don’t test this property
+\item MFVI fails catastrophically on this requirement
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The In-Between Uncertainty Problem}
+\begin{center}
+       \begin{figure}
+           \centering
+           \includegraphics[width=0.96\textwidth]{1.png}
+       \end{figure}
+
+        \end{center}
+\end{frame}
+
+% Formal Problem Statement
+\section{Formal Problem Statement}
+\begin{frame}
+\frametitle{Formal Problem Statement: Setup}
+\begin{itemize}
+\item Bayesian Neural Network with parameters $\theta$
+\item Output $f_{\theta}(x)$ interpreted as mean of Gaussian with noise variance $\sigma_o^2$
+\item Dataset: $\mathcal{D} = {(x_n, y_n)}_{n=1}^{N}$
+\item Prior: $p(\theta)$ (diagonal Gaussian)
+\item Posterior: $p(\theta|\mathcal{D})$
+\item Goal: Approximate posterior for predictions
+\end{itemize}
+\vspace{0.3cm}
+\textbf{Problem}: How does approximate inference affect uncertainty quality \textit{between} data clusters?
+\end{frame}
+
+
+
+% Theory and Method Description
+\section{Theory and Method Description}
+
+\begin{frame}
+\frametitle{Predictive Distribution}
+The predictive distribution is:
+$$p(y^*|x^*, \mathcal{D}) = \mathbb{E}_{p(\theta|\mathcal{D})}[p(y^*|x^*, \theta)]$$
+
+\vspace{0.5cm}
+With approximate posterior $q_{\phi}(\theta)$:
+$$p(y^*|x^*, \mathcal{D}) \approx \mathbb{E}_{q_{\phi}(\theta)}[p(y^*|x^*, \theta)] \approx \frac{1}{M}\sum_{m=1}^{M} p(y^*|x^*, \theta_m)$$
+
+\vspace{0.5cm}
+\textbf{Question}: Does the choice of $q_{\phi}(\theta)$ affect uncertainty \textit{between} data regions?
+\end{frame}
+
+\begin{frame}
+\frametitle{Mean-Field Variational Inference (MFVI)}
+\textbf{Approach}: Approximate $p(\theta|\mathcal{D})$ with $q_{\phi}(\theta)$
+
+\vspace{0.3cm}
+Optimize Evidence Lower Bound (ELBO):
+$$\mathcal{L}(\phi) = \sum_{n=1}^{N} \mathbb{E}_{q_{\phi}}[\log p(y_n|\theta, x_n)] - \text{KL}(q_{\phi}(\theta)||p(\theta))$$
+
+$$\mathcal{L}(\phi) \approx \sum_{m=1}^M\sum_{n=1}^{N} \mathbb{E}_{q_{\phi}}[\log p(y_n|\theta_m, x_n)] - \text{KL}(q_{\phi}(\theta)||p(\theta))$$
+
+\vspace{0.3cm}
+\textbf{Mean-Field Assumption}: $q_{\phi}(\theta)$ is fully factorized Gaussian
+$$q_{\phi}(\theta) = \prod_i \mathcal{N}(\theta_i; \mu_i, \sigma_i^2)$$
+
+\textbf{Problem}: Independence assumption restricts expressiveness
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Laplace Approximation}
+\textbf{Classical alternative}: Gaussian approximation at MAP solution
+
+\vspace{0.3cm}
+\begin{enumerate}
+\item Find mode: $\theta_{\text{MAP}} = \arg\max_{\theta} p(\theta|\mathcal{D})$
+\item Set $q(\theta) = \mathcal{N}(\theta; \theta_{\text{MAP}}, \Sigma)$
+\item Covariance from curvature:
+$$\Sigma = -\left[\nabla_{\theta}\nabla_{\theta} \log p(\theta|\mathcal{D})|_{\theta=\theta_{\text{MAP}}}\right]^{-1}$$
+\end{enumerate}
+
+\vspace{0.3cm}
+\textbf{In practice}: Use Gauss-Newton matrix
+$$\Sigma = -\left[\frac{1}{\sigma_o^2}\sum_{n=1}^{N} g(x_n)g(x_n)^T + \text{diag}(p)\right]^{-1}$$
+where $g(x_n) = \nabla_{\theta} f_{\theta}(x_n)|_{\theta=\theta_{\text{MAP}}}$ and $p_i = 1/\sigma_i^2$ and $\sigma_i^2$ is prior variance of $\theta_i$
+\end{frame}
+
+\begin{frame}
+\frametitle{Linearized Laplace (LL) Approximation}
+\textbf{Key improvement}: Linearize network output around $\theta_{\text{MAP}}$
+$$f_{\theta}(x) \approx f_{\theta_{\text{MAP}}}(x) + g(x)^T(\theta - \theta_{\text{MAP}})$$
+
+\vspace{0.3cm}
+This gives a \textit{linear-Gaussian model} with exact solution:
+$$p(y_*|x_*, \mathcal{D}) \approx \mathcal{N}(y_*; f_{\theta_{\text{MAP}}}(x_*), \sigma_o^2 + g(x_*)^T\Sigma g(x_*))$$
+
+\vspace{0.5cm}
+\textbf{Advantages}:
+\begin{itemize}
+\item Full covariance structure
+\item Similar underfitting of standard Laplace
+\item Still tractable for small networks
+\end{itemize}
+\end{frame}
+
+% Experiments, Examples, Applications
+\section{Experiments, Examples, Applications}
+\begin{frame}
+\frametitle{Synthetic 1D Experiment}
+\textbf{Setup}:
+\begin{itemize}
+\item Sine wave with Gaussian noise
+\item Two separated clusters of observations
+\item 1 hidden layer, 50 units, tanh activation
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Methods compared}:
+\begin{itemize}
+\item MFVI (mean-field)
+\item FCVI (full covariance VI)
+\item LL (Linearized Laplace)
+\item HMC (Hamiltonian Monte Carlo - ground truth)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Synthetic 1D Experiment: Results}
+\textbf{Key observations from Figure 1 in paper:}
+\begin{itemize}
+\item \textbf{MFVI}: Error bars similar magnitude in data region and in-between region
+\begin{itemize}
+\item \textcolor{red}{Fails to capture in-between uncertainty}
+\end{itemize}
+\item \textbf{FCVI}: Larger uncertainty in middle, slightly underconfident in data region
+\item \textbf{LL}: High confidence in data, increased uncertainty between
+\begin{itemize}
+\item \textcolor{blue}{Matches HMC behavior}
+\end{itemize}
+\item \textbf{HMC}: Ground truth
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{UCI Regression Datasets}
+\textbf{Two experimental setups}:
+\begin{enumerate}
+\item \textbf{Standard splits}: Uniform random train/test split
+\begin{itemize}
+\item Tests interpolation and general performance
+\end{itemize}
+\item \textbf{Gap splits}: Remove middle 1/3 of data for testing
+\begin{itemize}
+\item Tests in-between uncertainty explicitly
+\item For each input dimension, sort and create gap
+\end{itemize}
+\end{enumerate}
+
+\vspace{0.3cm}
+\textbf{Evaluation metric}: Test log-likelihood
+\begin{itemize}
+\item Penalizes both inaccuracy and overconfidence
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{UCI Results: Standard Splits}
+\begin{center}
+       \begin{figure}
+           \centering
+           \includegraphics[width=0.92\textwidth]{2.png}
+       \end{figure}
+
+        \end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{UCI Results: Standard Splits}
+\textbf{Performance on standard splits} (Figure 2):
+\begin{itemize}
+\item MFVI and LL perform best overall
+\item MAP competitive on most datasets
+\item FCVI struggles (optimization difficulties)
+\item Both 1 and 2 hidden layer networks tested
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Conclusion}: MFVI appears to work well for standard benchmarks.
+\end{frame}
+
+\begin{frame}
+\frametitle{UCI Results: Standard Splits}
+\begin{center}
+       \begin{figure}
+           \centering
+           \includegraphics[width=0.92\textwidth]{3.png}
+       \end{figure}
+
+        \end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{UCI Results: Gap Splits - Catastrophic Failures}
+\textbf{Performance on gap splits} (Figure 3):
+\begin{itemize}
+\item Most datasets: MAP competitive with Bayesian methods
+\item \textbf{Energy dataset}:
+\begin{itemize}
+\item MAP: catastrophic failure
+\item MFVI: catastrophic failure
+\item LL: close to ground truth
+\end{itemize}
+\item \textbf{Naval dataset}:
+\begin{itemize}
+\item MAP: catastrophic failure
+\item MFVI: catastrophic failure
+\item LL: close to ground truth
+\end{itemize}
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Key insight}: MFVI is overconfident, performs similarly to MAP
+\end{frame}
+
+
+% Literature
+\section{Literature}
+\begin{frame}
+\frametitle{Literature}
+\textbf{Key references}:
+\begin{itemize}
+\item MacKay (1992): Laplace approximation for BNNs
+\item Blundell et al. (2015): Bayes by Backprop with reparameterization
+\item Gal & Ghahramani (2016): Monte Carlo Dropout
+\item Hernández-Lobato & Adams (2015): Probabilistic Backpropagation
+\item Ritter et al. (2018): Scalable Laplace with K-FAC
+\item Lawrence (2001): Underfitting problem in standard Laplace
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Paper}: Foong et al., ICML 2019 Workshop on Uncertainty and Robustness
+\end{frame}
+
+\end{document}
