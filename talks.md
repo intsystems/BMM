@@ -12,4 +12,6 @@
 * [Accelerated Linearized Laplace Approximation for Bayesian Deep Learning](https://proceedings.neurips.cc/paper_files/paper/2022/file/12143893d9d37c3569dda800b95cabd9-Paper-Conference.pdf) [reporter: Stepanov Ilya]
 * [Deep Reference Priors: What is the best way to pretrain a model?](https://proceedings.mlr.press/v162/gao22d/gao22d.pdf) [reporter: Papay Ivan]
 
-
+# Complexity
+* [BRIDGING KOLMOGOROV COMPLEXITY AND DEEP LEARNING: ASYMPTOTICALLY OPTIMAL DESCRIPTION LENGTH OBJECTIVES FOR TRANSFORMERS](https://arxiv.org/pdf/2509.22445) [reporter: name]
+* [Gibbs-Based Information Criteria and the Over-Parameterized Regime](https://arxiv.org/abs/2306.05583) [reporter: name]
