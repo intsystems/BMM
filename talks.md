@@ -14,5 +14,6 @@
 
 # Complexity
 * [BRIDGING KOLMOGOROV COMPLEXITY AND DEEP LEARNING: ASYMPTOTICALLY OPTIMAL DESCRIPTION LENGTH OBJECTIVES FOR TRANSFORMERS](https://arxiv.org/pdf/2509.22445) [reporter: Firsov Sergey]
-* [Gibbs-Based Information Criteria and the Over-Parameterized Regime](https://arxiv.org/abs/2306.05583) [reporter: name]
+* [Gibbs-Based Information Criteria and the Over-Parameterized Regime](https://arxiv.org/abs/2306.05583) [reporter: Papay Ivan]
+
 
