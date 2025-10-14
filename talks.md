@@ -16,4 +16,6 @@
 * [BRIDGING KOLMOGOROV COMPLEXITY AND DEEP LEARNING: ASYMPTOTICALLY OPTIMAL DESCRIPTION LENGTH OBJECTIVES FOR TRANSFORMERS](https://arxiv.org/pdf/2509.22445) [reporter: Firsov Sergey]
 * [Gibbs-Based Information Criteria and the Over-Parameterized Regime](https://arxiv.org/abs/2306.05583) [reporter: Papay Ivan]
 
-
+# Variational inference
+[Computing upp er and lower bounds on likelihoods in intractable networks](https://dspace.mit.edu/bitstream/handle/1721.1/6653/AIM-1571.pdf?sequence=2) [reporter: name]
+[Alpha-Beta Divergence For Variational Inference](https://arxiv.org/pdf/1805.01045) [reporter: name]
