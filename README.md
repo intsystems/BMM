@@ -16,7 +16,7 @@
 | 23.09 | [Bayesian inference](slides/slides_2_inference.pdf) | 
 | 30.09 | Technincal meeting 1: project discussion  | 
 | 7.10 | [Complexity](slides/slides_3_complexity.pdf) | 
-| 14.10 | Var. inference  | 
+| 14.10 | [Var. inference](slides/slides_4_var1.pdf)  | 
 | 21.10 |  Technincal meeting 2: proof of concept discussion  | 
 | 28.10 | Var. inference    | 
 | 11.11 | Diffusion models, score matching | 
