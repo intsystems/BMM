@@ -1,0 +1,254 @@
+\documentclass{beamer}
+\beamertemplatenavigationsymbolsempty
+\usecolortheme{beaver}
+\setbeamertemplate{blocks}[rounded=true, shadow=true]
+
+% Красивый футер с номером кадра / общим числом
+\setbeamertemplate{plain footline}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{blocks}[rounded=true, shadow=true]
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{.\ }
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+
+\usepackage{array}
+\usepackage{changepage}
+\usepackage{caption}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{amsthm}
+
+% Title Page Information
+\title{Bridging Kolmogorov Complexity and Deep Learning}
+\author{Shaw, Cohan, Eisenstein, Toutanova \\ Analyse: Firsov Sergey}
+\institute{MIPT}
+\date{2025}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+% Слайд 1: Введение (что говорить подробно)
+%  "Принцип минимальной длины описания, или MDL, предлагает смотреть на обучение как на задачу сжатия. Мы хотим найти такую модель, чтобы суммарная длина описания самой модели и длина описания данных при условии этой модели была минимальна. Это означает: если модель хорошо извлекает закономерности, то эти закономерности позволяют компактно кодировать данные. Поэтому способность к предсказанию и способность к компрессии — это две стороны одной медали. Проблема в том, что для нейросетей трудно измерить ‘сложность’ самой функции, которую они реализуют. В отличие от дискретной программы, где длину можно посчитать, у нас нет универсальной практической меры сложности параметрической функции. Поэтому возникает разрыв между теорией алгоритмической информации (Колмогоровская сложность, MDL) и практическими целями обучения нейросетей. Цель этой работы — сократить этот разрыв: показать, что для трансформеров существуют асимптотически оптимальные по длине описания цели, и предложить вариационную, дифференцируемую аппроксимацию, которую можно реально оптимизировать градиентными методами."
+\begin{frame}{Introduction: Why MDL and Kolmogorov Complexity}
+\small
+\begin{block}{MDL intuition}
+Learning is viewed as data compression: the best model minimizes the total length of the model description plus the description of the data encoded with that model.
+\end{block}
+
+\begin{block}{Key idea}
+Any predictive regularity is also useful for compression, and vice versa. Predictive power and compressibility are two sides of the same coin.
+\end{block}
+
+\begin{block}{Gap}
+For neural networks, measuring the “complexity of the function” is nontrivial, unlike counting the length of a discrete program. This creates a gap between algorithmic information theory and practical training objectives.
+\end{block}
+
+\begin{block}{Goal of the paper}
+Establish asymptotically optimal description-length objectives for Transformers and provide a tractable, differentiable variational objective that can be optimized in practice.
+\end{block}
+\end{frame}
+
+% Слайд 2:перечислю вклады работы и сразу поясню их смысл. Первое, авторы вводят универсальные двухчастные коды для вероятностных моделей: это такие схемы кодирования, у которых минимум длины описания для любых данных не хуже любых других двухчастных схем — до добавочной константы. Это убирает произвол в выборе прайора. Второе, они доказывают существование асимптотически оптимальных семейств таких кодов для трансформеров: при росте ресурсов (слои, окно контекста) минимум приближается к оптимальной границе MDL. Третье, чтобы сделать это применимым, они конструируют дифференцируемую вариационную цель с адаптивным смесью гауссов (GMM) как прайором: её можно оптимизировать стандартными методами. Четвёртое, эксперименты показывают, что цель действительно предпочитает низкосложные, хорошо обобщающие решения; но при обучении с нуля стандартные оптимизаторы часто не находят такие решения — это указывает на оптимизационный барьер, а не на несостоятельность цели."
+\begin{frame}{Contributions and Why They Matter}
+\small
+\begin{enumerate}
+    \item Universal two-part codes for probabilistic models: their minimum is optimal up to an additive constant compared to any other two-part code.
+    \item Asymptotically optimal families of codes for Transformers: as resources grow, the minimum approaches the MDL optimum (up to a constant).
+    \item A tractable, differentiable variational objective using adaptive Gaussian mixture priors, enabling gradient-based optimization.
+    \item Empirical analysis: the objective selects low-complexity, strongly generalizing solutions; however, standard optimizers often fail to find them from random initialization.
+\end{enumerate}
+\end{frame}
+
+% Слайд 3: "Дам точные определения, потому что мы ими будем пользоваться. Колмогоровская сложность K(x) — это длина кратчайшей программы на фиксированной универсальной префиксной машине Тьюринга, которая печатает x. Для функции f сложность K(f) — длина кратчайшей программы, вычисляющей f. Существует теорема инвариантности: выбор конкретной машины меняет эти величины только на константу. K невычислима из-за проблемы остановки, но мы используем ресурсо-ограниченные приближения K_{T,R}(f), где учитываем только программы, которые останавливаются за R_t шагов и используют не больше R_s регистров. При увеличении ресурсов эта величина монотонно убывает к истинной K(f) (до константы). Наконец, нам нужна нотация неравенств ‘до константы’: запись f(x) {+}\le g(x) означает, что существует константа c, не зависящая от x, что f(x) \le g(x)+c; а f(x) {+=} g(x) означает, что оба неравенства верны в обе стороны."
+\begin{frame}{Kolmogorov Complexity and Resource-Bounded Approximations}
+\small
+\begin{block}{Definitions}
+$K(x)$: length of the shortest program that prints $x$. 
+$K(f)$: length of the shortest program computing a discrete function $f$.
+\end{block}
+
+\begin{block}{Properties}
+Invariance theorem: values are machine-independent up to a constant. Exact $K$ is not computable due to the halting problem.
+\end{block}
+
+\begin{block}{Approximations}
+$K_{T,R}(f)$ considers only programs halting within $R_t$ steps and using at most $R_s$ registers. As $R$ grows, $K_{T,R}(f)$ decreases toward $K(f)$ (up to a constant).
+\end{block}
+
+\begin{block}{Inequalities up to constants}
+Use $f(x)\; {+}\!\le\; g(x)$ if $\exists c$ independent of $x$ with $f(x)\le g(x)+c$. Write $f(x)\;{+=}\;g(x)$ if both directions hold.
+\end{block}
+\end{frame}
+
+% Слайд 4: Постановка задачи и модельные функции (что говорить подробно)
+% Я говорю: "Теперь формализуем постановку. X — дискретное счётное множество входов, Y — конечное множество выходов. Датасет — конечная последовательность пар (x_i, y_i). Модельная функция f отображает x в вектор логитов в рациональных числах (это важно, чтобы можно было корректно говорить о вычислимой сложности функции). Условные вероятности определены через softmax: p(y|x;f) = σ(f(x))_y, а совместная по датасету — произведение по парам. Наша цель — строить коды и целевые функции, которые минимизируют длину описания Y при данном X, выбирая подходящий f из множества вычислимых функций F."
+\begin{frame}{Problem Setting and Model Functions}
+\small
+\begin{block}{Data and models}
+$X$: discrete countable set; $Y$: finite set. 
+Dataset $D=(X\times Y)^\ast$ is a finite sequence of pairs $(x_i,y_i)$.
+\end{block}
+
+\begin{block}{Model function}
+$f\in \mathcal{F}$ maps $x$ to logits $f(x)\in \mathbb{Q}^{|Y|}$. The conditional distribution is $p(y|x;f)=\sigma(f(x))_y$ and $p(Y|X;f)=\prod_{(x,y)}p(y|x;f)$.
+\end{block}
+
+\begin{block}{Goal}
+Identify encoding schemes and objectives that optimally compress $Y$ given $X$ by selecting $f\in\mathcal{F}$, in the MDL sense.
+\end{block}
+\end{frame}
+
+% Слайд 5a: "Двухчастный код — это строгая формализация баланса между сложностью модели и качеством подгонки. Представьте, что Алиса хочет передать Бобу метки Y, при условии, что оба знают X. Шаг 1: Алиса передаёт ‘гипотезу’ h — это, по сути, параметры модели. Цена этого шага — минус двоичный логарифм прайора на h: -log2 α(h). Шаг 2: Алиса передаёт сами метки Y, но не «в лоб», а с использованием уже известной Бобу модели m(h): цена этого шага — -log2 p(Y|X;m(h)). Итого длина: L^{two-part}_M(Y|X;h) = -log2 α(h) - log2 p(Y|X;m(h)). Мы минимизируем эту сумму по h. Смысл: если взять очень сложную модель, первый член станет большим; если взять слишком простую модель, второй член (NLL) станет большим. Минимум находит компромисс. Это и есть практическая реализация принципа MDL. Кроме того, это имеет байесовскую интерпретацию: минимизация соответствует MAP-оценке — максимизации апостериорной вероятности гипотезы при данных."
+\begin{frame}{Two-Part Codes: Mechanism and Purpose}
+\small
+\begin{block}{Mechanism}
+Step 1: transmit a hypothesis $h$ (model parameters) at cost $-\log_2 \alpha(h)$.
+Step 2: transmit labels $Y$ given $X$ and $m(h)$ at cost $-\log_2 p(Y|X;m(h))$.
+\end{block}
+
+$$
+L^{\text{two-part}}_M(Y|X;h) = -\log_2 \alpha(h) - \log_2 p(Y|X;m(h)).
+$$
+
+\begin{block}{Purpose}
+This objective enforces a balance: model complexity via $-\log_2\alpha(h)$ vs. data fit via $-\log_2 p(\cdot)$. Minimizing over $h$ yields the MDL trade-off and coincides with MAP estimation.
+\end{block}
+\end{frame}
+
+% Слайд 5b"Теперь объясняю, что такое универсальный двухчастный код и почему это важно. Универсальный двухчастный код — это такая схема, минимум длины описания которой не хуже (до константы) минимума любой другой двухчастной схемы для любых данных. Почему это работает? Два ключевых условия. Первое: класс моделей должен быть вычислительно универсальным — чтобы любая вычислимая отображаемая функция могла быть представлена некоторой гипотезой. Второе: прайор должен назначать по крайней мере одной гипотезе кодовую длину, согласованную с Колмогоровской сложностью соответствующей функции (до константы). Тогда такой код в принципе способен эффективно кодировать любые закономерности. Зачем это нужно? Это устраняет произвольность в выборе прайора и даёт гарантию оптимальности компрессии (до константы), т.е. такой код фундаментально хорош для любых данных."
+\begin{frame}{Universal Two-Part Codes: Definition, Why It Works}
+\small
+\begin{block}{Definition}
+A two-part code $M$ is universal if for any other two-part code $M'$, $L^{\ast,\text{two-part}}_M(Y|X) \;{+}\!\le\; L^{\ast,\text{two-part}}_{M'}(Y|X)$.
+\end{block}
+
+\begin{block}{Why it works}
+Two conditions: (1) the model class is computationally universal; (2) the prior assigns at least one hypothesis a code length matching $K(f)$ up to a constant. Then any computable regularity can be efficiently represented.
+\end{block}
+
+\begin{block}{Why we need it}
+Removes arbitrariness in prior choice and provides near-optimal compression guarantees (up to a constant), for any dataset.
+\end{block}
+\end{frame}
+
+% Слайд 6a: Асимптотические семейства кодов (подробный рассказ)
+% Я говорю: "Следующий шаг — асимптотическая оптимальность. Мы строим семейство кодов {M_R}, где R — ресурсные параметры. Требование: при увеличении R минимум двухчастного кода не превосходит ресурс-ограниченную универсальную границу и монотонно стремится к идеальной MDL-границе (до константы). Смысл: это даёт нам вычислимый путь приближаться к идеалу, который недостижим напрямую, за счёт того, что мы постепенно увеличиваем ресурсы модели и кода."
+\begin{frame}{Asymptotically Optimal Families of Two-Part Codes}
+\small
+\begin{block}{Definition}
+A family $\{M_R\}$ is asymptotically optimal if $L^{\ast,\text{two-part}}_{M_R}(Y|X)\; {+}\!\le\; C^{\text{two-part}}_{T,R}(Y|X)$ and $\lim_{R_t,R_s\to\infty} L^{\ast,\text{two-part}}_{M_R}(Y|X)\;{+=}\;C_{\text{two-part}}(Y|X)$.
+\end{block}
+
+\begin{block}{Meaning}
+Provides a computable path to approach the ideal MDL bound by increasing resources, ensuring monotone improvement (up to a constant).
+\end{block}
+\end{frame}
+
+% Слайд 6b: Связь с трансформерами (сделать понятно ЗАЧЕМ и КАК и ПОЧЕМУ)
+% Я говорю очень подробно: "Теперь связываем всё с трансформерами. Почему трансформеры? Это универсальная архитектура, чьи ресурсы можно масштабировать: число слоёв — это ‘время’, окно контекста — это ‘память’. Идея авторов: показать, что трансформер может эмулировать префиксную машину Тьюринга для любой программы z — за счёт специальной конструкций весов и использования prompt-эмбеддингов, которые хранят программу. Существует компилятор ALTA, который берёт символическую программу и порождает веса трансформера, реализующие эту программу (на уровне отображения $x\mapsto$ логиты). Это даёт отображение z $\to$ веса $h_z$ так, что $m(h_z)=f^z_T$. Зачем это нужно? Мы можем назначить прайор на веса так, чтобы $-\log_2 \alpha(h_z)$ совпадал с длиной программы $|z|$, которая соответствует $K(f^z_T)$ (до константы). Тогда двухчастный код для трансформеров становится асимптотически оптимальным при росте ресурсов. Почему это работает технически? Промпт-эмбеддинги кодируют программу, а слои внимания и MLP действуют как интерпретатор; при увеличении ресурсов растёт класс реализуемых функций и улучшается приближение к идеальной границе."
+\begin{frame}{Connecting to Transformers: Idea, How, and Why}
+\small
+\begin{block}{Idea}
+Treat Transformers as a resource-parameterized family: layers $\sim R_t$, context window $\sim R_s$. Use ALTA to map a program $z$ to weights $h_z$ so that $m(h_z)=f^z_T$.
+\end{block}
+
+\begin{block}{How}
+Store $z$ in prompt embeddings; configure attention/MLP as an interpreter of a prefix Turing machine. This yields a correspondence between programs and Transformer parameters.
+\end{block}
+
+\begin{block}{Why and what for}
+Assign the prior so that $-\log_2\alpha(h_z)=|z|\approx K(f^z_T)$. As resources grow, the two-part code for Transformers becomes asymptotically optimal, approaching the MDL bound.
+\end{block}
+\end{frame}
+
+% Слайд 7: Практические ограничения "жёсткой" конструкции и нужда в вариационном подходе (подробный рассказ)
+% Я говорю: "Но такой ‘жёсткий’ prior и эмуляция Тьюринга — непрактичны: prior недифференцируем, обнуляет почти всё пространство весов, и эмуляция слишком неэффективна. Поэтому в практике нам нужен гибкий и дифференцируемый подход. Авторы переходят к вариационным кодам и адаптивным прайорам, которые можно оптимизировать градиентными методами и которые всё ещё сохраняют асимптотические гарантии в виде верхних границ."
+\begin{frame}{Practical Limitations and the Need for Variational Objectives}
+\small
+\begin{block}{Limitations}
+Rigid priors are non-differentiable and assign zero mass to most parameters; literal Turing emulation is inefficient for real tasks.
+\end{block}
+
+\begin{block}{Need}
+Use flexible, differentiable codes compatible with standard optimizers, while retaining asymptotic guarantees as upper bounds.
+\end{block}
+\end{frame}
+
+% Слайд 8: Вариационные коды (объединённый, подробный, формула в одинарных $)
+% Я говорю: "В вариационных кодах мы не выбираем одну гипотезу, а рассматриваем распределение β(h;φ) по гипотезам при prior α(h). Длина: L^{var}(Y|X,φ) = E_h[ -log2 α(h) + log2 β(h;φ) - log2 p(Y|X;m(h)) ] = KL[β||α] - log2 p_M(Y|X;φ). Интуиция ‘bits back’: большая неопределённость параметров удешевляет их передачу. Мы минимизируем по φ. Далее вводится квази-универсальность: минимум вариационного кода зажат между нижней границей K(Y|X) и верхней C_{two-part}(Y|X) через байесовскую границу C_{bayes}(Y|X), то есть различия малы при разумных условиях. Для практики авторы берут адаптивный GMM-prior/posterior (независимые смеси по группам весов), что приводит к мягкой квантизации, нормальной дифференцируемости (репараметризация) и позволяет доказать асимптотическую оптимальность целого семейства таких вариационных кодов."
+\begin{frame}{Variational Codes: Formula, Intuition, and Quasi-Universality}
+\small
+\begin{block}{Variational code}
+Posterior $\beta(h;\varphi)$ over hypotheses with prior $\alpha(h)$. 
+$$
+L^{\text{var}}_M(Y|X,\varphi)=\mathbb{E}_{h\sim\beta}\big[-\log_2\alpha(h)+\log_2\beta(h;\varphi)-\log_2 p(Y|X;m(h))\big]= KL[\beta\|\alpha]-\log_2 p_M(Y|X;\varphi).
+$$
+\end{block}
+
+\begin{block}{Quasi-universality}
+$K(Y|X)\;{+}\!\le\; C_{\text{bayes}}(Y|X)\;{+}\!\le\; L^{\ast,\text{var}}_M(Y|X)\;{+}\!\le\; C_{\text{two-part}}(Y|X)$.
+\end{block}
+
+\begin{block}{Adaptive GMM priors}
+Products of independent GMMs per weight groups: soft quantization, reparameterization-based training, and an asymptotically optimal family for Transformers.
+\end{block}
+\end{frame}
+
+% Слайд 9a: Эксперименты из статьи — постановка и зачем (подробно)
+% Я говорю: "Теперь только про эксперименты из статьи. Задача: Parity — определить чётность количества единиц в битовой строке. Это стандартный тест длиновой генерализации: модели часто переобучаются на фиксированную длину и плохо выходят за её пределы. Зачем эксперимент? Чтобы отделить два сценария: 1) цель не выделяет хорошие решения; 2) цель хорошая, но оптимизация не находит минимум. Методика: с помощью ALTA задают ‘ручное’ решение, которое одновременно идеально подгоняет обучающие данные и имеет малую вариационную длину (верхняя граница достижимого). Затем запускают обучение с нуля под ту же цель и смотрят, удаётся ли добиться сравнимого значения; сравнивают с MLE-базой."
+\begin{frame}{Experiments (1/2): Purpose and Setup}
+\small
+\begin{block}{Task}
+Parity: given a binary sequence, predict whether the number of ones is odd or even. A canonical stress test for length generalization in Transformers.
+\end{block}
+
+\begin{block}{Purpose}
+Disentangle whether the variational objective fails to select compressible, generalizing solutions, or whether optimization from random initialization fails to find them.
+\end{block}
+
+\begin{block}{Method}
+Use ALTA to construct a manual solution that fits training data and has low variational codelength (an upper bound). Then train from random initialization with the same objective and compare to an MLE baseline.
+\end{block}
+\end{frame}
+
+% Слайд 9b: Эксперименты — результаты и вывод (подробно)
+% Я говорю: "Результаты: только модель с ‘ручной’ инициализацией даёт сильную длиновую генерализацию (100% OOD) и малую длину кода; случайная инициализация — учится, но не достигает такого минимума и имеет слабую OOD-генерализацию; MLE-бейзлайн — идеально на трейне, но провален на длиновой генерализации. Анализ: причина — при обучении с нуля prior/posterior часто коллапсирует в унимодальные распределения, что увеличивает KL и ухудшает общую длину кода. В ‘ручном’ решении распределения мультимодальные с малыми дисперсиями компонентов, что резко снижает KL. Вывод: цель адекватная, но нужны специальные методы оптимизации, предотвращающие коллапс и помогающие находить низкосложные решения."
+\begin{frame}{Experiments (2/2): Findings and Implications}
+\small
+\begin{block}{Findings}
+Manual initialization under the variational objective achieves low codelength and perfect OOD length generalization; random initialization fails to match it; MLE fits train but fails OOD.
+\end{block}
+
+\begin{block}{Analysis}
+From random starts, priors/posteriors tend to collapse into unimodal distributions, inflating KL and harming compression. The manual solution is multimodal with low-variance components, yielding much smaller KL.
+\end{block}
+
+\begin{block}{Implications}
+The objective is sound; optimization is the bottleneck. Methods that prevent collapse or alternative asymptotically (quasi-)optimal families are promising directions.
+\end{block}
+\end{frame}
+
+% Слайд 10: Заключение и будущее (подробно)
+% Я говорю: "Подведу итог. Авторы построили теоретический мост от Колмогоровской сложности к обучаемым целям для трансформеров: доказали существование асимптотически оптимальных кодов, показали, как формально устроены универсальные двухчастные коды, и предложили дифференцируемую вариационную цель с адаптивным GMM-приором, сохраняющую асимптотические свойства. На практике основной барьер — оптимизация: с нуля стандартные методы часто не приводят к низкосложным решениям. Будущая работа — в разработке новых оптимизаторов и/или кодов, предотвращающих коллапс распределений, а также в переносе идей на другие архитектуры и режимы (например, декодеры, chain-of-thought, взаимодействие с внешними инструментами)."
+\begin{frame}{Conclusion and Future Work}
+\small
+\begin{block}{Summary}
+A theoretical-practical bridge from Kolmogorov complexity to training objectives for Transformers: universal/asymptotically optimal two-part codes and a differentiable variational objective with adaptive GMM priors.
+\end{block}
+
+\begin{block}{Main challenge}
+Optimization from random initialization does not reliably find low-complexity solutions selected by the objective.
+\end{block}
+
+\begin{block}{Future work}
+Design optimizers or code families preventing posterior collapse; extend to other architectures (decoders, CoT) and resource scaling dimensions; integrate external tools.
+\end{block}
+\end{frame}
+
+\end{document}
