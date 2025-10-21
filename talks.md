@@ -8,7 +8,7 @@
 * [Linearised Laplace](https://arxiv.org/pdf/1906.11537) [reporter: Vladislav Minashkin]
 
 
-# Technical meeting
+# Technical meeting 1
 * [Accelerated Linearized Laplace Approximation for Bayesian Deep Learning](https://proceedings.neurips.cc/paper_files/paper/2022/file/12143893d9d37c3569dda800b95cabd9-Paper-Conference.pdf) [reporter: Stepanov Ilya]
 * [Deep Reference Priors: What is the best way to pretrain a model?](https://proceedings.mlr.press/v162/gao22d/gao22d.pdf) [reporter: Papay Ivan]
 
@@ -18,6 +18,9 @@
 
 # Variational inference
 * [Computing upp er and lower bounds on likelihoods in intractable networks](https://dspace.mit.edu/bitstream/handle/1721.1/6653/AIM-1571.pdf?sequence=2) [reporter: Nabiev Muhammadsharif]
+
+# Technical meeting 2
 * [Alpha-Beta Divergence For Variational Inference](https://arxiv.org/pdf/1805.01045) [reporter: Eynullayev Altay]
+* [KAN: Kolmogorov-Arnold Networks](https://arxiv.org/abs/2404.19756) [reporter: Denis Rubtsov]
 
 
