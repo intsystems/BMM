@@ -18,5 +18,6 @@
 
 # Variational inference
 * [Computing upp er and lower bounds on likelihoods in intractable networks](https://dspace.mit.edu/bitstream/handle/1721.1/6653/AIM-1571.pdf?sequence=2) [reporter: Nabiev Muhammadsharif]
-* [Alpha-Beta Divergence For Variational Inference](https://arxiv.org/pdf/1805.01045) [reporter: name]
+* [Alpha-Beta Divergence For Variational Inference](https://arxiv.org/pdf/1805.01045) [reporter: Eynullayev Altay]
+
 
