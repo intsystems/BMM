@@ -23,4 +23,9 @@
 * [Alpha-Beta Divergence For Variational Inference](https://arxiv.org/pdf/1805.01045) [reporter: Eynullayev Altay]
 * [KAN: Kolmogorov-Arnold Networks](https://arxiv.org/abs/2404.19756) [reporter: Denis Rubtsov]
 
+# Variational inference 2
+* Robust Bayes estimation using the density power divergence (the PDF is under paywall, ask Oleg or find it on the non-official websites). [reporter: your name]
+* [An Introduction to Hamiltonian Monte Carlo Method for Sampling](https://arxiv.org/pdf/2108.12107) [reporter: your name]
+
+
 
