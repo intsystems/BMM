@@ -18,7 +18,7 @@
 | 7.10 | [Complexity](slides/slides_3_complexity.pdf) | 
 | 14.10 | [Var. inference](slides/slides_4_var1.pdf)  | 
 | 21.10 |  Technincal meeting 2: proof of concept discussion  | 
-| 28.10 | Var. inference    | 
+| 28.10 | [Var. inference 2](slides/slides_5_var2.pdf)   | 
 | 11.11 | Diffusion models, score matching | 
 | 18.11 | Generative and discriminative models + Checkpoint | 
 | 25.11 | Graphical models  | 
