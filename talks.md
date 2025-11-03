@@ -24,8 +24,9 @@
 * [KAN: Kolmogorov-Arnold Networks](https://arxiv.org/abs/2404.19756) [reporter: Denis Rubtsov]
 
 # Variational inference 2
-* Robust Bayes estimation using the density power divergence (the PDF is under paywall, ask Oleg or find it on the non-official websites). [reporter: your name]
+* [Robust parameter estimation with a small bias against heavy contamination](https://www.sciencedirect.com/science/article/pii/S0047259X08000456) [reporter: your name]
 * [An Introduction to Hamiltonian Monte Carlo Method for Sampling](https://arxiv.org/pdf/2108.12107) [reporter: your name]
+
 
 
 
