@@ -25,7 +25,8 @@
 
 # Variational inference 2
 * [Variational inference based on robust divergences](https://arxiv.org/abs/1710.06595) [reporter: your name]
-* [An Introduction to Hamiltonian Monte Carlo Method for Sampling](https://arxiv.org/pdf/2108.12107) [reporter: your name]
+* [An Introduction to Hamiltonian Monte Carlo Method for Sampling](https://arxiv.org/pdf/2108.12107) [reporter: Denis Rubtsov]
+
 
 
 
