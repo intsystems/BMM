@@ -24,8 +24,9 @@
 * [KAN: Kolmogorov-Arnold Networks](https://arxiv.org/abs/2404.19756) [reporter: Denis Rubtsov]
 
 # Variational inference 2
-* [Robust parameter estimation with a small bias against heavy contamination](https://www.sciencedirect.com/science/article/pii/S0047259X08000456) [reporter: your name]
+* [Variational inference based on robust divergences](https://arxiv.org/abs/1710.06595) [reporter: your name]
 * [An Introduction to Hamiltonian Monte Carlo Method for Sampling](https://arxiv.org/pdf/2108.12107) [reporter: your name]
+
 
 
 
