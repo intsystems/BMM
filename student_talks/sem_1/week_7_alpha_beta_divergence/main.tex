@@ -1,0 +1,388 @@
+\documentclass{beamer}
+\beamertemplatenavigationsymbolsempty
+\usecolortheme{beaver}
+\setbeamertemplate{blocks}[rounded=true, shadow=true]
+\setbeamertemplate{footline}[page number]
+%
+\newcommand{\delayV}[1]{\overset{\leftarrow}{\mathbf{x}}_{#1}}
+\theoremstyle{definition}
+\newtheorem*{Def}{Определение}
+\theoremstyle{plain}
+\newtheorem{Lem}{Лемма}
+\newtheorem{Th}{Теорема}
+
+\AfterEndEnvironment{Lem}{%
+  \medskip % Небольшой отступ перед линией
+  \noindent\rule{\textwidth}{0.4pt}% Горизонтальная линия во всю ширину текста
+  \medskip % Небольшой отступ после линии
+}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amssymb,amsfonts,amsmath,mathtext}
+\usepackage{subfig}
+\usepackage[all]{xy} % xy package for diagrams
+\usepackage{array}
+\usepackage{multicol}% many columns in slide
+\usepackage{hyperref}% urls
+\usepackage{hhline}%tables
+\usepackage{dsfont}
+\usepackage{xcolor}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{float}
+% Your figures are here:
+\graphicspath{ {fig/} {../fig/} }
+
+%----------------------------------------------------------------------------------------------------------
+\title[\hbox to 56mm{Alpha-Beta Divergence for VI}]{Alpha-Beta Divergence For Variational Inference}
+\author[Eynullayev]{
+Eynullayev Altay\\
+\vspace{0.3cm}
+\small{Paper by: Jean-Baptiste Regli \& Ricardo Silva}
+}
+\institute[МФТИ (НИУ)]{
+\small{
+    Department of Intelligent Systems \\
+    \textbf{Specialization}: Intelligent Data Analysis\\
+    \textbf{Course}: Bayesian Multi Modeling 2025
+}}
+\date{2025}
+%----------------------------------------------------------------------------------------------------------
+\begin{document}
+%----------------------------------------------------------------------------------------------------------
+\begin{frame}
+\thispagestyle{empty}
+\maketitle
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Motivation}
+
+\textbf{Problem:} Standard VI with KL-divergence has limitations
+
+\begin{itemize}
+    \item Mode-seeking behavior (underestimates variance)
+    \item Sensitive to outliers in data
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Existing solutions} address only one issue:
+\begin{itemize}
+    \item Rényi divergence: controls mass-covering
+    \item Gamma divergence: controls robustness
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Goal:} Unified framework for both properties
+
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Variational Inference Recap}
+
+\textbf{Posterior approximation:} $p(\theta|X) \approx q(\theta)$
+
+\vspace{0.3cm}
+
+\textbf{Standard objective:} minimize $D[q(\theta)\|p(\theta|X)]$
+
+\vspace{0.3cm}
+
+\textbf{ELBO formulation:}
+\[
+\mathcal{L}_D(q, X, \varphi) = \log p(X|\varphi) - D(q(\theta)\|p(\theta|X, \varphi))
+\]
+
+\vspace{0.3cm}
+
+\textbf{Challenge:} Choice of divergence $D$ affects approximation quality
+\begin{itemize}
+    \item Mass-covering vs mode-seeking
+    \item Robustness to outliers
+    \item Computational tractability
+\end{itemize}
+
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Problems with KL Divergence}
+
+\textbf{Formula:}
+\[
+D_{\text{KL}}(q\|p) = \int q(\theta) \log\frac{q(\theta)}{p(\theta)} d\theta
+\]
+
+\textbf{Gradient:}
+\[
+\frac{d}{d\varphi} D_{\text{KL}}(q\|p) = -\int \frac{dq(\theta)}{d\varphi} \left[\log\frac{p(\theta)}{q(\theta)} - 1\right] d\theta
+\]
+
+\vspace{0.3cm}
+
+\textbf{Key issue:} Log-term increases cost of overestimating $p$
+
+\vspace{0.2cm}
+
+\textbf{Result:} 
+\begin{itemize}
+    \item Underestimation of posterior variance (Turner \& Sahani, 2011)
+    \item Mode-seeking behavior: focuses on single mode
+    \item Not robust to outliers
+\end{itemize}
+
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+
+\begin{frame}{Renyi and Gamma divergences}
+
+\[
+D_{\alpha}(q \Vert p) = \frac{1}{\alpha - 1} \log \int q(\theta)^\alpha\, p(\theta)^{1 - \alpha} \, d\theta
+\]
+
+
+\begin{multline*}
+    D_{\gamma}^{\beta}(q \Vert p) = \frac{1}{\beta(\beta+1)} \log \int p(\theta)^{\beta + 1} d\theta \\
+    - \frac{1}{\beta} \log \int p(\theta)q(\theta)^{\beta} d\theta \\
+    + \frac{1}{\beta+1} \log \int q(\theta)^{1+\beta} d\theta
+\end{multline*}
+
+
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Scale Invariant Alpha-Beta (sAB) Divergence}
+
+\textbf{Formula:}
+\begin{multline*}
+D^{\alpha,\beta}_{\text{sAB}}(p\|q) = \frac{1}{\beta(\alpha+\beta)} \log \int p(\theta)^{\alpha+\beta} d\theta \\
++ \frac{1}{\alpha(\alpha+\beta)} \log \int q(\theta)^{\alpha+\beta} d\theta \\
+- \frac{1}{\alpha\beta} \log \int p(\theta)^{\alpha} q(\theta)^{\beta} d\theta
+\end{multline*}
+
+\vspace{0.3cm}
+
+\textbf{Two control parameters:} $\alpha$ and $\beta$
+\begin{itemize}
+    \item Extended to entire $\mathbb{R}^2$ domain
+    \item Smooth interpolation between divergences
+\end{itemize}
+
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Special Cases of sAB Divergence}
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Divergence} & \textbf{Parameters} \\
+\hline
+KL divergence & $(\alpha, \beta) = (0, 1)$ \\
+\hline
+Reverse KL & $(\alpha, \beta) = (1, 0)$ \\
+\hline
+Rényi divergence & $\alpha + \beta = 1$ \\
+\hline
+Gamma divergence & $\alpha = 1$ \\
+\hline
+Hellinger distance & $(\alpha, \beta) = (0.5, 0.5)$ \\
+\hline
+Chi-square divergence & $(\alpha, \beta) = (2, -1)$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\vspace{0.3cm}
+
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Control Parameters: $\alpha$ and $\beta$}
+
+Use $\lambda = \alpha + \beta$ and $\beta$ for interpretation
+
+\vspace{0.3cm}
+
+\textbf{$\lambda$ (robustness parameter):}
+\begin{itemize}
+    \item $\lambda < 2$: robust to outliers
+    \item $\lambda > 2$: focuses on outliers
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{$\beta$ (mass-covering parameter):}
+\begin{itemize}
+    \item $\beta > 1$: mass-covering behavior
+    \item $\beta < 1$: mode-seeking behavior
+\end{itemize}
+
+\vspace{0.3cm}
+
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{sAB Divergence Gradient}
+
+\begin{multline*}
+\frac{d}{d\varphi} D^{\alpha,\beta}_{\text{sAB}}(q\|p) = -\frac{1}{\beta} \Bigg[ \frac{\int \frac{dq(\theta)}{d\varphi} q(\theta)^{\alpha+\beta-1} \left(\frac{p(\theta)}{q(\theta)}\right)^{\beta} d\theta}{\int q(\theta)^{\alpha} p(\theta)^{\beta} d\theta} \\
+- \frac{\alpha}{\beta} \frac{\int \frac{dq(\theta)}{d\varphi} q(\theta)^{\alpha+\beta-1} d\theta}{\int q(\theta)^{\alpha+\beta} d\theta} \Bigg]
+\end{multline*}
+
+\vspace{0.3cm}
+
+\textbf{Key terms:}
+\begin{itemize}
+    \item $q(\theta)^{\alpha+\beta-1}$: controls robustness
+    \item $\left(\frac{p(\theta)}{q(\theta)}\right)^{\beta}$: controls mass-covering
+\end{itemize}
+
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{sAB Variational Objective}
+
+\textbf{Direct divergence optimization} (not ELBO!)
+
+\begin{multline*}
+D^{\alpha,\beta}_{\text{sAB}}(q(\theta)\|p(\theta|X)) = \frac{1}{\alpha(\alpha+\beta)} \log \mathbb{E}_q\left[\frac{p(\theta,X)^{\alpha+\beta}}{q(\theta)^{\alpha+\beta}}\right] \\
++ \frac{1}{\beta(\alpha+\beta)} \log \mathbb{E}_q\left[q(\theta)^{\alpha+\beta-1}\right] \\
+- \frac{1}{\alpha\beta} \log \mathbb{E}_q\left[q(\theta)^{\alpha+\beta-1}\left(\frac{p(\theta,X)}{q(\theta)}\right)^{\beta}\right]
+\end{multline*}
+
+\vspace{0.3cm}
+
+\begin{itemize}
+    \item All terms are expectations w.r.t. $q$
+    \item $p(X)$ terms cancel out
+    \item Monte Carlo approximation with $K$ samples
+\end{itemize}
+
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Optimization Framework}
+
+\textbf{Monte Carlo approximation:}
+\begin{itemize}
+    \item Sample $\theta_1, \ldots, \theta_K \sim q(\theta)$
+    \item Approximate each expectation term
+    \item Use $K \approx 100$ samples
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Gradient computation:}
+\begin{itemize}
+    \item Reparameterization trick for differentiability
+    \item Can leverage modern VI optimization methods
+    \item ADAM optimizer with learning rate 0.01
+\end{itemize}
+
+\vspace{0.3cm}
+
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Experimental Setup}
+
+\textbf{Two main experiments:}
+
+\begin{enumerate}
+    \item \textbf{Synthetic data:} Bayesian linear regression with 5\% corrupted data
+    \item \textbf{UCI datasets:} Bayesian neural networks with artificial outliers
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\textbf{Network architecture:}
+\begin{itemize}
+    \item 2-layer with 50 hidden units
+    \item ReLU activation
+    \item Fully factorized Gaussian approximation
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Parameter selection:}
+\begin{itemize}
+    \item Cross-validation to select optimal $(\alpha, \beta)$
+    \item Compare with KL, Rényi, and Gamma divergences
+\end{itemize}
+
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Results: Synthetic Data}
+
+\textbf{Bayesian linear regression with 5\% corrupted data}
+
+\vspace{0.3cm}
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Method} & $(\lambda, \beta)$ & \textbf{MAE} & \textbf{MSE} \\
+\hline
+KL & $(1.0, 0.0)$ & $0.58 \pm 0.001$ & $0.53 \pm 0.003$ \\
+\hline
+Rényi & $(1.0, 0.3)$ & $0.58 \pm 0.003$ & $0.51 \pm 0.007$ \\
+\hline
+Gamma & $(1.8, 0.8)$ & $\textcolor{blue}{0.34 \pm 0.025}$ & $\textcolor{blue}{0.21 \pm 0.030}$ \\
+\hline
+sAB & $(1.9, -0.3)$ & $\textcolor{blue}{0.34 \pm 0.025}$ & $\textcolor{blue}{0.21 \pm 0.030}$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\vspace{0.3cm}
+
+\textbf{Conclusion:} sAB and Gamma both ignore outliers effectively, while standard VI is highly sensitive to corruption
+
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Results: UCI Datasets}
+
+\textbf{Bayesian neural networks with 10\% outliers}
+
+\vspace{0.3cm}
+
+\begin{table}[]
+\centering
+\small
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Dataset} & \textbf{KL} & \textbf{sAB} \\
+\hline
+Boston Housing & $1.13 \pm 0.043$ & $\textcolor{blue}{1.07 \pm 0.016}$ \\
+ & & $(1.25, -0.5)$ \\
+\hline
+Concrete & $1.16 \pm 0.002$ & $\textcolor{blue}{1.07 \pm 0.008}$ \\
+ & & $(1.5, -0.25)$ \\
+\hline
+Yacht & $1.09 \pm 0.025$ & $\textcolor{blue}{1.05 \pm 0.011}$ \\
+ & & $(1.25, -0.25)$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\vspace{0.3cm}
+
+\textbf{Conclusion:} sAB outperforms KL-VI when outliers present
+
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Key Insights}
+
+\begin{enumerate}
+    \item \textbf{Unified framework:} mass-covering + robustness in one objective
+    \item \textbf{Direct divergence optimization} (not ELBO)
+    \item \textbf{Smooth interpolation} between known divergences
+    \item \textbf{Two interpretable parameters} with clear effects:
+    \begin{itemize}
+        \item $\lambda$ controls outlier sensitivity
+        \item $\beta$ controls mode-seeking vs mass-covering
+    \end{itemize}
+    \item \textbf{Cross-validation} can find optimal parameters
+    \item \textbf{Most effective} when $\lambda < 2$ and $\beta < 1$
+\end{enumerate}
+
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+\end{document}
