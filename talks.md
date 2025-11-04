@@ -24,8 +24,9 @@
 * [KAN: Kolmogorov-Arnold Networks](https://arxiv.org/abs/2404.19756) [reporter: Denis Rubtsov]
 
 # Variational inference 2
-* [Variational inference based on robust divergences](https://arxiv.org/abs/1710.06595) [reporter: your name]
+* [Variational inference based on robust divergences](https://arxiv.org/abs/1710.06595) [reporter: Stepanov Ilya]
 * [An Introduction to Hamiltonian Monte Carlo Method for Sampling](https://arxiv.org/pdf/2108.12107) [reporter: Denis Rubtsov]
+
 
 
 
