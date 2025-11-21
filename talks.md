@@ -30,7 +30,8 @@
 
 # Generative and discriminative models
 * [Revisiting Discriminative vs. Generative Classifiers: Theory and Implications](https://proceedings.mlr.press/v202/zheng23f/zheng23f.pdf) [reporter: your name]
-* [Understanding Invariance via Feedforward Inversion of Discriminatively Trained Classifiers](https://proceedings.mlr.press/v139/teterwak21a/teterwak21a.pdf) [reporter: your name]
+* [Understanding Invariance via Feedforward Inversion of Discriminatively Trained Classifiers](https://proceedings.mlr.press/v139/teterwak21a/teterwak21a.pdf) [reporter: Vasilenko Dmitrii]
+
 
 
 
