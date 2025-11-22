@@ -1,9 +1,9 @@
 # Bayesian multimodeling
-[Form. Deadline: 11.11, 14:30 MSK](https://docs.google.com/forms/d/e/1FAIpQLScTltOkstgGtUtz7vOOirUrhUztm0LTt2Lg1QRom1MzZF4HPw/viewform?usp=publish-editor)
+[Form. Deadline: 27.11, 10:30 MSK](https://docs.google.com/forms/d/e/1FAIpQLScEOofV2VIQes93Ni12Gmn8IUURi3ML65T7wRpuKTLdt3i2_A/viewform?usp=publish-editor)
 
-[Project schedule](project_schedule.md)
+[Project schedule](project_scedule.md)
 
-[Zoom link](https://m1p.org/go_zoom2)
+[Zoom link](https://m1p.org/go_zoom)
 
 [TG Link](https://t.me/+ugZ6IIQrsjMyNjMy)
 
@@ -19,8 +19,8 @@
 | 14.10 | [Var. inference](slides/slides_4_var1.pdf)  | 
 | 21.10 |  Technincal meeting 2: proof of concept discussion  | 
 | 28.10 | [Var. inference 2](slides/slides_5_var2.pdf)   | 
-| 11.11 | Diffusion models, score matching | 
-| 18.11 | Generative and discriminative models + Checkpoint | 
+| 11.11 | - | 
+| 18.11 | [Generative and discriminative models + Checkpoint](slides/slides_6_gendisc.pdf) | 
 | 25.11 | Graphical models  | 
 | 2.12 |   Technical meeting 3: overview  | 
 | 9.12 | TODO: sampling | 
