@@ -32,6 +32,10 @@
 * [Revisiting Discriminative vs. Generative Classifiers: Theory and Implications](https://proceedings.mlr.press/v202/zheng23f/zheng23f.pdf) [reporter: Stepanov Ilya]
 * [Understanding Invariance via Feedforward Inversion of Discriminatively Trained Classifiers](https://proceedings.mlr.press/v139/teterwak21a/teterwak21a.pdf) [reporter: Vasilenko Dmitrii]
 
+# Graphical models
+* [Combining Generative and Discriminative Models for Hybrid Inference](https://proceedings.neurips.cc/paper/2019/file/a660d4563b8f62dd5282319cc643d950-Paper.pdf) [reporter: your name]
+* [Pseudo-Spherical Contrastive Divergence](https://proceedings.neurips.cc/paper_files/paper/2021/file/bc5fcb0018cecacba559dc512740091b-Paper.pdf) [reporter: your name]
+
 
 
 
