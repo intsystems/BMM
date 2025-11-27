@@ -34,7 +34,8 @@
 
 # Graphical models
 * [Combining Generative and Discriminative Models for Hybrid Inference](https://proceedings.neurips.cc/paper/2019/file/a660d4563b8f62dd5282319cc643d950-Paper.pdf) [reporter: Eynullayev Altay]
-* [Pseudo-Spherical Contrastive Divergence](https://proceedings.neurips.cc/paper_files/paper/2021/file/bc5fcb0018cecacba559dc512740091b-Paper.pdf) [reporter: your name]
+* [Pseudo-Spherical Contrastive Divergence](https://proceedings.neurips.cc/paper_files/paper/2021/file/bc5fcb0018cecacba559dc512740091b-Paper.pdf) [reporter: Firsov Sergey]
+
 
 
 
