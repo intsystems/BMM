@@ -21,7 +21,7 @@
 | 28.10 | [Var. inference 2](slides/slides_5_var2.pdf)   | 
 | 11.11 | - | 
 | 18.11 | [Generative and discriminative models + Checkpoint](slides/slides_6_gendisc.pdf) | 
-| 25.11 | Graphical models  | 
+| 25.11 | [Graphical models](slides/slides_7_graph.pdf)  | 
 | 2.12 |   Technical meeting 3: overview  | 
 | 9.12 | TODO: sampling | 
 | 16.12 | Technical meeting 4: final meeting, final scores | 
