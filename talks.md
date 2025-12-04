@@ -37,7 +37,9 @@
 * [Pseudo-Spherical Contrastive Divergence](https://proceedings.neurips.cc/paper_files/paper/2021/file/bc5fcb0018cecacba559dc512740091b-Paper.pdf) [reporter: Firsov Sergey]
 
 
-
+# Technical meeting 3
+* [Dangers of Bayesian Model Averaging under Covariate Shift](https://proceedings.neurips.cc/paper/2021/file/1ab60b5e8bd4eac8a7537abb5936aadc-Paper.pdf) [reporter: your name]
+* [A FINE-GRAINED ANALYSIS ON DISTRIBUTION SHIFT](https://arxiv.org/pdf/2110.11328) [reporter: your name]
 
 
 
