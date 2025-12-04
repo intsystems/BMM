@@ -38,8 +38,9 @@
 
 
 # Technical meeting 3
-* [Dangers of Bayesian Model Averaging under Covariate Shift](https://proceedings.neurips.cc/paper/2021/file/1ab60b5e8bd4eac8a7537abb5936aadc-Paper.pdf) [reporter: your name]
+* [Dangers of Bayesian Model Averaging under Covariate Shift](https://proceedings.neurips.cc/paper/2021/file/1ab60b5e8bd4eac8a7537abb5936aadc-Paper.pdf) [reporter: Kasiuk Vadim]
 * [A FINE-GRAINED ANALYSIS ON DISTRIBUTION SHIFT](https://arxiv.org/pdf/2110.11328) [reporter: Nabiev Muhammadsharif]
+
 
 
 
