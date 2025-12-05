@@ -1,5 +1,5 @@
 # Bayesian multimodeling
-[Form. Deadline: 4.12, 10:30 MSK](https://docs.google.com/forms/d/e/1FAIpQLSe_E4bKAAq8WXAKpNGdX1T6_pZNViKY36Wv1fR7YgjKTnERwA/viewform?usp=publish-editor)
+[Form. Deadline: 11.12, 10:30 MSK](https://docs.google.com/forms/d/e/1FAIpQLSehZufJMcGPOgwzpPH38IFvgLG7vgOSs3lSarIwov40WVycww/viewform?usp=publish-editor)
 
 [Project schedule](project_scedule.md)
 
