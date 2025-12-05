@@ -1,0 +1,324 @@
+\documentclass{beamer}
+\beamertemplatenavigationsymbolsempty
+\usecolortheme{beaver}
+\setbeamertemplate{blocks}[rounded=true, shadow=true]
+
+\setbeamertemplate{plain footline}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{blocks}[rounded=true, shadow=true]
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{.\ }
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{changepage}
+\usepackage{caption}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{amsthm}
+\usepackage{xcolor}
+
+\title{Pseudo-Spherical Contrastive Divergence}
+\author{Yu, Song, Song, Ermon (Stanford) \\ NeurIPS 2021}
+\institute{Analysis}
+\date{2025}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+\begin{frame}{What is Distribution Learning?}
+\small
+\begin{block}{Supervised learning vs Generative modeling}
+Supervised: learn $p(y|x)$ from pairs (input, target).
+Generative: learn $p(x)$ directly — no labels, just examples.
+\end{block}
+
+\begin{block}{The challenge}
+How do we compare two distributions? Standard metric: KL divergence.
+But this comes with hidden costs...
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Energy-Based Models and the Partition Function}
+\small
+\begin{block}{EBM formula}
+$$p_\theta(x) = \frac{\exp(-E_\theta(x))}{Z_\theta}, \quad Z_\theta = \int \exp(-E_\theta(x)) dx$$
+Low energy $\to$ high probability. High energy $\to$ low probability.
+\end{block}
+
+\begin{block}{The core problem}
+$Z_\theta$ is an integral over all possible data (dimension $\sim 3000$ for 32×32 image). 
+\textbf{Impossible to compute} (intractable).
+\end{block}
+
+\begin{block}{Consequence}
+Standard MLE requires $\nabla_\theta \log Z_\theta$, which involves $Z$. We cannot compute it directly.
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Standard Solution: Contrastive Divergence}
+\small
+\begin{block}{The MLE gradient splits into two parts}
+$$\nabla_\theta \mathcal{L}_{MLE} = \mathbb{E}_{x \sim p_{\text{data}}}[\nabla_\theta E(x)] - \mathbb{E}_{x \sim p_\theta}[\nabla_\theta E(x)]$$
+``Pull down'' energy of real data, ``push up'' energy of model samples.
+\end{block}
+
+\begin{block}{Problem: sampling from $p_\theta$}
+Use MCMC (Langevin Dynamics): iteratively update $x^{(t+1)} = x^{(t)} - \frac{\epsilon}{2}\nabla E(x^{(t)}) + \sqrt{\epsilon} z^{(t)}$.
+\end{block}
+
+\begin{block}{Issues}
+MCMC is slow. KL-divergence is zero-forcing: if $p(x) > 0$ but $q(x) \approx 0$, then KL $= \infty$. 
+Model must fit outliers. Sensitive to data contamination.
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Scoring Rules: Old Idea, New Application}
+\small
+\begin{block}{Definition}
+Scoring rule $S(x, q)$ assigns a score to prediction $q$ given outcome $x$.
+\textbf{Strictly proper:} $\mathbb{E}_{x \sim p}[S(x, p)] > \mathbb{E}_{x \sim p}[S(x, q)]$ unless $q = p$.
+
+Intuition: tells the truth about the distribution.
+\end{block}
+
+\begin{block}{Example: log score}
+$S(x, q) = \log q(x)$. Expected score is $-\mathbb{E}[- \log q(x)]$, which is related to KL divergence.
+\end{block}
+
+\begin{block}{The insight}
+Are there other strictly proper scoring rules that don't require computing $Z$?
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Homogeneity: The Magic Property}
+\small
+\begin{block}{Homogeneous scoring rule}
+$$S(x, \lambda \cdot q) = S(x, q) \quad \text{for all } \lambda > 0$$
+Scaling the distribution doesn't change the score.
+\end{block}
+
+\begin{block}{Why this solves everything}
+Unnormalized density: $\tilde{q}(x) = \exp(-E(x))$. Normalized: $q(x) = \tilde{q}(x) / Z$.
+
+By homogeneity:
+$$S(x, q(x)) = S\left(x, \frac{\tilde{q}(x)}{Z}\right) = S(x, \tilde{q}(x))$$
+
+\textbf{The partition function $Z$ cancels!} We only need the energy.
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Pseudo-Spherical Scoring Rule}
+\small
+\begin{block}{Definition, parameterized by $\gamma > 0$}
+$$S(x, q) = \frac{q(x)^\gamma}{\|q\|_{\gamma+1}^\gamma}, \quad \|q\|_{\gamma+1} = \left(\int q(y)^{\gamma+1} dy\right)^{1/(\gamma+1)}$$
+
+For numerical stability, use log version:
+$$L_\gamma(p, q) = \frac{1}{\gamma}\log\mathbb{E}_p[q(x)^\gamma] - \log\|q\|_{\gamma+1}$$
+\end{block}
+
+\begin{block}{Properties}
+Strictly proper, homogeneous, parameterized by $\gamma$.
+\begin{itemize}
+    \item Large $\gamma$: focus on quality (mode-seeking).
+    \item Small/negative $\gamma$: focus on diversity (mode-covering).
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Algorithm: PS-CD}
+\small
+\begin{block}{The objective}
+$$\min_\theta L_\gamma(\theta; p) = -\frac{1}{\gamma}\log\mathbb{E}_{p}[\exp(-\gamma E_\theta(x))] - \log\|q_\theta\|_{\gamma+1}$$
+\end{block}
+
+\begin{block}{The trick: importance sampling}
+Sample only from $q_\theta$ using Langevin Dynamics. Use weights $w(x) = \exp(-\gamma E_\theta(x))$ to estimate expectations under auxiliary distribution.
+
+Low energy $\to$ weight $\approx 1$ (important).
+High energy $\to$ weight $\approx 0$ (less important).
+\end{block}
+
+\begin{block}{Gradient update}
+$$\nabla_\theta L^N_\gamma = -\nabla_\theta\frac{1}{\gamma}\log\left(\frac{1}{N}\sum_i\exp(-\gamma E(x_i^+))\right) - \frac{\sum_i w_i \nabla_\theta E(x_i^-)}{\sum_i w_i}$$
+\end{block}
+\end{frame}
+
+
+\begin{frame}{PS-CD: From Theory to Practice}
+\small
+\begin{block}{Algorithm steps}
+\begin{enumerate}
+    \item Draw batch of real data $\{x_1^+, \ldots, x_N^+\} \sim p_{\text{data}}$.
+    \item Generate fake samples $\{x_1^-, \ldots, x_N^-\}$ from $q_\theta$ using Langevin Dynamics.
+    \item Compute importance weights: $w_i = \exp(-\gamma E_\theta(x_i^-))$.
+    \item Update: standard SGD with the weighted gradient above.
+\end{enumerate}
+\end{block}
+
+\begin{block}{Comparison to classical CD}
+Same MCMC sampling. Different loss ($\gamma$-score, not KL). Weighted gradients.
+\end{block}
+
+\begin{block}{Connection to MLE}
+\textbf{Key fact:} when $\gamma \to 0$, PS-CD recovers classical CD. Classical CD is a special case!
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Robustness to Data Contamination}
+\small
+\begin{block}{Experiment: Gaussian data + noise}
+True: $\mathcal{N}(-1, 0.5)$. Contamination: $\mathcal{N}(2, 0.05)$ with ratio $c \in [0.01, 0.3]$.
+Metric: $D_{KL}(p_{\text{true}} \| q_\theta)$ after training.
+\end{block}
+
+\begin{table}
+\centering
+\tiny
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Contamination & CD & PS-CD ($\gamma=0.5$) & PS-CD ($\gamma=1.0$) & PS-CD ($\gamma=2.0$) \\
+\hline
+0.01 & 0.0067 & $1e^{-5}$ & $1e^{-7}$ & $1e^{-6}$ \\
+0.05 & 0.0851 & 0.00027 & $1.6e^{-6}$ & 0.00011 \\
+0.1 & 0.1979 & 0.00173 & $1.86e^{-6}$ & 0.00012 \\
+0.2 & 0.3869 & 0.1858 & $6.4e^{-6}$ & 0.00017 \\
+0.3 & 0.5438 & 0.5429 & 0.3118 & 0.00029 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{block}{Conclusion}
+PS-CD with $\gamma=1.0$ survives 20\% contamination. CD fails catastrophically.
+\end{block}
+\end{frame}
+
+\begin{frame}{Image Generation: CIFAR-10 Results}
+\small
+\begin{block}{Task: generate 32×32 images}
+Metric: FID (Fréchet Inception Distance). Lower is better.
+\end{block}
+
+\begin{table}
+\centering
+
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Method} & \textbf{FID (CIFAR-10)} \\
+\hline
+CD (classical, $\gamma=0$) & 37.90 \\
+f-EBM (minimax) & 30.86 \\
+\textbf{PS-CD ($\gamma = -0.5$)} & \textbf{27.95} \\
+\textbf{PS-CD ($\gamma = 1.0$)} & \textbf{29.78} \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{block}{Key insight}
+PS-CD achieves better FID than f-EBM \textbf{without minimax training}.
+Different $\gamma$ values: quality-diversity trade-off.
+\end{block}
+\end{frame}
+
+
+\begin{frame}{The $\gamma$ Parameter: Quality-Diversity Trade-off}
+\small
+\begin{block}{1D synthetic example: fit mixture of Gaussians with single Gaussian}
+\begin{itemize}
+    \item $\gamma = -0.5$: Covers both modes poorly (mode-covering).
+    \item $\gamma = 0$ (KL): One accurate mode (classical MLE).
+    \item $\gamma = 1.0$ (spherical): Very tight fit to one mode (mode-seeking).
+\end{itemize}
+\end{block}
+
+\begin{block}{Practical guidance}
+\begin{itemize}
+    \item \textbf{Diversity needed} (text generation): use $\gamma < 0$ or $\gamma \approx -0.5$.
+    \item \textbf{Quality needed} (density estimation): use $\gamma > 0$ or $\gamma = 1.0$.
+    \item \textbf{Balanced}: $\gamma \in (0, 1)$.
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Out-of-Distribution Detection}
+\small
+\begin{block}{Task}
+Train on CIFAR-10. Test: can we distinguish in-distribution from OOD (SVHN, noise, etc.)?
+Score: $s(x) = \max_y [-E(x,y)]$ (negative energy). Metric: AUC (higher is better).
+\end{block}
+
+\begin{block}{Results}
+PS-CD consistently outperforms CD across OOD datasets (SVHN, Textures, Noise).
+\end{block}
+
+\begin{block}{Why it matters}
+Beyond generation, PS-CD models are better at anomaly detection, outlier rejection, and other density-related tasks. The learned energy function has better in-distribution / OOD separation.
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Why PS-CD Works: Key Advantages}
+\small
+\begin{block}{Homogeneous scoring rules}
+Eliminate $Z$ from all equations. Only need unnormalized energy.
+\end{block}
+
+\begin{block}{Parameter $\gamma$}
+Flexible control: quality-diversity trade-off without retraining.
+\end{block}
+
+\begin{block}{Importance weighting}
+Model self-determines which negative samples matter. Focuses learning on important regions.
+\end{block}
+
+\begin{block}{No minimax}
+Single network, single objective, stable training (unlike GAN or f-EBM).
+\end{block}
+
+\begin{block}{Robustness}
+Not zero-forcing (unlike KL). Handles data contamination and outliers better.
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Conclusions and Main Contributions}
+\small
+\begin{block}{The Problem}
+EBMs powerful, but hard to train due to intractable partition function $Z$.
+Classical CD slow, unstable, sensitive to contamination.
+\end{block}
+
+\begin{block}{The Solution}
+Use strictly proper homogeneous scoring rules (pseudo-spherical, parameterized by $\gamma$).
+Eliminates $Z$. Enables flexible quality-diversity trade-offs.
+\end{block}
+
+\begin{block}{The Algorithm}
+PS-CD: MCMC + importance weighting. Same cost as classical CD, benefits of f-EBM without minimax instability.
+\end{block}
+
+\begin{block}{Validation}
+Robust to contamination. Better image generation (lower FID). Better OOD detection.
+Different $\gamma$ values for different tasks.
+\end{block}
+
+\begin{block}{Theory}
+Authors prove convergence guarantees and sample complexity bounds. Classical CD is the special case $\gamma=0$. 
+PS-CD is a proper generalization with solid mathematical foundations.
+\end{block}
+\end{frame}
+
+\end{document}
