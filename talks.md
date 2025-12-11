@@ -43,7 +43,8 @@
 
 
 # Gradient methods for ELBO estimation
-* [Some large-scale matrix computation problem](https://www.sciencedirect.com/science/article/pii/0377042796000180) (упор сделать на то, что рассказывал Андрей Веприков, про оценку гессиана через метод Монте-Карло] [reporter: your name]
+* [Some large-scale matrix computation problem](https://www.sciencedirect.com/science/article/pii/0377042796000180) (упор сделать на то, что рассказывал Андрей Веприков, про оценку гессиана через метод Монте-Карло] [reporter: Meshkov Vladislav]
+
 
 
 
