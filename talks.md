@@ -44,13 +44,14 @@
 
 # Gradient methods for ELBO estimation
 * [Some large-scale matrix computation problem](https://www.sciencedirect.com/science/article/pii/0377042796000180) (упор сделать на то, что рассказывал Андрей Веприков, про оценку гессиана через метод Монте-Карло] [reporter: Meshkov Vladislav]
-* [Averaging Weights Leads to Wider Optima and Better Generalization](https://arxiv.org/abs/1803.05407) [reporter: your name]
+* [Averaging Weights Leads to Wider Optima and Better Generalization](https://arxiv.org/abs/1803.05407) [reporter: Karpeev Gleb]
 
 # Extra talks
 * [Subspace Inference for Bayesian Deep Learning](https://proceedings.mlr.press/v115/izmailov20a/izmailov20a.pdf) [reporter: your name]
 * Solomonoff induction - рассказать в общем виде что это такое и как связано с MDL/Bayesian inference [reporter: your name]
     * [ссылка на учебник, но можно пользоваться другими метариалами](http://www.vetta.org/documents/legg-1996-solomonoff-induction.pdf)
-* [Sequential Neural Score Estimation: Likelihood-Free Inference with Conditional Score Based Diffusion Model](https://raw.githubusercontent.com/mlresearch/v235/main/assets/sharrock24a/sharrock24a.pdf) [reporter: your name]
+* [Sequential Neural Score Estimation: Likelihood-Free Inference with Conditional Score Based Diffusion Model](https://raw.githubusercontent.com/mlresearch/v235/main/assets/sharrock24a/sharrock24a.pdf) [reporter: Karpeev Gleb]
+
 
 
 
