@@ -44,6 +44,7 @@
 
 # Gradient methods for ELBO estimation
 * [Some large-scale matrix computation problem](https://www.sciencedirect.com/science/article/pii/0377042796000180) (упор сделать на то, что рассказывал Андрей Веприков, про оценку гессиана через метод Монте-Карло] [reporter: Meshkov Vladislav]
+* [Averaging Weights Leads to Wider Optima and Better Generalization](https://arxiv.org/abs/1803.05407) [reporter: your name]
 
 
 
