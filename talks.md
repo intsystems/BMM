@@ -42,6 +42,8 @@
 * [A FINE-GRAINED ANALYSIS ON DISTRIBUTION SHIFT](https://arxiv.org/pdf/2110.11328) [reporter: Nabiev Muhammadsharif]
 
 
+# Gradient methods for ELBO estimation
+* [Some large-scale matrix computation problem](https://www.sciencedirect.com/science/article/pii/0377042796000180) (упор сделать на то, что рассказывал Андрей Веприков, про оценку гессиана через метод Монте-Карло] [reporter: your name]
 
 
 
