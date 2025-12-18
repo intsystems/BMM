@@ -1,0 +1,164 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\title[Solomonoff induction]{Solomonoff induction}
+\author{Касюк Вадим}
+\date{\today}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{План презентации}
+  \begin{enumerate}
+    \item Интуиция и постановка задачи
+    \item Универсальный prior и алгоритмическая вероятность
+    \item Теоретические свойства 
+    \item Эскиз доказательства ключевой оценки
+    \item Пример и связь с MDL/Bayes
+    \item Невычислимость и практические аппроксимации
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Задача индукции}
+  \begin{itemize}
+    \item Наблюдаем конечный префикс строки $x\in A^*$ (обычно $A=\{0,1\}$).
+    \item Хотим предсказать следующий символ(ы) — оценить условные вероятности.
+    \item Подход Байеса: выбрать класс гипотез $\mathcal H$, задать prior $P(h)$ и усреднить.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Ключевая идея Соломонова}
+  \begin{itemize}
+    \item Возьмём в качестве гипотез \emph{все вычислимые} генераторы последовательностей.
+    \item Каждой гипотезе сопоставим prior через длину её программного описания.
+    \item Предсказание — байесовское усреднение по всем гипотезам.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Универсальная машина и приор}
+  \begin{itemize}
+    \item Фиксируем универсальную префиксную машину $U$ (универсальная Тьюринговая машина).
+    \item Для программы $p$ длиной $|p|$ задаём вес $2^{-|p|}$ (бинарный случай).
+    \item Для гипотезы (меры) $\mu$ можно определить $K(\mu)$ как длину кратчайшей программы, задающей её.
+    \item Тогда априор на $\mu$ примерно $P(\mu)\propto 2^{-K(\mu)}$.
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Алгоритмическая (универсальная) вероятность}
+  \begin{align*}
+    m(x) &= \sum_{p:\;U(p)\text{ выводит строку, начинающуюся с }x} 2^{-|p|},\\
+    M(x) &= \sum_{\mu\in M_R} 2^{-K(\mu)}\,\mu(x).
+  \end{align*}
+  \begin{itemize}
+    \item $m(x)$ — сумма по программам; $M(x)$ — сумма по рекурсивным полу-мерам.
+    \item Условная вероятность следующего символа $a$:
+    \[
+      M(a\mid x)=\frac{M(xa)}{M(x)}.
+    \]
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Свойство доминирования}
+  \textbf{Теорема (доминирование).}
+  \emph{Для любой перечислимой полу-меры $\rho$ существует константа $c_\rho>0$ такая, что}
+  \[
+    \forall x:\quad M(x) \ge c_\rho\,\rho(x).
+  \]
+  \begin{itemize}
+    \item В частности, если истинная мера $\mu$ вычислима, то $M(x)\ge 2^{-K(\mu)}\mu(x)$.
+    \item Это означает: $M$ не будет асимптотически «гадать хуже» любой вычислимой модели, кроме как в константном факторе, зависящем от сложности модели.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Сходимость предсказаний (формулировка)}
+  Пусть $\mu$ — рекурсивная мера (истинный генератор). Обозначим
+  \[
+    S_i = \sum_{|x|=i-1} \mu(x)\bigl(M(0|x)-\mu(0|x)\bigr)^2.
+  \]
+  \textbf{Теорема.} \emph{Существует константа $C$ такая, что}
+  \[
+    \sum_{i=1}^\infty S_i \le C\,K(\mu).
+  \]
+  Для бинарного алфавита обычно принимают $C=\frac{\ln 2}{2}$. Следствие: $M(\cdot|x)\to\mu(\cdot|x)$ почти всюду и в среднем. 
+  
+\end{frame}
+
+\begin{frame}{Эскиз доказательства (1) — KL и доминирование}
+  \begin{enumerate}
+    \item Рассмотрим KL-дивергенцию на длине $n$:
+    \[
+      D_n(\mu\|M)=\sum_{|x|=n} \mu(x)\ln\frac{\mu(x)}{M(x)}.
+    \]
+    \item По доминированию $M(x)\ge 2^{-K(\mu)}\mu(x)$ следует
+    \[
+      \ln\frac{\mu(x)}{M(x)} \le K(\mu)\ln 2.
+    \]
+    \item Потому $D_n(\mu\|M) \le K(\mu)\ln 2$ для любого $n$ (в точном варианте суммирование даёт скользящую оценку).
+  \end{enumerate}\
+\end{frame}
+
+\begin{frame}{Эскиз доказательства (2) — от KL к квадратам ошибок}
+  \begin{itemize}
+    \item Свяжем KL с суммой по шагам: $\sum_{i=1}^n D_i - D_{i-1} = D_n$.
+    \item Используем неравенство типа Pinsker (или его вариации) для связывания KL с квадратами ошибок в предсказаниях на каждом шаге.
+    \item Получаем суммарную оценку
+    \[
+      \sum_{i=1}^\infty S_i \le (\ln 2)\,K(\mu) / 2.
+    \]
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Иллюстрация: периодическая строка vs честная монета}
+  \begin{itemize}
+    \item Пусть $x$ — префикс из чередующихся 0101... длины $n$.
+    \item Две модели: $\mu_{\text{periodic}}$ (детерминированная) и $\mu_{\text{fair}}$ (равновероятная).
+    \item Предположим $K(\mu_{\text{periodic}})=10$, а $K(\mu_{\text{fair}})=20$ (условные числа просто для иллюстрации).
+    \item Тогда априорный вклад: $2^{-10}$ для периодич. и $2^{-20}$ для честной. Для коротких префиксов взвешивание отдаст преимущество периодичности, и $M$ будет предсказывать соответствующий следующий символ.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Связь с MDL и байесом}
+  \begin{itemize}
+    \item Solomonoff = байесовское усреднение по всем вычислимым гипотезам с prior $2^{-K(\mu)}$.
+    \item MDL (Minimum Description Length): выбирает модель, минимизирующую
+    \[
+      K(\mu) - \log\mu(x) \quad\text{(модель + кодирование данных)}.
+    \]
+    \item MDL $\approx$ MAP с Solomonoff-приором. Отличие: MDL выбирает одну модель; Solomonoff усредняет.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Невычислимость и практические аппроксимации}
+  \begin{itemize}
+    \item $K(\cdot)$ и $M(\cdot)$ не вычислимы (колмогоровская сложность не рекурсивна).
+    \item $M$ — перечислимая полу-мера, но не вычислима.
+    \item Практика: ограничить класс моделей (марковские модели, нейросети), использовать MDL, ввести явную регуляризацию/приоры.
+    \item Это делает Solomonoff полезной теоретической базой, но не практическим рецептом без аппроксимаций.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Выводы и рекомендации}
+  \begin{itemize}
+    \item Solomonoff induction даёт формальный "золотой стандарт" индукции: универсальность + оправдание Occam.
+    \item Главный недостаток — невычислимость, поэтому практики используют MDL/ограниченные байесовские классы.
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Литература}
+  \begin{itemize}
+    \item R. J. Solomonoff. A formal theory of inductive inference (1964, 1978).
+    \item Shane Legg. "Solomonoff Induction" (обзор).
+    \item M. Li, P. Vitanyi. "An Introduction to Kolmogorov Complexity and Its Applications".
+  \end{itemize}
+\end{frame}
+
+\end{document}
