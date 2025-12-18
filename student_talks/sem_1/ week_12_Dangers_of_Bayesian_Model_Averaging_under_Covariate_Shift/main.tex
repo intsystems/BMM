@@ -1,0 +1,394 @@
+\documentclass[unicode]{beamer}
+\linespread{1.3}
+\usepackage[]{cite}
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{amsmath,mathrsfs,amsfonts,amssymb}
+\usepackage{graphicx, epsfig}
+\usepackage{subfig}
+\usepackage{color}
+\usepackage{wrapfig}
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{afterpage} 
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{NotationStyle}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{rotate}
+\usepackage{comment}
+\usepackage{float}
+\usepackage{upgreek}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,shapes.geometric}
+\parindent=1.25cm
+%\usepackage[left=3cm, right=1.5cm, top=2cm, bottom=2cm, bindingoffset=0cm]{geometry}
+
+%\newcommand{\vect}[1]{\boldsymbol{\mathbf{#1}}}
+\newcommand{\vect}[1]{\textbf{#1}}
+
+\usepackage[shortlabels]{enumitem}
+                    \setlist[enumerate, 1]{1\textsuperscript{o}}
+
+\usepackage{caption}
+
+\DeclareCaptionStyle{mystyle}
+{format=plain,%
+	textformat=period,
+	justification=RaggedRight,
+	singlelinecheck=true,
+}
+
+\DeclareCaptionStyle{singlelineraggedleft}
+[justification=RaggedLeft]% right aligned if single line and no `singlelinecheck=false`
+{style=mystyle}
+
+\newcommand\argmin{\mathop{\arg\min}}
+\newcommand{\T}{^{\text{\tiny\sffamily\upshape\mdseries T}}}
+\newcommand{\hchi}{\hat{\boldsymbol{\chi}}}
+\newcommand{\hphi}{\hat{\boldsymbol{\varphi}}}
+\newcommand{\bchi}{\boldsymbol{\chi}}
+\newcommand{\hx}{\hat{x}}
+\newcommand{\hy}{\hat{y}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\p}{p(\cdot)}
+\newcommand{\q}{q(\cdot)}
+\newcommand{\uu}{\mathbf{u}}
+\newcommand{\vv}{\mathbf{v}}
+
+\renewcommand{\baselinestretch}{1}
+
+
+\newtheorem{Th}{Теорема}
+\newtheorem{Def}{Определение}
+\newenvironment{Proof} % имя окружения
+{\par\noindent{\textbf{Доказательство.}}} % команды для \begin
+{\hfill$\scriptstyle\blacksquare$} % команды для \end
+\newtheorem{Assumption}{Предположение}
+
+
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+%\renewcommand{\thetable}{\thesection.\arabic{table}}
+%\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+\numberwithin{equation}{section}
+%\numberwithin{figure}{section}
+%\graphicspath{ {fig/} }
+
+\def\algorithmicrequire{\textbf{\textcolor[rgb]{0.00,0.00,1.00}{Вход:}}}
+\def\algorithmicensure{\textbf{\textcolor[rgb]{0.00,0.00,1.00}{Выход:}}}
+
+\usetheme{Warsaw}%{Singapore}%{Warsaw}%{Warsaw}%{Darmstadt}
+\usecolortheme{sidebartab}
+
+\setbeamertemplate{footline}[author]
+\expandafter\def\expandafter\insertshorttitle\expandafter{\hfill \hfill \hfill \hfill \insertframenumber\,/\,\inserttotalframenumber}
+
+% отключить клавиши навигации
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{wrapfig}
+\DeclareCaptionStyle{mystyle}
+{format=plain,%
+	textformat=period,
+	justification=RaggedRight,
+	singlelinecheck=true,
+}
+
+\DeclareCaptionStyle{singlelineraggedleft}
+[justification=RaggedLeft]% right aligned if single line and no `singlelinecheck=false`
+{style=mystyle}
+
+\DeclareMathOperator*{\argmax}{argmax}
+%\captionsetup{style=singlelineraggedleft}
+
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
+%----------------------------------------------------------------------------------------------------------
+
+
+\title[]{Dangers of Bayesian Model Averaging under Covariate Shift}
+\author{Pavel Izmailov, Patrick Nicholson, Sanae Lotfi, Andrew Gordon Wilson}
+
+\date{
+    2021\,г.
+}
+
+\begin{document}
+
+% Creates title page of slide show using above information
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%\begin{frame}
+%  \tableofcontents
+%\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Постановка задачи}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Цель работы}
+
+\begin{frame}{Content}
+    \tableofcontents
+\end{frame}
+\section{Introduction and motivation}
+
+\begin{frame}{The Ubiquitous Problem of Covariate Shift}
+    \begin{block}{Real-world machine learning challenge}
+        Training and test distributions are rarely identical in practice:
+        \[
+        p_{\text{train}}(x) \neq p_{\text{test}}(x)
+        \]
+        but conditional distribution remains: \( p(y|x) \) unchanged.
+    \end{block}
+    
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{Applications affected:}
+            \begin{itemize}
+                \item Medical diagnosis
+                \item Autonomous driving
+                \item Financial forecasting
+                \item Natural language processing
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Types of shift:}
+            \begin{itemize}
+                \item Test data corruption
+                \item Domain shift
+                \item Spurious correlations
+                \item Temporal drift
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.5cm}
+    \alert{Key question:} Which methods are robust to such shifts?
+\end{frame}
+
+
+\begin{frame}{Bayesian Methods: Promise vs. Reality}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{Theoretical promise:}
+            \begin{itemize}
+                \item Bayesian Neural Networks (BNNs) provide \textbf{epistemic uncertainty}
+                \item Bayesian Model Averaging (BMA):
+                \[
+                p(y|x) = \int p(y|x,w) p(w|\mathcal{D}) dw
+                \]
+                \item Should be robust to distribution shift
+                \item Captures multiple explanations for OOD data
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Surprising reality:}
+            \begin{itemize}
+                \item BNNs with high-fidelity HMC inference perform \alert{poorly} under covariate shift
+                \item Often \alert{underperform} simple MAP estimation
+                \item Particularly vulnerable to noise corruptions
+                \item This paper investigates \textbf{why} and proposes solutions
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{Bayesian neural networks under covariate shift}
+
+    \begin{figure}[!h]
+	\centering
+	\includegraphics[width=\textwidth]{bmm_1_introduction.jpg}
+	\captionsetup{labelformat=empty}
+	%\label{fig:graph}
+    \end{figure}
+    
+    
+\end{frame}
+
+\section{Theoretical Analysis}
+
+\begin{frame}{Bayesian Framework Review}
+    \begin{columns}[T]
+        \begin{column}{0.58\textwidth}
+            \begin{block}{Bayesian Neural Network}
+                \begin{itemize}
+                    \item Prior: \( p(w) \)
+                    \item Likelihood: \( p(\mathcal{D}|w) \)
+                    \item Posterior via Bayes:
+                    \[
+                    p(w|\mathcal{D}) = \frac{p(\mathcal{D}|w)p(w)}{\int p(\mathcal{D}|w')p(w')dw'}
+                    \]
+                    \item Prediction via BMA:
+                    \[
+                    p(y|x) = \int p(y|x,w)p(w|\mathcal{D})dw
+                    \]
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.38\textwidth}
+            \begin{block}{MAP Estimation}
+                \[
+                w_{\text{MAP}} = \arg\max_w p(w|\mathcal{D})
+                \]
+                Equivalent to:
+                \[
+                \arg\max_w \left[ \log p(\mathcal{D}|w) + \log p(w) \right]
+                \]
+                where \(\log p(w)\) acts as regularizer.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+\begin{frame}
+    \begin{theorem}[Lemma 1 - Simplified]
+    Consider a BNN with first-layer weight \( w_{ij}^1 \) for input feature \( x^i \). If \( x_k^i = 0 \) for all training examples \( x_k \in \mathcal{D} \), and the prior factorizes:
+    \[
+    p(W) = p(w_{ij}^1) \cdot p(W \setminus w_{ij}^1)
+    \]
+    then:
+    \[
+    p(w_{ij}^1|\mathcal{D}) = p(w_{ij}^1)
+    \]
+    The posterior equals the prior, and MAP sets \( w_{ij}^1 \) to the prior mode (typically 0).
+    \end{theorem}
+\end{frame}
+
+
+
+\begin{frame}
+    \begin{theorem}[Proposition 2 - Key Points]
+    Suppose training inputs \( x_1, \ldots, x_n \) lie in an affine subspace:
+    \[
+    \sum_{j=1}^m x_i^j c_j = c_0 \quad \forall i, \quad \text{with } \sum_{j=0}^m c_j^2 = 1
+    \]
+    For i.i.d. Gaussian prior \( \mathcal{N}(0,\alpha^2) \):
+    \begin{enumerate}
+        \item For neuron \( j \) in first layer, posterior of projection \( w_j^c = \sum_{i=1}^m c_i w_{ij}^1 - c_0 b_j^1 \) coincides with prior
+        \item MAP sets \( w_j^c = 0 \)
+        \item For ReLU activations, BMA predictions are sensitive to test inputs outside the subspace
+    \end{enumerate}
+    \end{theorem}
+
+
+
+\end{frame}
+    
+\begin{frame}{Another example of covariate shift}
+    \begin{figure}[!h]
+	\centering
+	\includegraphics[width=\textwidth]{bmm_1_robustness.jpg}
+	\captionsetup{labelformat=empty}
+	%\label{fig:graph}
+    \end{figure}
+
+    \begin{figure}[!h]
+	\centering
+	\includegraphics[width=\textwidth]{bmm_1_robustness_2.jpg}
+	\captionsetup{labelformat=empty}
+	%\label{fig:graph}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}{Proposed solution}
+    \section{Proposed Solution: EmpCov Prior}
+
+The Empirical Covariance (EmpCov) prior for first-layer weights:
+\[
+p(w^1) = \mathcal{N}\left(0, \alpha\Sigma + \epsilon I\right)
+\]
+where:
+\begin{itemize}
+    \item \( \Sigma = \frac{1}{n-1} \sum_{i=1}^n x_i x_i^\top \) is the empirical covariance of inputs
+    \item \( \alpha > 0 \) controls prior scale
+    \item \( \epsilon > 0 \) ensures positive definiteness
+\end{itemize}
+
+\begin{itemize}
+    \item \textbf{Eigenvectors of prior} = Principal components of data
+    \item \textbf{Prior variance along PC \( p_i \)}: \( \alpha\sigma_i^2 + \epsilon \)
+    \item \textbf{For zero-variance direction} (\( \sigma_i^2 = 0 \)): variance = \( \epsilon \) (small)
+    \item This prevents BNN from sampling large random weights along low-variance directions
+\end{itemize}
+    
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\begin{table}[H]
+\begin{tabular}{lp{0.8\textwidth}}
+\toprule
+\textbf{Method} & \textbf{Why More Robust to Covariate Shift} \\
+\midrule
+\textbf{MAP (SGD)} & Regularization (log prior) pushes irrelevant weights to zero \\
+\textbf{Deep Ensembles} & Average of multiple MAP solutions, inheriting MAP's robustness \\
+\textbf{SWAG} & Gaussian approximation centered around SGD trajectory (near MAP) \\
+\textbf{MC Dropout} & Implicit regularization through dropout during training \\
+\textbf{Variational Inference} & Often collapses to MAP-like solutions due to approximation \\
+\midrule
+\textbf{BNN (HMC)} & \textbf{Samples exact posterior, including random weights from prior for low-variance directions} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+\begin{frame}
+    \begin{figure}[!h]
+	\centering
+	\includegraphics[width=\textwidth]{bmm_1_final.jpg}
+	\captionsetup{labelformat=empty}
+	%\label{fig:graph}
+    \end{figure}
+\end{frame}
+
+    \section{Key Takeaways}
+
+\begin{frame}{Key Takeaways}
+
+\begin{enumerate}
+    \item \textbf{BNNs with exact inference (HMC) are vulnerable to covariate shift}, particularly noise corruptions
+    \item \textbf{Root cause}: Linear dependencies in training data cause posterior to equal prior in certain directions
+    \item \textbf{MAP and ensembles are more robust} due to regularization pushing irrelevant weights to zero
+    \item \textbf{EmpCov prior} significantly improves BNN robustness by aligning prior variance with data variance
+\end{enumerate}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+\end{document}
