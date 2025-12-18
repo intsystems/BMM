@@ -1,0 +1,653 @@
+\documentclass[aspectratio=169, 12pt]{beamer}
+\usepackage{bbm}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amscd,amssymb}
+\usepackage{amsfonts,amsmath,array}
+\usepackage{sidecap}
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{pdfpages}
+\usepackage{multicol}
+
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{color}
+\usepackage{colortbl}
+
+\newtheorem{assumption}{Assumption}
+\usetheme{boxes}
+
+\title[\hbox to 56mm{Matrix Computation}]{Some Large-Scale Matrix Computation Problems}
+\author[V.\,M.~Meshkov]{Vladislav Meshkov, MSc.}
+\institute{Moscow Institute of Physics and Technology}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Table of contents}
+    \tableofcontents
+\end{frame}
+
+\section{Task/Model Motivation}
+\begin{frame}
+\frametitle{Task/Model Motivation}
+\begin{itemize}
+\item Large-scale problems require efficient methods
+
+    Computing quantities like \(tr(A^{-1})\) and \(\det(A)\) for matrices of order millions arises in physics (lattice QCD), fractals, and circuit simulation---traditional \(O(n^3)\) methods are impractical
+
+\item Matrix-vector products are the computational bottleneck
+
+    For sparse or structured matrices, forming \(Ax\) is much cheaper than full matrix operations---need algorithms that only access \(A\) through matrix-vector multiplications
+
+\item Existing quadrature-based approaches need practical refinement
+
+    Golub-Meurant methods provide theoretical foundation using Lanczos and Gaussian quadrature, but lack practical implementation details for non-SPD matrices and confidence bounds
+\end{itemize}
+\end{frame}
+
+\section{Formal Problem Statement}
+\begin{frame}{Formal Problem Statement}
+
+\textbf{Given:}
+\begin{itemize}
+    \item An \(n \times n\) real matrix \(A\) (possibly non-symmetric)
+    \item Vectors \(u, v \in \mathbb{R}^n\)
+    \item Smooth function \(f\) defined on the spectrum of \(A\)
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Central Problem:}
+\[
+L \leq u^T f(A) v \leq U
+\]
+
+\vspace{0.3cm}
+
+\textbf{Key Applications:}
+\begin{itemize}
+    \item Entries of matrix inverse: \(u = v = e_i\), \(f(\lambda) = 1/\lambda \Rightarrow (A^{-1})_{ii}\)
+    \item Trace of inverse: \(\sum_{i=1}^n (A^{-1})_{ii} = tr(A^{-1})\)
+    \item Determinant: \(\det(A) = \exp(tr(\ln(A)))\) via \(f(\lambda) = \ln \lambda\)
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Goal:} Develop algorithms using only \textbf{matrix-vector products} \(Ax\) \\
+\(\Rightarrow\) Memory: \(O(3n + \kappa)\), Cost: \(O(jv)\) where \(j\) = iterations, \(v\) = matvec cost
+
+\end{frame}
+
+\section{Algorithmic Approach}
+
+\begin{frame}{Core Idea: Quadrature + Lanczos}
+
+\textbf{Step 1: Transform to Riemann-Stieltjes Integral}
+
+For symmetric \(A = Q^T \Lambda Q\):
+\[
+u^T f(A) v = \sum_{i=1}^n f(\lambda_i) \hat{u}_i \hat{v}_i = \int_a^b f(\lambda) d\mu(\lambda)
+\]
+where \(\mu(\lambda)\) is piecewise constant measure from eigenvalue distribution
+
+\vspace{0.3cm}
+
+\textbf{Step 2: Approximate via Gaussian Quadrature}
+
+General formula:
+\[
+I[f] = \sum_{j=1}^N \omega_j f(\theta_j) + \sum_{k=1}^M \nu_k f(\tau_k)
+\]
+
+\begin{itemize}
+    \item \textbf{Gauss rule} (\(M=0\)): nodes \(\{\theta_j\}\) are zeros of orthogonal polynomial \(p_j(\lambda)\)
+    \item \textbf{Gauss-Radau} (\(M=1\)): prescribe one endpoint \(a\) or \(b\)
+    \item \textbf{Gauss-Lobatto} (\(M=2\)): prescribe both endpoints \(a\) and \(b\)
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Key:} Nodes and weights computed via \alert{Lanczos tridiagonalization}
+
+\end{frame}
+
+\begin{frame}{Lanczos Procedure and Orthogonal Polynomials}
+
+\textbf{Three-Term Recurrence for Orthonormal Polynomials:}
+\[
+\gamma_j p_j(\lambda) = (\lambda - \alpha_j) p_{j-1}(\lambda) - \gamma_{j-1} p_{j-2}(\lambda)
+\]
+with \(p_{-1}(\lambda) = 0\), \(p_0(\lambda) = 1\)
+
+\vspace{0.3cm}
+
+\textbf{Matrix Form:} \(A p(\lambda) = T_j p(\lambda) + \gamma_j p_j(\lambda) e_j\)
+
+Tridiagonal matrix:
+\[
+T_j = 
+\begin{bmatrix}
+\alpha_1 & \gamma_1 & & \\
+\gamma_1 & \alpha_2 & \gamma_2 & \\
+& \ddots & \ddots & \gamma_{j-1} \\
+& & \gamma_{j-1} & \alpha_j
+\end{bmatrix}
+\]
+
+\vspace{0.3cm}
+
+\textbf{Quadrature Construction:}
+\begin{itemize}
+    \item Nodes \(\{\theta_j\}\): eigenvalues of \(T_j\) (or adjusted \(\tilde{T}_j\) for Radau/Lobatto)
+    \item Weights \(\{\omega_j\}\): squares of first elements of normalized eigenvectors
+    \item Approximation: \(I_j = \sum_{k=1}^j \omega_k^2 f(\theta_k)\)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Algorithm 1: Basic Quadrature-Lanczos Method}
+
+\textbf{Input:} SPD matrix \(A \in \mathbb{R}^{n \times n}\), \(\lambda(A) \subseteq [a, b]\), vector \(u\), function \(f\)
+
+\vspace{0.2cm}
+
+\textbf{Initialization:} \(x_0 = u/\|u\|_2\), \(x_{-1} = 0\), \(\gamma_0 = 0\)
+
+\vspace{0.2cm}
+
+\textbf{For} \(j = 1, 2, \ldots\) \textbf{until convergence:}
+\begin{enumerate}
+    \item \(\alpha_j = x_{j-1}^T A x_{j-1}\)
+    \item \(r_j = A x_{j-1} - \alpha_j x_{j-1} - \gamma_{j-1} x_{j-2}\)
+    \item \(\gamma_j = \|r_j\|_2\)
+    \item Adjust \(T_j\) to have prescribed eigenvalues (for Radau/Lobatto) \(\rightarrow \tilde{T}_j\)
+    \item Compute eigenvalues \(\{\theta_k\}\) and first eigenvector elements \(\{\omega_k\}\) of \(\tilde{T}_j\)
+    \item \(I_j = \|u\|_2^2 \sum_{k=1}^j \omega_k^2 f(\theta_k)\)
+    \item Check convergence: \(|I_j - I_{j-1}| < \delta |I_j|\)
+    \item \(x_j = r_j / \gamma_j\)
+\end{enumerate}
+
+\vspace{0.2cm}
+
+\textbf{Output:} Lower bound \(L\) and/or upper bound \(U\) of \(u^T f(A) u\)
+
+\vspace{0.2cm}
+
+\textbf{Complexity:} Memory \(O(3n)\), Cost \(O(jv)\) where \(v\) is cost of \(Ax\)
+
+\end{frame}
+
+\section{Applications}
+
+\begin{frame}{Application 1: Bounding Matrix Inverse Entries}
+
+\textbf{Diagonal Elements \((A^{-1})_{ii}\):}
+
+Set \(u = v = e_i\) and \(f(\lambda) = 1/\lambda\), then \(u^T f(A) u = (A^{-1})_{ii}\)
+
+\vspace{0.1cm}
+
+\begin{itemize}
+    \item \textbf{Gauss rule}: lower bound \(L\) (since \(f^{(2n)}(\xi) > 0\))
+    \item \textbf{Gauss-Radau}: both \(L\) and \(U\) (one endpoint prescribed)
+    \item \textbf{Gauss-Lobatto}: upper bound \(U\) (both endpoints prescribed)
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Off-Diagonal Elements \((A^{-1})_{ij}\):}
+
+Use polarization identity:
+\[
+(A^{-1})_{ij} = \frac{1}{4}(y^T A^{-1} y - z^T A^{-1} z)
+\]
+where \(y = e_i + e_j\) and \(z = e_i - e_j\)
+
+\vspace{0.3cm}
+
+\textbf{Efficiency Trick:} Avoid computing eigendecomposition explicitly
+
+For \(f(\lambda) = 1/\lambda\): compute \((T_j^{-1})_{11}\) recursively [Golub-Meurant]
+
+\end{frame}
+
+\begin{frame}{Application 2: Non-SPD Matrices via Normal Equations}
+
+\textbf{Problem:} What if \(A\) is not symmetric positive definite?
+
+\vspace{0.3cm}
+
+\textbf{Key Observation:} For nonsingular \(A\), matrix \(A^T A\) is SPD and
+\[
+A^{-1} = (A^T A)^{-1} A^T
+\]
+
+\vspace{0.3cm}
+
+\textbf{Strategy for \((A^{-1})_{ij}\):}
+\[
+e_i^T A^{-1} e_j = e_i^T (A^T A)^{-1} A^T e_j = e_i^T (A^T A)^{-1} v
+\]
+where \(v = A^T e_j\). Apply Algorithm 1 with \(u = e_i\), \(v\), and matrix \(A^T A\)
+
+\vspace{0.3cm}
+
+\textbf{Strategy for \(tr(A^{-1})\):}
+\[
+tr(A^{-1}) = \frac{1}{2} tr(A^{-1} + A^{-T}) = \frac{1}{2} tr((A^T A)^{-1} A^T + A (A^T A)^{-1})
+\]
+Each diagonal term: \(2 e_i^T (A^T A)^{-1} A^T e_i\) with \(v = A^T e_i\)
+
+\vspace{0.3cm}
+
+\alert{Note:} Never form \(A^T A\) explicitly---compute \(A^T A x\) in two matvecs!
+
+\end{frame}
+
+\begin{frame}{Application 3: Determinant via Trace of Logarithm}
+
+\textbf{Mathematical Identity:} For SPD matrix \(A\)
+\[
+\det(A) = \exp(tr(\ln(A)))
+\]
+
+\vspace{0.3cm}
+
+\textbf{Algorithm:}
+\begin{enumerate}
+    \item Set \(f(\lambda) = \ln \lambda\)
+    \item Apply Algorithm 1 to bound \((\ln(A))_{ii}\) for each \(i = 1, \ldots, n\)
+    \item Sum bounds: \(\sum_{i=1}^n L_i \leq tr(\ln(A)) \leq \sum_{i=1}^n U_i\)
+    \item Exponentiate: \(\exp(\sum L_i) \leq \det(A) \leq \exp(\sum U_i)\)
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\textbf{Derivative Signs:}
+\begin{itemize}
+    \item \(f^{(2n+1)}(\lambda) = (-1)^n (2n)! \lambda^{-(2n+1)} > 0\)
+    \item \(f^{(2n)}(\lambda) = (-1)^{n+1} (2n-1)! \lambda^{-2n} < 0\)
+\end{itemize}
+\(\Rightarrow\) Gauss rule gives \textbf{upper bound}, Radau gives both bounds
+
+\vspace{0.3cm}
+
+\alert{Bottleneck:} Running Algorithm 1 \(n\) times costs \(O(njv)\) \(\rightarrow\) need Monte Carlo!
+
+\end{frame}
+
+\section{Monte Carlo Acceleration}
+
+\begin{frame}{Monte Carlo Approach for Trace Estimation}
+
+\textbf{Key Theorem (Hutchinson's Estimator):}
+
+Let \(H \in \mathbb{R}^{n \times n}\) be symmetric, \(z \in \{-1, +1\}^n\) with each entry uniform. Then:
+\[
+\mathbb{E}[z^T H z] = tr(H), \quad \text{var}(z^T H z) = 2 \sum_{i \neq j} H_{ij}^2
+\]
+
+\vspace{0.3cm}
+
+\textbf{Practical Algorithm:}
+\begin{enumerate}
+    \item Generate \(m\) random vectors \(z_1, \ldots, z_m\) (each entry \(\pm 1\) with prob. 0.5)
+    \item For each \(z_i\), apply Algorithm 1 to obtain bounds:
+    \[
+    L_i \leq z_i^T f(A) z_i \leq U_i
+    \]
+    \item Estimate trace via average:
+    \[
+    \frac{1}{m} \sum_{i=1}^m L_i \leq tr(f(A)) \leq \frac{1}{m} \sum_{i=1}^m U_i
+    \]
+\end{enumerate}
+
+\vspace{0.2cm}
+
+\textbf{Advantage:} Reduce cost from \(O(njv)\) to \(O(mjv)\) where \(m \ll n\) \\
+Typical: \(m = 30\)--\(50\) samples sufficient for \(n = 10^6\)!
+
+\end{frame}
+
+\begin{frame}{Confidence Bounds via Hoeffding's Inequality}
+
+\textbf{Hoeffding's Inequality:}
+
+Let \(W_1, \ldots, W_m\) be independent, zero-mean, bounded: \(a_i \leq W_i \leq b_i\). Then:
+\[
+P\left(\left|\sum_{i=1}^m W_i\right| \geq \eta\right) \leq 2 \exp\left(-\frac{2\eta^2}{\sum_{i=1}^m (b_i - a_i)^2}\right)
+\]
+
+\vspace{0.3cm}
+
+\textbf{Application to Trace Estimation:}
+
+Let \(W_i = z_i^T H z_i - tr(H)\), then \(L_{\min} - tr(H) \leq W_i \leq U_{\max} - tr(H)\)
+
+\vspace{0.1cm}
+
+Set \(d = m(U_{\max} - L_{\min})^2\), then with probability \(\geq 1 - 2\exp(-2\eta^2/d)\):
+\[
+\frac{1}{m}\sum_{i=1}^m L_i - \frac{\eta}{m} \leq tr(H) \leq \frac{1}{m}\sum_{i=1}^m U_i + \frac{\eta}{m}
+\]
+
+\vspace{0.1cm}
+
+\textbf{Confidence Interval Width:} For probability \(p\):
+\[
+\frac{\eta}{m} = \frac{1}{2m}(U_{\max} - L_{\min})^2 \ln\left(\frac{2}{1-p}\right)
+\]
+
+As \(m \to \infty\), width \(\eta/m \to 0\) (estimator is consistent)
+
+\end{frame}
+
+\begin{frame}{Algorithm 2: Monte Carlo Trace Estimation}
+
+\textbf{Input:} SPD \(A \in \mathbb{R}^{n \times n}\), function \(f\), sample size \(m\), probability \(p\)
+
+\vspace{0.2cm}
+
+\textbf{For} \(j = 1, \ldots, m\):
+\begin{enumerate}
+    \item Generate random vector \(z_j \in \{-1, +1\}^n\)
+    \item Apply Algorithm 1 (Gauss-Radau) to get \(L_j \leq z_j^T f(A) z_j \leq U_j\)
+    \item Update: \(L_{\min} = \min\{L_{\min}, L_j\}\), \(U_{\max} = \max\{U_{\max}, U_j\}\)
+    \item Compute running estimate: \(I(j) = \frac{1}{2j} \sum_{i=1}^j (L_i + U_i)\)
+    \item Compute confidence width:
+    \[
+    \eta^2 = 0.5j(U_{\max} - L_{\min})^2 \ln(2/(1-p))
+    \]
+    \item Update confidence bounds:
+    \[
+    L_p(j) = \frac{1}{j}\sum_{i=1}^j L_i - \frac{\eta}{j}, \quad U_p(j) = \frac{1}{j}\sum_{i=1}^j U_i + \frac{\eta}{j}
+    \]
+\end{enumerate}
+
+\vspace{0.2cm}
+
+\textbf{Output:} Estimator \(I_m = I(m)\), confidence interval \([L_p(m), U_p(m)]\)
+
+\end{frame}
+
+
+\begin{frame}{Connection: Hessian Estimation via Trace Methods}
+
+\textbf{Problem in ELBO Optimization:}
+
+Computing Hessian-dependent quantities for SGD analysis:
+\begin{itemize}
+    \item Trace of Hessian: \(\text{Tr}(H) = \sum_{i=1}^D H_{ii}\)
+    \item Squared Hessian: \(\text{Tr}(H^2) = \sum_{i,j} H_{ij}^2\)
+    \item Log-determinant: \(\log|I - \alpha H|\) for convergence analysis
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Challenge:} Direct computation of full Hessian \(H \in \mathbb{R}^{D \times D}\) is prohibitive for high-dimensional models (deep neural networks with \(D \sim 10^6\)--\(10^9\))
+
+\vspace{0.3cm}
+
+\textbf{Solution via Lanczos Quadrature:}
+
+Use Algorithm 1 to \alert{efficiently estimate}:
+\[
+\text{Tr}(H) = \int_a^b d\mu(\lambda) \approx \sum_{k=1}^j \omega_k \quad \text{(Gauss quadrature)}
+\]
+
+where \(\omega_k\) are weights from eigendecomposition of tridiagonal \(T_j\) (cost: only \(O(jD)\) Hessian-vector products)
+
+\end{frame}
+
+\begin{frame}{Hessian Estimation in SGD: From Theory to Practice}
+
+\textbf{Entropy Change via Log-Determinant:}
+
+SGD step Jacobian: \(J_t = I - \alpha H_t\), entropy change:
+\[
+\Delta S_t = \log |I - \alpha H_t| = \sum_{i=1}^D \log(1 - \alpha \lambda_i)
+\]
+
+\textbf{Parabolic Lower Bound (from ELBO slides):}
+\[
+\log |I - \alpha H| \geq -\alpha \text{Tr}(H) - \alpha^2 \text{Tr}(H^2)
+\]
+
+\vspace{0.2cm}
+
+\textbf{Efficient Trace Estimation (Hutchinson, 1989):}
+
+For random \(z \sim N(0, I)\):
+\[
+\mathbb{E}[z^T H z] = \text{Tr}(H), \quad \mathbb{E}[\|Hz\|_2^2] = \text{Tr}(H^2)
+\]
+
+\vspace{0.2cm}
+
+\textbf{Lanczos Integration:}
+
+Instead of computing exact Hessian, use Algorithm 1 with \(f(\lambda) = \lambda\) and \(f(\lambda) = \lambda^2\):
+\begin{itemize}
+    \item Generate \(m\) random vectors \(z_i\)
+    \item Apply Lanczos to each: compute bounds \(L_i, U_i\) on \(z_i^T H z_i\)
+    \item Average: \(\text{Tr}(H) \approx \frac{1}{m}\sum_{i=1}^m (L_i + U_i)\)
+    \item Confidence interval via Hoeffding's inequality (slide on Monte Carlo)
+\end{itemize}
+
+\end{frame}
+
+
+\section{Numerical Experiments}
+
+\begin{frame}{Experiment 1: Diagonal Inverse Entries}
+
+\textbf{Test Matrix:} Linear heat flow (finite difference discretization, \(n = 900\))
+
+\vspace{0.2cm}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\(i\) & Exact \((A^{-1})_{ii}\) & Iter & Lower \(L_i\) & Upper \(U_i\) & \(U_i - L_i\) \\
+\hline
+1 & 5.7020150e-01 & 4 & 5.7020115e-01 & 5.7020202e-01 & 8.68e-07 \\
+22 & 5.7792259e-01 & 4 & 5.7792195e-01 & 5.7792349e-01 & 1.54e-06 \\
+32 & 5.8626306e-01 & 4 & 5.8626209e-01 & 5.8626430e-01 & 2.21e-06 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+\textbf{Observations:}
+\begin{itemize}
+    \item Convergence in only \alert{4 iterations}---extremely fast!
+    \item Bounds are \textbf{very sharp}: gap \(\sim 10^{-6}\) (relative error \(<10^{-5}\))
+    \item Much sharper than variational bounds [Robinson-Wathen, 1992]:
+    \begin{itemize}
+        \item Their bound for \((A^{-1})_{1,1}\): [0.5676, 0.5750] (gap \(\sim 10^{-2}\))
+        \item Our bound: [0.57020115, 0.57020202] (gap \(\sim 10^{-6}\))
+    \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Experiment 2: Vicsek Fractal Hamiltonian (VFH)}
+
+\textbf{Test Matrix:} Transverse vibration of Vicsek fractal (self-similar structure)
+
+\vspace{0.2cm}
+
+\textbf{Results for \(n = 3125\):}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\(i\) & Iter & Lower \(L_i\) & Upper \(U_i\) & \(U_i - L_i\) \\
+\hline
+1 & 19 & 9.4801416e-01 & 9.4801776e-01 & 3.60e-06 \\
+100 & 20 & 1.1005253e+00 & 1.1005302e+00 & 4.90e-06 \\
+2000 & 19 & 1.1003685e+00 & 1.1003786e+00 & 1.01e-05 \\
+3125 & 16 & 6.4400234e-01 & 6.4401100e-01 & 8.66e-06 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+\textbf{Key Features:}
+\begin{itemize}
+    \item Convergence in 13--20 iterations for \(n = 3125\)
+    \item Sparse fractal structure \(\Rightarrow\) cheap matrix-vector products
+    \item Applications: vibrational modes of fractals, quantum physics
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Experiment 3: Monte Carlo for \(tr(A^{-1})\)}
+
+\textbf{Test Matrices:} Various SPD matrices, \(m = 50\) Monte Carlo samples
+
+\vspace{0.2cm}
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+Matrix & \(n\) & Exact \(tr(A^{-1})\) & Estimated & Rel. Err. & 95\% Conf. Interval \\
+\hline
+Poisson & 900 & 5.126e+02 & 5.020e+02 & 2.0\% & (4.28e+02, 5.75e+02) \\
+VFH & 625 & 5.383e+02 & 5.366e+02 & 0.3\% & (5.05e+02, 5.67e+02) \\
+Wathen & 481 & 2.681e+01 & 2.667e+01 & 0.5\% & (2.58e+01, 2.75e+01) \\
+Lehmer & 200 & 2.000e+04 & 2.017e+04 & 0.8\% & (1.86e+04, 2.16e+04) \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+\textbf{Analysis:}
+\begin{itemize}
+    \item \textbf{Accuracy:} Relative error \(< 2\%\) with only 50 samples
+    \item \textbf{Efficiency:} Cost reduced from \(O(n \cdot jv)\) to \(O(50 \cdot jv)\)
+    \begin{itemize}
+        \item For Poisson \(n=900\): speedup factor \(\sim 18\times\)
+    \end{itemize}
+    \item \textbf{Confidence:} True value in 95\% interval for all tests
+\end{itemize}
+
+\vspace{0.2cm}
+
+\alert{Practical impact:} Makes trace estimation feasible for \(n = 10^6\) in lattice QCD!
+
+\end{frame}
+
+\begin{frame}{Experiment 4: Monte Carlo for \(\det(A)\)}
+
+\textbf{Test Matrices:} Estimate \(tr(\ln(A))\), then \(\det(A) = \exp(tr(\ln(A)))\)
+
+\vspace{0.2cm}
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+Matrix & \(n\) & Exact \(tr(\ln A)\) & Estimated & Rel. Error \\
+\hline
+Poisson & 900 & 1.065e+03 & 1.060e+03 & 0.4\% \\
+VFH & 625 & 3.677e+02 & 3.661e+02 & 0.4\% \\
+H-flow & 900 & 5.643e+01 & 5.669e+01 & 0.4\% \\
+Pei & 300 & 5.707e+00 & 5.240e+00 & 8.2\% \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+\textbf{Observations:}
+\begin{itemize}
+    \item Most matrices: excellent accuracy (\(\sim 0.4\%\))
+    \item Pei matrix (ill-conditioned, \(\kappa(A) = 301\)): larger error (8.2\%)
+    \begin{itemize}
+        \item Ill-conditioning affects logarithm sensitivity
+    \end{itemize}
+    \item Heat flow matrix: only 4 Lanczos iterations needed! (symmetric structure)
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Application to QCD:} Determinants of Dirac operators (millions of DOFs) \\
+\(\Rightarrow\) Monte Carlo makes computation tractable
+
+\end{frame}
+
+\section{Conclusions}
+
+\begin{frame}{Summary and Contributions}
+
+\textbf{Main Results:}
+
+\begin{enumerate}
+    \item \textbf{Unified framework} combining Lanczos, orthogonal polynomials, and Gaussian quadrature to bound \(u^T f(A) v\) using only matrix-vector products
+    
+    \item \textbf{Practical algorithms} for:
+    \begin{itemize}
+        \item Entries of \(A^{-1}\) (diagonal and off-diagonal)
+        \item Trace \(tr(A^{-1})\) and \(tr(f(A))\)
+        \item Determinant \(\det(A)\) via \(\exp(tr(\ln(A)))\)
+    \end{itemize}
+    
+    \item \textbf{Extension to non-SPD matrices} via normal equations \(A^T A\)
+    
+    \item \textbf{Monte Carlo acceleration} reduces cost from \(O(njv)\) to \(O(mjv)\) with rigorous confidence bounds (Hoeffding inequality)
+    
+    \item \textbf{Numerical validation} on diverse test matrices (Poisson, VFH, Wathen, etc.)
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\textbf{Impact:} Enables trace/determinant computation for \(n \sim 10^6\) in lattice QCD \\
+\(\Rightarrow\) Previously considered "too numerically sensitive" now tractable!
+
+\end{frame}
+
+\begin{frame}{Future Work and Open Problems}
+
+\textbf{Algorithmic Improvements:}
+\begin{itemize}
+    \item \textbf{Preconditioning:} How to accelerate convergence for ill-conditioned \(A\)?
+    \begin{itemize}
+        \item Lanczos with implicit restart or deflation techniques
+    \end{itemize}
+    
+    \item \textbf{Sharper confidence bounds:} Hoeffding inequality is conservative
+    \begin{itemize}
+        \item Explore Berry-Esseen theorem or empirical bootstrap methods
+    \end{itemize}
+    
+    \item \textbf{Direct handling of \(u \neq v\):} Use orthogonal polynomials with variable-sign weights instead of polarization identity
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Extensions:}
+\begin{itemize}
+    \item \textbf{Complex non-Hermitian matrices:} Crucial for QCD (Dirac operators)
+    \begin{itemize}
+        \item Bilanczos or Arnoldi-based quadrature?
+    \end{itemize}
+    
+    \item \textbf{Ultra-large scale:} \(n \sim 10^9\) (next-generation lattice QCD)
+    \begin{itemize}
+        \item Distributed/parallel Monte Carlo sampling
+    \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\end{document}
