@@ -1,0 +1,364 @@
+\documentclass{beamer}
+\beamertemplatenavigationsymbolsempty
+\usecolortheme{beaver}
+\setbeamertemplate{blocks}[rounded=true, shadow=true]
+\setbeamertemplate{footline}[page number]
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\title{Averaging Weights Leads to Wider Optima and Better Generalization}
+\author{Pavel Izmailov, Dmitrii Podoprikhin, Timur Garipov, Dmitry Vetrov, Andrew Gordon Wilson}
+\institute{Talk by Gleb Karpeev}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Motivation: Standard SGD Training}
+
+Standard approach: SGD with decaying learning rate until convergence
+
+\vspace{0.5cm}
+
+\begin{block}{Key Observations}
+\begin{itemize}
+    \item Local optima found by SGD can be connected by curves of constant loss
+    \item There exist regions of high-performing networks, not just isolated points
+    \item But where does SGD converge within these regions?
+\end{itemize}
+\end{block}
+
+\vspace{0.3cm}
+
+\begin{alertblock}{Core Problem}
+SGD converges to points on the periphery of optimal regions.\\
+Can we find more central, flatter solutions?
+\end{alertblock}
+
+\end{frame}
+
+\begin{frame}{Loss Surface Geometry}
+
+\begin{block}{SGD with Constant Learning Rate}
+Running SGD with constant learning rate $\alpha$ approximately samples:
+\begin{equation*}
+w_i \sim \mathcal{N}(\hat{w}, \Sigma(\alpha))
+\end{equation*}
+\end{block}
+
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\textbf{Standard SGD:}
+\begin{itemize}
+    \item Decaying LR picks one point on surface
+    \item Stops at periphery
+    \item Near directions of sharp ascent
+\end{itemize}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\textbf{Key Insight:}
+\begin{itemize}
+    \item Train loss $\neq$ test error surfaces
+    \item They are shifted
+    \item Central points generalize better
+\end{itemize}
+\end{column}
+\end{columns}
+
+\vspace{0.3cm}
+
+\begin{block}{Solution}
+Average multiple points $\rightarrow$ move to the center!
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Stochastic Weight Averaging (SWA)}
+
+\begin{block}{The Algorithm}
+Collect weight vectors $\{w_1, w_2, \ldots, w_n\}$ along SGD trajectory:
+\begin{equation*}
+w_{\text{SWA}} = \frac{1}{n} \sum_{i=1}^{n} w_i
+\end{equation*}
+\end{block}
+
+\begin{enumerate}
+    \item Train with standard SGD for $\sim$75\% of budget $\rightarrow$ get $\hat{w}$
+    \item Continue with cyclical or constant learning rate
+    \item Periodically save weights and update running average:
+    \begin{equation*}
+    w_{\text{SWA}} \leftarrow \frac{w_{\text{SWA}} \cdot n + w}{n + 1}
+    \end{equation*}
+    \item Recompute batch norm statistics for $w_{\text{SWA}}$
+\end{enumerate}
+
+\vspace{0.2cm}
+
+\begin{block}{Computational Cost}
+Memory: +10\% \quad Time: +0-5\%
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Learning Rate Schedules}
+
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\textbf{Cyclical Schedule}
+
+Linearly decrease from $\alpha_1$ to $\alpha_2$ in cycles:
+\begin{equation*}
+\alpha(i) = (1 - t(i))\alpha_1 + t(i)\alpha_2
+\end{equation*}
+\begin{equation*}
+t(i) = \frac{1}{c}(\text{mod}(i-1, c) + 1)
+\end{equation*}
+
+\vspace{0.2cm}
+\small
+At cycle end: capture weights, jump back to $\alpha_1$
+\normalsize
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\textbf{Constant Schedule}
+
+Simply set $\alpha(i) = \alpha_1$ for all iterations
+
+\vspace{0.2cm}
+\small
+Capture weights every epoch
+\normalsize
+\end{column}
+\end{columns}
+
+\vspace{0.5cm}
+
+\begin{block}{Hyperparameter Guidelines}
+\begin{itemize}
+    \item $\alpha_1$: between max and min LR from standard training (0.01-0.05)
+    \item Cycle length $c$: 3-5 epochs works well
+    \item Method is robust to hyperparameter choices
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Why Does SWA Work?}
+
+\begin{block}{1. Geometric Interpretation}
+SGD with cyclical/constant LR traverses surface of optimal set\\
+$\rightarrow$ Averaging moves inside to more central points
+\end{block}
+
+\begin{block}{2. Connection to Ensembling}
+Consider network predictions $f(\cdot)$ and Taylor expansion:
+\begin{equation*}
+f(w_i) = f(w_{\text{SWA}}) + \langle \nabla f(w_{\text{SWA}}), \Delta_i \rangle + O(\|\Delta_i\|^2)
+\end{equation*}
+where $\Delta_i = w_i - w_{\text{SWA}}$ and $\sum_i \Delta_i = 0$. Thus:
+\begin{equation*}
+\bar{f} - f(w_{\text{SWA}}) = O(\Delta^2)
+\end{equation*}
+SWA approximates ensemble to second order with single model!
+\end{block}
+
+\begin{block}{3. Solution Width}
+SWA finds demonstrably flatter solutions than SGD
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Loss Surface Visualization}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.95\linewidth]{figure1.png}
+    \caption{PreResNet-164 on CIFAR-100. Left: FGE samples on periphery, SWA in center. Middle \& Right: SGD vs SWA on test error and train loss surfaces.}
+\end{figure}
+
+\begin{itemize}
+    \item $w_{\text{SWA}}$: test error 19.62\%, train loss 0.00903 (center)
+    \item $w_{\text{SGD}}$: test error 20.15\%, train loss 0.02142 (periphery)
+    \item SWA is more centrally located
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{CIFAR Results}
+
+\begin{table}
+\centering
+\small
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Model} & \textbf{SGD} & \textbf{FGE} & \textbf{SWA 1.0B} & \textbf{SWA 1.25B} & \textbf{SWA 1.5B} \\
+\midrule
+\multicolumn{6}{c}{\textbf{CIFAR-100}} \\
+\midrule
+VGG-16 & 72.55 & 74.26 & 73.91 & 74.17 & \textbf{74.27} \\
+ResNet-164 & 78.49 & 79.84 & 79.77 & 80.18 & \textbf{80.35} \\
+WRN-28-10 & 80.82 & 82.27 & 81.46 & 81.91 & \textbf{82.15} \\
+PyramidNet & 83.41 & — & — & 83.93 & \textbf{84.16} \\
+\midrule
+\multicolumn{6}{c}{\textbf{CIFAR-10}} \\
+\midrule
+VGG-16 & 93.25 & 93.52 & 93.59 & 93.70 & \textbf{93.64} \\
+ResNet-164 & 95.28 & 95.45 & 95.56 & 95.77 & \textbf{95.83} \\
+WRN-28-10 & 96.18 & 96.36 & 96.45 & 96.64 & \textbf{96.79} \\
+Shake-Shake & 96.93 & — & — & 97.16 & \textbf{97.12} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\vspace{0.3cm}
+
+Improvements: 0.75-1.5\% on CIFAR-100, 0.4-0.6\% on CIFAR-10\\
+Key result: Single SWA model $\approx$ FGE ensemble!
+
+\end{frame}
+
+\begin{frame}{ImageNet Results}
+
+Using pretrained PyTorch models, SWA runs for just 10 epochs
+
+\vspace{0.5cm}
+
+\begin{table}
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{Model} & \textbf{SGD} & \textbf{SWA (10 epochs)} & \textbf{Improvement} \\
+\midrule
+ResNet-50 & 76.15 & \textbf{76.97 $\pm$ 0.05} & +0.82\% \\
+ResNet-152 & 78.31 & \textbf{78.94 $\pm$ 0.07} & +0.63\% \\
+DenseNet-161 & 77.65 & \textbf{78.44 $\pm$ 0.06} & +0.79\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\vspace{0.5cm}
+
+\begin{block}{Takeaway}
+0.6-0.9\% improvement on large-scale dataset with minimal cost\\
+Substantial given difficulty of improving strong baselines
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Loss Surface Asymmetry}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{figure5.png}
+    \caption{Train loss and test error along line connecting SGD and SWA (PreResNet-164, CIFAR-100)}
+\end{figure}
+
+\begin{itemize}
+    \item $w_{\text{SGD}}$ near boundary of wide flat region
+    \item Beyond $w_{\text{SGD}}$ (away from SWA): steep ascent
+    \item $w_{\text{SWA}}$ more centrally located in flat region
+    \item Train loss vs test error surfaces are shifted
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Training from Scratch with Constant LR}
+
+
+\begin{block}{Experiment: Wide ResNet-28-10 on CIFAR-100}
+Train for 300 epochs with constant $\alpha=0.05$, average from epoch 140
+\end{block}
+
+\vspace{0.5cm}
+
+\begin{table}
+\centering
+\begin{tabular}{lc}
+\toprule
+\textbf{Method} & \textbf{Test Accuracy} \\
+\midrule
+Individual models (any epoch) & $\sim$65\% (oscillating) \\
+Standard SGD (decaying LR) & 80.82\% \\
+\textbf{SWA (constant LR)} & \textbf{81.7\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\vspace{0.3cm}
+
+Individual proposals never converge, but their average outperforms conventional training!
+
+\end{frame}
+
+\begin{frame}{Key Insights}
+
+\begin{block}{1. Geometry Matters}
+\begin{itemize}
+    \item Loss surfaces contain regions of good solutions
+    \item SGD explores periphery; SWA finds center
+    \item Train loss $\neq$ test error (shifted surfaces)
+\end{itemize}
+\end{block}
+
+\begin{block}{2. Solution Width}
+\begin{itemize}
+    \item SWA solutions are wider/flatter than SGD
+    \item Robust to perturbations $\rightarrow$ better generalization
+    \item $w_{\text{SWA}}$: slightly higher train loss, lower test error
+\end{itemize}
+\end{block}
+
+\begin{block}{3. Practical Benefits}
+\begin{itemize}
+    \item Trivial to implement ($<$20 lines)
+    \item Negligible overhead (0-5\%)
+    \item Universal: works with any architecture, optimizer, dataset
+    \item Single model with ensemble-level performance
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Conclusion}
+
+\begin{alertblock}{Stochastic Weight Averaging}
+Simple technique with profound geometric insight:\\
+Average weights along SGD trajectory with cyclical/constant LR
+\end{alertblock}
+
+\vspace{0.3cm}
+
+\textbf{Key Contributions:}
+\begin{itemize}
+    \item 0.5-1.5\% test accuracy improvement across architectures
+    \item Single model matches/exceeds ensemble performance
+    \item Demonstrably wider optima than standard SGD
+    \item Essentially no computational overhead
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Future Directions:}
+\begin{itemize}
+    \item Combination with large-batch training
+    \item Bayesian deep learning (uncertainty quantification)
+    \item Extension to RL, NLP domains
+    \item Smarter averaging schemes for faster convergence
+\end{itemize}
+
+\vspace{0.3cm}
+
+\begin{center}
+\textbf{Code:} \texttt{github.com/timgaripov/swa}
+\end{center}
+
+\end{frame}
+
+\end{document}
