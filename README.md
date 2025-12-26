@@ -8,7 +8,10 @@
 [TG Link](https://t.me/+ugZ6IIQrsjMyNjMy)
 
 
-## Plan (Fall 2025)
+## Fall 2025
+
+[Youtube playlist](https://www.youtube.com/watch?v=ltUZJhdja9g&list=PLk4h7dmY2eYF9A4sJPQlDKQ0u8v4-XUot&index=12)
+
 |Date|Topic|
 | --- | --- |
 | 9.09 | [Intro](slides/slides_0_intro.pdf)| 
