@@ -29,11 +29,14 @@
 
 ## Results
 ### Paper review blog posts
-* ["Beyond ReLU: how the snake activation fixes neural networks periodic learning problem" by Vladislav Minashkin](https://bmmtalks.hashnode.dev/beyond-relu-how-the-snake-activation-fixes-neural-networks-periodic-learning-problem?__cf_chl_tk=rqJZFAxVsnKVtI6lj30FzGhQ3HUABEXYDvmdHx3vgGc-1766776535-1.0.1.1-ZoDLVm3nmXbRLoItofVIxiPH8beIeXJf8LP7K5Q7VjI)
+* ["Beyond ReLU: how the snake activation fixes neural networks periodic learning problem" by Vladislav Minashkin](https://bmmtalks.hashnode.dev/beyond-relu-how-the-snake-activation-fixes-neural-networks-periodic-learning-problem)
 * ["Gibbs-Based Information Criteria and the Over-Parameterized Regime" by Ivan Papay](https://papayiv.github.io/2025/10/22/gibbs-aic-bic.html)
 * ["An Exploration of Softmax Alternatives Belonging to the Spherical Loss Family" by Fedor Sobolevsky](https://intsystems.github.io/materials/blog/spherical-loss-family/)
 * ["Understanding Invariance via Feedforward Inversion of Discriminatively Trained Classifiers" by Dmitrii Vasilenko](https://intsystems.github.io/materials/blog/feedforward-classifier-inversion/)
-* 
+* ["Bridging Kolmogorov Complexity and Deep Learning" by Sergey Firsov](https://t.me/schafts/166?single)
+* ["Outlier-Robust Variational Inference: Making Deep Learning More Resilient" by Vladislav Meshkov](https://beta-divergence.hashnode.dev/outlier-robust-variational-inference-making-deep-learning-more-resilient)
+* ["Accelerated Linearized Laplace Approximation for Bayesian Deep Learning" by Ilya Stepanov](https://bmmtalksella.hashnode.dev/accelerated-linearized-laplace-approximation-for-bayesian-deep-learning)
+* ["Distribution Shift in Practice: Strong Baselines vs. Clever Tricks" by Muhammadsharif Nabiev](https://mikhmed-nabiev.github.io/bayesian-multimodelling.html)
 ### Libraries
 * [Bensemble](https://github.com/intsystems/bensemble)
 * ["Just Relax It" library for Discrete Variables Relaxation (v2)](https://github.com/intsystems/relaxit)
