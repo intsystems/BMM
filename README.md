@@ -28,9 +28,12 @@
 
 
 ## Results
-### Paper blog posts
+### Paper review blog posts
 * ["Beyond ReLU: how the snake activation fixes neural networks periodic learning problem" by Vladislav Minashkin](https://bmmtalks.hashnode.dev/beyond-relu-how-the-snake-activation-fixes-neural-networks-periodic-learning-problem?__cf_chl_tk=rqJZFAxVsnKVtI6lj30FzGhQ3HUABEXYDvmdHx3vgGc-1766776535-1.0.1.1-ZoDLVm3nmXbRLoItofVIxiPH8beIeXJf8LP7K5Q7VjI)
-
+* ["Gibbs-Based Information Criteria and the Over-Parameterized Regime" by Ivan Papay](https://papayiv.github.io/2025/10/22/gibbs-aic-bic.html)
+* ["An Exploration of Softmax Alternatives Belonging to the Spherical Loss Family" by Fedor Sobolevsky](https://intsystems.github.io/materials/blog/spherical-loss-family/)
+* ["Understanding Invariance via Feedforward Inversion of Discriminatively Trained Classifiers" by Dmitrii Vasilenko](https://intsystems.github.io/materials/blog/feedforward-classifier-inversion/)
+* 
 ### Libraries
 * [Bensemble](https://github.com/intsystems/bensemble)
 * ["Just Relax It" library for Discrete Variables Relaxation (v2)](https://github.com/intsystems/relaxit)
