@@ -8,7 +8,7 @@
 [TG Link](https://t.me/+ugZ6IIQrsjMyNjMy)
 
 
-## Plan (Fall 2025, tentative)
+## Plan (Fall 2025)
 |Date|Topic|
 | --- | --- |
 | 9.09 | [Intro](slides/slides_0_intro.pdf)| 
@@ -27,3 +27,11 @@
 | 16.12 | Technical meeting 4: final meeting, final scores | 
 
 
+## Results
+### Paper blog posts
+* ["Beyond ReLU: how the snake activation fixes neural networks periodic learning problem" by Vladislav Minashkin](https://bmmtalks.hashnode.dev/beyond-relu-how-the-snake-activation-fixes-neural-networks-periodic-learning-problem?__cf_chl_tk=rqJZFAxVsnKVtI6lj30FzGhQ3HUABEXYDvmdHx3vgGc-1766776535-1.0.1.1-ZoDLVm3nmXbRLoItofVIxiPH8beIeXJf8LP7K5Q7VjI)
+
+### Libraries
+* [Bensemble](https://github.com/intsystems/bensemble)
+* ["Just Relax It" library for Discrete Variables Relaxation (v2)](https://github.com/intsystems/relaxit)
+* [SToG: Stochastic Gates for Feature Selection](https://github.com/intsystems/SToG/)
