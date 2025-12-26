@@ -36,6 +36,10 @@
 * ["Bridging Kolmogorov Complexity and Deep Learning" by Sergey Firsov](https://t.me/schafts/166?single)
 * ["Outlier-Robust Variational Inference: Making Deep Learning More Resilient" by Vladislav Meshkov](https://beta-divergence.hashnode.dev/outlier-robust-variational-inference-making-deep-learning-more-resilient)
 * ["Accelerated Linearized Laplace Approximation for Bayesian Deep Learning" by Ilya Stepanov](https://bmmtalksella.hashnode.dev/accelerated-linearized-laplace-approximation-for-bayesian-deep-learning)
+* ["Bayesian Neural Networks Under Covariate Shift: When Theory Fails Practice" by Vadim Kasiuk](https://dev.to/kasiukvadim/bayesian-neural-networks-under-covariate-shift-when-theory-fails-practice-2hif)
+* ["Hybrid Inference: Combining Graphical Models with Graph Neural Networks" by Altay Eynullayev](https://chessmatus.github.io/2025-12-16-hybryd_inference/)
+* ["Stochastic Weight Averaging: Finding Wider Optima for Better Generalization" by Gleb Karpeev](https://swa-finding-optima.hashnode.dev/stochastic-weight-averaging-finding-wider-optima-for-better-generalization)
+* ["Hamiltonian Monte Carlo method for sampling" by Denis Rubtsov](https://rubtsov-bmm-course.hashnode.dev/hamiltonian-monte-carlo-method-for-sampling)
 * ["Distribution Shift in Practice: Strong Baselines vs. Clever Tricks" by Muhammadsharif Nabiev](https://mikhmed-nabiev.github.io/bayesian-multimodelling.html)
 ### Libraries
 * [Bensemble](https://github.com/intsystems/bensemble)
