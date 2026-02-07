@@ -47,6 +47,23 @@ Each team must assign roles for all teammates. Each activity is evaluated indepe
 
 For a small team (<4) some activites can be reduced.
 
+## Project list, spring 2025
+
+### Outer-loop gradient-based hyperparameter optimization
+**Motivation**:  Hyperparameter optimization is a problem of finding suitable hyperparameters given a validation (or sometimes test) dataset.
+In contrast to classical hyperparameter optimization methods, gradient-based methods allow the researchers to perform hyperparameter optimization over a billion-dimmension search space. 
+ 
+**Algorithms to implement (from simplets to hardest):**
+* [Optimizing millions hyperparameters](http://proceedings.mlr.press/v108/lorraine20a/lorraine20a.pdf)
+* [HOAG](http://proceedings.mlr.press/v48/pedregosa16.pdf)
+* [DrMAD](https://arxiv.org/pdf/1601.00917) (attention: the algorithm is described poorly, need to proofread before implementation. Instead of trajectory linearization, piecewise-linearization is required to be implemented.)
+* [Forward and reverse gradient-based Hyperparameter optimization](https://arxiv.org/abs/1703.01785)
+
+**Recommended stack**:
+JAX or pytorch. **As with Evidence-based operators, the main problem here is to make this usable for a broad-class of tasks (provide good API).**
+
+**Project details:** the code of  "Optimizing billion hyperparameters..." is already implemented on JAX by Konstantin Yakovlev.
+
 
 ## Project list, fall 2025
 
