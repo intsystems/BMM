@@ -8,6 +8,27 @@
 [TG Link](https://t.me/+ugZ6IIQrsjMyNjMy)
 
 
+## Spring 2026
+
+(tentative plan)
+
+|Date|Topic|
+| --- | --- |
+| 10.02 | Hyperparameter optimization: SMBO | 
+| 17.02 | Technincal meeting 1: project discussion | 
+| 24.02 | Hyperparameter optimization: gradient-based | 
+| 03.03 | Gaussian processes, SSM  | 
+| 10.03 | Technincal meeting 2: proof of concept discussion | 
+| 17.03 | Structure selection | 
+| 24.03 | Genetics | 
+| 31.03 | Meta-optimization | 
+| 07.04 | Multi-task learning  | 
+| 14.04 | Inductive bias | 
+| 21.04 | Model ensembles  | 
+| 28.04 | Technical meeting 3: overview  | 
+| 05.05 | Latent space projection | 
+| 12.05 | Technical meeting 4: final meeting, final scores | 
+
 ## Fall 2025
 
 [Youtube playlist](https://www.youtube.com/watch?v=ltUZJhdja9g&list=PLk4h7dmY2eYF9A4sJPQlDKQ0u8v4-XUot&index=12)
