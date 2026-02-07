@@ -20,13 +20,13 @@
 | 03.03 | Gaussian processes, SSM  | 
 | 10.03 | Technincal meeting 2: proof of concept discussion | 
 | 17.03 | Structure selection | 
-| 24.03 | Genetics | 
+| 24.03 | Genetics, symbolic regression | 
 | 31.03 | Meta-optimization | 
 | 07.04 | Multi-task learning  | 
 | 14.04 | Inductive bias | 
 | 21.04 | Model ensembles  | 
 | 28.04 | Technical meeting 3: overview  | 
-| 05.05 | Latent space projection | 
+| 05.05 | Latent space projection, kernel emebdding | 
 | 12.05 | Technical meeting 4: final meeting, final scores | 
 
 ## Fall 2025
