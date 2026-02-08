@@ -81,8 +81,17 @@ JAX or pytorch. **As with Evidence-based operators, the main problem here is to 
 T1-T2 [can be also found here](https://nni.readthedocs.io/en/v2.1/NAS/DARTS.html)
 
 
+### Neural symbolic regression
+**Motivation**: symbolic regression is a promissing class of machine learning/data analysis methods that try to restore the original model treating the model in a symbolic way.
+The most well known symbolic regression models are implemented using evolutionary algorithms. The other methods, including Bayesian optimization are usually implemented only as a proof-of-concept. In this project we focus on the implementation of neural network-based methods for symbplic regression.
 
+**Algorithms to implement (from simplets to hardest):**
+* A classical evolutionary-based symbolic regression, see [pysr](https://github.com/MilesCranmer/PySR) for reference
+* [Encoder-decoder neural model](https://proceedings.mlr.press/v139/biggio21a/biggio21a.pdf)
+* [RL-based](https://arxiv.org/pdf/1912.04871)
+* [NAS-based](https://epublications.vu.lt/object/elaba%3A184615539/184615539.pdf?utm_source=chatgpt.com)
 
+**Project detais:** although there are some already established python-based SR libraries, most of them are outdated or poorly supported. I recommend to reimplement basic SR principles with focus on PySR and link it with contemporary evolutionary based libraries, for example [DEAP](https://deap.readthedocs.io/en/master/).
 
 
 ## Project list, fall 2025
