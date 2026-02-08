@@ -15,11 +15,11 @@
 |Date|Topic|
 | --- | --- |
 | 10.02 | Hyperparameter optimization: SMBO | 
-| 17.02 | Technincal meeting 1: project discussion | 
-| 24.02 | Hyperparameter optimization: gradient-based | 
+| 17.02 | Hyperparameter optimization: gradient-based | 
+| 24.02 | Technincal meeting 1: project discussion | 
 | 03.03 | Gaussian processes, SSM  | 
-| 10.03 | Technincal meeting 2: proof of concept discussion | 
-| 17.03 | Structure selection | 
+| 10.03 | Structure selection | 
+| 17.03 | Technincal meeting 2: proof of concept discussion | 
 | 24.03 | Genetics, symbolic regression | 
 | 31.03 | Meta-optimization | 
 | 07.04 | Multi-task learning  | 
