@@ -93,6 +93,20 @@ The most well known symbolic regression models are implemented using evolutionar
 
 **Project detais:** although there are some already established python-based SR libraries, most of them are outdated or poorly supported. I recommend to reimplement basic SR principles with focus on PySR and link it with contemporary evolutionary based libraries, for example [DEAP](https://deap.readthedocs.io/en/master/).
 
+### Dataset / Task embeddings
+
+**Motivation**: One of the developing concepts in contemporary meta-learning is task and dataset embedding. The ability to embed tasks or datasets into a common vector space enables the study of dataset similarity, model transferability, and task relationships.
+
+**Algorithms to implement (from simplest to hardest):**
+* Maximum Mean Discrepancy (MMD)  
+  [see the review](https://arxiv.org/abs/1605.09522)
+* [Task2Vec](https://arxiv.org/abs/1902.03545)
+* [Dataset2Vec](https://arxiv.org/abs/1905.11063)
+* [Wasserstein Task Embedding](https://arxiv.org/abs/2208.11726)
+
+**Project details:**  
+Think about implementatiion of the Maximum Mean Discrepancy approach. MMD can be implemented in multiple ways depending on the choice of auxiliary models, such as pretrained encoders or generative models, which allows exploring different representations of tasks and datasets.
+
 
 ## Project list, fall 2025
 
