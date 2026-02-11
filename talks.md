@@ -1,7 +1,7 @@
 # Spring 2026
 ## Hyperparameter optimization
 * [Hyperband: A Novel Bandit-Based Approach to Hyperparameter Optimization](https://www.jmlr.org/papers/volume18/16-558/16-558.pdf) [reporter: Dmitrii Vasilenko]
-* [Multiobjective tree-structured Parzen estimator](https://www.jair.org/index.php/jair/article/download/13188/26784/) [reporter: your name]
+* [Multiobjective tree-structured Parzen estimator](https://www.jair.org/index.php/jair/article/download/13188/26784/) [reporter: Meshkov Vladislav]
 
 # Fall 2025
 
