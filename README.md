@@ -14,7 +14,7 @@
 
 |Date|Topic|
 | --- | --- |
-| 10.02 | Hyperparameter optimization: SMBO | 
+| 10.02 | [Hyperparameter optimization: SMBO](slides/slides_8_smbo.pdf) | 
 | 17.02 | Hyperparameter optimization: gradient-based | 
 | 24.02 | Technincal meeting 1: project discussion | 
 | 03.03 | Gaussian processes, SSM  | 
