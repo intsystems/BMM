@@ -1,9 +1,9 @@
 # Bayesian multimodeling
 [Form. Deadline: 18.02, 12:00 MSK](https://docs.google.com/forms/d/e/1FAIpQLSdtXAXso1xfKTubEtGwq7WY3bIw53JcP8fU6aILgEFIU67Hqw/viewform?usp=publish-editor)
 
-[Project schedule](project_scedule.md)
+[Project schedule](project_schedule.md)
 
-[Zoom link](https://m1p.org/go_zoom)
+[Jitsi link](https://meet.jit.si/ms-ida-mipt)
 
 [TG Link](https://t.me/+ugZ6IIQrsjMyNjMy)
 
