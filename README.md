@@ -22,7 +22,7 @@
 | 17.03 | Technincal meeting 2: proof of concept discussion | 
 | 24.03 | Genetics, symbolic regression | 
 | 31.03 | Meta-optimization | 
-| 07.04 | Multi-task learning  | 
+| 07.04 | Multi-task learning + Checkpoint  | 
 | 14.04 | Inductive bias | 
 | 21.04 | Model ensembles  | 
 | 28.04 | Technical meeting 3: overview  | 
