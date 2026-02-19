@@ -3,6 +3,11 @@
 * [Hyperband: A Novel Bandit-Based Approach to Hyperparameter Optimization](https://www.jmlr.org/papers/volume18/16-558/16-558.pdf) [reporter: Dmitrii Vasilenko]
 * [Multiobjective tree-structured Parzen estimator](https://www.jair.org/index.php/jair/article/download/13188/26784/) [reporter: Meshkov Vladislav]
 
+## Hyperparameters gradient-based optimization
+* [Gradient-based Hyperparameter Optimization Over Long Horizons](https://proceedings.neurips.cc/paper/2021/file/596dedf4498e258e4bdc9fd70df9a859-Paper.pdf) [reporter: your name]
+* [BOME! Bilevel Optimization Made Easy: A Simple First-Order Approach) [reporter: your name]
+
+
 # Fall 2025
 
 ## Distributions, expectation, likelihood
@@ -58,6 +63,7 @@
 * Solomonoff induction - рассказать в общем виде что это такое и как связано с MDL/Bayesian inference [reporter: Vadim Kasiuk]
     * [ссылка на учебник, но можно пользоваться другими метариалами](http://www.vetta.org/documents/legg-1996-solomonoff-induction.pdf)
 * [Sequential Neural Score Estimation: Likelihood-Free Inference with Conditional Score Based Diffusion Model](https://raw.githubusercontent.com/mlresearch/v235/main/assets/sharrock24a/sharrock24a.pdf) [reporter: Karpeev Gleb]
+
 
 
 
