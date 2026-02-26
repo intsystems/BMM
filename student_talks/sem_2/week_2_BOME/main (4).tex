@@ -1,0 +1,266 @@
+\documentclass{beamer}
+\beamertemplatenavigationsymbolsempty
+\usecolortheme{beaver}
+\setbeamertemplate{blocks}[rounded=true, shadow=true]
+\setbeamertemplate{footline}[page number]
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb,amsfonts,amsmath,mathtext}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+% Your figures are here (adjust path if needed):
+\graphicspath{ {fig/} {../figures/} }
+
+%----------------------------------------------------------------------------------------------------------
+\title[BOME: Bilevel Optimization Made Easy]{BOME! Bilevel Optimization Made Easy:\\ A Simple First-Order Approach}
+\author[Mao Ye et al.]{Mao Ye, Bo Liu, Stephen Wright, Peter Stone, Qiang Liu}
+
+\date{\footnotesize
+\par\bigskip\small Presented by: Papay Ivan
+}
+%----------------------------------------------------------------------------------------------------------
+\begin{document}
+%----------------------------------------------------------------------------------------------------------
+\begin{frame}
+\thispagestyle{empty}
+\maketitle
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+
+\begin{frame}{Introduction: Bilevel Optimization (BO)}
+    \begin{itemize}
+        \item \textbf{Problem:} Nested optimization structure.
+        \begin{equation*}
+            \min_{v,\theta} f(v,\theta) \quad \text{s.t.} \quad \theta \in \arg \min_{\theta'} g(v,\theta')
+        \end{equation*}
+        \item \textbf{Variables:} Outer variable $v \in \mathbb{R}^m$, inner variable $\theta \in \mathbb{R}^n$.
+        \item \textbf{Applications:}
+            \begin{itemize}
+                \item Hyperparameter Optimization(f - val loss; g - train loss)
+                \item Meta-Learning
+                \item Continual Learning
+                \item Reinforcement Learning
+            \end{itemize}
+        \item \textbf{Challenge:} The nested nature makes BO notoriously difficult.
+    \end{itemize}
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Background: Traditional Approaches}
+    \textbf{1. Hypergradient Descent (Implicit Diff)}
+    \begin{itemize}
+        \item Assumes a unique inner solution $\theta^*(v)= arg \min_{\theta} g(v, \theta)$.
+        \item Requires computing $\nabla_v \theta^*(v)$ via implicit function theorem:
+        \begin{equation*}
+            \nabla_v \theta^*(v) = - [\nabla_{2,2}g]^{-1} \nabla_{1,2}g
+        \end{equation*}
+        \item \textbf{Problems:} Involves expensive Hessian manipulations (inverse, CG, Neumann series).
+    \end{itemize}
+    \vspace{0.3cm}
+    \textbf{2. Stationary-Seeking Methods}
+    \begin{itemize}
+        \item Replaces $\arg\min$ with $\nabla_\theta g(v,\theta)=0$.
+        \begin{equation*}
+            \min_{v,\theta} f(v,\theta) \quad \text{s.t.} \quad \nabla_\theta g(v,\theta)=0
+        \end{equation*}
+        \item \textbf{Problems:} Only equivalent if $g$ is convex in $\theta$; unsuitable for non-convex deep learning.
+    \end{itemize}
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Method: Value-Function Based Reformulation}
+    \textbf{Key Insight:} Reformulate (1) as a single-level constraint problem.
+    \begin{equation*}
+        \min_{v,\theta} f(v,\theta) \quad \text{s.t.} \quad q(v,\theta) := g(v,\theta) - g^*(v) \leq 0
+    \end{equation*}
+    where $g^*(v) = \min_\theta g(v,\theta)$ is the \textbf{value function}.
+
+    \begin{block}{Why is this powerful?}
+        \begin{itemize}
+            \item Removes the nested structure.
+            \item By Danskin's Theorem, $\nabla_v g^*(v) = \nabla_1 g(v, \theta^*(v))$. We can do it because $\nabla_v g^*(v)$ doesn't depend from $\nabla_v \theta^*(v)$
+            \item \textbf{No implicit derivative $\nabla_v\theta^*$ required!}
+        \end{itemize}
+    \end{block}
+    This formulation is valid even for non-convex $g$.
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Method: Dynamic Barrier Gradient Descent}
+    We solve the constrained problem using a \textbf{dynamic barrier method}. Idea is controlling the decrease of the constraint q, ensuring that q decreases whenever $q > 0$
+    \begin{block}{Core Update}
+        \begin{equation*}
+            (v_{k+1},\theta_{k+1}) \leftarrow (v_k,\theta_k) - \xi \delta_k
+        \end{equation*}
+        where $\delta_k=arg \min_{\delta} || \nabla f(v_k,\theta_k)-\delta||^2 $ s.t. $\langle \nabla q_k, \delta_k \rangle \geq \phi_k \geq0$
+    \end{block}
+    \begin{block}{Closed-Form Solution}
+        \begin{equation*}
+            \delta_k = \nabla f_k + \lambda_k \nabla q_k, \quad
+            \lambda_k = \max\left( \frac{\phi_k - \langle \nabla f_k, \nabla q_k \rangle}{||\nabla q_k||^2}, 0 \right)
+        \end{equation*}
+        Choices for $\phi_k$: $\phi_k = \eta q_k$ or $\phi_k = \eta ||\nabla q_k||^2$.
+    \end{block}
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}[fragile]{Algorithm: BOME in Practice}
+    \begin{algorithm}[H]
+        \caption{BOME (Bilevel Optimization Made Easy)}\label{alg:bome}
+        \begin{algorithmic}[1]
+            \State \textbf{Input:} Initial $(v_0,\theta_0)$, step size $\xi$, inner steps $T$, barrier coeff. $\eta$.
+            \For{$k = 0,1,\ldots$}
+                \State $\theta_k^{(0)} = \theta_k$
+                \For{$t=0$ to $T-1$}
+                    \State $\theta_k^{(t+1)} = \theta_k^{(t)} - \alpha \nabla_\theta g(v_k, \theta_k^{(t)})$ \Comment{Inner GD}
+                \EndFor
+                \State $\hat{q}(v,\theta) = g(v,\theta) - g(v,\theta_k^{(T)})$ \Comment{Approx. value function (stop-gradient)}
+                \State Compute $\nabla \hat{q}(v_k, \theta_k)$ \Comment{No gradient through $\theta_k^{(T)}$}
+                \State $\phi_k = \eta ||\nabla \hat{q}(v_k,\theta_k)||^2$ (default)
+               
+                \State $(v_{k+1},\theta_{k+1}) \leftarrow (v_k,\theta_k) - \xi (\nabla f_k + \lambda_k \nabla \hat{q}_k)$
+            \EndFor
+        \end{algorithmic}
+    \end{algorithm}
+ $\theta_k^{(T)}$ is treated as a constant when computing $\nabla \hat{q}$ (stop-gradient).
+
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Theoretical Analysis: KKT Conditions}
+    For problem, standard KKT fails because CRCQ(constant rank constraint quantification) doesn't hold ($\nabla q=0$ at solution).
+    \begin{itemize}
+        \item We use a \textbf{proximal KKT measure} to analyze convergence:
+    \end{itemize}
+    \begin{equation*}
+        \mathcal{K}(v,\theta) = \underbrace{\min_{\lambda \geq 0} \| \nabla f(v,\theta) + \lambda \nabla q(v,\theta) \|^2}_{\text{Local improvement}} + \underbrace{q(v,\theta)}_{\text{Feasibility}}
+    \end{equation*}
+    \begin{block}{Proposition 1 (Connection to True Stationarity)}
+        If a sequence satisfies $\nabla f_k + \lambda_k \nabla q_k \rightarrow 0$ and $q_k \rightarrow 0$, its limit point satisfies the KKT conditions of the stationary-seeking formulation.
+    \end{block}
+    $\mathcal{K}(v_k,\theta_k) \rightarrow 0; k \rightarrow +\infty$ is our target.
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Theoretical Analysis: Unimodal $g$ (Global Optimum)}
+    \textbf{Assumption 1: PL Inequality}
+    \begin{equation*}
+        \| \nabla_\theta g(v,\theta) \|^2 \geq \kappa (g(v,\theta) - g^*(v))
+    \end{equation*}
+    \begin{theorem}[Convergence Rate for Unimodal $g$]
+        Under smoothness and PL assumptions, with $\phi_k = \eta ||\nabla \hat{q}_k||^2$ and $T$ sufficiently large:
+        \begin{equation*}
+            \min_{k\leq K} \mathcal{K}(v_k,\theta_k) = O\left( \sqrt{\xi} + \sqrt{\frac{q_0}{\xi K}} + \frac{1}{\xi K} + e^{-bT} \right)
+        \end{equation*}
+        where $q_0 = q(v_0,\theta_0)$.
+    \end{theorem}
+    \textbf{Interpretation:}
+    \begin{itemize}
+        \item Rate depends on initial inner optimality $q_0$.
+        \item With $\xi = O(K^{-1/2})$, we get $\min \mathcal{K} = O(K^{-1/4} + e^{-bT})$.
+        \item First non-asymptotic rate for a fully first-order BO method.
+    \end{itemize}
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Theoretical Analysis: Multimodal $g$ (Local Optima)}
+    \textbf{Assumption 2: Local PL within attraction basins}
+    \begin{itemize}
+        \item $\theta^{\circ}(v,\theta)$ is the "attraction point" of GD from $\theta$ on $g(v,\cdot)$.
+        \item $q^{\circ}(v,\theta) = g(v,\theta) - g(v,\theta^{\circ}(v,\theta))$
+    \end{itemize}
+    \begin{theorem}[Convergence Rate for Multimodal $g$]
+        Under local PL and smoothness, if the algorithm never hits basin boundaries, then:
+        \begin{equation*}
+            \min_{k\leq K} \mathcal{K}^{\circ}(v_k,\theta_k) = O\left( \sqrt{\xi} + \sqrt{\frac{1}{\xi K}} + e^{-bT} \right)
+        \end{equation*}
+    \end{theorem}
+    \textbf{Interpretation:}
+    \begin{itemize}
+        \item Rate does \textbf{not} improve with small initial $q_0^\circ$, as the attraction basin may change.
+        \item With $\xi = O(K^{-1/2})$, we get $\min \mathcal{K}^{\circ} = O(K^{-1/4} + e^{-bT})$.
+    \end{itemize}
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------------
+
+
+%-----------------------------------------------------------------------------------------------------
+
+
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Experiments: Hyperparameter Optimization}
+    \textbf{MNIST:}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\textwidth]{placeholder_hyperclean.jpg} % Replace with Figure 2 (top)
+        \caption{Top: data hyper-cleaning on MNIST dataset. Bottom: learnable regularization on 20 Newsgroup dataset.}
+    \end{figure}
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Experiments: Continual Learning}
+    \textbf{Contextual Transformation Network (CTN):}
+    \begin{itemize}
+        \item Train on a sequence of tasks (PMNIST, Split CIFAR).
+        \item Metrics: Accuracy (ACC $\uparrow$), Negative Backward Transfer (NBT $\downarrow$), Forward Transfer (FT $\uparrow$).
+    \end{itemize}
+    \begin{table}
+        \centering
+        \begin{tabular}{l|c|c|c}
+            \hline
+            \textbf{Method (PMNIST)} & ACC ($\uparrow$) & NBT ($\downarrow$) & FT ($\uparrow$) \\
+            \hline
+            CTN (+ITD) & 78.40 & 5.62 & 84.02 \\
+            CTN (+BVFSM) & 77.78 & 7.25 & 85.03 \\
+            \textbf{CTN (+BOME)} & \textbf{80.70} & \textbf{4.09} & 84.79 \\
+            \hline
+        \end{tabular}
+        \caption{BOME provides a substantial performance boost over other bilevel optimizers in CL.}
+    \end{table}
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Key Observations \& Robustness}
+            \textbf{Why BOME works well:}
+            \begin{itemize}
+                \item \textbf{Faster Learning:} Converges to better solutions.
+                \item \textbf{Robust to Parameters:}
+                \begin{itemize}
+                    \item Default $\eta = 0.5$, $T=10$ works across tasks.
+                    \item $T=1$ is often sufficient!
+                \end{itemize}
+                \item \textbf{Choices for $\phi_k$:} Both $\phi = \eta \|\nabla \hat{q}\|^2$ and $\phi = \eta \hat{q}$ work similarly with proper scaling.
+                \item \textbf{vs. BVFSM:} BOME is faster, more accurate, and has fewer sensitive hyperparameters.
+            \end{itemize}
+ 
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------------
+\begin{frame}{Conclusion}
+    \begin{block}{Summary}
+        \textbf{BOME} is a simple and efficient fully first-order method for bilevel optimization.
+        \begin{itemize}
+            \item Built on a \textbf{value-function reformulation} and a \textbf{dynamic barrier method}.
+            \item Requires \textbf{no Hessian computation} or implicit differentiation.
+            \item First method with a \textbf{non-asymptotic convergence guarantee} for general non-convex BO.
+        \end{itemize}
+    \end{block}
+    \begin{block}{Takeaways}
+        \begin{itemize}
+            \item BOME is practical and scalable for large-scale deep learning.
+            \item Empirically outperforms SOTA methods in both speed and final performance.
+            \item Robust to hyperparameters ($\eta$, $T$).
+        \end{itemize}
+    \end{block}
+\end{frame}
+%-----------------------------------------------------------------------------------------------------
+\end{document}
