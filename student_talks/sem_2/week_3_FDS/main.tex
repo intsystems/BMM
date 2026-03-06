@@ -1,0 +1,226 @@
+\documentclass{beamer}
+\usecolortheme{beaver}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+
+\title{Gradient-Based Hyperparameter Optimization Over Long Horizons}
+\author{Paul Micaelli, Amos Storkey}
+\institute{Talk by: Fedor Sobolevsky}
+\date{NeurIPS 2021}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{The Problem: Hyperparameter Optimization (HPO)}
+\begin{itemize}
+    \item Deep learning success depends on \textbf{carefully tuned hyperparameters}: learning rate schedules, momentum, weight decay, etc.
+    \item Current approaches have significant limitations:
+    \begin{itemize}
+        \item \textbf{Black-box methods} (Random Search, Bayesian Optimization, HyperBand): Slow trial-and-error
+        \item \textbf{Greedy gradient-based methods}: Fast but suboptimal due to "short-horizon bias"
+    \end{itemize}
+    \item Key challenge: Long training horizons (\(\sim 10^4\) gradient steps)
+    \begin{itemize}
+        \item Memory scales with horizon length
+        \item Hypergradients degrade/vanish through long unrolled optimization
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Problem Formulation}
+\begin{block}{Bilevel Optimization}
+Find hyperparameters \(\lambda^*\) that minimize validation loss after \(T\) training steps:
+
+\begin{align*}
+\lambda^* &= \arg \min_{\lambda} \mathcal{L}_{\text{val}}(\bm{\theta}_T(\lambda), \mathcal{D}_{\text{val}}) \\
+\text{s.t.} \quad \theta_{t+1} &= \Phi(\mathcal{L}_{\text{train}}(\bm{\theta}_t, \mathcal{D}_{\text{train}}), \lambda_{[t+1]})
+\end{align*}
+\end{block}
+
+\vspace{0.3cm}
+\begin{itemize}
+    \item \(\bm{\theta}_t\): network weights at step \(t\)
+    \item \(\lambda_{[t]}\): hyperparameter at step \(t\) (e.g., learning rate)
+    \item \(\Phi\): optimizer (SGD with momentum)
+    \item Goal: Compute hypergradient \(d\mathcal{L}_{\text{val}}/d\lambda\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Greedy vs. Non-greedy HPO}
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Greedy} \((H \ll T)\)
+\begin{itemize}
+    \item Split into small horizons
+    \item Update \(\lambda\) online
+    \item Memory: \(\mathcal{O}(FH)\)
+\end{itemize}
+\textbf{Pro}: Fast, stable gradients
+
+\textbf{Con}: Solves wrong objective
+
+\column{0.5\textwidth}
+\textbf{Non-greedy} \((H = T)\)
+\begin{itemize}
+    \item Single horizon = full training
+    \item Update \(\lambda\) after \(T\) steps
+    \item Memory: \(\mathcal{O}(FT)\) with BPTT
+\end{itemize}
+\textbf{Pro}: True objective
+
+\textbf{Con}: Memory explosion, gradient degradation
+\end{columns}
+
+\vspace{0.3cm}
+\begin{center}
+\textbf{Goal: Combine strengths of both paradigms}
+\end{center}
+\end{frame}
+
+\begin{frame}{Forward-Mode Differentiation}
+Alternative to BPTT with better memory scaling
+
+Memory: \(\mathcal{O}(DN)\) where:
+\begin{itemize}
+    \item \(D\): number of weights
+    \item \(N\): number of learnable hyperparameters
+\end{itemize}
+
+\vspace{0.2cm}
+Recursive update for hypergradients:
+\begin{equation*}
+Z_t = A_t Z_{t-1} + B_t \quad \text{where} \quad Z_t = \frac{d\theta_t}{d\lambda}
+\end{equation*}
+
+\vspace{0.2cm}
+For SGD with momentum (learning rate \(\alpha\)):
+\begin{align*}
+A_t^\alpha &= 1 - \alpha_t\left(\frac{\partial^2\mathcal{L}_{\text{train}}}{\partial\theta_{t-1}^2} + \xi_t\mathbf{1}\right) \\
+B_t^\alpha &= -\beta_t\alpha_t C_{t-1}^\alpha - \delta_t^\otimes\left(\beta_t\nu_{t-1} + \frac{\partial\mathcal{L}_{\text{train}}}{\partial\theta_{t-1}} + \xi_t\theta_{t-1}\right)
+\end{align*}
+\end{frame}
+
+\begin{frame}{Key Challenge: Gradient Degradation}
+\begin{itemize}
+    \item Hypergradients are \textbf{noisy} due to:
+    \begin{itemize}
+        \item Minibatch ordering
+        \item Weight initialization \(\theta_0\)
+    \end{itemize}
+    \item Noise compounds over long horizons
+    \item Ideal: Ensemble average over many seeds
+    \item Reality: Too expensive (\(\mathcal{O}(T \times \text{seeds})\))
+\end{itemize}
+
+\begin{center}
+\textbf{Idea: Use time averaging instead of ensemble averaging}
+\end{center}
+\end{frame}
+
+\begin{frame}{FDS: Forward-mode Differentiation with Sharing}
+\begin{block}{Key Insight}
+Share hyperparameters over contiguous time windows \(W\)
+\end{block}
+
+\vspace{0.2cm}
+\textbf{Two effects:}
+\begin{enumerate}
+    \item \textbf{Noise reduction}: Average over \(W\) noisy hypergradients
+    \item \textbf{Bias increase}: Approximate \(W\) different means with one value
+\end{enumerate}
+
+\begin{block}{Theorem 4.1}
+For hypergradients \(\mathbf{g} \sim \mathcal{N}(\bm{\mu}, \bm{\Sigma})\) with Lipschitz \(\mu\) (\(\varepsilon\)) and max correlation \(c\):
+\begin{equation*}
+\text{MSE}_W \leq \frac{1 + c(W-1)}{W}\text{MSE}_1 + \varepsilon^2\frac{W^2 - 1}{12}
+\end{equation*}
+\end{block}
+\end{frame}
+
+\begin{frame}{FDS Algorithm}
+\begin{columns}
+\column{0.5\textwidth}
+\centering
+\includegraphics[width=0.9\textwidth]{algorithm}
+\column{0.5\textwidth}
+\begin{itemize}
+    \item Learn \(N^\alpha = T/W\) learning rates
+    \item Forward-mode with shared columns in \(Z^\alpha\)
+    \item Update hyperparameters once per outer loop (non-greedy!)
+\end{itemize}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Experimental Validation: Hypergradient Noise}
+\begin{center}
+\includegraphics[width=\textwidth]{figure2}
+\end{center}
+\begin{itemize}
+    \item LeNet on SVHN, \(T = 250\) steps
+    \item Non-greedy sharing (\(W=50\)) reduces MSE significantly
+    \item Greedy is poor approximation to optimal hypergradients
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Learning Rate Schedules}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{figure3}
+\end{center}
+\begin{itemize}
+    \item MNIST (left): Non-greedy works without sharing
+    \item SVHN (right): Only FDS (sharing) learns reasonable schedule
+    \item Outperforms cosine annealing on SVHN
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CIFAR-10 Results (WRN-16-1, 50 epochs)}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{figure4}
+\end{center}
+\begin{itemize}
+    \item Learning 7 rates (\(W=10\)), 1 momentum, 1 weight decay
+    \item Converges in 10 outer steps
+    \item Discovers one-cycle-like schedule automatically
+    \item Significantly outperforms greedy HD [Baydin et al. 2018]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Comparison with State-of-the-Art}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{figure1}
+\end{center}
+\begin{itemize}
+    \item FDS reaches zero regret in \textbf{3 hours}
+    \item \textbf{20× speedup} over best black-box method
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Limitations}
+\begin{itemize}
+    \item Scales linearly with number of hyperparameters (\(\sim 10^3\) max on 12GB GPU)
+    \item Requires differentiable hyperparameters (vs. black-box)
+    \item Manual derivation of forward-mode updates
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusion}
+\begin{enumerate}
+    \item Introduced \textbf{FDS}: First non-greedy gradient-based HPO for long horizons
+    \item \textbf{Hyperparameter} \textbf{sharing} reduces noise, enables forward-mode
+    \item \textbf{Theoretical guarantee}: MSE bound with noise-bias trade-off
+    \item \textbf{Empirical results}: 
+    \begin{itemize}
+        \item Outperforms greedy methods in quality
+        \item 20× faster than black-box methods
+        \item Works on real problems (CIFAR-10, WideResNet)
+    \end{itemize}
+\end{enumerate}
+\end{frame}
+
+\end{document}
