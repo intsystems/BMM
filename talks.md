@@ -7,6 +7,13 @@
 * [Gradient-based Hyperparameter Optimization Over Long Horizons](https://proceedings.neurips.cc/paper/2021/file/596dedf4498e258e4bdc9fd70df9a859-Paper.pdf) [reporter: Fedor Sobolevssky]
 * [BOME! Bilevel Optimization Made Easy: A Simple First-Order Approach](https://arxiv.org/pdf/2209.08709) [reporter: Papay Ivan]
 
+## Gaussian processes
+
+**CHOOSE ONLY ONE TALK FOR THE NEXT WEEK**
+
+* [Ensemble Kalman Filtering Meets Gaussian Process SSM for Non-Mean-Field and Online Inference](https://arxiv.org/pdf/2312.05910) [reporter: your name]
+* [State Space Methods for Efficient Inference in Student-t Process Regression](https://proceedings.mlr.press/v38/solin15.pdf) [reporter: your name]
+
 
 # Fall 2025
 
@@ -63,6 +70,7 @@
 * Solomonoff induction - рассказать в общем виде что это такое и как связано с MDL/Bayesian inference [reporter: Vadim Kasiuk]
     * [ссылка на учебник, но можно пользоваться другими метариалами](http://www.vetta.org/documents/legg-1996-solomonoff-induction.pdf)
 * [Sequential Neural Score Estimation: Likelihood-Free Inference with Conditional Score Based Diffusion Model](https://raw.githubusercontent.com/mlresearch/v235/main/assets/sharrock24a/sharrock24a.pdf) [reporter: Karpeev Gleb]
+
 
 
 
