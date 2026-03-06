@@ -1,5 +1,5 @@
 # Bayesian multimodeling
-[Form. Deadline: 05.03, 19:00 MSK](https://docs.google.com/forms/d/e/1FAIpQLSdE6ybt3exEheNd4ebt4h9b6c074gPtIf0DAgNbYya3dWvy7A/viewform?usp=publish-editor)
+[Form. Deadline: 12.03, 19:00 MSK](https://docs.google.com/forms/d/e/1FAIpQLSce3TtSZ5u3ws4xyS1L_2Lid_7DXsnoPLszklOe_8pp5QEHIg/viewform?usp=publish-editor)
 
 [Project schedule](project_schedule.md)
 
@@ -17,7 +17,7 @@
 | 10.02 | [Hyperparameter optimization: SMBO](slides/slides_8_smbo.pdf) | 
 | 17.02 | [Hyperparameter optimization: gradient-based](slides/slides_9_hyper.pdf) | 
 | 24.02 | Technincal meeting 1: project discussion | 
-| 03.03 | Gaussian processes, SSM  | 
+| 03.03 | [slides/slides_10_gp.pdf](Gaussian processes, SSM)  | 
 | 10.03 | Structure selection | 
 | 17.03 | Technincal meeting 2: proof of concept discussion | 
 | 24.03 | Genetics, symbolic regression | 
