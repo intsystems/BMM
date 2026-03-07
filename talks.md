@@ -11,7 +11,7 @@
 
 **CHOOSE ONLY ONE TALK FOR THE NEXT WEEK**
 
-* [Ensemble Kalman Filtering Meets Gaussian Process SSM for Non-Mean-Field and Online Inference](https://arxiv.org/pdf/2312.05910) [reporter: your name]
+* [Ensemble Kalman Filtering Meets Gaussian Process SSM for Non-Mean-Field and Online Inference](https://arxiv.org/pdf/2312.05910) [reporter: Stepanov Ilya]
 * [State Space Methods for Efficient Inference in Student-t Process Regression](https://proceedings.mlr.press/v38/solin15.pdf) [reporter: your name]
 
 
@@ -70,6 +70,7 @@
 * Solomonoff induction - рассказать в общем виде что это такое и как связано с MDL/Bayesian inference [reporter: Vadim Kasiuk]
     * [ссылка на учебник, но можно пользоваться другими метариалами](http://www.vetta.org/documents/legg-1996-solomonoff-induction.pdf)
 * [Sequential Neural Score Estimation: Likelihood-Free Inference with Conditional Score Based Diffusion Model](https://raw.githubusercontent.com/mlresearch/v235/main/assets/sharrock24a/sharrock24a.pdf) [reporter: Karpeev Gleb]
+
 
 
 
