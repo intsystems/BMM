@@ -18,7 +18,7 @@
 | 17.02 | [Hyperparameter optimization: gradient-based](slides/slides_9_hyper.pdf) | 
 | 24.02 | Technincal meeting 1: project discussion | 
 | 03.03 | [Gaussian processes, SSM](slides/slides_10_gp.pdf)  | 
-| 10.03 | Structure selection | 
+| 10.03 | [Structure selection](slides/slides_11_struct.pdf) | 
 | 17.03 | Technincal meeting 2: proof of concept discussion | 
 | 24.03 | Genetics, symbolic regression | 
 | 31.03 | Meta-optimization | 
