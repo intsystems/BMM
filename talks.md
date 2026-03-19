@@ -8,12 +8,12 @@
 * [BOME! Bilevel Optimization Made Easy: A Simple First-Order Approach](https://arxiv.org/pdf/2209.08709) [reporter: Papay Ivan]
 
 ## Gaussian processes
-
-**CHOOSE ONLY ONE TALK FOR THE NEXT WEEK**
-
 * [Ensemble Kalman Filtering Meets Gaussian Process SSM for Non-Mean-Field and Online Inference](https://arxiv.org/pdf/2312.05910) [reporter: Rubtsov Denis]
 * [State Space Methods for Efficient Inference in Student-t Process Regression](https://proceedings.mlr.press/v38/solin15.pdf) [reporter: Stepanov Ilya]
 
+
+## Strucutre selection
+* [ProxyBO: Accelerating Neural Architecture Search via Bayesian Optimization with Zero-Cost Proxies](https://ojs.aaai.org/index.php/AAAI/article/download/26169/25941) [reporter: your name]
 
 # Fall 2025
 
