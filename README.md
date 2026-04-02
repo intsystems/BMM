@@ -20,8 +20,8 @@
 | 03.03 | [Gaussian processes, SSM](slides/slides_10_gp.pdf)  | 
 | 10.03 | [Structure selection](slides/slides_11_struct.pdf) | 
 | 17.03 | Technincal meeting 2: proof of concept discussion | 
-| 24.03 | Genetics, symbolic regression | 
-| 31.03 | Meta-optimization | 
+| 24.03 | - | 
+| 31.03 | [Meta-optimization, Genetics, symbolic regression](slides/slides_12_meta.pdf) | 
 | 07.04 | Multi-task learning + Checkpoint  | 
 | 14.04 | Inductive bias | 
 | 21.04 | Model ensembles  | 
