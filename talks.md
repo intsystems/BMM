@@ -18,6 +18,9 @@
 ## Meta-learning, evolution
 * [Proving the Lottery Ticket Hypothesis: Pruning is All You Need](http://proceedings.mlr.press/v119/malach20a/malach20a.pdf) [reporter: "your name"]
 
+## Multi-task learning
+* [Multi-Task Learning as Multi-Objective Optimization](https://proceedings.neurips.cc/paper_files/paper/2018/file/432aca3a1e345e339f35a30c8f65edce-Paper.pdf) [reporter: "your name"]
+* 
 # Fall 2025
 
 ## Distributions, expectation, likelihood
