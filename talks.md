@@ -23,7 +23,9 @@
 
 ## Inductive bias
 * [Relational inductive biases, deep learning, and graph networks](https://arxiv.org/pdf/1806.01261) [reporter: "your name"]
-* 
+
+## Ensembles
+* [Uncertainty Estimates of Predictions via a General Bias-Variance Decomposition](https://proceedings.mlr.press/v206/gruber23a/gruber23a.pdf) [reporter: "your name"]
 # Fall 2025
 
 ## Distributions, expectation, likelihood
