@@ -22,7 +22,7 @@
 * [Multi-Task Learning as Multi-Objective Optimization](https://proceedings.neurips.cc/paper_files/paper/2018/file/432aca3a1e345e339f35a30c8f65edce-Paper.pdf) [reporter: "your name"]
 
 ## Inductive bias
-* [Relational inductive biases, deep learning, and graph networks](https://arxiv.org/pdf/1806.01261) [reporter: "your name"]
+* [Relational inductive biases, deep learning, and graph networks](https://arxiv.org/pdf/1806.01261) [reporter: Nabiev Muhammadsharif]
 
 ## Ensembles
 * [Uncertainty Estimates of Predictions via a General Bias-Variance Decomposition](https://proceedings.mlr.press/v206/gruber23a/gruber23a.pdf) [reporter: "your name"]
