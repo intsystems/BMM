@@ -19,7 +19,7 @@
 * [Proving the Lottery Ticket Hypothesis: Pruning is All You Need](http://proceedings.mlr.press/v119/malach20a/malach20a.pdf) [reporter: "your name"]
 
 ## Multi-task learning
-* [Multi-Task Learning as Multi-Objective Optimization](https://proceedings.neurips.cc/paper_files/paper/2018/file/432aca3a1e345e339f35a30c8f65edce-Paper.pdf) [reporter: "your name"]
+* [Multi-Task Learning as Multi-Objective Optimization](https://proceedings.neurips.cc/paper_files/paper/2018/file/432aca3a1e345e339f35a30c8f65edce-Paper.pdf) [reporter: Altay Eynullayev]
 
 ## Inductive bias
 * [Relational inductive biases, deep learning, and graph networks](https://arxiv.org/pdf/1806.01261) [reporter: Nabiev Muhammadsharif]
