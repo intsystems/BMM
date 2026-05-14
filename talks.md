@@ -16,7 +16,7 @@
 ~~* [ProxyBO: Accelerating Neural Architecture Search via Bayesian Optimization with Zero-Cost Proxies](https://ojs.aaai.org/index.php/AAAI/article/download/26169/25941) [reporter: your name]~~
 
 ## Meta-learning, evolution
-* [Proving the Lottery Ticket Hypothesis: Pruning is All You Need](http://proceedings.mlr.press/v119/malach20a/malach20a.pdf) [reporter: "your name"]
+* [Proving the Lottery Ticket Hypothesis: Pruning is All You Need](http://proceedings.mlr.press/v119/malach20a/malach20a.pdf) [reporter: Karpeev Gleb]
 
 ## Multi-task learning
 * [Multi-Task Learning as Multi-Objective Optimization](https://proceedings.neurips.cc/paper_files/paper/2018/file/432aca3a1e345e339f35a30c8f65edce-Paper.pdf) [reporter: Altay Eynullayev]
