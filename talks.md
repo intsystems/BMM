@@ -15,6 +15,9 @@
 ## Strucutre selection
 ~~* [ProxyBO: Accelerating Neural Architecture Search via Bayesian Optimization with Zero-Cost Proxies](https://ojs.aaai.org/index.php/AAAI/article/download/26169/25941) [reporter: your name]~~
 
+## Score-Based VAMP
+* [Score-Based VAMP with Fisher-Information-Based Onsager Correction](https://arxiv.org/pdf/2601.07095) [reporter: Minashkin Vladislav]
+
 ## Meta-learning, evolution
 * [Proving the Lottery Ticket Hypothesis: Pruning is All You Need](http://proceedings.mlr.press/v119/malach20a/malach20a.pdf) [reporter: Karpeev Gleb]
 
