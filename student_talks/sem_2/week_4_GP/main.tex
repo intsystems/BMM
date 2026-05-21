@@ -1,0 +1,814 @@
+\documentclass{beamer}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+
+\usecolortheme{beaver}
+\setbeamertemplate{blocks}[rounded=true, shadow=true]
+\setbeamertemplate{footline}[page number]
+
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amssymb,amsfonts,amsmath,mathtext}
+\usepackage{subfig}
+\usepackage[all]{xy}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{hhline}
+\usepackage{comment}
+\usepackage{cancel}
+\usepackage{adjustbox}
+\usepackage{multirow}
+\usepackage{booktabs}
+
+\usepackage{amsmath,amssymb}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\graphicspath{ {../figures/} }
+
+%----------------------------------------------------------------------------------------------------------
+
+\title[Научно-исследовательская работа]
+{State Space Methods for Efficient Inference in Student-t Process Regression}
+
+\author[]{
+    Arno Solin, Simo S\"arkk\"a
+}
+
+\institute[]{
+}
+
+\date{2026}
+
+%----------------------------------------------------------------------------------------------------------
+\begin{document}
+%----------------------------------------------------------------------------------------------------------
+
+\begin{frame}
+    \thispagestyle{empty}
+    \maketitle
+\end{frame}
+
+%----------------------------------------------------------------------------------------------------------
+
+\begin{frame}{Постановка задачи}
+
+{\small
+\textbf{Цель}
+
+Разработать вычислительно эффективный метод регрессии, устойчивый к выбросам в данных.
+
+\vspace{5pt}
+
+\textbf{Проблема}
+
+Гауссовские процессы (GP) --- популярный инструмент регрессии, но имеют два ключевых недостатка:
+\begin{itemize}
+    \item \textbf{Вычислительная сложность:} наивная GP-регрессия требует $O(n^3)$ операций из-за инверсии матрицы $K^{-1}$.
+    \item \textbf{Неустойчивость к выбросам:} предсказательная дисперсия не зависит от значений наблюдений:
+    \[
+        V_{\mathrm{GP}}[f(x_*)] = k(x_*,x_*) - k_*^T K^{-1} k_*
+    \]
+\end{itemize}
+
+\vspace{5pt}
+
+\textbf{Цель работы}
+
+Предложить алгоритм на основе процессов Стьюдента-$t$ (TP) со сложностью $O(n)$, сохраняющий аналитическое решение и обеспечивающий устойчивость к выбросам.
+}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------------------------
+
+\begin{frame}{Гауссовский процесс}
+
+{\small
+\textbf{Определение}
+
+Процесс $f(x) \sim \mathcal{GP}(\mu(x), k(x,x'))$, если для любой конечной выборки:
+\[
+    (f(x_1), \ldots, f(x_n))^T \sim \mathcal{N}(\boldsymbol{\mu}, K), \quad K_{ij} = k(x_i, x_j)
+\]
+
+\vspace{3pt}
+
+\textbf{GP-регрессия: предсказание}
+
+\[
+    E_{\mathrm{GP}}[f(x_*)] = k_*^T K^{-1} y
+\]
+\[
+    V_{\mathrm{GP}}[f(x_*)] = k(x_*,x_*) - k_*^T K^{-1} k_*
+\]
+
+\vspace{3pt}
+
+\textbf{Ключевое ограничение}
+
+\begin{block}{Проблема GP}
+Дисперсия $V_{\mathrm{GP}}$ зависит \textbf{только от входных точек} $x_i$, но не от значений наблюдений $y_i$. При наличии выбросов неопределённость \textbf{не увеличивается}.
+\end{block}
+}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------------------------
+
+\begin{frame}{Распределение Стьюдента-$t$}
+
+{\small
+\textbf{Определение 2.1.} Случайная переменная $y \in \mathbb{R}^n$ имеет многомерное распределение Стьюдента-$t$, $y \sim \mathrm{MVT}(\mu, K, \nu)$, если:
+
+\[
+p(y|\mu,K,\nu) = \frac{\Gamma\!\left(\frac{\nu+n}{2}\right)}{\Gamma\!\left(\frac{\nu}{2}\right)\!\left((\nu-2)\pi\right)^{n/2}|K|^{1/2}}
+\left(1 + \frac{(y-\mu)^T K^{-1}(y-\mu)}{\nu-2}\right)^{-\frac{\nu+n}{2}}
+\]
+
+При $\nu \to \infty$ получаем $\mathcal{N}(y\,|\,\mu, K)$.
+
+\vspace{5pt}
+
+\textbf{Лемма 2.2 (смесь масштабов).}
+
+\[
+    \gamma \sim \mathrm{IG}\!\left(\tfrac{\nu}{2},\, \tfrac{\nu-2}{2}\right), \quad
+    y\,|\,\gamma \sim \mathcal{N}(\mu,\, \gamma K)
+    \quad \Longrightarrow \quad
+    y \sim \mathrm{MVT}(\mu, K, \nu)
+\]
+
+\begin{block}{Ключевая идея}
+Распределение Стьюдента-$t$ = \textbf{гауссовское} с случайным масштабом $\gamma$.
+\end{block}
+}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------------------------
+
+\begin{frame}{Процесс Стьюдента-$t$ (TP)}
+
+{\small
+\textbf{Определение 2.4.} Процесс $f(x) \sim \mathrm{TP}(\mu(x), k(x,x'), \nu)$, если для любой конечной выборки:
+\[
+    (f(x_1), \ldots, f(x_n))^T \sim \mathrm{MVT}(\boldsymbol{\mu}, K, \nu)
+\]
+
+\vspace{3pt}
+
+\textbf{Лемма 2.3 (условное распределение).}
+
+Для совместно $t$-распределённых векторов $f_1, f_2$:
+\[
+    f_1 \,|\, f_2 \sim \mathrm{MVT}(\mu_{1|2},\; K_{1|2},\; \nu_{1|2})
+\]
+\[
+    \mu_{1|2} = K_{12}K_{22}^{-1}(f_2 - \mu_2) + \mu_1
+\]
+\[
+    K_{1|2} = \frac{\nu - 2 + \beta}{\nu - 2 + n_2}
+    \Bigl(K_{11} - K_{12}K_{22}^{-1}K_{21}\Bigr), \quad
+    \beta = (f_2-\mu_2)^T K_{22}^{-1}(f_2-\mu_2)
+\]
+\[
+    \nu_{1|2} = \nu + n_2
+\]
+
+\begin{block}{Отличие от GP}
+Масштабирующий множитель $\dfrac{\nu-2+\beta}{\nu-2+n_2}$ \textbf{зависит от наблюдений} через $\beta$.
+\end{block}
+}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------------------------
+
+\begin{frame}{TP-регрессия: переход к апостериорному распределению}
+
+{\footnotesize
+
+\textbf{Шаг 1 — Априорная модель и совместное распределение.}
+
+При $f \sim \mathrm{TP}(0,\, k_\theta,\, \nu)$ по определению процесса:
+$$
+\begin{pmatrix} f(x_*) \\ \mathbf{y} \end{pmatrix}
+\sim
+\mathrm{MVT}\!\left(
+\mathbf{0},\;
+\begin{pmatrix}
+  k_\theta(x_*,x_*) & k_*^T \\
+  k_*               & K
+\end{pmatrix},\;
+\nu
+\right),
+$$
+где $[K]_{ij} = k_\theta(x_i, x_j) + \sigma_n^2\delta_{ij}$
+и $[k_*]_i = k_\theta(x_*, x_i)$.
+
+\vspace{4pt}
+
+\textbf{Шаг 2 — Применяем Лемму 2.3}
+(отождествление: $f_1 \leftrightarrow f(x_*)$,\; $f_2 \leftrightarrow \mathbf{y}$):
+
+$$
+f(x_*)\mid D
+\;\sim\;
+\mathrm{MVT}\!\left(
+\underbrace{k_*^T K^{-1} \mathbf{y}}_{\mu_{1|2}},\;\;
+\underbrace{\dfrac{\nu - 2 + \beta}{\nu - 2 + n}
+\,\bigl(k_\theta(x_*,x_*) - k_*^T K^{-1} k_*\bigr)}_{K_{1|2}},\;\;
+\underbrace{\nu + n}_{\nu_{1|2}}
+\right),
+$$
+
+$$
+\text{где}\quad \beta = \mathbf{y}^T K^{-1} \mathbf{y}.
+$$
+
+\vspace{3pt}
+
+\begin{block}{Ключевое отличие от GP-регрессии}
+\begin{tabular}{ll}
+\textbf{GP:} & $\mathbb{V}[f(x_*)\mid\mathbf{y}]
+  = k_\theta(x_*,x_*) - k_*^TK^{-1}k_*$
+  \quad (не зависит от $\mathbf{y}$)\\[4pt]
+\textbf{TP:} & $\mathbb{V}[f(x_*)\mid\mathbf{y}]
+  = \dfrac{\nu-2+\beta}{\nu-2+n}\,
+  \bigl(k_\theta(x_*,x_*) - k_*^TK^{-1}k_*\bigr)$
+  \quad (растёт при выбросах)
+\end{tabular}
+\end{block}
+
+}
+\end{frame}
+
+%----------------------------------------------------------------------------------------------------------
+
+\begin{frame}{Функция потерь TP-регрессии}
+
+{
+\textbf{Отрицательное логарифмическое маргинальное правдоподобие:}
+
+\footnotesize{
+\[
+\mathcal{L}(\theta) = \frac{n}{2}\log\!\bigl((\nu-2)\pi\bigr)
++ \frac{1}{2}\log|K|
+- \log\Gamma\!\left(\frac{\nu+n}{2}\right)\
++ \log\Gamma\!\left(\frac{\nu}{2}\right)
++ \frac{\nu+n}{2}\log\!\left(1+\frac{\beta}{\nu-2}\right)
+\]
+}
+где $\beta = (y-\mu)^T K^{-1}(y-\mu)$.
+
+\vspace{5pt}
+
+\textbf{Оцениваемые параметры:}
+\begin{itemize}
+    \item $\theta$ --- гиперпараметры ковариационной функции $k_\theta$
+    \item $\sigma_n^2$ --- уровень шума
+    \item $\nu$ --- степени свободы (тяжесть хвостов)
+\end{itemize}
+
+\vspace{5pt}
+
+}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------------------------
+
+%──────────────────────────────────────────────────────────────────
+%──────────────────────────────────────────────────────────────────
+\begin{frame}{Связь GP с фильтром Калмана}
+\footnotesize
+
+\begin{block}{\footnotesize Идея}
+    Временной GP эквивалентен линейной динамической системе:
+    $$
+        f(t) \sim \mathrm{GP}(0,\, k(t,t'))
+        \quad\Longleftrightarrow\quad
+        \text{СДУ пространства состояний}
+    $$
+\end{block}
+
+\begin{columns}[T]
+
+    \column{0.48\textwidth}
+    \begin{block}{\footnotesize Непрерывная форма (СДУ)}
+        \vspace{2pt}
+        \textbf{Начальное условие:}
+        $$
+            \mathbf{f}(0) \sim \mathcal{N}(0,\; P_\infty)
+        $$
+        \textbf{Уравнение состояния:}
+        $$
+            d\mathbf{f}(t) = F\mathbf{f}(t)\,dt + L\,dW(t)
+        $$
+        \textbf{Уравнение наблюдения:}
+        $$
+            y(t_k) = H\mathbf{f}(t_k) + \varepsilon_k
+        $$
+    \end{block}
+
+    \column{0.48\textwidth}
+    \begin{block}{\footnotesize Дискретная форма}
+        \vspace{2pt}
+        \textbf{Начальное условие:}
+        $$
+            \mathbf{f}_0 \sim \mathcal{N}(0,\; P_\infty)
+        $$
+        \textbf{Переход состояния:}
+        $$
+            \mathbf{f}_k = A_{k-1}\mathbf{f}_{k-1} + \mathbf{q}_{k-1}
+        $$
+        $$
+            \mathbf{q}_{k-1} \sim \mathcal{N}(0,\, Q_{k-1})
+        $$
+        \textbf{Наблюдение:}
+        $$
+            y_k = H\mathbf{f}_k + \varepsilon_k
+        $$
+    \end{block}
+
+\end{columns}
+
+\end{frame}
+
+
+%──────────────────────────────────────────────────────────────────
+\begin{frame}{Главный результат: TP как модель пространства состояний}
+\footnotesize
+
+\begin{block}{\footnotesize Теорема 3.2}
+    Временной TP эквивалентен масштабированной смеси гауссовских СДУ:
+    $$
+        f(t) \sim \mathrm{TP}(0,\, k(t,t'), \nu)
+        \quad\Longleftrightarrow\quad
+        \text{гауссовская смесь СДУ пространства состояний}
+    $$
+\end{block}
+
+\begin{columns}[T]
+
+    \column{0.48\textwidth}
+    \begin{block}{\footnotesize Непрерывная форма (СДУ)}
+        \vspace{2pt}
+        \textbf{Начальное условие:}
+        $$
+            \mathbf{f}(0) \sim \mathcal{N}(0,\; \textcolor{red}{\gamma}\, P_0)
+        $$
+        \textbf{Уравнение состояния:}
+        $$
+            d\mathbf{f}(t) = F\mathbf{f}(t)\,dt + L\,dW(t)
+        $$
+        $$
+            W(t)\sim\mathcal{N}(0,\;\textcolor{red}{\gamma}\, Q_c)
+        $$
+        \textbf{Уравнение наблюдения:}
+        $$
+            y(t_k) = H\mathbf{f}(t_k) + \varepsilon_k
+        $$
+    \end{block}
+
+    \column{0.48\textwidth}
+    \begin{block}{\footnotesize Дискретная форма}
+        \vspace{2pt}
+        \textbf{Начальное условие:}
+        $$
+            \mathbf{f}_0 \sim \mathcal{N}(0,\; \textcolor{red}{\gamma}\, P_0)
+        $$
+        \textbf{Переход состояния:}
+        $$
+            \mathbf{f}_k = A_{k-1}\mathbf{f}_{k-1} + \mathbf{q}_{k-1}
+        $$
+        $$
+            \mathbf{q}_{k-1} \sim \mathcal{N}(0,\;\textcolor{red}{\gamma}\, Q_{k-1})
+        $$
+        \textbf{Наблюдение:}
+        $$
+            y_k = H\mathbf{f}_k + \varepsilon_k
+        $$
+    \end{block}
+
+\end{columns}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------------------------
+
+%──────────────────────────────────────────────────────────────────
+% \begin{frame}{Включение шума}
+% \footnotesize
+
+% \begin{block}{\footnotesize Ключевое наблюдение}
+%     Шум наблюдений $\sigma_n^2$ можно включить прямо в ядро:
+%     $$
+%         k(t,t') \;=\; \underbrace{k_\theta(t,t')}_{\text{сигнал}}
+%         \;+\;
+%         \underbrace{\sigma_n^2\,\delta(t,t')}_{\text{шум}}
+%     $$
+% \end{block}
+
+% % \begin{block}
+% %         \textbf{Физический смысл:}
+% %         \[
+% %             f_k^{\mathrm{noise}} = q_{k-1},
+% %             \quad q_{k-1}\sim\mathcal{N}(0,\,\sigma_n^2)
+% %         $$
+% %         Компонента шума \textbf{независима} на каждом шаге:
+% %         нет памяти, нет корреляции между шагами
+% % \end{block}
+% \begin{alertblock}{\footnotesize Принцип суммирования ядер}
+%     \centering
+%     Сложение ядер \;$k = k_\theta + k_{\mathrm{noise}}$
+%     \quad$\Longleftrightarrow$\quad
+%      $\mathbf{f}^{\mathrm{aug}} = \begin{pmatrix}\mathbf{f}_\theta \\ f^{\mathrm{noise}}\end{pmatrix}$
+% \end{alertblock}
+
+% \begin{block}{\footnotesize Объединённая модель пространства состояний}
+% \begin{columns}[T]
+%     \column{0.48\textwidth}
+%         \textbf{Матрица динамики и ковариация:}
+%         $$
+%             F = \mathrm{blkdiag}(F_\theta,\; -\infty)
+%         $$
+%         $$
+%             P_0 = \mathrm{blkdiag}(P_{\theta,0},\; \sigma_n^2)
+%         $$
+%         \vspace{2pt}
+%         {\footnotesize
+%         \begin{tabular}{cl}
+%             $F_\theta$     & динамика сигнала          \\
+%             $-\infty$      & мгновенное затухание шума \\
+%             $P_{\theta,0}$ & ковариация сигнала         \\
+%             $\sigma_n^2$   & дисперсия шума            \\
+%         \end{tabular}}
+
+%     \column{0.48\textwidth}
+%         \textbf{Матрица наблюдения:}
+%         $$
+%             H = \begin{cases}
+%                 (H_\theta,\; 1) & \text{обучение}     \\[6pt]
+%                 (H_\theta,\; 0) & \text{предсказание}
+%             \end{cases}
+%         $$
+%         \vspace{4pt}
+%         При \textbf{обучении}: наблюдаем сигнал + шум
+%         При \textbf{предсказании}: наблюдаем только сигнал
+%         (шумовая компонента отключается)
+% \end{columns}
+% \end{block}
+
+
+% \end{frame}
+
+
+%──────────────────────────────────────────────────────────────────
+
+
+%──────────────────────────────────────────────────────────────────
+%──────────────────────────────────────────────────────────────────
+%──────────────────────────────────────────────────────────────────
+\begin{frame}{Алгоритм: фильтрация (вперёд)}
+\footnotesize
+
+\begin{columns}[T]
+
+    % ─── Левая колонка: обозначения ───────────────────────────
+    \column{0.28\textwidth}
+    \begin{block}{\footnotesize Обозначения}
+        \vspace{2pt}
+        {\footnotesize
+        \begin{tabular}{cl}
+            $m_{k|k}$          & среднее          \\ [3pt]
+            $P_{k|k}$          & ковариация        \\[3pt]
+            $\nu_k$            & степени св.       \\[3pt]
+            $\gamma_k$         & масштаб           \\[3pt]
+            $v_k$              & инновация         \\[3pt]
+            $S_k$              & дисп. иннов.      \\[3pt]
+            $K_k$              & усиление          \\[3pt]
+            $A_k(\theta)$      & переход           \\[3pt]
+            $Q_k(\theta)$      & шум перехода      \\[3pt]
+            $H_k(\theta)$      & наблюдение        \\
+        \end{tabular}}
+    \end{block}
+
+    \vspace{3pt}
+
+    \begin{block}{\footnotesize Инициализация}
+        \vspace{2pt}
+        {\footnotesize
+        \begin{tabular}{ll}
+            $\nu_0    = \nu$         & $\gamma_0 = 1$          \\[3pt]
+            $m_{0|0} = 0$            & $P_{0|0} = P_0(\theta)$ \\
+        \end{tabular}}
+    \end{block}
+
+    % ─── Правая колонка: алгоритм ─────────────────────────────
+    \column{0.68\textwidth}
+    \begin{block}{\footnotesize Шаги для $k = 1, \ldots, n$}
+        \vspace{2pt}
+
+        \textbf{1. Предсказание:}
+        \vspace{-4pt}
+        $$
+            m_{k|k-1} = A_{k-1}(\theta)\,m_{k-1|k-1}
+        $$
+        \vspace{-14pt}
+        $$
+            P_{k|k-1} = A_{k-1}(\theta)\,P_{k-1|k-1}\,A_{k-1}(\theta)^T
+            + \gamma_{k-1}\,Q_{k-1}(\theta)
+        $$
+
+        \textbf{2. Инновация:}
+        \vspace{-4pt}
+        $$
+            v_k = y_k - H_k(\theta)\,m_{k|k-1}, \qquad
+            S_k = H_k(\theta)\,P_{k|k-1}\,H_k(\theta)^T
+        $$
+
+        \textbf{3. Обновление масштаба:}
+        \vspace{-4pt}
+        $$
+            \nu_k = \nu_{k-1} + 1
+        $$
+        \vspace{-14pt}
+        $$
+            \gamma_k = \frac{\nu_{k-1} - 2 + v_k^T S_k^{-1} v_k}{\nu_k - 2}
+            \cdot \gamma_{k-1}
+        $$
+
+        \textbf{4. Обновление состояния:}
+        \vspace{-4pt}
+        $$
+            K_k = P_{k|k-1}\,H_k(\theta)^T S_k^{-1}
+        $$
+        \vspace{-14pt}
+        $$
+            m_{k|k} = m_{k|k-1} + K_k\,v_k, \quad
+            P_{k|k} = \frac{\gamma_{k}}{\gamma_{k-1}}
+            \bigl(P_{k|k-1} - K_k\,S_k\,K_k^T\bigr)
+        $$
+    \end{block}
+
+\end{columns}
+
+\end{frame}
+
+
+%──────────────────────────────────────────────────────────────────
+\begin{frame}{Алгоритм: сглаживание (назад)}
+\footnotesize
+
+\begin{columns}[T]
+
+    % ─── Левая колонка: обозначения ───────────────────────────
+    \column{0.28\textwidth}
+    \begin{block}{\footnotesize Обозначения}
+        \vspace{2pt}
+        {\footnotesize
+        \begin{tabular}{cl}
+            $m_{k|n}$     & сглаж. среднее  \\[3pt]
+            $P_{k|n}$     & сглаж. ковар.   \\[3pt]
+            $G_k$         & коэфф. сглаж.   \\[3pt]
+            $\nu_n$       & степени св.     \\[3pt]
+                          & (из фильтра)    \\[6pt]
+            $D_k$         & данные до $t_k$ \\[3pt]
+            $D_n$         & все данные      \\
+        \end{tabular}}
+    \end{block}
+
+    \vspace{3pt}
+
+    \begin{block}{\footnotesize Инициализация}
+        \vspace{2pt}
+        Из прямого прохода:\\[3pt]
+        {\footnotesize
+        \begin{tabular}{l}
+            $m_{n|n},\; P_{n|n}$ \\[3pt]
+            $\nu_n,\; \{\gamma_k\}_{k=0}^{n}$ \\
+        \end{tabular}}
+    \end{block}
+
+    \vspace{3pt}
+
+    % ─── Правая колонка: алгоритм ─────────────────────────────
+    \column{0.68\textwidth}
+    \begin{block}{\footnotesize Шаги для $k = n-1, \ldots, 0$}
+        \vspace{2pt}
+
+        \textbf{1. Предсказание:}
+        \vspace{-4pt}
+        $$
+            m_{k+1|k} = A_{k}(\theta)\,m_{k|k}
+        $$
+        \vspace{-14pt}
+        $$
+            P_{k+1|k} = A_{k}(\theta)\,P_{k|k}\,A_{k}(\theta)^T
+            + \gamma_{k}\,Q_{k}(\theta)
+        $$
+
+        \textbf{2. Коэффициент сглаживания:}
+        \vspace{-4pt}
+        $$
+            G_k = P_{k|k}\,A_k(\theta)^T\,P_{k+1|k}^{-1}
+        $$
+
+        \textbf{3. Обновление среднего:}
+        \vspace{-4pt}
+        $$
+            m_{k|n} = m_{k|k} + G_k\!\left(m_{k+1|n} - m_{k+1|k}\right)
+        $$
+
+        \textbf{4. Обновление ковариации:}
+        \vspace{-4pt}
+        $$
+            P_{k|n} = \frac{\gamma_n}{\gamma_{k-1}}
+            \bigl(P_{k|k} - G_k\,P_{k+1|k}\,G_k^T\bigr)
+            + G_k\,P_{k+1|n}\,G_k^T
+        $$
+
+    \end{block}
+
+\end{columns}
+
+\end{frame}
+
+
+%──────────────────────────────────────────────────────────────────
+\begin{frame}{Маргинальное правдоподобие}
+\footnotesize
+
+
+
+% ─── Основная формула ─────────────────────────────────────────
+\begin{block}{\footnotesize Отрицательное лог-правдоподобие}
+$$
+    \mathcal{L}(\theta) = \sum_{k=1}^{n} \Bigl[
+        \tfrac{1}{2}\log\bigl((\nu-2)\pi\bigr)
+        + \tfrac{1}{2}\log|S_k(\theta)|
+        + \log\Gamma\!\left(\tfrac{\nu_{k-1}}{2}\right)
+        - \log\Gamma\!\left(\tfrac{\nu_k}{2}\right)
+$$
+$$
+        + {\frac{1}{2}\frac{\log(\nu{k-1}-2)}{\nu-2}} + \tfrac{\nu_k}{2}
+        \log\!\left(
+            1 + \frac{v_k(\theta)^T S_k(\theta)^{-1} v_k(\theta)}{\nu_{k-1}-2}
+        \right)
+    \Bigr]
+$$
+\end{block}
+
+\begin{block}{Обновление и вычислительная выгода}
+Обновление происходит после каждой итерации алгоритма фильтрации, оно происходит до сходимости. При $m \ll n$: $O(nm^3) \approx O(n)$ против $O(n^3)$ для наивного решения.\\
+\end{block}
+
+
+\end{frame}
+%──────────────────────────────────────────────────────────────────
+
+
+%----------------------------------------------------------------------------------------------------------
+
+\begin{frame}{Эксперимент 1}
+
+{\small
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{1.jpeg}
+    \caption{Демонстрация вычислительной эффективности наивного алгоритма и алгоритма через фильтр Калмана}
+\end{figure}
+
+}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------------------------
+
+\begin{frame}{Эксперимент 2}
+
+\begin{block}{Данные}
+\begin{itemize}\footnotesize
+  % \item Сгенерировано \textbf{100 независимых функций} $f^{(i)}(x)$ из априорного Gaussian Process с ковариацией Matérn (smoothness $3/2$). Для каждой функции выбирались \textbf{100 точек} $x$; из них \textbf{80} — для обучения, \textbf{20} — для теста.
+  \item \textbf{Synth A:} наблюдения порождены добавлением \emph{независимого гауссовского шума} \(\varepsilon_j\sim\mathcal N(0,\sigma_n^2)\).
+  \item \textbf{Synth B:} наблюдения порождены добавлением \emph{независимым Student-t шумом}с параметром степеней свободы \(\nu\).
+  \item \textbf{Synth C:} смесь: для 75\% точек \(\varepsilon_j\sim\mathcal N(0,\sigma_n^2)\), для 25\% — \emph{выбросы} \(\varepsilon_j\sim\mathcal N(0,100\sigma_n^2)\).
+  \item \textbf{Electricity:} почасовые усреднения потребления одного домохозяйства за 1442 дня.
+  \item \textbf{Stock (Apple):} лог-цены акций Apple в течении 8537 дней.
+\end{itemize}
+\end{block}
+
+{\small
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\textwidth]{2.jpeg}
+    \caption{\scriptsize GP и TP: сравнение наивной реализации и state-space метода. В таблице приведены усреднённые по реализациям MSE и лог-правдоподобие.}
+\end{figure}
+}
+\end{frame}
+
+% \begin{frame}{Эксперимент 3: Интерполяция GPS}
+
+% \begin{block}{Данные}
+% \begin{itemize}\footnotesize
+%   \item Набор GPS-координат одной поездки: $n=6\,373$ наблюдений за $\approx106$ минут (частота $\sim1\,$Hz).
+% \end{itemize}
+% \end{block}
+
+% % \begin{block}{Модель (Wiener velocity) — интуиция и SDE}
+% % \small
+% % Позиция $f(t)=(f_x(t),f_y(t))$ моделируется с состоянием \([x,\dot x]\) по оси:
+% % \[
+% % \ddot f(t)=w(t),\qquad w(t)\ \text{— белый шум (интенсивность }Q_c\text{)}.
+% % \]
+% % Дискретно это даёт линейную state-space систему
+% % \[
+% % x_{k+1}=A x_k + q_k,\qquad y_k = H x_k + r_k,
+% % \]
+% % где $q_k$ — процессный шум (завиcит от $Q_c$), $r_k$ — наблюдательный шум (варианс $\sigma_n^2$).
+% % \end{block}
+
+% % \begin{block}{Подходы и оценка}
+% % \small
+% % \begin{itemize}
+% %   \item Сравнивали \textbf{Gaussian smoothing} (Калман/GP) и \textbf{Student-t smoothing} (TP — Student-t likelihood в state-space).
+% %   \item Гиперпараметры оптимизируются по маргинальному правдоподобию: $Q_c$, $\sigma_n^2$, и для TP — степени свободы $\nu$.
+% %   \item Оценка: 10-fold cross-validation (батчи по 30\,с); метрика — MSE на пропущенных батчах.
+% % \end{itemize}
+% % \end{block}
+
+% % \begin{block}{Результаты (ключевой вывод)}
+% % \small
+% % \begin{itemize}
+% %   \item Средний MSE: \textbf{Gaussian} = 1589, \textbf{Student-t} = 908.
+% %   \item Причина: при наличии ненадёжных или пропущенных наблюдений GP/гауссовая модель вынуждена увеличивать процессную или наблюдательную дисперсию → предсказательная средняя «размывается». TP за счёт «толстых хвостов» (или эквивалентно — локальных масштабных переменных) понижает вес аномалий и даёт более точный средний прогноз.
+% %   \item Иначе: разница в MSE в основном обусловлена различием в обученных значениях гиперпараметров ($Q_c$, $\sigma_n^2$ и $\nu$).
+% % \end{itemize}
+% % \end{block}
+
+% \begin{figure}
+%   \centering
+%   \includegraphics[width=0.4\textwidth]{3.jpeg} % <-- замени на своё имя файла
+%   \caption{Интерполяция пропущенных GPS точек: точки — (неизвестная) истинная траектория; цветные области — доверительные интервалы (до 95\%) для Gaussian smoothing и Student-t smoothing.}
+% \end{figure}
+
+% % \vspace{1mm}
+% % \begin{block}{Как интерпретировать картинку}
+% % \small
+% % \begin{itemize}
+% %   \item Цветные «пачки» = 95\% credible intervals: ширина отражает непредсказуемость/неуверенность модели в пропущенном участке.
+% %   \item GP часто даёт либо слишком узкие интервалы в местах с «нормальными» наблюдениями и затем резко расширяется, либо глобально увеличивает дисперсию (если гиперпараметры подстроились под шум/выбросы).
+% %   \item TP даёт более локально адаптивные интервалы: в большинстве участков интервалы уже и среднее ближе к истине, т.к. выбросы получают пониженный вес.
+% % \end{itemize}
+% % \end{block}
+
+% % \begin{block}{Практическая заметка}
+% % \small
+% % State-space реализация TP позволяет работать онлайн (линейная сложность), поэтому её можно применять для реального трекинга и обработки потоковых GPS-данных, особенно при ожидаемой ненадёжности измерений.
+% % \end{block}
+
+% \end{frame}
+%----------------------------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------------------------
+
+\begin{frame}{Сравнение методов и заключение}
+
+{\small
+\begin{table}
+\centering
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Свойство} & \textbf{Наивный GP} & \textbf{SS GP} & \textbf{Наивный TP} & \textbf{SS TP} \\
+\midrule
+Сложность & $O(n^3)$ & $O(n)$ & $O(n^3)$ & $\mathbf{O(n)}$ \\
+Выбросы & \texttimes & \texttimes & \checkmark & \checkmark \\
+Адапт. дисперсия & \texttimes & \texttimes & \checkmark & \checkmark \\
+Аналит. решение & \checkmark & \checkmark & \checkmark & \checkmark \\
+Реальное время & \texttimes & \checkmark & \texttimes & \checkmark \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\vspace{5pt}
+
+\begin{block}{Заключение}
+Метод SS TP объединяет все преимущества: линейную сложность $O(n)$ и устойчивость к выбросам.
+\end{block}
+
+}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------------------------
+
+\end{document}
