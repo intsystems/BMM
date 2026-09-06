@@ -33,6 +33,3 @@
 (tentative plan)
 
 Hyperparameter optimization (SMBO, Gradients), Structure selection, meta-optimization, multi-task, inductive bias, ensembles, latent space 
-
-
-* [SToG: Stochastic Gates for Feature Selection](https://github.com/intsystems/SToG/)
