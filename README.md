@@ -9,6 +9,8 @@
 
 ## Fall 2026
 
+(tentative plan)
+
 |Date|Topic|
 | --- | --- |
 | 8.09 | Intro| 
