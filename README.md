@@ -13,7 +13,7 @@
 
 |Date|Topic|
 | --- | --- |
-| 8.09 | Intro| 
+| 8.09 | [Intro](slides/slides_0_intro.pdf) | 
 | 15.09 | Bayesian inference | 
 | 22.09 | Evidence | 
 | 29.09 | Technical meeting 1: project discussion  | 
