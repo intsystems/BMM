@@ -2,10 +2,11 @@
 
 [Project schedule](project_schedule.md)
 
-[Zoom link](https://m1p.org/go_zoom2)
+[Zoom link](https://m1p.org/go_zoom)
 
 [TG Link](https://t.me/+Qj45JboSkM9jODdi)
 
+[Form. Deadline: 15.09, 21:00](https://docs.google.com/forms/d/e/1FAIpQLSc-KYYsV09Qh8NACeG0pMPY72wWsa8zGow5suuPS8qXzor0vw/viewform?usp=publish-editor)
 
 ## Fall 2026
 
