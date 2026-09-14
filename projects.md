@@ -79,3 +79,17 @@
 * [Gradient flows-based](https://arxiv.org/pdf/1905.07376)
 
 **Note:** good start is to look at [this](https://github.com/facebookresearch/NeuralCompression), [this repo](https://github.com/fahaihi/NNLCB?tab=readme-ov-file), [torchac](https://github.com/fab-jul/torchac), [craystack](https://github.com/j-towns/craystack)
+
+### Theoretically informed deep learning model complexity estimation
+
+**Number of people in team:**  2-4
+
+**Motivation**: In classical statistics we have multiple standard ways for model selection (AIC, BIC, R^2 and its variations). Most of them are unapplicable for lage deep learning models. In this project we will try to implement different approaches for model complexity estimations and compare them.
+
+**Algorithms to implement:**
+* Basic methods: AIC, BIC, HQIC, WAIC, WBIC, [2-part MDL codes](https://arxiv.org/abs/math/0406077)  
+* Bayesian-based codes: [Variational coding](https://papers.nips.cc/paper/4329-practical-variational-inference-for-neural-networks) and [KFAC-Laplace-based Evidence](https://openreview.net/challenge?redirect=%2Fforum%3Fid%3DSkdvd2xAZ)
+    * Although these methods are Bayesian, we need a bridge between them and MDL in the interface part. See  [Variational coding](https://papers.nips.cc/paper/4329-practical-variational-inference-for-neural-networks) and Section "2.6.3" from [MDL tutorial](https://arxiv.org/abs/math/0406077) 
+* [Online coding](https://arxiv.org/abs/2210.07931)
+    * The basic approach itself is very easy, you need to implement and compare the prequential coding variants discussed in the paper. (TBD)
+* [Compression-based generalization](https://proceedings.mlr.press/v80/arora18b/arora18b.pdf)
