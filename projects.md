@@ -40,3 +40,27 @@
 * [Mixutre distribution implementation](https://github.com/vsimkus/torch-reparametrised-mixture-distribution) 
 * [Lab on the implementation of IRT](https://github.com/intsystems/BMM/blob/main-22/lab2/BarabanshchikovaTask2.ipynb)
 
+
+###  Low-variance gradient estimation for mixture distributions
+
+**Number of people in team:** 2-4
+
+**Motivation**: Standard reparameterization trick in generative models like VAE works well for basic distributions, but fails for mixture distributions due to discrete component sampling. PyTorch's native `MixtureSameFamily` doesn't support `rsample()` for gradients over mixture parameters. The goal of this project is to build a library implementing continuous, low-variance gradient estimation methods specifically for mixture models.
+
+**Algorithms to implement (from simplest to hardest):**
+* [Score-function baseline with Sticking the Landing (STL) trick](https://arxiv.org/abs/1703.09194) ([See also](https://www.jmlr.org/papers/v27/25-2560.html))
+* [Stratified mixture estimator (multi-sample)](https://www.jmlr.org/papers/v27/25-2560.html)
+* [Implicit reparameterization trick for mixture distributions](https://arxiv.org/abs/1805.08498)
+* [Post-stratified mixture estimator (single-sample continuous transport)](https://www.jmlr.org/papers/v27/25-2560.html)
+
+**Recommended stack**: PyTorch (extending `torch.distributions`) or Distrax for JAX.
+
+**Note:** For comparison, methods should be benchmarked on synthetic multimodal targets, Mixture-of-Gaussians VAE, and BNNs with mixture priors (comparing gradient variance vs wall-clock time).
+
+**Other links:**
+* [Gradient Estimation for Mixture Variational Inference (JMLR 2026)](https://www.jmlr.org/papers/v27/25-2560.html)
+* [Implicit Reparameterization Trick paper](https://arxiv.org/abs/1805.08498)
+* [Pathwise Derivatives for Multivariate Distributions paper](https://proceedings.mlr.press/v80/jankowiak18a/jankowiak18a.pdf)
+* [Sticking the Landing paper](https://arxiv.org/abs/1703.09194)
+* [Previous mixture distribution implementation attempt](https://github.com/vsimkus/torch-reparametrised-mixture-distribution)
+* [PyTorch issue on mixture reparameterization](https://github.com/pytorch/pytorch/issues/24249)
