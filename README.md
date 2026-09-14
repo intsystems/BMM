@@ -1,6 +1,6 @@
 # Bayesian multimodeling
 
-[Project schedule](project_schedule.md)
+[Projects](projects.md)
 
 [Zoom link](https://m1p.org/go_zoom)
 
