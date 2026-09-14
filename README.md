@@ -16,11 +16,11 @@
 | --- | --- |
 | 8.09 | [Intro](slides/slides_0_intro.pdf) | 
 | 15.09 | Bayesian inference | 
-| 22.09 | Evidence | 
-| 29.09 | Technical meeting 1: project discussion  | 
+| 22.09 | Technical meeting 1: project discussion  | 
+| 29.09 | Evidence | 
 | 7.10 | Complexity | 
-| 13.10 | Var. inference | 
-| 20.10 |  Technical meeting 2: proof of concept discussion  | 
+| 13.10 | Technical meeting 2: proof of concept discussion | 
+| 20.10 | Var. inference   | 
 | 27.10 | Var. inference 2   | 
 | 3.11 | Diffusion| 
 | 10.11 | Generative and discriminative models | 
