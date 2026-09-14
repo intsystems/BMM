@@ -64,3 +64,18 @@
 * [Sticking the Landing paper](https://arxiv.org/abs/1703.09194)
 * [Previous mixture distribution implementation attempt](https://github.com/vsimkus/torch-reparametrised-mixture-distribution)
 * [PyTorch issue on mixture reparameterization](https://github.com/pytorch/pytorch/issues/24249)
+
+
+### Neural compression for scientific data 
+
+**Number of people in team:**  2-4
+
+**Motivation**:  information theory and Bayesian models are deeply tied. Here we propose to implement multiple variational and neural compression methods for losesless (and nearly-loseless) compression. In spite of well-established compression models, such as [NeuralCompression](https://github.com/facebookresearch/NeuralCompression) focused at generic media, we will focus more on the scientific data, that has a complicated covariance structure.
+
+**Algorithms to implement:**
+* [Lossy compression](https://proceedings.neurips.cc/paper/2021/file/7535bbb91c8fde347ad861f293126633-Paper.pdf)
+* [Var. inference-based](https://arxiv.org/pdf/1901.04866)
+* [Transformer-based](https://openreview.net/forum?id=Hygi7xStvS)
+* [Gradient flows-based](https://arxiv.org/pdf/1905.07376)
+
+**Note:** good start is to look at [this](https://github.com/facebookresearch/NeuralCompression), [this repo](https://github.com/fahaihi/NNLCB?tab=readme-ov-file), [torchac](https://github.com/fab-jul/torchac), [craystack](https://github.com/j-towns/craystack)
