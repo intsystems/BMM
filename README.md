@@ -1,5 +1,7 @@
 # Bayesian multimodeling
 
+[Talks](talks.md)
+
 [Projects](projects.md)
 
 [Zoom link](https://m1p.org/go_zoom)
