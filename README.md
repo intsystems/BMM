@@ -10,7 +10,7 @@
 
 [Form. Deadline: 23.09, 21:00](https://docs.google.com/forms/d/e/1FAIpQLSc_Xb5-7qezDRhZIxcVKVQq0qg9q8LHLb1EyWfuCDjtT3F-TQ/viewform?usp=dialog)
 
-[Project assignment. Deadline: 22.09, 21.00. MIND THE DEADLINE](https://docs.google.com/forms/d/e/1FAIpQLSdEzvQNkmOp3-TeynijlTauIec5sxqH375f6AnyaEhS85cEGA/viewform?usp=dialog) 
+[Project assignment. Deadline: 21.09, 21.00. MIND THE DEADLINE](https://docs.google.com/forms/d/e/1FAIpQLSdEzvQNkmOp3-TeynijlTauIec5sxqH375f6AnyaEhS85cEGA/viewform?usp=dialog) 
 
 ## Fall 2026
 
