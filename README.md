@@ -20,7 +20,7 @@
 | --- | --- |
 | 8.09 | [Intro](slides/slides_0_intro.pdf) | 
 | 15.09 | [Bayesian inference](slides/slides_1_inference.pdf) | 
-| 22.09 | Evidence  | 
+| 22.09 | [Evidence](slides/slides_2_evidence.pdf)  | 
 | 29.09 | Technical meeting 1: project discussion | 
 | 7.10 | Complexity | 
 | 13.10 | Var. inference | 
