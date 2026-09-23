@@ -2,7 +2,7 @@
 
 [Talks](talks.md)
 
-[Projects](projects.md)
+[Projects](projects.md), [schedule](schedule.md)
 
 [Zoom link](https://m1p.org/go_zoom)
 
