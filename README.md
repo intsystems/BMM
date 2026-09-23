@@ -8,9 +8,7 @@
 
 [TG Link](https://t.me/+Qj45JboSkM9jODdi)
 
-[Form. Deadline: 23.09, 21:00](https://docs.google.com/forms/d/e/1FAIpQLSc_Xb5-7qezDRhZIxcVKVQq0qg9q8LHLb1EyWfuCDjtT3F-TQ/viewform?usp=dialog)
-
-[Project assignment. Deadline: 22.09, 21.00. MIND THE DEADLINE](https://docs.google.com/forms/d/e/1FAIpQLSdEzvQNkmOp3-TeynijlTauIec5sxqH375f6AnyaEhS85cEGA/viewform?usp=dialog) 
+[Form. Deadline: 30.09, 21:00](https://docs.google.com/forms/d/e/1FAIpQLSf2gsdVJkNqr7pHfDiIxHA-fCBn8rGRHM4KanEX0t6zoRl2hQ/viewform?usp=dialog)
 
 ## Fall 2026
 
