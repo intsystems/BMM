@@ -3,7 +3,7 @@
 * [Weak Informativity and the Information in One Prior Relative to Another](https://arxiv.org/abs/1201.1766) [reporter: your name]
 
 # Bayesian evidence and sampling methods
-* [Evolutionary MCMC](https://cdn.aaai.org/ICML/2003/ICML03-096.pdf) [reporter: "your name"]
+* [Evolutionary MCMC](https://cdn.aaai.org/ICML/2003/ICML03-096.pdf) [reporter: "Уденеев Александ"]
 * [Is Gibbs sampling faster than Hamiltonian Monte Carlo on GLMs?](https://arxiv.org/pdf/2410.03630)  [reporter: "your name"]
 
 
