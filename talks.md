@@ -4,7 +4,7 @@
 
 # Bayesian evidence and sampling methods
 * [Evolutionary MCMC](https://cdn.aaai.org/ICML/2003/ICML03-096.pdf) [reporter: "Уденеев Александр"]
-* [Is Gibbs sampling faster than Hamiltonian Monte Carlo on GLMs?](https://arxiv.org/pdf/2410.03630)  [reporter: "your name"]
+* [Is Gibbs sampling faster than Hamiltonian Monte Carlo on GLMs?](https://arxiv.org/pdf/2410.03630)  [reporter: Иванов Максим]
 
 
 # Complexity
