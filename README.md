@@ -4,6 +4,8 @@
 
 [Projects](projects.md), [schedule](schedule.md)
 
+[Scores](https://disk.360.yandex.ru/i/e8kaVy6otYOKtw)
+
 [Zoom link](https://m1p.org/go_zoom)
 
 [TG Link](https://t.me/+Qj45JboSkM9jODdi)
