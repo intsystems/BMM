@@ -9,6 +9,7 @@
 
 # Complexity
 * volunteer: Alex Kravatsky
+* [The Description Length of Deep Learning Models](https://arxiv.org/pdf/1802.07044) [reporter: your name]
 
 # Diffusion 
 * volunteer: Daniil Kazachkov
