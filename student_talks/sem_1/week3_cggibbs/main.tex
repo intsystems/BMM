@@ -1,0 +1,45 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+\graphicspath{{figures/}}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[main=russian,english]{babel}
+
+\usepackage{cmap}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{amssymb,amsfonts,amsmath}
+
+\usecolortheme{beaver}
+\usefonttheme[onlymath]{serif}  % math fonts as in article
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[page number]
+\setbeamertemplate{blocks}[rounded=true,shadow=true]
+\setbeamersize{text margin left=0.5cm,text margin right=0.5cm}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{institute}{size=\normalsize}
+\setbeamerfont{date}{size=\normalsize}
+\setbeamertemplate{enumerate item}{\insertenumlabel)}
+\setbeamertemplate{enumerate subitem}{\insertenumlabel)}
+\setbeamertemplate{enumerate subsubitem}{\insertenumlabel)}
+
+
+\usetikzlibrary{arrows.meta,positioning}
+\definecolor{accent}{RGB}{164,0,0}
+\setbeameroption{hide notes}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\ESS}{\operatorname{ESS}}
+\newcommand{\source}[1]{\par\vfill{\tiny\color{gray}Источник: Luu et al., arXiv:2410.03630v2, #1.}}
+\title{Is Gibbs sampling faster than Hamiltonian Monte Carlo on GLMs?}
+\subtitle{Son Luu, Zuheng Xu, Nikola Surjanovic, Miguel Biron-Lattes,\\Trevor Campbell, Alexandre Bouchard-Côté}
+\author{Иванов Максим}
+\institute{ИАД, МФТИ}
+\date{2026}
+\begin{document}
+\input{sections/slides}
+\end{document}
