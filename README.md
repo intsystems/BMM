@@ -10,7 +10,7 @@
 
 [TG Link](https://t.me/+Qj45JboSkM9jODdi)
 
-[Form. Deadline: 07.10, 21:00](https://docs.google.com/forms/d/e/1FAIpQLSc9qd9vtDki51GHu7PG84uDV2ASJxH6uqYJJyJ39B5hmJSEMQ/viewform?usp=publish-editor)
+[Form. Deadline: 14.10, 21:00](https://docs.google.com/forms/d/e/1FAIpQLSdGisEzJaFV0BGewt8AbjGFQJ_iL8BVqYsVcwZlZWBtB_SDJw/viewform?usp=publish-editor)
 
 ## Fall 2026
 
