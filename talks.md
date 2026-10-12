@@ -11,5 +11,8 @@
 * [From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence](https://arxiv.org/abs/2601.03220): [reporter: Alex Kravatsky]
 * [The Description Length of Deep Learning Models](https://arxiv.org/pdf/1802.07044) [reporter: your name]
 
+# Var. Inference
+volunteer: George Chirkov
+
 # Diffusion 
 * volunteer: Daniil Kazachkov
