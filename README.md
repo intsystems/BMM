@@ -23,7 +23,7 @@
 | 22.09 | [Evidence](slides/slides_2_evidence.pdf)  | 
 | 29.09 | Technical meeting 1: project discussion | 
 | 7.10 | [Complexity](slides/slides_3_mdl.pdf) | 
-| 13.10 | Var. inference | 
+| 13.10 | [Var. inference](slides/slides_4_var1.pdf) | 
 | 20.10 | Technical meeting 2: proof of concept discussion   | 
 | 27.10 | Var. inference 2   | 
 | 3.11 | Diffusion  + checkpoint (?) | 
