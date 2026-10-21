@@ -24,14 +24,14 @@
 | 29.09 | Technical meeting 1: project discussion | 
 | 7.10 | [Complexity](slides/slides_3_mdl.pdf) | 
 | 13.10 | [Var. inference](slides/slides_4_var1.pdf) | 
-| 20.10 | Technical meeting 2: proof of concept discussion   | 
-| 27.10 | Var. inference 2   | 
-| 3.11 | Diffusion  + checkpoint (?) | 
-| 10.11 | Generative and discriminative models   + checkpoint (?)  | 
-| 17.11 | Graphical models  | 
-| 24.11 |  Technical meeting 3: overview  | 
-| 1.12 | Gaussian processes and SSM   | 
-| 8.12 | Technical meeting 4: final meeting, final scores | 
+| 21.10 | Technical meeting 2: proof of concept discussion   | 
+| 28.10 | Var. inference 2   | 
+| 4.11 | Diffusion  + checkpoint (?) | 
+| 11.11 | Generative and discriminative models   + checkpoint (?)  | 
+| 18.11 | Graphical models  | 
+| 25.11 |  Technical meeting 3: overview  | 
+| 2.12 | Gaussian processes and SSM   | 
+| 9.12 | Technical meeting 4: final meeting, final scores | 
 
 
 
