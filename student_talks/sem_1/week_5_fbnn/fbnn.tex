@@ -1,0 +1,401 @@
+% Компилируется и pdfLaTeX, и XeLaTeX/LuaLaTeX (дважды)
+\documentclass[aspectratio=169,9pt]{beamer}
+
+\usetheme{Madrid}
+\usecolortheme{seahorse}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+\usepackage{iftex}
+\ifPDFTeX
+  % pdfLaTeX (например, Overleaf по умолчанию)
+  \usepackage[T2A]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage[russian]{babel}
+\else
+  % XeLaTeX / LuaLaTeX
+  \usepackage{fontspec}
+  \setmainfont{DejaVu Serif}
+  \setsansfont{DejaVu Sans}
+  \setmonofont{DejaVu Sans Mono}
+\fi
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathreplacing}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\KL}{\mathrm{KL}}
+\newcommand{\fx}{\mathbf{f}^{\mathbf{X}}}
+\newcommand{\bx}{\mathbf{X}}
+
+\title[Functional Variational BNNs]{Functional Variational Bayesian Neural Networks}
+\subtitle{Sun, Zhang, Shi, Grosse --- ICLR 2019 (arXiv:1903.05779)}
+\author{Chirkov George}
+\institute{Bayesian multimodeling, МФТИ}
+\date{2026}
+
+\begin{document}
+
+%% 1 ---------------------------------------------------------------
+\begin{frame}
+  \titlepage
+  \note{Бюджет времени: около 10 минут, 15 слайдов. Титульный слайд 0:15.}
+\end{frame}
+
+%% 2 ---------------------------------------------------------------
+\begin{frame}{Почему вывод в пространстве весов работает плохо}
+  Bayesian neural networks (BNN): prior $p(\mathbf w)$, likelihood $p(\mathcal D\mid\mathbf w)$, posterior $p(\mathbf w\mid\mathcal D)$ невычислим $\Rightarrow$ вариационный вывод, например Bayes by Backprop (BBB): $q(\mathbf w)=\mathcal N(\boldsymbol\mu,\mathrm{diag}\,\boldsymbol\sigma^2)$.
+  \vspace{0.4em}
+  \begin{block}{Проблемы VI в пространстве весов}
+    \begin{itemize}
+      \item Prior-ы неосмысленны. Веса связаны с вычисляемой функцией сложным образом; на практике $\mathcal N(0,I)$ берут для удобства.
+      \item Posterior трудно приблизить. Между весами сильные зависимости, а $q$ (почти) факторизована.
+      \item Деградация при росте ёмкости. Чем больше сеть, тем сложнее вывод и больше description length у posterior. На $y=x^3$ (20 точек) предсказания BBB резко меняются с размером сети.
+    \end{itemize}
+  \end{block}
+  Разрыв: GP-prior-ы кодируют богатую структуру (гладкость, периодичность), но масштабируются как $O(N^3)$; BNN масштабируются, но их prior-ы неинтерпретируемы.
+  \note{Рис. 1 статьи: BBB против fBNN на x^3. Упомянуть устно. 1:00.}
+\end{frame}
+
+%% 3 ---------------------------------------------------------------
+\begin{frame}{Идея: неопределённость над функциями, а не над весами}
+  \begin{alertblock}{Идея}
+    Вариационный вывод напрямую над распределениями по функциям: prior --- стохастический процесс, приближённый posterior --- стохастическая нейросеть.
+  \end{alertblock}
+  \vspace{0.3em}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \textcolor{structure}{Что мы получаем}
+      \begin{itemize}
+        \item структурные prior-ы: GP (периодичность, гладкость) и \emph{implicit} процессы (кусочные функции)
+        \item явные сэмплы функций из posterior (Thompson sampling, entropy search)
+        \item предсказания стабильны при росте сети
+        \item масштабируемость: данные входят только через ожидаемый log-likelihood (мини-батчи)
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textcolor{structure}{Вклад статьи}
+      \begin{enumerate}
+        \item Теорема: KL между процессами = supremum маргинальных KL по конечным наборам точек
+        \item Functional ELBO (fELBO) как игра типа GAN; sampling-based версия
+        \item Оценка градиентов через spectral Stein gradient estimator (SSGE)
+        \item Эксперименты: экстраполяция, UCI-регрессия, bandits, Bayesian optimization
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+  \note{0:45.}
+\end{frame}
+
+%% 4 ---------------------------------------------------------------
+\begin{frame}{Что именно мы хотим посчитать}
+  Данные: $\mathcal D=\{(\mathbf x_i,y_i)\}_{i=1}^n$, likelihood $p(\mathcal D\mid f)=\prod_i p(y_i\mid f(\mathbf x_i))$.
+
+  \medskip
+  Prior: стохастический процесс $p$ над функциями $f:\mathcal X\to\mathcal Y$ (GP или implicit процесс без плотности).
+
+  \medskip
+  Вариационное семейство: стохастическая сеть с шумом $\xi$, общим для всех входов
+  \[
+    f(\mathbf x)=g_\phi(\mathbf x,\xi),\qquad \xi\sim p(\xi)
+    \quad(\text{epistemic uncertainty}).
+  \]
+  Цель: максимизировать functional ELBO
+  \[
+    \mathcal L(q)=\E_q\big[\log p(\mathcal D\mid f)\big]-\KL[q\,\|\,p].
+  \]
+  \begin{block}{Сравнение с пространством весов}
+    $\mathcal L_q=\E_q[\log p(\mathcal D\mid\mathbf w)]-\KL[q(\mathbf w)\|p(\mathbf w)]$.
+  \end{block}
+  Сложности: (i) $\KL[q\|p]$ между процессами не имеет вида $\int q\log\frac qp$; (ii) плотность $q$ над $f$ невычислима; (iii) prior может быть implicit.
+  \note{1:00.}
+\end{frame}
+
+%% 5 ---------------------------------------------------------------
+\begin{frame}{Как измерить расстояние между двумя процессами}
+  Процесс характеризуется согласованными конечномерными маргиналами (теорема Колмогорова о продолжении: exchangeability и consistency).
+
+  \begin{block}{Теорема 1 (Functional KL)}
+    Для двух стохастических процессов $P$ и $Q$
+    \[
+      \KL[P\,\|\,Q]=\sup_{n\in\mathbb N,\ \bx\in\mathcal X^n}\KL[P_{\bx}\,\|\,Q_{\bx}].
+    \]
+  \end{block}
+  Почему: $\sigma$-алгебра из теоремы о продолжении порождена цилиндрическими множествами, зависящими лишь от конечного числа точек.
+
+  \medskip
+  Следствие. Для measurement set $\bx$ и $\mathcal L_{\bx}(q):=\E_q\sum_{i}\log p(y_i\mid f(\mathbf x_i))-\KL[q(\fx)\|p(\fx)]$
+  \[
+    \mathcal L(q)=\inf_{n,\ \bx\in\mathcal X^n}\mathcal L_{\bx}(q).
+  \]
+  $\Rightarrow$ антагонистическая игра с нулевой суммой: один игрок выбирает сеть $q$, противник --- measurement set (как в GAN).
+  \note{1:00.}
+\end{frame}
+
+%% 6 ---------------------------------------------------------------
+\begin{frame}{В каких точках смотреть на функции}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textcolor{structure}{Adversarial} (как в GAN)
+      \[
+        \max_{q}\ \min_{\bx\in\mathcal X^m}\ \mathcal L_{\bx}(q)
+      \]
+      \begin{itemize}
+        \item худшие точки лежат рядом с обучающими данными
+        \item ничто не заставляет $q$ следовать структуре prior в других областях $\Rightarrow$ плохое обобщение
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.52\textwidth}
+      \textcolor{structure}{Sampling-based} (используется в fBNN)
+      \[
+        \max_{q}\ \E_{\bx^M\sim c}\ \mathcal L_{\bx^M,\bx^{D_s}}(q)
+      \]
+      \begin{itemize}
+        \item $\bx^{D_s}$: случайный мини-батч обучающих точек
+        \item $\bx^M$: $M$ случайных точек из интересующей области ($c$)
+        \item согласуем сеть с prior и рядом с данными, \emph{и} там, где нужны предсказания
+      \end{itemize}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.6em}
+  \centering
+  \begin{tikzpicture}[x=0.85cm,y=0.8cm]
+    \draw[->,thick] (-0.3,0) -- (10.6,0) node[right] {$\mathbf x$};
+    \foreach \x in {2.5,2.8,3.2,3.6,6.4,6.8,7.2,7.5}
+      \fill[red] (\x,0.25) circle (2.2pt);
+    \foreach \x in {0.4,1.3,2.0,4.6,5.2,5.9,8.4,9.1,9.8}
+      \draw[blue,thick] (\x-0.1,0.15) -- (\x+0.1,0.35) (\x-0.1,0.35) -- (\x+0.1,0.15);
+    \draw[decorate,decoration={brace,amplitude=4pt,mirror}] (0,-0.2) -- (10,-0.2)
+      node[midway,below=4pt] {\scriptsize область сэмплирования $[x_{\min}-\tfrac d2,\ x_{\max}+\tfrac d2]$, $d=x_{\max}-x_{\min}$};
+    \node[red,anchor=south] at (3.0,0.75) {\scriptsize обучающие входы};
+    \node[blue,anchor=south] at (8.6,0.75) {\scriptsize случайные measurement points};
+  \end{tikzpicture}
+  \note{0:50. Картинка схематична; она следует схеме сэмплирования из раздела экспериментов статьи.}
+\end{frame}
+
+%% 7 ---------------------------------------------------------------
+\begin{frame}{Когда objective --- настоящая нижняя граница}
+  \begin{block}{Теорема 2 (Lower bound)}
+    Если measurement set $\bx$ содержит все обучающие входы $\bx^{D}$, то
+    \[
+      \mathcal L_{\bx}(q)=\log p(\mathcal D)-\KL\big[q(\fx)\,\|\,p(\fx\mid\mathcal D)\big]\ \le\ \log p(\mathcal D).
+    \]
+  \end{block}
+  При $\bx=\{\bx^D,\bx^M\}$: максимизация $\mathcal L_{\bx}(q)$ $\Leftrightarrow$ минимизация KL до истинного posterior в этих точках (то же тождество ELBO, что на лекции).
+
+  \begin{block}{Следствие 3 (Consistency)}
+    Если истинный posterior $p(f\mid\mathcal D)$ --- GP, $\mathcal Q$ --- все GP, $M>1$ и $\mathrm{supp}(c)=\mathcal X$, то оптимумы и adversarial, и sampling-based задач равны $p(f\mid\mathcal D)$.
+  \end{block}
+  Оговорка: для конечного measurement set, не содержащего все обучающие входы, objective --- лишь \emph{приближение} (не гарантированная граница для $\log p(\mathcal D)$); функциональный KL может быть даже бесконечным.
+  \note{0:50.}
+\end{frame}
+
+%% 8 ---------------------------------------------------------------
+\begin{frame}{Градиент KL, когда у $q$ нет плотности}
+  \small
+  Likelihood-член вычислим, а плотность $q_\phi(\fx)$ --- нет. По репараметризации $f=g_\phi(\mathbf x,\xi)$:
+  \[
+    \nabla_\phi\KL[q_\phi(\fx)\|p(\fx)]
+    =\underbrace{\E_q[\nabla_\phi\log q_\phi(\fx)]}_{=0}
+    +\E_\xi\Big[\nabla_\phi\fx\,\big(\nabla_{\mathbf f}\log q(\fx)-\nabla_{\mathbf f}\log p(\fx)\big)\Big].
+  \]
+  Произведение якобиана на вектор считается backprop-ом; остаётся оценить score-функции $\nabla_{\mathbf f}\log q$ и $\nabla_{\mathbf f}\log p$.
+
+  \begin{block}{Spectral Stein gradient estimator (SSGE)}
+    Оценивает $\nabla\log q(\mathbf x)$ \emph{implicit} распределения только по сэмплам:
+    \[
+      \nabla_{x_i}\log q(\mathbf x)=-\sum_{j=1}^{\infty}\big[\E_q\nabla_{x_i}\psi_j(\mathbf x)\big]\psi_j(\mathbf x),
+    \]
+    $\psi_j$: собственные функции ядра $k$ (Mercer), приближаются методом Nystr\"om; сумма обрезается, $\E_q$ заменяется оценкой Monte Carlo.
+  \end{block}
+  SSGE применяется для $\nabla\log q$ всегда и для $\nabla\log p$, когда prior implicit; для GP-prior $\nabla\log p$ считается точно (с шумом $K+\gamma^2I$ для устойчивости).
+  \note{1:00.}
+\end{frame}
+
+%% 9 ---------------------------------------------------------------
+\begin{frame}{Собираем всё вместе: как обучается fBNN}
+  \centering
+  \begin{tikzpicture}[
+      box/.style={draw,rounded corners,align=center,minimum height=0.8cm,inner sep=3pt,font=\footnotesize},
+      arr/.style={-{Stealth},thick},
+      node distance=0.9cm and 0.7cm]
+    \node[box] (batch) {мини-батч\\$\bx^{D_s}$};
+    \node[box,below=0.35cm of batch] (meas) {случайные точки\\$\bx^M\sim c$};
+    \node[box,right=1.1cm of $(batch)!0.5!(meas)$,fill=blue!10] (net) {стохастическая сеть\\$f=g_\phi(\mathbf x,\xi)$};
+    \node[box,right=0.8cm of net] (f) {$\mathbf f^{D_s},\ \mathbf f^{M}$\\(сэмплы функций)};
+    \node[box,right=0.8cm of f,yshift=0.75cm] (ll) {ожидаемый\\log-likelihood};
+    \node[box,right=0.8cm of f,yshift=-0.75cm] (kl) {KL-член\\градиенты SSGE};
+    \node[box,right=0.9cm of $(ll)!0.5!(kl)$,fill=green!10] (upd) {обновление $\phi$\\через backprop};
+    \draw[arr] (batch) -- (net); \draw[arr] (meas) -- (net);
+    \draw[arr] (net) -- (f);
+    \draw[arr] (f) -- (ll); \draw[arr] (f) -- (kl);
+    \draw[arr] (ll) -- (upd); \draw[arr] (kl) -- (upd);
+  \end{tikzpicture}
+
+  \medskip
+  \raggedright
+  Objective, максимизируемый на каждой итерации:
+  \[
+    \frac1{|\mathcal D_s|}\sum_{(\mathbf x,y)\in\mathcal D_s}\E_{q_\phi}\log p(y\mid f(\mathbf x))\;-\;\lambda\,\KL\big[q(\mathbf f^{\mathcal D_s},\mathbf f^M)\,\|\,p(\mathbf f^{\mathcal D_s},\mathbf f^M)\big].
+  \]
+  \begin{itemize}
+    \item В принципе $\lambda=1/|\mathcal D|$; так как KL по малому числу точек --- лишь нижняя оценка функционального KL, большее $\lambda$ помогает против переобучения. На практике $\lambda=1/|\mathcal D_s|$ (тогда по теореме 2 это честная нижняя граница $\log p(\mathcal D_s)$).
+    \item $q$ во всех экспериментах: независимые гауссовы веса $\mathcal N(\boldsymbol\mu,\mathrm{diag}\,\boldsymbol\sigma^2)$; гиперпараметры GP сначала подбираются, затем фиксируются.
+  \end{itemize}
+  \note{1:00.}
+\end{frame}
+
+%% 10 --------------------------------------------------------------
+\begin{frame}{Может ли сеть экстраполировать по структуре prior}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \textcolor{structure}{Периодическая структура (GP-prior)}
+      \begin{itemize}
+        \item 20 точек из $[-2,-0.5]\cup[0.5,2]$, $y=2\sin(4x)+\varepsilon$
+        \item BNN: 5 скрытых слоёв $\times$ 500 нейронов
+        \item prior-ы: ядра RBF и PER$+$RBF
+        \item measurement set: все обучающие точки $+$ 40 случайных из $[-5,5]$
+      \end{itemize}
+      Результат: fBNN $\approx$ точный GP с тем же ядром (чуть меньшая неопределённость). BBB не может даже подогнать обучающие данные.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textcolor{structure}{Implicit prior-ы}
+      \begin{itemize}
+        \item кусочно-постоянные и кусочно-линейные функции
+        \item 40 точек из $[0,0.2]\cup[0.8,1]$; сеть с \emph{tanh}, 2$\times$100
+      \end{itemize}
+      Результат: сэмплы из posterior имеют резкие, примерно кусочные структуры, несмотря на tanh, но не отражают всё разнообразие объяснений.
+
+      \medskip
+      Toy-пример $y=x^3$: предсказания fBNN согласованы при росте сети; предсказания BBB резко меняются.
+    \end{column}
+  \end{columns}
+  \vspace{0.5em}
+  \begin{block}{Вывод}
+    Экстраполяция следует из \emph{functional prior}, а не из архитектуры (ReLU-сети не кодируют периодичность).
+  \end{block}
+  \note{1:00. При наличии времени упомянуть пример с CO2 на Mauna Loa из приложения.}
+\end{frame}
+
+%% 11 --------------------------------------------------------------
+\begin{frame}{Сравнение с BBB и Noisy K-FAC на регрессии (test RMSE)}
+  \small
+  \textcolor{structure}{Малые датасеты UCI} (GP-prior с подобранными гиперпараметрами; split 90/10, 10 повторов)
+  \begin{center}
+  \begin{tabular}{lccc}
+    \toprule
+    Датасет & BBB & Noisy K-FAC & fBNN \\
+    \midrule
+    Boston   & 3.171 $\pm$ 0.149 & 2.742 $\pm$ 0.125 & \textbf{2.378} $\pm$ 0.104 \\
+    Concrete & 5.678 $\pm$ 0.087 & 5.019 $\pm$ 0.127 & \textbf{4.935} $\pm$ 0.180 \\
+    Energy   & 0.565 $\pm$ 0.018 & 0.485 $\pm$ 0.023 & \textbf{0.412} $\pm$ 0.017 \\
+    Wine     & 0.643 $\pm$ 0.012 & \textbf{0.637} $\pm$ 0.011 & 0.673 $\pm$ 0.014 \\
+    Yacht    & 1.174 $\pm$ 0.086 & 0.979 $\pm$ 0.077 & \textbf{0.607} $\pm$ 0.068 \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \textcolor{structure}{Большие датасеты} (1 скрытый слой, 100 нейронов; GP-prior с NKN-ядрами; 5 запусков)
+  \begin{center}
+  \begin{tabular}{lrcc}
+    \toprule
+    Датасет & $N$ & BBB & fBNN \\
+    \midrule
+    Naval        & 11\,934  & 1.6E-4 & \textbf{1.2E-4} \\
+    Protein      & 45\,730  & 4.331  & \textbf{4.326} \\
+    Video Memory & 68\,784  & 1.879  & \textbf{1.858} \\
+    Video Time   & 68\,784  & 3.632  & \textbf{3.007} \\
+    GPU          & 241\,600 & 21.886 & \textbf{19.50} \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \note{0:50. По log-likelihood картина смешанная на Video Memory/Time (BBB лучше); упомянуть, если спросят.}
+\end{frame}
+
+%% 12 --------------------------------------------------------------
+\begin{frame}{Bandits и Bayesian optimization: зачем нужна неопределённость}
+  \textcolor{structure}{Contextual bandits} (Riquelme et al., 2018), Thompson sampling, prior = multi-task GP. Относительный накопленный regret (Uniform $=100$), 6 датасетов, 10 запусков:
+  \begin{center}
+  \small
+  \begin{tabular}{lcc}
+    \toprule
+    Метод & Mean rank $\downarrow$ & Mean value $\downarrow$ \\
+    \midrule
+    fBNN $1\times 50$   & 4.7  & 41.9 \\
+    fBNN $1\times 500$  & \textbf{3.8}  & 41.3 \\
+    fBNN $3\times 500$  & 4.2  & \textbf{40.9} \\
+    MultitaskGP         & 4.3  & 41.7 \\
+    Dropout             & 5.5  & 41.7 \\
+    BBB $1\times 50$    & 10.8 & 52.7 \\
+    BBB $1\times 500$   & 13.7 & 66.2 \\
+    Uniform             & 16   & 100 \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \begin{itemize}
+    \item fBNN стабилен при более глубоких и широких сетях; у BBB качество падает при переходе от 50 к 500 нейронам.
+    \item Bayesian optimization (Max-value Entropy Search): fBNN даёт явные сэмплы функций; сопоставим с RBF random features на RBF-функциях и лучше на ArcCosine и Matern12.
+  \end{itemize}
+  \note{0:50.}
+\end{frame}
+
+%% 13 --------------------------------------------------------------
+\begin{frame}{Что получилось и где слабые места}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \textcolor{structure}{Выводы}
+      \begin{itemize}
+        \item $\KL$ между процессами = supremum конечных маргинальных KL
+        \item fELBO, sampling-based measurement sets и SSGE дают практичную схему обучения
+        \item prior-ы над функциями (GP, implicit) $\Rightarrow$ осмысленная экстраполяция, надёжная неопределённость, устойчивость к размеру сети
+        \item конкурентно на UCI-регрессии, сильный результат на bandits
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textcolor{structure}{Ограничения}
+      \begin{itemize}
+        \item конечные measurement sets: лишь приближение, $\lambda$ подбирается эвристически
+        \item сэмплы posterior для implicit prior-ов недостаточно разнообразны
+        \item гиперпараметры GP подбираются заранее и фиксируются
+        \item $q$ по-прежнему факторизованная гауссиана по весам; масштабируемость SSGE в больших размерностях не исследована
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \note{0:30.}
+\end{frame}
+
+%% 14 --------------------------------------------------------------
+\begin{frame}{Литература}
+  \footnotesize
+  \begin{thebibliography}{99}
+    \bibitem{fbnn} Sun S., Zhang G., Shi J., Grosse R. \emph{Functional variational Bayesian neural networks.} ICLR 2019, arXiv:1903.05779.
+    \bibitem{bbb} Blundell C., Cornebise J., Kavukcuoglu K., Wierstra D. \emph{Weight uncertainty in neural network.} ICML 2015.
+    \bibitem{ssge} Shi J., Sun S., Zhu J. \emph{A spectral approach to gradient estimation for implicit distributions.} ICML 2018.
+    \bibitem{neal} Neal R. M. \emph{Bayesian Learning for Neural Networks.} PhD thesis, University of Toronto, 1995.
+    \bibitem{gpml} Rasmussen C. E., Williams C. K. I. \emph{Gaussian Processes for Machine Learning.} MIT Press, 2006.
+    \bibitem{nkfac} Zhang G., Sun S., Duvenaud D., Grosse R. \emph{Noisy natural gradient as variational inference.} ICML 2018.
+    \bibitem{bandits} Riquelme C., Tucker G., Snoek J. \emph{Deep Bayesian bandits showdown.} ICLR 2018.
+    \bibitem{matthews} Matthews A. G. de G., Hensman J., Turner R., Ghahramani Z. \emph{On sparse variational methods and the KL divergence between stochastic processes.} AISTATS 2016.
+    \bibitem{ncp} Hafner D. et al. \emph{Reliable uncertainty estimates in deep neural networks using noise contrastive priors.} arXiv:1807.09289, 2018.
+    \bibitem{pbp} Hern\'andez-Lobato J. M., Adams R. \emph{Probabilistic backpropagation for scalable learning of Bayesian neural networks.} ICML 2015.
+  \end{thebibliography}
+\end{frame}
+
+%% 15 --------------------------------------------------------------
+\begin{frame}{Два вопроса к аудитории}
+  \begin{enumerate}
+    \setlength{\itemsep}{1.2em}
+    \item Почему задание prior над функциями (а не над весами) делает предсказания fBNN стабильными при росте сети?
+    \item Зачем в measurement set входят случайные точки из всей области определения, а не только обучающие входы?
+  \end{enumerate}
+  \vfill
+  \centering\Large Спасибо за внимание!
+  \note{%
+    Ответ 1: задача функционального вывода (prior над f, KL между процессами) определена без привязки к архитектуре, поэтому увеличение сети лишь расширяет вариационное семейство и не меняет саму задачу.
+    Ответ 2: KL-член --- единственная часть, которая заставляет сеть следовать структуре prior; на одних обучающих входах он ничего не говорит про области, где нужна экстраполяция, поэтому добавляют точки из области предсказаний.}
+\end{frame}
+
+\end{document}
