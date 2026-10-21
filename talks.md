@@ -14,7 +14,11 @@
 # Variational inference
 * [Functional Variational Inference for Bayesian Neural Networks](https://arxiv.org/pdf/1903.05779): [reporter: "Георгий Чирков"]
 * [Variational Learning of Fractional Posteriors](https://icml.cc/virtual/2025/poster/45695): [reporter: your name]
-  
+
+# Tech. meeting 2 
+* [The Description Length of Deep Learning Models](https://arxiv.org/pdf/1802.07044) [reporter: your name]
+* [Variational Learning of Fractional Posteriors](https://icml.cc/virtual/2025/poster/45695): [reporter: your name]
+
 # Diffusion 
 * volunteer: Daniil Kazachkov
 * volunteer: Mark Ikonnikov
