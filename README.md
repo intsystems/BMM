@@ -25,9 +25,9 @@
 | 7.10 | [Complexity](slides/slides_3_mdl.pdf) | 
 | 13.10 | [Var. inference](slides/slides_4_var1.pdf) | 
 | 21.10 | Technical meeting 2: proof of concept discussion   | 
-| 28.10 | Var. inference 2   | 
-| 4.11 | Diffusion  + checkpoint (?) | 
-| 11.11 | Generative and discriminative models   + checkpoint (?)  | 
+| 28.10 |  -  | 
+| 4.11 | Var. inference 2 + Diffusion  | 
+| 11.11 | Generative and discriminative models   + checkpoint   | 
 | 18.11 | Graphical models  | 
 | 25.11 |  Technical meeting 3: overview  | 
 | 2.12 | Gaussian processes and SSM   | 
