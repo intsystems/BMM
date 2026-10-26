@@ -16,7 +16,7 @@
 * [Variational Learning of Fractional Posteriors](https://icml.cc/virtual/2025/poster/45695): [reporter: your name]
 
 # Tech. meeting 2 
-* [The Description Length of Deep Learning Models](https://arxiv.org/pdf/1802.07044) [reporter: your name]
+* [The Description Length of Deep Learning Models](https://arxiv.org/pdf/1802.07044) [reporter: Алябушев Павел]
 * [Variational Learning of Fractional Posteriors](https://icml.cc/virtual/2025/poster/45695): [reporter: your name]
 
 # Diffusion 
