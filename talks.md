@@ -22,3 +22,6 @@
 # Diffusion 
 * volunteer: Daniil Kazachkov
 * volunteer: Mark Ikonnikov
+
+# Graphical models
+* volunteer: Lina
