@@ -23,5 +23,5 @@
 * volunteer: Daniil Kazachkov
 * volunteer: Mark Ikonnikov
 
-# Graphical models
+# Generative and discriminative models
 * volunteer: Lina
