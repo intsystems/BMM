@@ -26,7 +26,7 @@
 | 13.10 | [Var. inference](slides/slides_4_var1.pdf) | 
 | 21.10 | Technical meeting 2: proof of concept discussion   | 
 | 28.10 |  -  | 
-| 4.11 | Var. inference 2 + Diffusion  | 
+| 4.11 | [Var. inference 2 + Diffusion](slides/slides_5_var2.pdf)  | 
 | 11.11 | Generative and discriminative models   + checkpoint   | 
 | 18.11 | Graphical models  | 
 | 25.11 |  Technical meeting 3: overview  | 
