@@ -21,7 +21,7 @@
 
 # Diffusion 
 * volunteer: Daniil Kazachkov
-* [Sample-efficient evidence estimation of score based priors for model selection](https://arxiv.org/abs/2602.20549): Mark Ikonnikov
+* [Sample-efficient evidence estimation of score based priors for model selection](https://arxiv.org/abs/2602.20549): [reporter:  Mark Ikonnikov]
 
 # Generative and discriminative models
 * volunteer: Lina
