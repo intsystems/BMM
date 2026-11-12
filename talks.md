@@ -25,3 +25,6 @@
 
 # Generative and discriminative models
 * volunteer: Lina
+
+# Graphical Models
+* volunteer: Георгий Чирков
