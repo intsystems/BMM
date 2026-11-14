@@ -28,3 +28,6 @@
 
 # Graphical Models
 * volunteer: Георгий Чирков
+
+# GP and SSM
+* volunteer: Данила Черноусов
