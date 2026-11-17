@@ -29,5 +29,8 @@
 # Graphical Models
 * volunteer: Георгий Чирков
 
+# Technical meeting 3
+* volunteer:  Alex Kravatsky
+
 # GP and SSM
 * volunteer: Данила Черноусов
