@@ -24,7 +24,7 @@
 * [Sample-efficient evidence estimation of score based priors for model selection](https://arxiv.org/abs/2602.20549): [reporter:  Mark Ikonnikov]
 
 # Generative and discriminative models
-* volunteer: Lina
+* volunteer: Lina [RODEO}(https://proceedings.neurips.cc/paper_files/paper/2022/file/a5a5b0ff87c59172a13342d428b1e033-Paper-Conference.pdf)
 
 # Graphical Models
 * volunteer: Георгий Чирков
