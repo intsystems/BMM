@@ -10,7 +10,7 @@
 # Complexity
 * [From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence](https://arxiv.org/abs/2601.03220): [reporter: Alex Kravatsky]
 * [The Description Length of Deep Learning Models](https://arxiv.org/pdf/1802.07044) [reporter: your name]
-* [Getting Free Bits Back from Rotational Symmetries in LLMs](https://arxiv.org/abs/2410.01309) [слайды](https://github.com/intsystems/BMM/blob/main-26-27/student_talks/sem_1/BMM_26_Kurdyukov_Free_Bits.pdf)[reporter: Курдюков Владимир]
+* [Getting Free Bits Back from Rotational Symmetries in LLMs](https://arxiv.org/abs/2410.01309); [слайды](https://github.com/intsystems/BMM/blob/main-26-27/student_talks/sem_1/BMM_26_Kurdyukov_Free_Bits.pdf);[reporter: Курдюков Владимир]
 
 # Variational inference
 * [Functional Variational Inference for Bayesian Neural Networks](https://arxiv.org/pdf/1903.05779): [reporter: "Георгий Чирков"]
