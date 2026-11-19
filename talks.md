@@ -20,6 +20,9 @@
 * [The Description Length of Deep Learning Models](https://arxiv.org/pdf/1802.07044) [reporter: Алябушев Павел]
 * [Variational Learning of Fractional Posteriors](https://icml.cc/virtual/2025/poster/45695): [reporter: your name]
 
+# Var. Inference
+volunteer: George Chirkov
+
 # Diffusion 
 * volunteer: Daniil Kazachkov
 * [Sample-efficient evidence estimation of score based priors for model selection](https://arxiv.org/abs/2602.20549): [reporter:  Mark Ikonnikov]
