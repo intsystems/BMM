@@ -11,6 +11,7 @@
 [TG Link](https://t.me/+Qj45JboSkM9jODdi)
 
 [Form. Deadline: 21.11, 21:00](https://docs.google.com/forms/d/e/1FAIpQLSfbBuvxNta3qiBHzlfU_oSiW3i2NSff6Ams6V3wsDyDG3vgzw/viewform)
+
 [Form for Graphical models, Gen. vs discriminative. Deadline: 28.11., 21.00](https://docs.google.com/forms/d/e/1FAIpQLScotAXrKCw6nLosFnCEpIh4nr3rwwuLYd4t211vbG4tUGUuIw/viewform)
 
 ## Fall 2026
