@@ -41,3 +41,4 @@
 # GP and SSM
 * volunteer: Данила Черноусов
 * volunteer: Иконников Марк
+* volunteer: Дементьев Сергей
